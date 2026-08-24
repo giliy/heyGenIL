@@ -1,0 +1,206 @@
+{
+  "id": "ad-5-noa-studio",
+  "title": "תספורת + פן במחיר השקה",
+  "composition": "Ad5NoaStudio",
+  "mode": "ad",
+  "language": "he",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 17.11
+  },
+  "voicePlan": "edge-tts:he-IL-HilaNeural (Hebrew, word-exact, --nikkud via hebrew_pronounce)",
+  "ad": {
+    "business": {
+      "name": "סטודיו נועה",
+      "vertical": "salon",
+      "phone": "050-111-2222",
+      "whatsapp": "050-111-2222",
+      "city": "תל אביב"
+    },
+    "offer": {
+      "headline": "תספורת + פן במחיר השקה",
+      "price": 149.0,
+      "oldPrice": 220.0
+    },
+    "disclosure": {
+      "scope": "עד גמר המלאי",
+      "totalPrice": "149 ₪"
+    },
+    "cta": {
+      "type": "whatsapp",
+      "text": "קבעי תור",
+      "phoneDisplay": "050-111-2222"
+    },
+    "brand": {
+      "accent": "#C026D3",
+      "hookStyle": "pain-question"
+    }
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "נמאס לשלם?",
+      "start": 0.0,
+      "end": 2.02,
+      "words": [
+        {
+          "w": "נמאס",
+          "start": 0.13,
+          "end": 0.489
+        },
+        {
+          "w": "לשלם?",
+          "start": 0.489,
+          "end": 1.14
+        }
+      ]
+    },
+    {
+      "beat": "intro",
+      "text": "סטודיו נועה.",
+      "start": 2.5,
+      "end": 4.66,
+      "words": [
+        {
+          "w": "סטודיו",
+          "start": 2.603,
+          "end": 3.188
+        },
+        {
+          "w": "נועה.",
+          "start": 3.188,
+          "end": 3.787
+        }
+      ]
+    },
+    {
+      "beat": "offer",
+      "text": "תספורת + פן במחיר השקה",
+      "start": 5.0,
+      "end": 7.88,
+      "words": [
+        {
+          "w": "תספורת",
+          "start": 5.085,
+          "end": 5.815
+        },
+        {
+          "w": "+",
+          "start": 5.815,
+          "end": 6.074
+        },
+        {
+          "w": "פן",
+          "start": 6.074,
+          "end": 6.322
+        },
+        {
+          "w": "במחיר",
+          "start": 6.322,
+          "end": 6.647
+        },
+        {
+          "w": "השקה",
+          "start": 6.647,
+          "end": 7.141
+        }
+      ]
+    },
+    {
+      "beat": "proof",
+      "text": "המחיר כולל עיצוב מלא — בלי הפתעות בקופה.",
+      "start": 7.95,
+      "end": 11.94,
+      "words": [
+        {
+          "w": "הַמְּחִיר",
+          "start": 8.04,
+          "end": 8.503
+        },
+        {
+          "w": "כּוֹלֵל",
+          "start": 8.503,
+          "end": 8.824
+        },
+        {
+          "w": "עִיצּוּב",
+          "start": 8.824,
+          "end": 9.157
+        },
+        {
+          "w": "מָלֵא",
+          "start": 9.157,
+          "end": 9.584
+        },
+        {
+          "w": "בְּלִי",
+          "start": 9.846,
+          "end": 10.072
+        },
+        {
+          "w": "הַפְתָּעוֹת",
+          "start": 10.072,
+          "end": 10.523
+        },
+        {
+          "w": "בַּקֻּופָּה",
+          "start": 10.523,
+          "end": 11.153
+        }
+      ]
+    },
+    {
+      "beat": "cta",
+      "text": "קבעי תור.",
+      "start": 12.01,
+      "end": 14.08,
+      "words": [
+        {
+          "w": "קבעי",
+          "start": 12.127,
+          "end": 12.579
+        },
+        {
+          "w": "תור.",
+          "start": 12.579,
+          "end": 13.204
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 2.0,
+      "visual": "HOOK fully composed at frame 0 — the payoff visible on the first frame (no build-up)."
+    },
+    {
+      "name": "intro",
+      "start_s": 2.5,
+      "end_s": 4.5,
+      "visual": "the business name + what it is, one line, brand accent."
+    },
+    {
+      "name": "offer",
+      "start_s": 5.0,
+      "end_s": 7.45,
+      "visual": "the PriceBadge pops with the real numbers; oldPrice struck through if a sale."
+    },
+    {
+      "name": "proof",
+      "start_s": 7.95,
+      "end_s": 11.51,
+      "visual": "the freier-proof: show the math / a concrete reason this is smart, not just cheap."
+    },
+    {
+      "name": "cta",
+      "start_s": 12.01,
+      "end_s": 17.11,
+      "visual": "the AdEndCard pops and HOLDS to the last frame — WhatsApp/phone + website, tappable."
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural+nikkud"
+}
