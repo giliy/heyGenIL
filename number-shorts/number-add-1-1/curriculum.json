@@ -1,0 +1,14 @@
+{
+  "order": 20,
+  "key": "add-1-1",
+  "numeral": null,
+  "add": {
+    "a": 1,
+    "b": 1
+  },
+  "count": 2,
+  "word_m": "שְׁנַיִם",
+  "word_f": "שְׁתַּיִם",
+  "status": "draft",
+  "note": "1+1=2 — count the union"
+}

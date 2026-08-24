@@ -189,6 +189,27 @@
       "type": "number",
       "key": "ten",
       "status": "pass"
+    },
+    {
+      "order": 28,
+      "proj": "number-shorts/number-add-1-1",
+      "type": "number",
+      "key": "add-1-1",
+      "status": "pass"
+    },
+    {
+      "order": 29,
+      "proj": "number-shorts/number-add-2-1",
+      "type": "number",
+      "key": "add-2-1",
+      "status": "pass"
+    },
+    {
+      "order": 30,
+      "proj": "number-shorts/number-add-2-2",
+      "type": "number",
+      "key": "add-2-2",
+      "status": "pass"
     }
   ]
 }

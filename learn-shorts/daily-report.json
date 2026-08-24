@@ -2,74 +2,25 @@
   "run": "2026-08-24",
   "results": [
     {
-      "dir": "number-shorts/number-1-one",
+      "dir": "number-shorts/number-add-1-1",
       "type": "number",
-      "key": "one",
+      "key": "add-1-1",
       "ok": true,
-      "compId": "Number1One"
+      "compId": "NumberAdd11"
     },
     {
-      "dir": "number-shorts/number-2-two",
+      "dir": "number-shorts/number-add-2-1",
       "type": "number",
-      "key": "two",
+      "key": "add-2-1",
       "ok": true,
-      "compId": "Number2Two"
+      "compId": "NumberAdd21"
     },
     {
-      "dir": "number-shorts/number-3-three",
+      "dir": "number-shorts/number-add-2-2",
       "type": "number",
-      "key": "three",
+      "key": "add-2-2",
       "ok": true,
-      "compId": "Number3Three"
-    },
-    {
-      "dir": "number-shorts/number-4-four",
-      "type": "number",
-      "key": "four",
-      "ok": true,
-      "compId": "Number4Four"
-    },
-    {
-      "dir": "number-shorts/number-5-five",
-      "type": "number",
-      "key": "five",
-      "ok": true,
-      "compId": "Number5Five"
-    },
-    {
-      "dir": "number-shorts/number-6-six",
-      "type": "number",
-      "key": "six",
-      "ok": true,
-      "compId": "Number6Six"
-    },
-    {
-      "dir": "number-shorts/number-7-seven",
-      "type": "number",
-      "key": "seven",
-      "ok": true,
-      "compId": "Number7Seven"
-    },
-    {
-      "dir": "number-shorts/number-8-eight",
-      "type": "number",
-      "key": "eight",
-      "ok": true,
-      "compId": "Number8Eight"
-    },
-    {
-      "dir": "number-shorts/number-9-nine",
-      "type": "number",
-      "key": "nine",
-      "ok": true,
-      "compId": "Number9Nine"
-    },
-    {
-      "dir": "number-shorts/number-10-ten",
-      "type": "number",
-      "key": "ten",
-      "ok": true,
-      "compId": "Number10Ten"
+      "compId": "NumberAdd22"
     }
   ]
 }

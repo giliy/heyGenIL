@@ -200,6 +200,30 @@
   "transparent": false
  },
  {
+  "id": "NumberAdd11",
+  "durationInSeconds": 19.945,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "NumberAdd21",
+  "durationInSeconds": 23.278,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "NumberAdd22",
+  "durationInSeconds": 26.611,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
   "id": "Proof1Lottie",
   "durationInSeconds": 5,
   "fps": 30,

@@ -1,0 +1,144 @@
+{
+  "id": "number-add-2-2",
+  "title": "בּוּ מְלַמֵּד לִסְפּוֹר 2+2",
+  "mode": "number",
+  "language": "he",
+  "series": "bu-koala-numbers",
+  "composition": "NumberAdd22",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 26.611
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type number) from script.md. Teaches add-2-2 (add-2-2, /a/) to ages 5-7. mode:number, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "number": {
+    "number": "add-2-2",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "א"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "אֶחָד",
+      "שְׁנַיִם",
+      "שְׁלוֹשָׁה",
+      "אַרְבָּעָה"
+    ],
+    "numeral": null,
+    "word": "אַרְבָּעָה",
+    "count": 4,
+    "add": {
+      "a": 2,
+      "b": 2
+    }
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 2+2!",
+      "tts": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 2+2!",
+      "start": 0.0,
+      "end": 5.376
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "אַרְבָּעָה",
+      "tts": "אַרְבָּעָה",
+      "start": 6.367,
+      "end": 7.227,
+      "units": [
+        {
+          "g": "אַרְבָּעָה",
+          "start": 6.707,
+          "end": 7.227
+        }
+      ],
+      "sub": "מִסְפָּר — הֲכִי גָּדוֹל!"
+    },
+    {
+      "beat": "read-word",
+      "text": "אֶחָד",
+      "tts": "אֶחָד",
+      "start": 8.667,
+      "end": 10.683
+    },
+    {
+      "beat": "read-word",
+      "text": "שְׁנַיִם",
+      "tts": "שְׁנַיִם",
+      "start": 12.0,
+      "end": 14.184
+    },
+    {
+      "beat": "read-word",
+      "text": "שְׁלוֹשָׁה",
+      "tts": "שְׁלוֹשָׁה",
+      "start": 15.333,
+      "end": 17.325
+    },
+    {
+      "beat": "read-word",
+      "text": "אַרְבָּעָה",
+      "tts": "אַרְבָּעָה",
+      "start": 18.666,
+      "end": 20.682,
+      "sub": "יוֹפִי! סָפַרְנוּ בַּיַּחַד!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 21.999,
+      "end": 24.111,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם סוֹפְרִים!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 6.367
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 6.367,
+      "end_s": 8.667
+    },
+    {
+      "name": "read-word",
+      "start_s": 8.667,
+      "end_s": 12.0
+    },
+    {
+      "name": "read-word",
+      "start_s": 12.0,
+      "end_s": 15.333
+    },
+    {
+      "name": "read-word",
+      "start_s": 15.333,
+      "end_s": 18.666
+    },
+    {
+      "name": "read-word",
+      "start_s": 18.666,
+      "end_s": 21.999
+    },
+    {
+      "name": "call-response",
+      "start_s": 21.999,
+      "end_s": 26.611
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

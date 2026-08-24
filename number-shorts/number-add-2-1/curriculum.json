@@ -1,0 +1,14 @@
+{
+  "order": 21,
+  "key": "add-2-1",
+  "numeral": null,
+  "add": {
+    "a": 2,
+    "b": 1
+  },
+  "count": 3,
+  "word_m": "שְׁלוֹשָׁה",
+  "word_f": "שָׁלוֹשׁ",
+  "status": "draft",
+  "note": "2+1=3"
+}
