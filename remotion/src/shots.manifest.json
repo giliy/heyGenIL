@@ -56,6 +56,46 @@
   "transparent": false
  },
  {
+  "id": "Proof2Sketch",
+  "durationInSeconds": 4,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Proof3Captions",
+  "durationInSeconds": 4,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Proof4Icons",
+  "durationInSeconds": 3,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Proof5Morph",
+  "durationInSeconds": 4,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Proof6Paper",
+  "durationInSeconds": 3,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
   "id": "Read0Test",
   "durationInSeconds": 10,
   "fps": 30,

@@ -209,6 +209,22 @@ const linePath = 'M 0 0 L 100 100';
 const { strokeDasharray, strokeDashoffset } = evolvePath(progress, rectPath);
 ```
 
+### rough-js (lib/sketch.tsx) — non-zero seed or the render is nondeterministic
+
+rough-js's RNG is a seeded linear-congruential generator — but only when the seed is a **non-zero integer**. Internally (`roughjs/bin/math.js` `Random.next()`): truthy seed → LCG (fully reproducible); **falsy seed (`0`/`undefined`) → `Math.random()`**. The generator's own default is `seed: 0`, so calling `rough.generator()` without an explicit seed silently produces different paths on every render — frames flicker and the byte-compare determinism gate fails.
+
+- **Never call `rough.generator()` raw in a render body.** Use the wrappers in `lib/sketch.tsx` (`SketchLine`, `SketchLineDrawOn`, `SketchShape`), which force a concrete non-zero seed (default `STABLE_SEED = 7`, via `resolveSeed()`).
+- To give elements *different* wobble personalities, pass a different positive integer `seed` per element — never `0`, never omit it outside the lib wrappers, and never call `RoughGenerator.newSeed()` in render code (it's `Math.random()`-based — author-time only).
+- Same contract for `@remotion/rough-notation`: always pass the `seed` prop (the `lib/annotation.tsx` wrappers default it to `7`).
+
+### paper-shaders — `speed={0}` + explicit `frame` prop, or the render is nondeterministic
+
+`@paper-design/shaders(-react)` components (GrainGradient, MeshGradient, Dithering, …) run a WebGL canvas whose `u_time` is driven by an internal RAF loop. With **`speed≠0`**, `setFrame` re-enters `render(performance.now())` and the loop keeps advancing `currentFrame += dt * speed` on **wall-clock** — frames flicker and the byte-compare determinism gate fails. With **`speed={0}`** the loop stops (`rafId = null`) and `u_time = frame * 1e-3` exactly → deterministic.
+
+- **Always pass `speed={0}` and an explicit frame-derived `frame` prop**, e.g. `frame={frame * 12}` (the multiplier scales motion speed).
+- The GLSL hash `randomR` and the fixed `u_noiseTexture` are frame-seeded, so noise is deterministic.
+- Render cost is fine (~1s/frame marginal on Intel-iGPU; fixed bundle+browser warmup dominates) — no special budget needed.
+
 ### Composition ID
 
 `compositionConfig.id` is **PascalCase only** — no hyphens, no underscores (e.g. `ProductReveal`, not `product-reveal` or `product_reveal`).

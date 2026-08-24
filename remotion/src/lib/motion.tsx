@@ -7,6 +7,7 @@
 import React from 'react';
 import { interpolate, useCurrentFrame } from 'remotion';
 import { evolvePath, getLength, getPointAtLength, interpolatePath } from '@remotion/paths';
+import { freehandPath, type FreehandPoint } from './freehand';
 
 const CLAMP = { extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const };
 
@@ -26,6 +27,14 @@ export type DrawOnProps = {
   stroke?: string;
   strokeWidth?: number;
   strokeLinecap?: 'butt' | 'round' | 'square';
+  /**
+   * Optional: render the stroke as a pressure-varying freehand stroke
+   * (perfect-freehand) instead of a constant-width SVG stroke. When set, the
+   * path is sampled into points, the outline is computed once (pure), and the
+   * draw-on reveal is a clip sweep along the path's x-extent rather than the
+   * dash trick. `strokeWidth` is used as the pen `size`.
+   */
+  pressure?: boolean;
   /** Extra props spread onto the <path> (e.g. transform, opacity). */
   pathProps?: React.SVGProps<SVGPathElement>;
 };
@@ -42,10 +51,35 @@ export const DrawOn: React.FC<DrawOnProps> = ({
   stroke = 'currentColor',
   strokeWidth = 4,
   strokeLinecap = 'round',
+  pressure = false,
   pathProps,
 }) => {
   const progress = useProgress(durationInFrames, delay);
   const { strokeDasharray, strokeDashoffset } = evolvePath(progress, d);
+
+  if (pressure) {
+    // Pressure mode: sample the path into points, build a pressure-varying
+    // outline once (perfect-freehand, pure), and reveal it with a clip sweep
+    // along the path's x-extent. Fully deterministic (outline is precomputed).
+    const points = samplePathToPoints(d);
+    const outline = freehandPath(points, { size: strokeWidth * 2 });
+    const xs = points.map((p) => p[0]);
+    const minX = Math.min(...xs);
+    const maxX = Math.max(...xs);
+    const span = Math.max(1, maxX - minX);
+    const clipId = `drawon-p-${Math.round(minX)}-${Math.round(maxX)}`;
+    return (
+      <g>
+        <defs>
+          <clipPath id={clipId}>
+            <rect x={minX} y={-9999} width={span * progress} height={19998} />
+          </clipPath>
+        </defs>
+        <path d={outline} fill={stroke} clipPath={`url(#${clipId})`} {...pathProps} />
+      </g>
+    );
+  }
+
   return (
     <path
       d={d}
@@ -58,6 +92,20 @@ export const DrawOn: React.FC<DrawOnProps> = ({
       {...pathProps}
     />
   );
+};
+
+/**
+ * Sample an SVG path string into [x, y] points (for perfect-freehand). Walks
+ * the path by length via @remotion/paths. Pure and deterministic for a fixed d.
+ */
+const samplePathToPoints = (d: string, count = 96): FreehandPoint[] => {
+  const len = getLength(d);
+  const pts: FreehandPoint[] = [];
+  for (let i = 0; i <= count; i++) {
+    const pt = getPointAtLength(d, (i / count) * len);
+    if (pt) pts.push([pt.x, pt.y]);
+  }
+  return pts;
 };
 
 /**

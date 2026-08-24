@@ -34,6 +34,50 @@ import {
   type Icon as PhosphorIcon,
   type IconWeight,
 } from '@phosphor-icons/react';
+import {
+  IconBrandWhatsapp,
+  IconBrandInstagram,
+  IconBrandFacebook,
+  IconBrandTiktok,
+  IconBrandYoutube,
+  IconBrandGoogleMaps,
+  IconPhone,
+  IconPhoneCall,
+  IconMapPin,
+  IconStar,
+  IconStarFilled,
+  IconHeart,
+  IconHeartFilled,
+  IconShoppingCart,
+  IconShoppingBag,
+  IconCreditCard,
+  IconCurrencyShekel,
+  IconTruck,
+  IconCalendar,
+  IconCalendarCheck,
+  IconDiscount,
+  IconPercentage,
+  IconTag,
+  IconGift,
+  IconThumbUp,
+  IconMessageCircle,
+  IconChecks,
+  IconTrendingUp,
+  IconFlame,
+  IconBolt,
+  IconShieldCheck,
+  IconAward,
+  IconQuote,
+  IconBalloon,
+  IconCake,
+  IconConfetti,
+  IconToolsKitchen2,
+  IconFlower,
+  IconDog,
+  IconBook,
+  IconSchool,
+  IconPencil,
+} from '@tabler/icons-react';
 import { COLORS } from '../brand';
 
 // ---------------------------------------------------------------------------
@@ -74,6 +118,91 @@ const REGISTRY = {
 
 /** Names of the curated icons — the valid values for <Icon name>. */
 export type IconName = keyof typeof REGISTRY;
+
+// ---------------------------------------------------------------------------
+// Tabler curated set — the brand/platform + ad-relevant glyphs (MIT).
+// Tabler exports every icon as `IconX` (6255 total); we curate the handful
+// shots actually reach for: platform logos for ad end-cards, ad/money glyphs,
+// and a few warm kids glyphs. Exported for DIRECT use (like the Phosphor
+// re-exports) — these are full components, so <Icon name> does NOT cover them.
+// Add new Tabler icons here, not in shots.
+// ---------------------------------------------------------------------------
+export const TABLER = {
+  whatsapp: IconBrandWhatsapp,
+  instagram: IconBrandInstagram,
+  facebook: IconBrandFacebook,
+  tiktok: IconBrandTiktok,
+  youtube: IconBrandYoutube,
+  googleMaps: IconBrandGoogleMaps,
+  phone: IconPhone,
+  phoneCall: IconPhoneCall,
+  mapPin: IconMapPin,
+  star: IconStar,
+  starFilled: IconStarFilled,
+  heart: IconHeart,
+  heartFilled: IconHeartFilled,
+  cart: IconShoppingCart,
+  bag: IconShoppingBag,
+  creditCard: IconCreditCard,
+  shekel: IconCurrencyShekel,
+  truck: IconTruck,
+  calendar: IconCalendar,
+  calendarCheck: IconCalendarCheck,
+  discount: IconDiscount,
+  percentage: IconPercentage,
+  tag: IconTag,
+  gift: IconGift,
+  thumbUp: IconThumbUp,
+  message: IconMessageCircle,
+  checks: IconChecks,
+  trendingUp: IconTrendingUp,
+  flame: IconFlame,
+  bolt: IconBolt,
+  shieldCheck: IconShieldCheck,
+  award: IconAward,
+  quote: IconQuote,
+  balloon: IconBalloon,
+  cake: IconCake,
+  confetti: IconConfetti,
+  kitchen: IconToolsKitchen2,
+  flower: IconFlower,
+  dog: IconDog,
+  book: IconBook,
+  school: IconSchool,
+  pencil: IconPencil,
+} as const;
+
+/** Valid Tabler icon keys for the stringly-typed <TIcon name="..."> API. */
+export type TablerIconName = keyof typeof TABLER;
+
+export interface TablerIconProps {
+  /** A curated Tabler icon key, e.g. "whatsapp". */
+  name: TablerIconName;
+  /** Icon box size in px (number) or any CSS size (string). Default 64. */
+  size?: number | string;
+  /** Icon color. Default: brand ink. */
+  color?: string;
+  /** Stroke width (1 or 2 reads crisp at caption scale; default 1.75). */
+  stroke?: number;
+  /** Accessible label rendered as <title> inside the svg. */
+  alt?: string;
+}
+
+/**
+ * Convenience icon component with house defaults applied, backed by the Tabler
+ * curated set. Reaches the ad track's brand/platform glyphs (WhatsApp, IG, ...)
+ * and money glyphs that Phosphor's small set lacks.
+ */
+export const TIcon: React.FC<TablerIconProps> = ({
+  name,
+  size = 64,
+  color = COLORS.ink,
+  stroke,
+  alt,
+}) => {
+  const Component = TABLER[name];
+  return <Component size={size} color={color} stroke={stroke} title={alt} />;
+};
 
 export interface IconProps {
   /** Name of a curated icon, e.g. "CheckCircle". */

@@ -21,8 +21,18 @@ The CORE pipeline (gen_voice.py, etc.) stays stdlib-only: whisperx is a LAZY imp
 THIS tool only. gen_voice shells out to this script when whisperx is importable, else keeps
 the empty word map.
 
+HEBREW (--lang he): uses ivrit-ai's whisper-large-v3-turbo (Apache-2.0, CTranslate2 /
+faster-whisper) instead of whisperx's default Hebrew aligner. Rationale: (1) whisperx's
+`he` default (`imvladikon/wav2vec2-xls-r-300m-hebrew`) declares NO license on Hugging Face
+(license-ambiguous — risky to ship); ivrit-ai is Apache-2.0. (2) ivrit-ai is a *transcriber*,
+so it also recovers the spoken text when the passed transcript drifts from the audio
+(wav2vec2 forced alignment can't). Measured on 4 Hebrew edge-tts clips: mean abs word-timing
+error vs edge-tts native boundaries ≈ 0.095s (~3 frames @30fps), on par with wav2vec2
+(~0.090s). Falls back to whisperx if faster-whisper isn't installed.
+
 Usage:
     python tools/align_words.py <audio.(mp3|wav)> "<spoken text>" --out <audio>.words.json [--lang en]
+    python tools/align_words.py <audio> "<text>" --out ... --lang he --aligner whisperx   # force old path
 """
 import argparse
 import json
@@ -43,8 +53,56 @@ except Exception:
     pass  # ffw/bootstrap failure must not break the aligner; whisperx will surface a clear error
 
 
-def align(audio_path, text, lang="en"):
-    """Run WhisperX forced alignment; return [{w,start,end}] (3-decimal rounds)."""
+IVRIT_MODEL = "ivrit-ai/whisper-large-v3-turbo-ct2"  # Apache-2.0; CTranslate2/faster-whisper
+
+
+def _monotonic(out):
+    """Force strictly non-decreasing timing; downstream consumers rely on it."""
+    for i in range(1, len(out)):
+        if out[i]["start"] < out[i - 1]["end"]:
+            out[i]["start"] = out[i - 1]["end"]
+        if out[i]["end"] < out[i]["start"]:
+            out[i]["end"] = out[i]["start"]
+    return out
+
+
+def align_hebrew_ivrit(audio_path):
+    """Hebrew via ivrit-ai whisper-large-v3-turbo (Apache-2.0), word timestamps.
+
+    Transcriber (not forced aligner): recovers the spoken text too, so it tolerates a
+    passed transcript that drifted from the audio. Returns [{w,start,end}] or None if
+    faster-whisper is unavailable (caller falls back to whisperx)."""
+    try:
+        from faster_whisper import WhisperModel
+    except ImportError:
+        return None
+    model = WhisperModel(IVRIT_MODEL, device="cpu", compute_type="int8")
+    segs, _info = model.transcribe(audio_path, language="he", word_timestamps=True)
+    out = []
+    for s in segs:
+        for w in (s.words or []):
+            word = (w.word or "").strip()
+            if not word or w.start is None or w.end is None:
+                continue
+            out.append({"w": word, "start": round(float(w.start), 3),
+                        "end": round(float(w.end), 3)})
+    return _monotonic(out)
+
+
+def align(audio_path, text, lang="en", aligner="auto"):
+    """Run forced word alignment; return [{w,start,end}] (3-decimal rounds).
+
+    Hebrew (`lang="he"`) prefers ivrit-ai whisper-turbo (Apache-2.0) under aligner="auto";
+    pass aligner="whisperx" to force the old wav2vec2 path. English/others use whisperx."""
+    if lang == "he" and aligner in ("auto", "ivrit"):
+        out = align_hebrew_ivrit(audio_path)
+        if out is not None:
+            return out
+        if aligner == "ivrit":
+            sys.exit("align_words: --aligner ivrit requested but faster-whisper is not "
+                     "installed (pip install faster-whisper).")
+        # auto: fall through to whisperx
+
     # Lazy import — the core pipeline must stay stdlib-only and must work without whisperx.
     try:
         import whisperx
@@ -79,15 +137,8 @@ def align(audio_path, text, lang="en"):
             continue
         out.append({"w": w, "start": round(float(start), 3), "end": round(float(end), 3)})
 
-    # Monotonic-safety: force strictly non-decreasing timing (the aligner can occasionally
-    # emit an out-of-order segment); downstream consumers rely on monotonic timing.
-    for i in range(1, len(out)):
-        if out[i]["start"] < out[i - 1]["end"]:
-            out[i]["start"] = out[i - 1]["end"]
-        if out[i]["end"] < out[i]["start"]:
-            out[i]["end"] = out[i]["start"]
-
-    return out
+    # Monotonic-safety: the aligner can occasionally emit an out-of-order segment.
+    return _monotonic(out)
 
 
 def main():
@@ -96,15 +147,19 @@ def main():
     ap.add_argument("text", help="the spoken transcript to force-align")
     ap.add_argument("--out", required=True, help="output path for the .words.json file")
     ap.add_argument("--lang", default="en",
-                    help="language code for the aligner (default: en). whisperx resolves "
-                         "the code to its default align model, e.g. 'he' -> Hebrew wav2vec2.")
+                    help="language code for the aligner (default: en). Hebrew ('he') uses "
+                         "ivrit-ai whisper-turbo by default; whisperx resolves other codes.")
+    ap.add_argument("--aligner", default="auto", choices=["auto", "ivrit", "whisperx"],
+                    help="Hebrew engine: 'auto' = ivrit-ai with whisperx fallback (default); "
+                         "'ivrit' = force ivrit-ai (errors if faster-whisper missing); "
+                         "'whisperx' = force the old wav2vec2 path. Ignored for non-Hebrew.")
     args = ap.parse_args()
 
     audio_path = os.path.abspath(args.audio)
     if not os.path.exists(audio_path):
         sys.exit(f"align_words: no such file: {audio_path}")
 
-    words = align(audio_path, args.text, lang=args.lang)
+    words = align(audio_path, args.text, lang=args.lang, aligner=args.aligner)
 
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(words, f, ensure_ascii=False)

@@ -1,0 +1,184 @@
+<title>Hebrew Whisper Adoption Plan</title>
+<style>
+:root{
+  --bg:#f7f6f2; --ink:#1c1a17; --ink-soft:#5b564e; --line:#dcd8cf;
+  --card:#ffffff; --accent:#1f5f4a; --accent-ink:#0f3a2c;
+  --warn:#8a5a12; --warn-bg:#f6ecda; --mono:#eef0ea;
+}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+  --bg:#17181a; --ink:#e9e6df; --ink-soft:#a9a49a; --line:#33373b;
+  --card:#1f2124; --accent:#5fb98f; --accent-ink:#9fd8bd;
+  --warn:#d9a04f; --warn-bg:#2c2417; --mono:#232629;
+}}
+:root[data-theme="dark"]{
+  --bg:#17181a; --ink:#e9e6df; --ink-soft:#a9a49a; --line:#33373b;
+  --card:#1f2124; --accent:#5fb98f; --accent-ink:#9fd8bd;
+  --warn:#d9a04f; --warn-bg:#2c2417; --mono:#232629;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;
+  font-family:"Source Serif 4",Georgia,serif;line-height:1.62;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:56px 28px 90px}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(28px,4.5vw,40px);
+  line-height:1.12;letter-spacing:-.01em;margin:0 0 14px;text-wrap:balance}
+.lede{font-size:19px;color:var(--ink-soft);max-width:60ch;margin:0 0 8px}
+h2{font-size:21px;font-weight:600;margin:44px 0 12px;letter-spacing:-.01em;
+  padding-top:20px;border-top:1px solid var(--line)}
+h2:first-of-type{border-top:none;padding-top:0}
+p{margin:0 0 14px;max-width:68ch}
+ul,ol{margin:0 0 16px;padding-left:22px;max-width:68ch}
+li{margin-bottom:7px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em}
+code{background:var(--mono);padding:1px 5px;border-radius:4px}
+pre{background:var(--mono);border:1px solid var(--line);border-radius:8px;
+  padding:14px 16px;overflow-x:auto;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:12.5px;line-height:1.55;margin:0 0 16px}
+pre code{background:none;padding:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;
+  border:1px solid var(--line);background:var(--card);border-radius:999px;
+  padding:4px 12px;color:var(--ink-soft)}
+.chip b{color:var(--ink);font-weight:600}
+.verdict{display:inline-block;background:var(--accent);color:#fff;font-weight:600;
+  border:none}
+:root[data-theme="dark"] .verdict,[data-theme="dark"] .verdict{color:#0c1a14}
+.note{border-left:3px solid var(--warn);background:var(--warn-bg);
+  padding:12px 16px;border-radius:0 8px 8px 0;margin:0 0 16px;max-width:68ch}
+.note p{margin:0;font-size:15px}
+.note .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--warn);display:block;margin-bottom:4px}
+.files{list-style:none;padding:0;margin:0 0 16px}
+.files li{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:9px 12px;
+  border:1px solid var(--line);border-radius:7px;background:var(--card);margin-bottom:7px}
+.files .act{color:var(--accent-ink);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0 0 16px}
+.tblwrap{overflow-x:auto}
+th{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;text-align:left;color:var(--ink-soft);
+  padding:8px 12px;border-bottom:2px solid var(--line)}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td.mono{font-size:12px}
+ol.steps{counter-reset:s;list-style:none;padding:0;max-width:none}
+ol.steps>li{counter-increment:s;position:relative;padding:0 0 18px 44px;max-width:70ch}
+ol.steps>li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--accent);
+  border:1px solid var(--line);border-radius:6px;width:30px;height:26px;
+  display:flex;align-items:center;justify-content:center;background:var(--card)}
+.steps h3{font-size:16px;margin:0 0 5px;font-weight:600}
+.steps p{margin:0 0 8px;font-size:15px}
+strong{font-weight:600}
+.small{font-size:14px;color:var(--ink-soft)}
+a{color:var(--accent)}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<div class="wrap">
+<p class="eyebrow">Integration Plan · Whisper Alignment Lane</p>
+<h1>Hebrew Whisper Adoption</h1>
+<p class="lede">Adopt <strong>ivrit-ai/whisper-large-v3-turbo</strong> as the Hebrew recognizer
+feeding the caption word-alignment lane — via a pinned-language whisper transcription upgrade
+that lands in the existing lazy-import boundary, sized Small.</p>
+
+<div class="meta">
+  <span class="chip verdict">ADOPT ✓</span>
+  <span class="chip">License <b>Apache-2.0</b></span>
+  <span class="chip">Effort <b>S</b></span>
+  <span class="chip">Cost <b>$0</b></span>
+  <span class="chip">CPU <b>OK</b></span>
+  <span class="chip">Payoff <b>TSX + AI-shorts ★★★★</b></span>
+</div>
+
+<h2>The one correction that shapes this plan</h2>
+<p>The verified candidate assumes we "point the whisperX backend at the model." The code says
+something more specific, and it changes where the work lands:</p>
+<p><code>tools/align_words.py</code> aligns captions with whisperX's <strong>wav2vec2
+forced-align stage</strong> (<code>load_align_model</code>) — for <code>--lang he</code> whisperX
+resolves a Hebrew wav2vec2 aligner. The turbo Whisper model does <em>not</em> plug into that stage.
+It enters only through whisperX's <strong>transcribe stage</strong> (<code>whisperx.load_model</code>
+→ faster-whisper) — which is the path <code>tools/verify_consent.py</code> already exercises, and
+exactly where the turbo <em>detect-version</em> bug bites.</p>
+<div class="note"><span class="tag">Scope correction</span>
+<p>So this is a <strong>fallback-lane upgrade, not a primary-path swap.</strong> The ad lane's
+primary word-timing source is edge-tts native boundaries; whisperX is the fallback. The real payoff
+is the TSX and AI-shorts lanes, where Hebrew ElevenLabs/kokoro audio currently aligns against a
+generic multilingual recognizer.</p></div>
+
+<h2>Ordered steps</h2>
+<ol class="steps">
+<li><h3>Install &amp; pin the aligner env</h3>
+<p>In the committed voice venv (<code>.venv-voice312</code>, Python 3.12 — <em>not</em> the stdlib core):
+<code>pip install "faster-whisper>=1.2" "ctranslate2>=4.5"</code>, then pull
+<code>ivrit-ai/whisper-large-v3-turbo-ct2</code> (the official ct2 conversion, Apache-2.0).
+CPU compute type <code>int8</code>. Validate pin drift against the existing whisperX install once.</p></li>
+
+<li><h3>Apply the tiny detect-version shim</h3>
+<p>whisperX's faster-whisper backend counts decoder layers and maps to a hardcoded dimension table;
+a 4-decoder-layer turbo model raises <em>"Unable to detect model version."</em> Add a ~2-line patch
+to whisperX's <code>detect_version</code> (map the turbo ct2 config →
+<code>n_audio_state=1280</code>) in a vendored shim module — <strong>not</strong> an edit inside
+site-packages, so the venv stays reproducible. Fallback if the shim proves brittle: run this one
+transcription through <code>stable-ts</code>, which handles ct2 turbo cleanly.</p></li>
+
+<li><h3>Wrap: one deterministic transcribe helper</h3>
+<p>Add a thin helper in <code>align_words.py</code> (lazy import, behind the existing
+<code>importlib.util.find_spec("whisperx")</code> guard — core stays stdlib-only):
+<code>transcribe_he(audio_path) → word segments</code>. Pin <code>language="he"</code>, disable
+auto-detect, greedy decode (beam/best-of = 1, temperature = 0) for byte-determinism. Reuse
+<code>verify_consent.py</code>'s existing precedent: decode 16k mono wav via <code>ffw</code> +
+<code>soundfile</code>, hand whisperX a numpy array, bypassing its bare-<code>ffmpeg</code> call.</p></li>
+
+<li><h3>Integrate at the fallback boundary only</h3>
+<p>In <code>gen_voice.py:run_aligner</code>, add an opt-in Hebrew branch: when
+<code>lang == "he"</code> <em>and</em> the ct2 model is cached, run the whisper recognizer first to
+produce/refine the transcript that <code>whisperx.align</code> consumes — replacing the generic
+multilingual recognizer on that path. Default behavior unchanged when the model is absent
+(degrades to estimated timing exactly as today). <strong>Do not touch the edge-tts primary path</strong>
+(<code>gen_voice_edge.py</code>); it already emits native word boundaries.</p></li>
+
+<li><h3>Verify with a gated render</h3>
+<p>One Hebrew TSX short end-to-end: render frames at phone scale, then run the existing sync gate
+(<code>tools/sync_gate.py</code>) and release gate (<code>tools/release_gate.py</code>).
+Pass criteria: (a) word boundaries are monotonic and within the gate's tolerance, (b) two
+identical runs produce byte-identical <code>.words.json</code> (determinism check), (c) no
+detect-version exception. Cache the model under <code>media/library/</code> with a catalog entry
+if it's reused cross-video; per-video outputs stay in <code>media/projects/&lt;proj&gt;/</code>.</p></li>
+</ol>
+
+<h2>Files to touch</h2>
+<ul class="files">
+<li><span class="act">edit</span> &nbsp;tools/align_words.py — add lazy <code>transcribe_he</code> helper + detect shim import</li>
+<li><span class="act">edit</span> &nbsp;tools/gen_voice.py — opt-in Hebrew branch in <code>run_aligner</code> (~10 lines)</li>
+<li><span class="act">new</span> &nbsp;&nbsp;tools/_whisperx_turbo_shim.py — vendored detect-version patch (kept out of site-packages)</li>
+<li><span class="act">new</span> &nbsp;&nbsp;media/library/models/catalog.json — ct2 model entry, if cached for cross-video reuse</li>
+<li><span class="act">read</span> &nbsp;tools/verify_consent.py — reuse its soundfile/ffw decode precedent (no change needed)</li>
+</ul>
+
+<h2>Risks &amp; how they're contained</h2>
+<div class="tblwrap"><table>
+<tr><th>Risk</th><th>Containment</th></tr>
+<tr><td>Turbo detect-version raises in whisperX</td><td class="mono">Vendored 2-line shim; stable-ts fallback; gated by one render before any full run</td></tr>
+<tr><td>Vocab loss → degraded non-Hebrew / auto-detect</td><td class="mono">Pin <code>language="he"</code>, disable auto-detect; a misconfigured non-Hebrew run is out of scope (factory renders known-language)</td></tr>
+<tr><td>Pin drift vs venv-3.12 aligner</td><td class="mono">Validate ctranslate2≥4.5 / faster-whisper≥1.2 once at install; lazy import keeps core unaffected</td></tr>
+<tr><td>WER edge asserted, not independently confirmed</td><td class="mono">Direction is credible (domain-matched ~4700h Hebrew fine-tune of the same architecture); treat accuracy as hypothesis the gated render confirms</td></tr>
+<tr><td>Determinism break</td><td class="mono">Greedy seed-pinned decode; offline ASR is a pure function of (audio, weights); byte-identical .words.json is a pass criterion</td></tr>
+</table></div>
+
+<h2>Open questions</h2>
+<ul>
+<li>Does whisperX's <code>detect_version</code> accept the turbo ct2 config with only the
+dimension-table entry, or does it also need a vocab/tokenizer hint? (Resolve in step 2.)</li>
+<li>Is the vendored-shim approach acceptable to the reproducible-venv rule, or do we pin a
+whisperX fork? (Lean vendored; confirm.)</li>
+<li>Does the accuracy gain justify routing <code>verify_consent.py</code>'s Hebrew consent
+transcription through the same model as a second consumer? (Cheap to add later; out of initial scope.)</li>
+</ul>
+
+<p class="small">Model: <span class="mono">ivrit-ai/whisper-large-v3-turbo</span> (Apache-2.0) ·
+ct2 conversion <span class="mono">ivrit-ai/whisper-large-v3-turbo-ct2</span> (Apache-2.0) ·
+base <span class="mono">openai/whisper-large-v3-turbo</span> (MIT) · training repo
+<span class="mono">ivrit-ai/asr-training</span> (MIT). Verified license-clean end-to-end.</p>
+</div>
