@@ -1,0 +1,15 @@
+{
+  "order": 1,
+  "key": "nouns",
+  "class": "noun",
+  "name_he": "שֵׁם עֶצֶם",
+  "words": [
+    "בַּיִת",
+    "כֶּלֶב",
+    "חָתוּל",
+    "סֵפֶר",
+    "פֶּרַח"
+  ],
+  "status": "draft",
+  "note": "a noun NAMES a thing/person — imageable kid words"
+}

@@ -106,6 +106,8 @@ def _ensure_vo_placeholders():
 
 def next_queued(q, type_filter=None):
     for v in sorted(q["videos"], key=lambda x: x.get("order", 999)):
+        if v.get("_running"):  # already claimed this --all run; skip so the loop terminates
+            continue
         if v.get("status") != "queued":
             continue
         if type_filter and v.get("type") != type_filter:

@@ -30,6 +30,7 @@ if _ROOT not in sys.path:
 from learn_data import nikkud as _nikkud  # noqa: E402
 from learn_data import letters as _letters  # noqa: E402
 from learn_data import numbers as _numbers  # noqa: E402
+from learn_data import wordclass as _wordclass  # noqa: E402
 
 # Registry: type name -> pack dict. letter/number/wordclass register themselves here as
 # they are built (Phases 3-5). nikkud is available today (the proven reading track).
@@ -37,6 +38,7 @@ _PACKS = {
     _nikkud.PACK["type"]: _nikkud.PACK,
     _letters.PACK["type"]: _letters.PACK,
     _numbers.PACK["type"]: _numbers.PACK,
+    _wordclass.PACK["type"]: _wordclass.PACK,
 }
 
 

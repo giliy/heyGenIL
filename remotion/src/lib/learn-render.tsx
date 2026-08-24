@@ -19,7 +19,7 @@
 // Timing source: the global clock t = frame/fps, exactly like reading. Windows and content
 // come from beats.json (letter{} + beats[] + vo[].units[]), NOT constants.
 import React from 'react';
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from 'remotion';
+import { AbsoluteFill, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { Captions, ProgressBar, prog, settleP, SAFE } from './shorts';
 import { GraphemeTile } from './reading';
 import { KoalaPuppet } from './reading-render';
@@ -59,6 +59,13 @@ export interface LetterBeats {
     add?: { a: number; b: number } | null;
     progression: string[];
   };
+  wordclass?: {
+    name_he: string;     // the class name, e.g. "שֵׁם עֶצֶם"
+    class: string;       // noun | verb | mixed
+    words: string[];     // example words
+    wordClasses: string[]; // per-word class (parallel to words)
+    progression: string[];
+  };
   vo: (VoLine & { beat?: string; sub?: string })[];
   beats: { name: string; start_s: number; end_s: number }[];
   voiceStatus?: string;
@@ -86,6 +93,11 @@ export const LearnShort: React.FC<{
   const sound = letterBlock?.sound || '';
   const numeral = numberBlock?.numeral;
   const count = numberBlock?.count || 0;
+  const wcBlock = beats.wordclass;
+  const wcName = wcBlock?.name_he || '';
+  const wcClass = wcBlock?.class || 'noun';
+  const wcWords: string[] = wcBlock?.words || [];
+  const wcClasses: string[] = wcBlock?.wordClasses || [];
 
   // --- resolve beat windows from beats[] (the schedule) -----------------------
   const beatWindows: Record<string, { start: number; end: number }> = {};
@@ -237,10 +249,10 @@ export const LearnShort: React.FC<{
           <div style={{ position: 'absolute', top: 320, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
             <KoalaPuppet size={250} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
           </div>
-          <div style={{ position: 'absolute', top: 760, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: mode === 'number' ? 300 : 340, lineHeight: 1.4, color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate', transform: 'translateY(-50%)', textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)' }}>
-            {mode === 'number' ? (numeral ?? '') : letter}
+          <div style={{ position: 'absolute', top: 760, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: mode === 'number' ? 300 : mode === 'wordclass' ? 150 : 340, lineHeight: 1.4, color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate', transform: 'translateY(-50%)', textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)' }}>
+            {mode === 'number' ? (numeral ?? '') : mode === 'wordclass' ? wcName : letter}
           </div>
-          <SubCaption text={mode === 'number' ? 'מִסְפָּר — בּוֹאוּ נִסְפּוֹר!' : `הָאוֹת ${nameHe || ''}`} y={1180} />
+          <SubCaption text={mode === 'number' ? 'מִסְפָּר — בּוֹאוּ נִסְפּוֹר!' : mode === 'wordclass' ? 'מָה זֶה? בּוֹאוּ נִלְמַד!' : `הָאוֹת ${nameHe || ''}`} y={1180} />
         </>
       )}
 
@@ -287,6 +299,22 @@ export const LearnShort: React.FC<{
         </>
       )}
 
+      {/* ===== TEACH-ISOLATED (WORDCLASS): the class name + what it means ===== */}
+      {mode === 'wordclass' && inRange(teachIsolated.start, readWordSpan.start) && (
+        <>
+          <div style={{ position: 'absolute', top: 430, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+            <KoalaPuppet size={210} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
+          </div>
+          <div style={{ position: 'absolute', top: 780, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: 200, lineHeight: 1.3, color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate', textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)' }}>
+            {wcName}
+          </div>
+          <div style={{ position: 'absolute', top: 1080, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_BODY_H, fontWeight: 600, fontSize: 52, lineHeight: 1.3, color: COLORS.accent, direction: 'rtl', unicodeBidi: 'isolate', textShadow: '0 4px 26px rgba(0,0,0,0.5)' }}>
+            {wcClass === 'verb' ? 'מִלַּת פְּעֻלָּה — מַה שֶּׁמַּעֲשִׂים' : wcClass === 'mixed' ? 'שֵׁם עֶצֶם אוֹ פּוֹעַל?' : 'מִלָּה שֶׁנּוֹתֶנֶת שֵׁם לְדָבָר'}
+          </div>
+          <SubCaption text={subOf('teach-isolated') ?? 'בּוֹאוּ נִלְמַד!'} y={1240} />
+        </>
+      )}
+
       {/* ===== READ-WORD (LETTER): each example word pops; the taught letter highlighted at its start ===== */}
       {mode === 'letter' && inRange(readWord.start, readWord.end) && wordLine && (
         <>
@@ -313,6 +341,51 @@ export const LearnShort: React.FC<{
           <SubCaption text={subOf('read-word') ?? 'יוֹפִי! מִלָּה עִם הָאוֹת!'} />
         </>
       )}
+
+      {/* ===== READ-WORD (WORDCLASS): each example word pops + its class badge ===== */}
+      {mode === 'wordclass' && activeWordIndex >= 0 && wcWords.length > 0 && (inRange(readWordSpan.start, readWordSpan.end) || t >= readWordSpan.end) && (() => {
+        const wi = Math.min(Math.max(0, activeWordIndex), wcWords.length - 1);
+        const word = wcWords[wi];
+        const wClass = wcClasses[wi] ?? wcClass; // fall back to the lesson's class
+        const badge = wClass === 'verb' ? 'פּוֹעַל' : 'שֵׁם עֶצֶם';
+        const badgeBg = wClass === 'verb' ? COLORS.accent : COLORS.warn;
+        // Progress within the CURRENT word line (for pop-in).
+        const lineStart = wordWindows[wi]?.start_s ?? readWordSpan.start;
+        const lineEnd = wordWindows[wi]?.end_s ?? readWordSpan.end;
+        const lineP = Math.max(0, Math.min(1, (t - lineStart) / Math.max(1e-6, lineEnd - lineStart)));
+        const pop = spring({ frame: Math.max(0, lineP * fps), fps, config: { damping: 13, mass: 0.6 } });
+        return (
+          <>
+            <div style={{
+              position: 'absolute', top: 620, left: 0, right: 0, display: 'flex',
+              justifyContent: 'center', alignItems: 'baseline', textAlign: 'center', padding: '0 60px',
+            }}>
+              <div style={{
+                fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: 180, lineHeight: 1.5,
+                color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate',
+                transform: `scale(${pop})`, transformOrigin: 'center',
+                textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)',
+              }}>
+                {String(word).replace(/[!.…,]\s*$/, '')}
+              </div>
+            </div>
+            <div style={{
+              position: 'absolute', top: 940, left: 0, right: 0, display: 'flex', justifyContent: 'center',
+            }}>
+              <span style={{
+                fontFamily: FONT_HEBREW_CAPTION, fontWeight: 800, fontSize: 58,
+                color: '#1a1c22', background: badgeBg, padding: '10px 28px', borderRadius: 999,
+                direction: 'rtl', unicodeBidi: 'isolate',
+                transform: `scale(${pop})`, transformOrigin: 'center',
+                boxShadow: '0 6px 24px rgba(0,0,0,0.35)',
+              }}>
+                {badge}
+              </span>
+            </div>
+            <SubCaption text={subOf('read-word') ?? 'מִי יוֹדֵעַ?'} y={1240} />
+          </>
+        );
+      })()}
 
       {/* ===== COUNT-ALONG (NUMBER): the objects light one-by-one in sync with the count ===== */}
       {mode === 'number' && count > 0 && (inRange(readWordSpan.start, readWordSpan.end) || t >= readWordSpan.end) && (

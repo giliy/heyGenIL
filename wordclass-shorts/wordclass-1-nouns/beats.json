@@ -1,0 +1,165 @@
+{
+  "id": "wordclass-1-nouns",
+  "title": "בּוּ מְלַמֵּד שֵׁם עֶצֶם",
+  "mode": "wordclass",
+  "language": "he",
+  "series": "bu-koala-wordclass",
+  "composition": "Wordclass1Nouns",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 33.198
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type wordclass) from script.md. Teaches שֵׁם עֶצֶם (nouns, /a/) to ages 5-7. mode:wordclass, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "wordclass": {
+    "wordclass": "nouns",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "ש"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "בַּיִת",
+      "כֶּלֶב",
+      "חָתוּל",
+      "סֵפֶר",
+      "פֶּרַח"
+    ],
+    "name_he": "שֵׁם עֶצֶם",
+    "class": "noun",
+    "words": [
+      "בַּיִת",
+      "כֶּלֶב",
+      "חָתוּל",
+      "סֵפֶר",
+      "פֶּרַח"
+    ],
+    "wordClasses": [
+      "noun",
+      "noun",
+      "noun",
+      "noun",
+      "noun"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שֵׁם עֶצֶם!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שֵׁם עֶצֶם!",
+      "start": 0.0,
+      "end": 6.2
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "שֵׁם עֶצֶם",
+      "tts": "שֵׁם עֶצֶם",
+      "start": 7.2,
+      "end": 7.8,
+      "units": [
+        {
+          "g": "שֵׁם עֶצֶם",
+          "start": 7.5,
+          "end": 7.8
+        }
+      ],
+      "sub": "כָּךְ נוֹתְנִים שֵׁם!"
+    },
+    {
+      "beat": "read-word",
+      "text": "בַּיִת",
+      "tts": "בַּיִת",
+      "start": 9.5,
+      "end": 11.533
+    },
+    {
+      "beat": "read-word",
+      "text": "כֶּלֶב",
+      "tts": "כֶּלֶב",
+      "start": 12.833,
+      "end": 14.866
+    },
+    {
+      "beat": "read-word",
+      "text": "חָתוּל",
+      "tts": "חָתוּל",
+      "start": 16.166,
+      "end": 18.199
+    },
+    {
+      "beat": "read-word",
+      "text": "סֵפֶר",
+      "tts": "סֵפֶר",
+      "start": 19.499,
+      "end": 21.532
+    },
+    {
+      "beat": "read-word",
+      "text": "פֶּרַח",
+      "tts": "פֶּרַח",
+      "start": 22.832,
+      "end": 24.865,
+      "sub": "יוֹפִי!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 26.165,
+      "end": 30.698,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 6.2
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 7.2,
+      "end_s": 7.8
+    },
+    {
+      "name": "read-word",
+      "start_s": 9.5,
+      "end_s": 11.533
+    },
+    {
+      "name": "read-word",
+      "start_s": 12.833,
+      "end_s": 14.866
+    },
+    {
+      "name": "read-word",
+      "start_s": 16.166,
+      "end_s": 18.199
+    },
+    {
+      "name": "read-word",
+      "start_s": 19.499,
+      "end_s": 21.532
+    },
+    {
+      "name": "read-word",
+      "start_s": 22.832,
+      "end_s": 24.865
+    },
+    {
+      "name": "call-response",
+      "start_s": 26.165,
+      "end_s": 33.198
+    }
+  ]
+}
