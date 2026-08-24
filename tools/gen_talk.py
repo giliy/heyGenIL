@@ -29,8 +29,10 @@ Needs FAL_KEY in .env (https://fal.ai/dashboard/keys). Costs are per-model on fa
 page — state the cost when proposing a talking-head clip (see the CREDIT_TABLE talkSec rates
 in @shorts/spec).
 """
+import base64
 import json
 import os
+import subprocess
 import sys
 import time
 import urllib.error
@@ -79,18 +81,37 @@ def req_json(url, key, body=None, method=None):
         sys.exit(f"fal API error {e.code} at {url}:\n{e.read().decode()[:800]}")
 
 
+# fal's old REST upload (rest.alpha.fal.ai/media/upload) is DEAD (404, verified 2026-08-24).
+# The supported upload is fal_client.upload_file -> returns a v3b.fal.media URL ready to pass
+# as image_url/audio_url. gen_talk.py is stdlib-only by convention, so we call fal_client in a
+# subprocess using the voice venv (.venv-voice312) where fal-client is installed. FAL_KEY is
+# passed via env (fal_client reads it). Falls back to a data: URI if the venv/fal_client is absent.
+VOICE_PY = os.path.join(ROOT, '.venv-voice312', 'Scripts', 'python.exe')
+
+
 def upload_media(path, key, ext):
-    """Upload a local image/video to fal storage (the /media <-> fal upload seam)."""
+    """Upload a local image/video to fal CDN, return a URL usable as image_url/audio_url."""
+    if os.path.exists(VOICE_PY):
+        code = (
+            "import sys, fal_client\n"
+            f"print(fal_client.upload_file({path!r}))\n"
+        )
+        env = dict(os.environ)
+        env["FAL_KEY"] = key
+        r = subprocess.run([VOICE_PY, "-c", code], capture_output=True, text=True, env=env)
+        url = (r.stdout or "").strip().splitlines()
+        if r.returncode == 0 and url and url[-1].startswith("http"):
+            return url[-1]
+        sys.stderr.write(f"[warn] fal_client upload failed ({(r.stderr or '')[-200:]}); "
+                         "falling back to data URI\n")
+    # Fallback: inline the media as a data URI (works for small files; not ideal for video).
     with open(path, "rb") as f:
-        data = f.read()
+        b64 = base64.b64encode(f.read()).decode()
     content_type = "image/jpeg" if ext in (".jpg", ".jpeg") else \
-                   "image/png" if ext == ".png" else "video/mp4"
-    r = urllib.request.Request(
-        f"https://rest.alpha.fal.ai/media/upload",
-        data=data, method="POST",
-        headers={"Authorization": f"Key {key}", "Content-Type": content_type})
-    with urllib.request.urlopen(r, timeout=120) as resp:
-        return json.load(resp).get("url") or json.load(resp).get("file_url")
+                   "image/png" if ext == ".png" else \
+                   "audio/mpeg" if ext in (".mp3", ".mpeg") else \
+                   "audio/wav" if ext == ".wav" else "video/mp4"
+    return f"data:{content_type};base64,{b64}"
 
 
 def find_video_url(obj):

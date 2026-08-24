@@ -67,15 +67,25 @@ SCRIPTS = {'default': SCRIPT, 'guttural': SCRIPT_GUTTURAL}
 # decides the gen_talk.py --driver flag.
 TALK_MODELS = {
     # Fabric now defaults to 720p (AvatarSpec is 1080x1920; 480p upscaled 2.25x was soft).
-    'fabric-1.0':      {'falId': 'fal-ai/veed/fabric-1.0',                    'input': 'image', 'costPerSecUsd': 0.20, 'res': '720p'},
-    'fabric-1.0-fast': {'falId': 'fal-ai/veed/fabric-1.0/fast',               'input': 'image', 'costPerSecUsd': 0.20, 'res': '720p'},
+    # Verified 2026-08-24 (fal.ai model page): STANDARD fabric-1.0 = $0.08/s @480p, $0.15/s @720p;
+    # the /fast variant = $0.10/s @480p, $0.20/s @720p. (Earlier $0.20 here was the FAST tier.)
+    # ⚠ The fal API id is 'fal-ai/fabric-1.0' — the 'veed/' prefix on the website is the vendor
+    #    page, NOT the API namespace. 'fal-ai/veed/fabric-1.0' 404s ("Application veed not found").
+    #    As of 2026-08-24 even fal-ai/fabric-1.0 returns "Application fabric-1.0 not found" for
+    #    this key — Fabric may be gated/renamed; re-verify availability before relying on it.
+    'fabric-1.0':      {'falId': 'fal-ai/fabric-1.0',                         'input': 'image', 'costPerSecUsd': 0.15, 'res': '720p'},
+    'fabric-1.0-fast': {'falId': 'fal-ai/fabric-1.0/fast',                    'input': 'image', 'costPerSecUsd': 0.20, 'res': '720p'},
     'omnihuman':       {'falId': 'fal-ai/bytedance/omnihuman',                'input': 'image', 'costPerSecUsd': 0.14, 'res': None},
     'musetalk':        {'falId': 'fal-ai/musetalk',                           'input': 'video', 'costPerSecUsd': 0.0,  'res': None},
     'kling-lipsync':   {'falId': 'fal-ai/kling-video/lipsync/audio-to-video', 'input': 'video', 'costPerSecUsd': 0.014, 'res': None},
 }
 
 
-def run(cmd, **kw):
+def run(cmd, binary=False, **kw):
+    # binary=True: raw byte stdout (pixel piping). text=True would \r\n-translate the stream on
+    # Windows and silently corrupt byte offsets (the 2026-08-24 motion-gate bug).
+    if binary:
+        return subprocess.run(cmd, capture_output=True, **kw)
     return subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace', **kw)
 
 
@@ -103,38 +113,56 @@ def ffprobe_duration(path):
 
 
 def motion_score(video, workdir):
-    """Extract a thin strip of phone-scale frames and measure inter-frame change. A frozen
-    plate (the false-pass we guard against) scores ~0; a real talking head scores >0 in the
-    lip/face region. Returns mean abs diff across consecutive sampled frames."""
-    strip = os.path.join(workdir, 'qa_strip')
-    os.makedirs(strip, exist_ok=True)
-    # 6 frames across the clip, tiny (phone scale), grayscale.
+    """Measure inter-frame change, MOUTH-REGION weighted. Returns (score, detail).
+
+    Why mouth-weighted: a whole-frame probe false-negatives a real talking head — a 15s clip
+    of a mostly-still avatar averages near-zero whole-frame diff even when the lips move
+    constantly (verified 2026-08-24: an omnihuman render with clear lip motion scored <1.0 on
+    the old whole-strip probe and got a bogus "STATIC (suspect)" verdict). The mouth region is
+    a small fraction of the frame, so we crop the lower-central face band and threshold THAT.
+
+    Returns dict {'whole': float, 'mouth': float, 'ratio': float} or None on decode failure.
+    `ratio` = mouth/whole — >>1 means motion is concentrated in the mouth (a talking head),
+    ~1 means uniform motion (camera/global, NOT lip-sync), ~0 both = frozen plate."""
+    # Sample 6 frames across the clip at a readable phone scale, decoded straight to raw gray
+    # bytes (no intermediate PNG — going mp4->PNG->rawvideo leaked ~134 trailing bytes/frame
+    # through the pipe and silently desynced the mouth-band offsets, 2026-08-24).
+    W, H = 270, 480
+    N = 6
     r = run([ffw.path(), '-y', '-v', 'error', '-i', video,
-             '-vf', "fps=1,scale=96:160,format=gray", '-frames:v', '6',
-             os.path.join(strip, 'f%02d.png')])
-    if r.returncode != 0:
+             '-vf', f"fps=1,scale={W}:{H},format=gray", '-frames:v', str(N),
+             '-f', 'rawvideo', '-pix_fmt', 'gray', '-'], binary=True)
+    raw = r.stdout or b''
+    fsize = W * H
+    if r.returncode != 0 or len(raw) < fsize * 2:
         return None
-    frames = sorted(f for f in os.listdir(strip) if f.endswith('.png'))
-    if len(frames) < 2:
+    bufs = [raw[i * fsize:(i + 1) * fsize] for i in range(len(raw) // fsize)]
+    if len(bufs) < 2:
         return None
     try:
-        import struct
-        import zlib
+        # Mouth band: lower-central face. For a centered head-and-shoulders avatar the mouth
+        # sits ~60-85% down the frame and ~30-70% across. (Same band as the QA face crop.)
+        x0, x1 = int(W * 0.30), int(W * 0.70)
+        y0, y1 = int(H * 0.60), int(H * 0.85)
 
-        def png_gray_mean(p):
-            # Minimal PNG mean-luma read (no PIL dependency): decode via ffmpeg to raw gray.
-            rr = run([ffw.path(), '-y', '-v', 'error', '-i', p, '-f', 'rawvideo',
-                      '-pix_fmt', 'gray', '-'])
-            return rr.stdout
-        bufs = [png_gray_mean(os.path.join(strip, f)) for f in frames]
-        diffs = []
+        def band_diff(a, b):
+            tot = 0
+            cnt = 0
+            for y in range(y0, y1):
+                row = y * W
+                for x in range(x0, x1):
+                    tot += abs(a[row + x] - b[row + x])
+                    cnt += 1
+            return tot / cnt if cnt else 0.0
+
+        whole_diffs, mouth_diffs = [], []
         for a, b in zip(bufs, bufs[1:]):
-            if not a or len(a) != len(b):
-                continue
             n = len(a)
-            s = sum(abs(a[i] - b[i]) for i in range(0, n, 7))  # sample every 7th byte
-            diffs.append(s / (n / 7))
-        return (sum(diffs) / len(diffs)) if diffs else None
+            whole_diffs.append(sum(abs(a[i] - b[i]) for i in range(0, n, 7)) / (n / 7))
+            mouth_diffs.append(band_diff(a, b))
+        whole = sum(whole_diffs) / len(whole_diffs)
+        mouth = sum(mouth_diffs) / len(mouth_diffs)
+        return {'whole': whole, 'mouth': mouth, 'ratio': (mouth / whole) if whole else 0.0}
     except Exception:
         return None
 
@@ -209,16 +237,21 @@ def main():
         secs = time.time() - t0
         ok = r.returncode == 0 and os.path.exists(out_mp4)
         ms = motion_score(out_mp4, args.out) if ok else None
-        moved = (ms is not None and ms > 1.0)  # >1 mean gray-level diff = visible motion
+        # Mouth-band gate: the mouth region must move visibly (>1.0 mean gray diff) AND more
+        # than the frame average (ratio>1.2 → motion is lip-concentrated, not camera/global).
+        moved = (ms is not None and ms['mouth'] > 1.0 and ms['ratio'] > 1.2)
         verdicts.append({
             'model': k, 'ok': ok, 'renderSecs': round(secs, 1),
-            'motionScore': (round(ms, 2) if ms is not None else None),
+            'motionScore': ({'whole': round(ms['whole'], 2), 'mouth': round(ms['mouth'], 2),
+                             'ratio': round(ms['ratio'], 2)} if ms is not None else None),
             'moved': moved, 'mp4': out_mp4 if ok else None,
             'derivedCostUsd': round((dur or 6.0) * m['costPerSecUsd'], 4),
             'stderrTail': (r.stderr or '')[-300:] if not ok else None,
         })
         status = 'RENDERED+moved' if (ok and moved) else ('RENDERED but STATIC (suspect)' if ok else 'FAILED')
-        print(f"  -> {status}  motion={ms if ms is not None else '?'}  ({secs:.0f}s)", flush=True)
+        motion_txt = (f"mouth={ms['mouth']:.2f} whole={ms['whole']:.2f} ratio={ms['ratio']:.2f}"
+                      if ms is not None else '?')
+        print(f"  -> {status}  {motion_txt}  ({secs:.0f}s)", flush=True)
 
     passed = [v for v in verdicts if v['ok'] and v['moved']]
     print()
