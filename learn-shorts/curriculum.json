@@ -63,6 +63,62 @@
       "type": "nikkud",
       "key": "dagesh-kal",
       "status": "queued"
+    },
+    {
+      "order": 10,
+      "proj": "letter-shorts/letter-1-alef",
+      "type": "letter",
+      "key": "alef",
+      "status": "queued"
+    },
+    {
+      "order": 11,
+      "proj": "letter-shorts/letter-2-bet",
+      "type": "letter",
+      "key": "bet",
+      "status": "queued"
+    },
+    {
+      "order": 12,
+      "proj": "letter-shorts/letter-3-gimel",
+      "type": "letter",
+      "key": "gimel",
+      "status": "queued"
+    },
+    {
+      "order": 13,
+      "proj": "letter-shorts/letter-4-dalet",
+      "type": "letter",
+      "key": "dalet",
+      "status": "queued"
+    },
+    {
+      "order": 14,
+      "proj": "letter-shorts/letter-5-he",
+      "type": "letter",
+      "key": "he",
+      "status": "queued"
+    },
+    {
+      "order": 15,
+      "proj": "letter-shorts/letter-6-vav",
+      "type": "letter",
+      "key": "vav",
+      "status": "queued"
+    },
+    {
+      "order": 16,
+      "proj": "letter-shorts/letter-7-zayin",
+      "type": "letter",
+      "key": "zayin",
+      "status": "queued"
+    },
+    {
+      "order": 17,
+      "proj": "letter-shorts/letter-8-chet",
+      "type": "letter",
+      "key": "chet",
+      "status": "queued"
     }
   ]
 }

@@ -92,7 +92,7 @@ def _ensure_vo_placeholders():
     if not os.path.isdir(shots):
         return
     for name in sorted(os.listdir(shots)):
-        if not re.match(r"^(read-\d+|learn-\d+)", name):
+        if not re.match(r"^(read-\d+|learn-\d+|letter-\d+|number-\d+|wordclass-\d+)", name):
             continue
         d = os.path.join(shots, name)
         if not os.path.isdir(d):
@@ -114,9 +114,12 @@ def next_queued(q, type_filter=None):
     return None
 
 
-def auto_script(row, type, key):
-    """Compose a templated script.md from a data-pack row. Uses the pack's cv + a chosen
-    blend/anchor word. Returns the script text."""
+def auto_script(row, type, key, pack=None):
+    """Compose a templated script.md from a data-pack row. A pack may supply its own
+    'auto_script(row)' (letters/numbers/wordclass); nikkud uses the cv/blend shape below.
+    Returns the script text."""
+    if pack and pack.get("auto_script"):
+        return pack["auto_script"](row)
     cv = row.get("cv") or []
     blends = row.get("blendWords") or []
     name_he = row.get("name_he") or key
@@ -194,7 +197,7 @@ def main():
                 os.makedirs(proj, exist_ok=True)
                 if not os.path.exists(script_path):
                     with open(script_path, "w", encoding="utf-8") as f:
-                        f.write(auto_script(row, v["type"], v["key"]))
+                        f.write(auto_script(row, v["type"], v["key"], pack))
                     log(f"auto-script written -> {os.path.relpath(script_path, ROOT)}")
 
             # B. derive ----------------------------------------------------------

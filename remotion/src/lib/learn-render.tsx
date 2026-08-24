@@ -28,6 +28,8 @@ import { FONT_HEBREW_CAPTION, FONT_BODY_H, FONT_KIDS_ROUND } from '../fonts';
 import { COLORS } from '../brand';
 import type { VoLine } from './shorts';
 
+const SAFE_WIDTH = 1080 - SAFE.left - SAFE.right; // 860
+
 // ---------------------------------------------------------------------------
 // Types — the shape of a mode:letter beats.json (from tools/make_learn.py --type letter)
 // ---------------------------------------------------------------------------
@@ -41,7 +43,7 @@ export interface LetterBeats {
   musicBed?: string;
   format: { width: number; height: number; fps: number; durationSec: number };
   loop: boolean;
-  letter: {
+  letter?: {
     letter: string;      // the bare taught glyph, e.g. "א"
     name_he: string;     // the pointed Hebrew name, e.g. "אָלֶף"
     sound: string;       // Latin sound label, display only, e.g. "(א)" or "b"
@@ -49,6 +51,13 @@ export interface LetterBeats {
     targetLetters: string[];
     progression: string[];
     anchorWords: string[];
+  };
+  number?: {
+    numeral: number | null;  // the digit; null for a simple sum
+    word: string;            // the Hebrew counting word, e.g. "שְׁלוֹשָׁה"
+    count: number;           // how many objects the count-along places (COMPUTED)
+    add?: { a: number; b: number } | null;
+    progression: string[];
   };
   vo: (VoLine & { beat?: string; sub?: string })[];
   beats: { name: string; start_s: number; end_s: number }[];
@@ -69,10 +78,14 @@ export const LearnShort: React.FC<{
   const total = durationInFrames / fps;
 
   const inRange = (a: number, b: number) => t >= a && t < b;
-  const block = beats.letter;
-  const letter = block.letter || 'א';
-  const nameHe = block.name_he || '';
-  const sound = block.sound || '';
+  const mode = beats.mode;
+  const letterBlock = beats.letter;
+  const numberBlock = beats.number;
+  const letter = letterBlock?.letter || 'א';
+  const nameHe = letterBlock?.name_he || '';
+  const sound = letterBlock?.sound || '';
+  const numeral = numberBlock?.numeral;
+  const count = numberBlock?.count || 0;
 
   // --- resolve beat windows from beats[] (the schedule) -----------------------
   const beatWindows: Record<string, { start: number; end: number }> = {};
@@ -121,6 +134,14 @@ export const LearnShort: React.FC<{
   const isolatedLine = activeLine('teach-isolated');
   const isolatedUnit = isolatedLine?.units?.[0];
   const wordLine = activeLine('read-word');
+  // For number count-along: which read-word line (index) is active = which object lights.
+  const wordWindows = beats.beats.filter((b) => b.name === 'read-word').sort((a, b) => a.start_s - b.start_s);
+  let activeWordIndex = -1;
+  for (let i = 0; i < wordWindows.length; i++) {
+    if (t >= wordWindows[i].start_s && t < wordWindows[i].end_s) { activeWordIndex = i; break; }
+  }
+  // After the count-along ends, keep ALL objects lit (the reward holds). activeCount = how many lit now.
+  const activeCount = activeWordIndex >= 0 ? activeWordIndex + 1 : (t >= readWordSpan.end && count > 0 ? count : 0);
 
   const SubCaption: React.FC<{ text?: string; y?: number }> = ({ text, y = 1180 }) =>
     text ? (
@@ -166,26 +187,65 @@ export const LearnShort: React.FC<{
     );
   };
 
+  // Count-along objects: N simple shapes laid out in a grid, lit one-by-one in sync with
+  // the spoken count. Each object is a soft rounded shape; lit = bright + slightly larger,
+  // dim = waiting to be counted. RTL grid (first object rightmost).
+  const CountObjects: React.FC<{ n: number; lit: number }> = ({ n, lit }) => {
+    const cols = Math.ceil(Math.sqrt(n));
+    const rows = Math.ceil(n / cols);
+    const size = Math.min(150, Math.floor((SAFE_WIDTH) / cols) - 24);
+    const W = cols * (size + 24);
+    const items: React.ReactNode[] = [];
+    for (let i = 0; i < n; i++) {
+      const isLit = i < lit;
+      const justLit = lit === i + 1 && activeWordIndex === i; // currently sounding
+      const scale = justLit ? 1 + 0.18 * prog(t, wordWindows[i].start_s, wordWindows[i].start_s + 0.2) : 1;
+      items.push(
+        <div
+          key={i}
+          style={{
+            width: size, height: size, borderRadius: size * 0.28,
+            background: isLit ? COLORS.warn : 'rgba(255,255,255,0.16)',
+            boxShadow: isLit ? '0 8px 30px rgba(245,215,110,0.5)' : 'inset 0 2px 8px rgba(0,0,0,0.25)',
+            transform: `scale(${scale})`, transition: 'none',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: size * 0.5,
+            color: '#1a1a2e',
+          }}
+        >
+          {isLit ? i + 1 : ''}
+        </div>
+      );
+    }
+    return (
+      <div style={{ position: 'absolute', top: 620, left: 0, right: 0, display: 'flex', justifyContent: 'center', direction: 'rtl' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, ${size}px)`, gap: 24 }}>
+          {items}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <AbsoluteFill style={{ background: '#3d3560' }}>
       <AbsoluteFill style={{ background: 'radial-gradient(ellipse 100% 62% at 50% 28%, #6b5a9e 0%, #4a3f74 52%, #3d3560 78%)' }} />
       <AbsoluteFill style={{ background: 'radial-gradient(ellipse 72% 46% at 50% 90%, #2f6f7a 0%, transparent 70%)' }} />
 
-      {/* ===== HOOK: frame-0 fully composed — koala + the bare target letter visible ===== */}
+      {/* ===== HOOK: frame-0 fully composed — koala + the bare target visible ===== */}
       {hookComposed && (
         <>
           <div style={{ position: 'absolute', top: 320, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
             <KoalaPuppet size={250} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
           </div>
-          <div style={{ position: 'absolute', top: 760, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: 340, lineHeight: 1.4, color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate', transform: 'translateY(-50%)', textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)' }}>
-            {letter}
+          <div style={{ position: 'absolute', top: 760, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: mode === 'number' ? 300 : 340, lineHeight: 1.4, color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate', transform: 'translateY(-50%)', textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)' }}>
+            {mode === 'number' ? (numeral ?? '') : letter}
           </div>
-          <SubCaption text={`הָאוֹת ${nameHe || ''}`} y={1180} />
+          <SubCaption text={mode === 'number' ? 'מִסְפָּר — בּוֹאוּ נִסְפּוֹר!' : `הָאוֹת ${nameHe || ''}`} y={1180} />
         </>
       )}
 
-      {/* ===== TEACH-ISOLATED: the hero letter + its pointed NAME + sound ===== */}
-      {inRange(teachIsolated.start, readWordSpan.start) && isolatedUnit && (
+      {/* ===== TEACH-ISOLATED (LETTER): the hero letter + its pointed NAME + sound ===== */}
+      {mode === 'letter' && inRange(teachIsolated.start, readWordSpan.start) && isolatedUnit && (
         <>
           <div style={{ position: 'absolute', top: 430, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
             <KoalaPuppet size={210} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
@@ -209,8 +269,26 @@ export const LearnShort: React.FC<{
         </>
       )}
 
-      {/* ===== READ-WORD: each example word pops; the taught letter highlighted at its start ===== */}
-      {inRange(readWord.start, readWord.end) && wordLine && (
+      {/* ===== TEACH-ISOLATED (NUMBER): the numeral + the Hebrew counting word ===== */}
+      {mode === 'number' && inRange(teachIsolated.start, readWordSpan.start) && (
+        <>
+          <div style={{ position: 'absolute', top: 380, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+            <KoalaPuppet size={210} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
+          </div>
+          <div style={{ position: 'absolute', top: 720, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: 340, lineHeight: 1.3, color: '#ffffff', direction: 'rtl', unicodeBidi: 'isolate', textShadow: '0 6px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.4)' }}>
+            {numeral ?? ''}
+          </div>
+          {numberBlock?.word && (
+            <div style={{ position: 'absolute', top: 1020, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 800, fontSize: 110, lineHeight: 1.3, color: COLORS.accent, direction: 'rtl', unicodeBidi: 'isolate', textShadow: '0 4px 26px rgba(0,0,0,0.5)' }}>
+              {numberBlock.word}
+            </div>
+          )}
+          <SubCaption text={subOf('teach-isolated') ?? 'מִסְפָּר — כָּךְ סוֹפְרִים!'} y={1240} />
+        </>
+      )}
+
+      {/* ===== READ-WORD (LETTER): each example word pops; the taught letter highlighted at its start ===== */}
+      {mode === 'letter' && inRange(readWord.start, readWord.end) && wordLine && (
         <>
           <div style={{ position: 'absolute', top: 430, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
             <KoalaPuppet size={230} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
@@ -233,6 +311,21 @@ export const LearnShort: React.FC<{
             <LetterWord word={wordLine.text.replace(/[!.…,]\s*$/, '')} />
           </div>
           <SubCaption text={subOf('read-word') ?? 'יוֹפִי! מִלָּה עִם הָאוֹת!'} />
+        </>
+      )}
+
+      {/* ===== COUNT-ALONG (NUMBER): the objects light one-by-one in sync with the count ===== */}
+      {mode === 'number' && count > 0 && (inRange(readWordSpan.start, readWordSpan.end) || t >= readWordSpan.end) && (
+        <>
+          <div style={{ position: 'absolute', top: 320, left: 0, right: 0, display: 'flex', justifyContent: 'center' }}>
+            <KoalaPuppet size={200} mood={koalaMood} celebrateAt={koalaCelebrateAt} />
+          </div>
+          <CountObjects n={count} lit={activeCount} />
+          {/* the numeral grows as the count progresses (COMPUTED, never asserted) */}
+          <div style={{ position: 'absolute', top: 1180, left: 0, right: 0, textAlign: 'center', fontFamily: FONT_HEBREW_CAPTION, fontWeight: 900, fontSize: 200, lineHeight: 1.2, color: COLORS.warn, direction: 'rtl', unicodeBidi: 'isolate', textShadow: '0 6px 40px rgba(0,0,0,0.5)' }}>
+            {numeral ?? ''}
+          </div>
+          <SubCaption text={subOf('read-word') ?? 'סוֹפְרִים בַּיַּחַד!'} y={1420} />
         </>
       )}
 

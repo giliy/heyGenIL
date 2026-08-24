@@ -132,6 +132,27 @@ def detect(beats):
     return "alef"
 
 
+def _auto_script(row):
+    """Compose a templated letter script.md: bare letter teach + example words + call."""
+    letter = row.get("letter", "א")
+    name_he = row.get("name_he") or row.get("key")
+    words = row.get("exampleWords") or []
+    lines = [
+        f"---\ntitle: בּוּ מְלַמֵּד אֶת הָאוֹת {name_he}\nletter: {row['key']}\nmusicBed: kids-play-ukulele\n---",
+        "",
+        f"hook: בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת {name_he}!",
+        "",
+        f"isolated: {letter}",
+        f"sub: {name_he} — צוּרָה שֶׁל הָאוֹת",
+        "",
+    ]
+    for w in words:
+        lines.append(f"word: {w}")
+    lines.append("sub: יוֹפִי! מִלִּים עִם הָאוֹת!")
+    lines += ["", "call: אַתֶּם!", "sub: עַכְשָׁו אַתֶּם אוֹמְרִים!", ""]
+    return "\n".join(lines)
+
+
 def _block_fields(row):
     """Fill the letter{} concept block from a letter row (glyph, pointed name, sound label)."""
     return {
@@ -177,6 +198,7 @@ PACK = {
     "detect": detect,
     "sound_of_key": {},
     "composition_id": _composition_id,
+    "auto_script": _auto_script,
     "block_fields": _block_fields,
     "validate_extra": _validate_letter_beats,
     "mode": "letter",

@@ -64,6 +64,14 @@
   "transparent": false
  },
  {
+  "id": "Number3Three",
+  "durationInSeconds": 25.699,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
   "id": "Proof1Lottie",
   "durationInSeconds": 5,
   "fps": 30,

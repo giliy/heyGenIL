@@ -147,10 +147,16 @@ def derive_units(beats, row, pack, overrides=None):
         text = b["text"]
         entry = {"role": role, "text": text, "units": [], "syllables": None}
         if role == "isolated":
-            gs = nikkud.graphemes(text)
-            if len(gs) != 1:
-                raise ValueError(f"isolated beat must be a SINGLE pointed grapheme, got {len(gs)}: {text!r}")
-            entry["units"] = [{"g": gs[0]}]
+            # For most types the hero is a SINGLE pointed grapheme (a letter/sign). But a
+            # number (or a whole word taught as one unit) carries multiple graphemes — the
+            # pack sets isolated_is_word=True to treat the WHOLE text as the single highlight.
+            if pack.get("isolated_is_word"):
+                entry["units"] = [{"g": text}]  # one unit = the whole word (whole-clip highlight)
+            else:
+                gs = nikkud.graphemes(text)
+                if len(gs) != 1:
+                    raise ValueError(f"isolated beat must be a SINGLE pointed grapheme, got {len(gs)}: {text!r}")
+                entry["units"] = [{"g": gs[0]}]
         elif role == "cv":
             for tok in [t for t in text.split() if t]:
                 syll = nikkud.syllabify(tok)
@@ -433,7 +439,7 @@ def write_wrapper(out_dir, d, shots_dir):
     }
     mod, comp = _RENDERERS.get(mode, ("learn-render", "LearnShort"))
     group = os.path.basename(out_dir.rstrip("/\\"))
-    m = re.match(r"^(read-\d+|learn-\d+|letter-\d+)(?:-.*)?$", group)
+    m = re.match(r"^(read-\d+|learn-\d+|letter-\d+|number-\d+|wordclass-\d+)(?:-.*)?$", group)
     shots_group = m.group(1) if m else group
     wdir = os.path.join(shots_dir, shots_group)
     os.makedirs(wdir, exist_ok=True)
