@@ -62,8 +62,10 @@ FACE_VOICE = {'dana': FEMALE_VOICE}
 LETTER_NAME_NIKKUD = {
     'החית': 'הַחֵית', 'חית': 'חֵית',          # khet  (was mis-read as "chayit"/animal)
     'העין': 'הָעַיִן', 'עין': 'עַיִן',          # ayin
-    'הריש': 'הָרֵישׁ', 'ריש': 'רֵישׁ',          # resh
-    'האות': 'הָאוֹת',                          # "the letter" (אוֹת, not the sign אוֹת — same; pinned for safety)
+    # resh: user QA 2026-08-24 — "reysh" (צירי) and phonikud's "reesh" (חיריק) both sound off;
+    # modern Israeli resh is closer to segol "resh". Pin segol WITHOUT the yod.
+    'הריש': 'הָרֶשׁ', 'ריש': 'רֶשׁ',            # resh  (segol, no yod — the Israeli reading)
+    'האות': 'הָאוֹת',                          # "the letter" (אוֹת — pinned for safety)
 }
 
 
@@ -73,18 +75,56 @@ def _strip_nikkud(s):
     return ''.join(ch for ch in s if not ('֑' <= ch <= 'ׇ'))
 
 
+# Hebrew one-letter conjunction/preposition prefixes (וְ "and", בְּ "in", לְ "to", הַ "the",
+# כְּ "like", מִ "from"). A letter-name rarely stands alone — "והריש" = "and-the-resh" — so the
+# dictionary must match a pin as a SUFFIX and preserve the pointed prefix the vocalizer gave.
+_PREFIX_CHARS = 'ובלהכמ'
+
+
 def apply_pronunciation_dictionary(text):
     """Pin known-mispronounced Hebrew words (letter-names, homographs) to their pointed forms.
     Applied AFTER the generic nikud pass so the pins WIN — phonikud re-vowels pointed input (it
     clobbered הַחֵית back to הַחַית/"chayit" when the dict ran first, 2026-08-24). Matching is
-    on the STRIPPED surface form (so it catches the word whether the model pointed it or not);
-    the replacement is the fully-pointed letter-name. Deterministic, free, no model."""
-    # Map: stripped surface -> fully-pointed letter-name.
+    on the STRIPPED surface form, and handles prefix conjunctions (וְהָרִישׁ = "and-the-resh")
+    by pinning the longest matching base while KEEPING the vocalizer's pointed prefix.
+    Deterministic, free, no model."""
+    # Map: stripped base surface -> fully-pointed letter-name.
     pinned = {_strip_nikkud(k): v for k, v in LETTER_NAME_NIKKUD.items()}
     out_words = []
     for word in text.split(' '):
-        stripped = _strip_nikkud(word)
-        out_words.append(pinned.get(stripped, word))
+        # Separate trailing punctuation (., !, ?, :) so it neither blocks the pin match nor is
+        # lost — phonikud emits "וְהָרִישׁ." with the period attached and it must re-attach after.
+        trail = ''
+        core = word
+        while core and not ('֑' <= core[-1] <= 'ׇ') and not ('א' <= core[-1] <= 'ת'):
+            trail = core[-1] + trail
+            core = core[:-1]
+        stripped = _strip_nikkud(core)
+        if stripped in pinned:
+            out_words.append(pinned[stripped] + trail)   # exact hit
+            continue
+        # Try stripping 1-2 leading prefix chars (וְהָ... etc.) and match the remaining base.
+        hit = None
+        for n in (1, 2):
+            if len(stripped) > n and stripped[0] in _PREFIX_CHARS and stripped[n:] in pinned:
+                hit = n
+                break
+        if hit:
+            # Keep the vocalizer's own pointed prefix (first `hit` base letters + their marks),
+            # then append the pinned pointed base. We recover the pointed prefix by walking the
+            # CORE (punctuation already split off) until we've consumed `hit` base letters.
+            i = 0
+            consumed = 0
+            while i < len(core) and consumed < hit:
+                if not ('֑' <= core[i] <= 'ׇ'):
+                    consumed += 1
+                i += 1
+            # include any marks that attach to the last prefix letter
+            while i < len(core) and ('֑' <= core[i] <= 'ׇ'):
+                i += 1
+            out_words.append(core[:i] + pinned[stripped[hit:]] + trail)
+        else:
+            out_words.append(word)
     return ' '.join(out_words)
 
 
@@ -108,7 +148,7 @@ SCRIPT = "שלום! אני האווטאר הדיגיטלי שלך. כותבים 
 SCRIPT_GUTTURAL = (
     "אני אוהב לדבר עברית בכל ערב עם החברים שלי מהעבודה. "
     "הרבה אנשים רוצים לדעת איך האווטאר מבטא נכון את החית והעין והריש. "
-    "תשלחו לי email ב-Slack, ואני אענה לכם מחר בבוקר."
+    "תשלחו לי email ב-WhatsApp, ואני אענה לכם מחר בבוקר."
 )
 
 SCRIPTS = {'default': SCRIPT, 'guttural': SCRIPT_GUTTURAL}
