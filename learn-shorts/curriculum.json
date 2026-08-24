@@ -119,6 +119,76 @@
       "type": "letter",
       "key": "chet",
       "status": "pass"
+    },
+    {
+      "order": 18,
+      "proj": "number-shorts/number-1-one",
+      "type": "number",
+      "key": "one",
+      "status": "pass"
+    },
+    {
+      "order": 19,
+      "proj": "number-shorts/number-2-two",
+      "type": "number",
+      "key": "two",
+      "status": "pass"
+    },
+    {
+      "order": 20,
+      "proj": "number-shorts/number-3-three",
+      "type": "number",
+      "key": "three",
+      "status": "pass"
+    },
+    {
+      "order": 21,
+      "proj": "number-shorts/number-4-four",
+      "type": "number",
+      "key": "four",
+      "status": "pass"
+    },
+    {
+      "order": 22,
+      "proj": "number-shorts/number-5-five",
+      "type": "number",
+      "key": "five",
+      "status": "pass"
+    },
+    {
+      "order": 23,
+      "proj": "number-shorts/number-6-six",
+      "type": "number",
+      "key": "six",
+      "status": "pass"
+    },
+    {
+      "order": 24,
+      "proj": "number-shorts/number-7-seven",
+      "type": "number",
+      "key": "seven",
+      "status": "pass"
+    },
+    {
+      "order": 25,
+      "proj": "number-shorts/number-8-eight",
+      "type": "number",
+      "key": "eight",
+      "status": "pass"
+    },
+    {
+      "order": 26,
+      "proj": "number-shorts/number-9-nine",
+      "type": "number",
+      "key": "nine",
+      "status": "pass"
+    },
+    {
+      "order": 27,
+      "proj": "number-shorts/number-10-ten",
+      "type": "number",
+      "key": "ten",
+      "status": "pass"
     }
   ]
 }

@@ -1,0 +1,219 @@
+{
+  "id": "number-10-ten",
+  "title": "בּוּ מְלַמֵּד לִסְפּוֹר 10",
+  "mode": "number",
+  "language": "he",
+  "series": "bu-koala-numbers",
+  "composition": "Number10Ten",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 46.609
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type number) from script.md. Teaches ten (ten, /a/) to ages 5-7. mode:number, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "number": {
+    "number": "ten",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "ע"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "אֶחָד",
+      "שְׁנַיִם",
+      "שְׁלוֹשָׁה",
+      "אַרְבָּעָה",
+      "חֲמִשָּׁה",
+      "שִׁשָּׁה",
+      "שִׁבְעָה",
+      "שְׁמֹנָה",
+      "תִּשְׁעָה",
+      "עֲשָׂרָה"
+    ],
+    "numeral": 10,
+    "word": "עֲשָׂרָה",
+    "count": 10,
+    "add": null
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 10!",
+      "tts": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 10!",
+      "start": 0.0,
+      "end": 4.656
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "עֲשָׂרָה",
+      "tts": "עֲשָׂרָה",
+      "start": 6.367,
+      "end": 7.207,
+      "units": [
+        {
+          "g": "עֲשָׂרָה",
+          "start": 6.687,
+          "end": 7.207
+        }
+      ],
+      "sub": "מִסְפָּר — הֲכִי גָּדוֹל!"
+    },
+    {
+      "beat": "read-word",
+      "text": "אֶחָד",
+      "tts": "אֶחָד",
+      "start": 8.667,
+      "end": 10.683
+    },
+    {
+      "beat": "read-word",
+      "text": "שְׁנַיִם",
+      "tts": "שְׁנַיִם",
+      "start": 12.0,
+      "end": 14.184
+    },
+    {
+      "beat": "read-word",
+      "text": "שְׁלוֹשָׁה",
+      "tts": "שְׁלוֹשָׁה",
+      "start": 15.333,
+      "end": 17.325
+    },
+    {
+      "beat": "read-word",
+      "text": "אַרְבָּעָה",
+      "tts": "אַרְבָּעָה",
+      "start": 18.666,
+      "end": 20.682
+    },
+    {
+      "beat": "read-word",
+      "text": "חֲמִשָּׁה",
+      "tts": "חֲמִשָּׁה",
+      "start": 21.999,
+      "end": 24.159
+    },
+    {
+      "beat": "read-word",
+      "text": "שִׁשָּׁה",
+      "tts": "שִׁשָּׁה",
+      "start": 25.332,
+      "end": 27.324
+    },
+    {
+      "beat": "read-word",
+      "text": "שִׁבְעָה",
+      "tts": "שִׁבְעָה",
+      "start": 28.665,
+      "end": 30.705
+    },
+    {
+      "beat": "read-word",
+      "text": "שְׁמֹנָה",
+      "tts": "שְׁמֹנָה",
+      "start": 31.998,
+      "end": 34.038
+    },
+    {
+      "beat": "read-word",
+      "text": "תִּשְׁעָה",
+      "tts": "תִּשְׁעָה",
+      "start": 35.331,
+      "end": 37.395
+    },
+    {
+      "beat": "read-word",
+      "text": "עֲשָׂרָה",
+      "tts": "עֲשָׂרָה",
+      "start": 38.664,
+      "end": 40.656,
+      "sub": "יוֹפִי! סָפַרְנוּ בַּיַּחַד!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 41.997,
+      "end": 44.109,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם סוֹפְרִים!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 6.367
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 6.367,
+      "end_s": 8.667
+    },
+    {
+      "name": "read-word",
+      "start_s": 8.667,
+      "end_s": 12.0
+    },
+    {
+      "name": "read-word",
+      "start_s": 12.0,
+      "end_s": 15.333
+    },
+    {
+      "name": "read-word",
+      "start_s": 15.333,
+      "end_s": 18.666
+    },
+    {
+      "name": "read-word",
+      "start_s": 18.666,
+      "end_s": 21.999
+    },
+    {
+      "name": "read-word",
+      "start_s": 21.999,
+      "end_s": 25.332
+    },
+    {
+      "name": "read-word",
+      "start_s": 25.332,
+      "end_s": 28.665
+    },
+    {
+      "name": "read-word",
+      "start_s": 28.665,
+      "end_s": 31.998
+    },
+    {
+      "name": "read-word",
+      "start_s": 31.998,
+      "end_s": 35.331
+    },
+    {
+      "name": "read-word",
+      "start_s": 35.331,
+      "end_s": 38.664
+    },
+    {
+      "name": "read-word",
+      "start_s": 38.664,
+      "end_s": 41.997
+    },
+    {
+      "name": "call-response",
+      "start_s": 41.997,
+      "end_s": 46.609
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

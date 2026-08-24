@@ -1,26 +1,26 @@
 {
-  "id": "number-3-three",
-  "title": "בּוּ מְלַמֵּד לִסְפּוֹר 3",
+  "id": "number-4-four",
+  "title": "בּוּ מְלַמֵּד לִסְפּוֹר 4",
   "mode": "number",
   "language": "he",
   "series": "bu-koala-numbers",
-  "composition": "Number3Three",
+  "composition": "Number4Four",
   "characterRef": "ai-shorts/bu-koala/character.jpg",
   "musicBed": "kids-play-ukulele",
   "format": {
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationSec": 23.278
+    "durationSec": 26.611
   },
   "loop": false,
-  "notes": "AUTO-DERIVED by tools/make_learn.py (--type number) from script.md. Teaches three (three, /a/) to ages 5-7. mode:number, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type number) from script.md. Teaches four (four, /a/) to ages 5-7. mode:number, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
   "number": {
-    "number": "three",
+    "number": "four",
     "sign": "בָּ",
     "sound": "a",
     "targetLetters": [
-      "ש"
+      "א"
     ],
     "progression": [
       "isolated",
@@ -29,32 +29,33 @@
     "anchorWords": [
       "אֶחָד",
       "שְׁנַיִם",
-      "שְׁלוֹשָׁה"
+      "שְׁלוֹשָׁה",
+      "אַרְבָּעָה"
     ],
-    "numeral": 3,
-    "word": "שְׁלוֹשָׁה",
-    "count": 3,
+    "numeral": 4,
+    "word": "אַרְבָּעָה",
+    "count": 4,
     "add": null
   },
   "vo": [
     {
       "beat": "hook",
-      "text": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 3!",
-      "tts": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 3!",
+      "text": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 4!",
+      "tts": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 4!",
       "start": 0.0,
-      "end": 4.8
+      "end": 4.56
     },
     {
       "beat": "teach-isolated",
-      "text": "שְׁלוֹשָׁה",
-      "tts": "שְׁלוֹשָׁה",
+      "text": "אַרְבָּעָה",
+      "tts": "אַרְבָּעָה",
       "start": 6.367,
-      "end": 7.187,
+      "end": 7.227,
       "units": [
         {
-          "g": "שְׁלוֹשָׁה",
-          "start": 6.687,
-          "end": 7.187
+          "g": "אַרְבָּעָה",
+          "start": 6.707,
+          "end": 7.227
         }
       ],
       "sub": "מִסְפָּר — הֲכִי גָּדוֹל!"
@@ -78,15 +79,22 @@
       "text": "שְׁלוֹשָׁה",
       "tts": "שְׁלוֹשָׁה",
       "start": 15.333,
-      "end": 17.325,
+      "end": 17.325
+    },
+    {
+      "beat": "read-word",
+      "text": "אַרְבָּעָה",
+      "tts": "אַרְבָּעָה",
+      "start": 18.666,
+      "end": 20.682,
       "sub": "יוֹפִי! סָפַרְנוּ בַּיַּחַד!"
     },
     {
       "beat": "call-response",
       "text": "אַתֶּם!",
       "tts": "אַתֶּם!",
-      "start": 18.666,
-      "end": 20.778,
+      "start": 21.999,
+      "end": 24.111,
       "pause": true,
       "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
       "sub": "עַכְשָׁו אַתֶּם סוֹפְרִים!"
@@ -119,9 +127,14 @@
       "end_s": 18.666
     },
     {
-      "name": "call-response",
+      "name": "read-word",
       "start_s": 18.666,
-      "end_s": 23.278
+      "end_s": 21.999
+    },
+    {
+      "name": "call-response",
+      "start_s": 21.999,
+      "end_s": 26.611
     }
   ],
   "voiceStatus": "edge-tts:he-IL-HilaNeural"

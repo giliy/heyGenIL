@@ -1,0 +1,102 @@
+{
+  "id": "number-1-one",
+  "title": "בּוּ מְלַמֵּד לִסְפּוֹר 1",
+  "mode": "number",
+  "language": "he",
+  "series": "bu-koala-numbers",
+  "composition": "Number1One",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 16.612
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type number) from script.md. Teaches one (one, /a/) to ages 5-7. mode:number, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "number": {
+    "number": "one",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "א"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "אֶחָד"
+    ],
+    "numeral": 1,
+    "word": "אֶחָד",
+    "count": 1,
+    "add": null
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 1!",
+      "tts": "בּוּ בּוּ! הַיּוֹם סוֹפְרִים 1!",
+      "start": 0.0,
+      "end": 4.656
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "אֶחָד",
+      "tts": "אֶחָד",
+      "start": 6.367,
+      "end": 7.167,
+      "units": [
+        {
+          "g": "אֶחָד",
+          "start": 6.687,
+          "end": 7.167
+        }
+      ],
+      "sub": "מִסְפָּר — הֲכִי גָּדוֹל!"
+    },
+    {
+      "beat": "read-word",
+      "text": "אֶחָד",
+      "tts": "אֶחָד",
+      "start": 8.667,
+      "end": 10.683,
+      "sub": "יוֹפִי! סָפַרְנוּ בַּיַּחַד!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 12.0,
+      "end": 14.112,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם סוֹפְרִים!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 6.367
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 6.367,
+      "end_s": 8.667
+    },
+    {
+      "name": "read-word",
+      "start_s": 8.667,
+      "end_s": 12.0
+    },
+    {
+      "name": "call-response",
+      "start_s": 12.0,
+      "end_s": 16.612
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}
