@@ -2,11 +2,39 @@
   "run": "2026-08-24",
   "results": [
     {
-      "dir": "reading-shorts/read-6-chirik",
+      "dir": "reading-shorts/read-7-cholam",
       "type": "nikkud",
-      "key": "chirik",
+      "key": "cholam",
       "ok": true,
-      "compId": "Read6Chirik"
+      "compId": "Read7Cholam"
+    },
+    {
+      "dir": "reading-shorts/read-8-shuruk",
+      "type": "nikkud",
+      "key": "shuruk",
+      "ok": true,
+      "compId": "Read8Shuruk"
+    },
+    {
+      "dir": "reading-shorts/read-9-kubutz",
+      "type": "nikkud",
+      "key": "kubutz",
+      "ok": true,
+      "compId": "Read9Kubutz"
+    },
+    {
+      "dir": "reading-shorts/read-10-shva",
+      "type": "nikkud",
+      "key": "shva",
+      "ok": true,
+      "compId": "Read10Shva"
+    },
+    {
+      "dir": "reading-shorts/read-11-dagesh-kal",
+      "type": "nikkud",
+      "key": "dagesh-kal",
+      "ok": true,
+      "compId": "Read11DageshKal"
     }
   ]
 }

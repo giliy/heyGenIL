@@ -129,7 +129,7 @@
  },
  {
   "id": "Read10Shva",
-  "durationInSeconds": 32.399,
+  "durationInSeconds": 29.978,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -137,7 +137,7 @@
  },
  {
   "id": "Read11DageshKal",
-  "durationInSeconds": 32.866,
+  "durationInSeconds": 30.445,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -193,7 +193,7 @@
  },
  {
   "id": "Read7Cholam",
-  "durationInSeconds": 30.399,
+  "durationInSeconds": 27.978,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -201,7 +201,7 @@
  },
  {
   "id": "Read8Shuruk",
-  "durationInSeconds": 30.399,
+  "durationInSeconds": 27.978,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -209,7 +209,7 @@
  },
  {
   "id": "Read9Kubutz",
-  "durationInSeconds": 32.066,
+  "durationInSeconds": 29.645,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -402,6 +402,14 @@
  {
   "id": "VoxSpec",
   "durationInSeconds": 30,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Wordclass1Nouns",
+  "durationInSeconds": 33.198,
   "fps": 30,
   "width": 1080,
   "height": 1920,

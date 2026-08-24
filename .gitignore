@@ -17,6 +17,15 @@ ai-shorts/*/voice/
 ai-shorts/*/output/
 vox-shorts/*/voice/
 vox-shorts/*/output/
+# learn-shorts families (reading/letter/number/wordclass) — same rule:
+reading-shorts/*/voice/
+reading-shorts/*/output/
+letter-shorts/*/voice/
+letter-shorts/*/output/
+number-shorts/*/voice/
+number-shorts/*/output/
+wordclass-shorts/*/voice/
+wordclass-shorts/*/output/
 
 # ai-shorts working copies of generated clips — the canonical (committed) copies
 # live in media/projects/<name>/ where the composition reads them via staticFile()

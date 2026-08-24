@@ -11,7 +11,7 @@
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationSec": 32.066
+    "durationSec": 29.645
   },
   "loop": false,
   "notes": "AUTO-DERIVED by tools/make_learn.py (--type nikkud) from script.md. Teaches קֻבּוּץ (kubutz, /u/) to ages 5-7. mode:reading, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
@@ -41,19 +41,19 @@
       "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים קֻבּוּץ! אוֹתוֹ צְלִיל כְּמוֹ שׁוּרוּק!",
       "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים קֻבּוּץ! אוֹתוֹ צְלִיל כְּמוֹ שׁוּרוּק!",
       "start": 0.0,
-      "end": 8.7
+      "end": 7.632
     },
     {
       "beat": "teach-isolated",
       "text": "בֻּ",
       "tts": "בֻּ",
       "start": 9.7,
-      "end": 10.3,
+      "end": 10.32,
       "units": [
         {
           "g": "בֻּ",
           "start": 10.0,
-          "end": 10.3
+          "end": 10.32
         }
       ],
       "sub": "קֻבּוּץ — אוֹמְרִים \"אוּ\""
@@ -67,25 +67,25 @@
         {
           "g": "בֻּ",
           "start": 12.2,
-          "end": 12.5
+          "end": 12.52
         },
         {
           "g": "דֻ",
-          "start": 13.4,
-          "end": 13.7
+          "start": 13.37,
+          "end": 13.71
         },
         {
           "g": "לֻ",
           "start": 14.6,
-          "end": 14.9
+          "end": 14.92
         },
         {
           "g": "סֻ",
-          "start": 15.8,
-          "end": 16.1
+          "start": 15.83,
+          "end": 16.19
         }
       ],
-      "end": 16.1
+      "end": 16.19
     },
     {
       "beat": "blend",
@@ -95,18 +95,18 @@
       "units": [
         {
           "g": "תֻּת",
-          "start": 18.0,
+          "start": 18.06,
           "end": 18.3
         }
       ],
-      "end": 20.4
+      "end": 19.596
     },
     {
       "beat": "read-word",
       "text": "תֻּת!",
       "tts": "תֻּת!",
       "start": 21.7,
-      "end": 23.733,
+      "end": 23.62,
       "sub": "יוֹפִי! קָרָאתָ מִלָּה!"
     },
     {
@@ -114,7 +114,7 @@
       "text": "אַתֶּם!",
       "tts": "אַתֶּם!",
       "start": 25.033,
-      "end": 29.566,
+      "end": 27.145,
       "pause": true,
       "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
       "sub": "עַכְשָׁו אַתֶּם אוֹמְרִים!"
@@ -124,32 +124,33 @@
     {
       "name": "hook",
       "start_s": 0.0,
-      "end_s": 8.7
+      "end_s": 9.7
     },
     {
       "name": "teach-isolated",
       "start_s": 9.7,
-      "end_s": 10.3
+      "end_s": 11.9
     },
     {
       "name": "teach-cv",
       "start_s": 11.9,
-      "end_s": 16.1
+      "end_s": 17.7
     },
     {
       "name": "blend",
       "start_s": 17.7,
-      "end_s": 20.4
+      "end_s": 21.7
     },
     {
       "name": "read-word",
       "start_s": 21.7,
-      "end_s": 23.733
+      "end_s": 25.033
     },
     {
       "name": "call-response",
       "start_s": 25.033,
-      "end_s": 32.066
+      "end_s": 29.645
     }
-  ]
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
 }

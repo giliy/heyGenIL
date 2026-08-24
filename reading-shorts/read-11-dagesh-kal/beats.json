@@ -11,7 +11,7 @@
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationSec": 32.866
+    "durationSec": 30.445
   },
   "loop": false,
   "notes": "AUTO-DERIVED by tools/make_learn.py (--type nikkud) from script.md. Teaches דָּגֵשׁ קַל (dagesh-kal, /b/v/) to ages 5-7. mode:reading, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
@@ -40,19 +40,19 @@
       "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים דָּגֵשׁ קַל! בּ/ב, כּ/כ, פּ/פ!",
       "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים דָּגֵשׁ קַל! בּ/ב, כּ/כ, פּ/פ!",
       "start": 0.0,
-      "end": 8.7
+      "end": 9.96
     },
     {
       "beat": "teach-isolated",
       "text": "בּ",
       "tts": "בּ",
-      "start": 9.7,
-      "end": 10.3,
+      "start": 10.46,
+      "end": 11.08,
       "units": [
         {
           "g": "בּ",
-          "start": 10.0,
-          "end": 10.3
+          "start": 10.76,
+          "end": 11.08
         }
       ],
       "sub": "דָּגֵשׁ — בּ וְלֹא ב"
@@ -66,20 +66,20 @@
         {
           "g": "בּ",
           "start": 12.2,
-          "end": 12.5
+          "end": 12.52
         },
         {
           "g": "כּ",
-          "start": 13.4,
-          "end": 13.7
+          "start": 13.55,
+          "end": 13.69
         },
         {
           "g": "פּ",
           "start": 14.6,
-          "end": 14.9
+          "end": 14.78
         }
       ],
-      "end": 14.9
+      "end": 14.78
     },
     {
       "beat": "blend",
@@ -90,22 +90,22 @@
         {
           "g": "בֹּ",
           "start": 16.8,
-          "end": 17.1
+          "end": 17.14
         },
         {
           "g": "קֶר",
-          "start": 18.8,
-          "end": 19.1
+          "start": 18.72,
+          "end": 19.06
         }
       ],
-      "end": 21.2
+      "end": 20.196
     },
     {
       "beat": "read-word",
       "text": "בֹּקֶר!",
       "tts": "בֹּקֶר!",
       "start": 22.5,
-      "end": 24.533,
+      "end": 24.516,
       "sub": "יוֹפִי! קָרָאתָ מִלָּה!"
     },
     {
@@ -113,7 +113,7 @@
       "text": "אַתֶּם!",
       "tts": "אַתֶּם!",
       "start": 25.833,
-      "end": 30.366,
+      "end": 27.945,
       "pause": true,
       "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
       "sub": "עַכְשָׁו אַתֶּם אוֹמְרִים!"
@@ -123,32 +123,33 @@
     {
       "name": "hook",
       "start_s": 0.0,
-      "end_s": 8.7
+      "end_s": 10.46
     },
     {
       "name": "teach-isolated",
-      "start_s": 9.7,
-      "end_s": 10.3
+      "start_s": 10.46,
+      "end_s": 11.9
     },
     {
       "name": "teach-cv",
       "start_s": 11.9,
-      "end_s": 14.9
+      "end_s": 16.5
     },
     {
       "name": "blend",
       "start_s": 16.5,
-      "end_s": 21.2
+      "end_s": 22.5
     },
     {
       "name": "read-word",
       "start_s": 22.5,
-      "end_s": 24.533
+      "end_s": 25.833
     },
     {
       "name": "call-response",
       "start_s": 25.833,
-      "end_s": 32.866
+      "end_s": 30.445
     }
-  ]
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
 }

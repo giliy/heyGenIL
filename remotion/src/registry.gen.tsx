@@ -51,6 +51,7 @@ import Shot47, { compositionConfig as cfg47 } from './shots/vox-1/Vox1Coffee';
 import Shot48, { compositionConfig as cfg48 } from './shots/vox-2/Vox2DadDaughter';
 import Shot49, { compositionConfig as cfg49 } from './shots/vox-3/Vox3DorSever';
 import Shot50, { compositionConfig as cfg50, defaultProps as dp50, calculateMetadata as cm50 } from './shots/vox-spec/VoxSpec';
+import Shot51, { compositionConfig as cfg51 } from './shots/wordclass-1/Wordclass1Nouns';
 
 export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculateMetadata?: any }[] = [
   { Comp: Shot0 as React.FC, config: cfg0, defaultProps: dp0, calculateMetadata: cm0 },
@@ -104,4 +105,5 @@ export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculate
   { Comp: Shot48 as React.FC, config: cfg48 },
   { Comp: Shot49 as React.FC, config: cfg49 },
   { Comp: Shot50 as React.FC, config: cfg50, defaultProps: dp50, calculateMetadata: cm50 },
+  { Comp: Shot51 as React.FC, config: cfg51 },
 ];

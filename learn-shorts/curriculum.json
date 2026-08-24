@@ -34,35 +34,35 @@
       "proj": "reading-shorts/read-7-cholam",
       "type": "nikkud",
       "key": "cholam",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 6,
       "proj": "reading-shorts/read-8-shuruk",
       "type": "nikkud",
       "key": "shuruk",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 7,
       "proj": "reading-shorts/read-9-kubutz",
       "type": "nikkud",
       "key": "kubutz",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 8,
       "proj": "reading-shorts/read-10-shva",
       "type": "nikkud",
       "key": "shva",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 9,
       "proj": "reading-shorts/read-11-dagesh-kal",
       "type": "nikkud",
       "key": "dagesh-kal",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 10,
