@@ -45,6 +45,57 @@ import ffw  # noqa: E402  (resolved full ffmpeg/ffprobe)
 # The voice venv that carries edge-tts (matches py.ts TOOL_VENV: edge -> .venv-voice312).
 VOICE_PY = os.path.join(ROOT, '.venv-voice312', 'Scripts', 'python.exe')
 
+# --- Stock-face -> voice gender map (the HeyGen-IL product constraint: the voice MUST match
+# the avatar's gender or the result reads as broken even when sync is perfect). Hebrew edge-tts
+# ships exactly two voices: he-IL-AvriNeural (male) and he-IL-HilaNeural (female). Keyed by
+# stock-face filename stem; unknown faces fall back to FEMALE_VOICE (the default dana.png face).
+MALE_VOICE = 'he-IL-AvriNeural'
+FEMALE_VOICE = 'he-IL-HilaNeural'
+FACE_VOICE = {'dana': FEMALE_VOICE}
+
+# --- Hebrew letter-name pronunciation dictionary (nikud override). THE guttural fix: the
+# auto-vocalizer (phonikud) reads unvoweled letter-names as their common-word homographs — it
+# pointed החית as "ha-CHAY-it" (the animal) instead of the letter-name חֵית ("kheyt"). These
+# entries pin the exact letter-name vowel-points so the voice says the LETTER, not the word.
+# Applied BEFORE the generic nikud pass; entries win over the model. Extend as QA surfaces more
+# letter-name / homograph misses. Keys are the unvoweled surface forms; values are pointed.
+LETTER_NAME_NIKKUD = {
+    'החית': 'הַחֵית', 'חית': 'חֵית',          # khet  (was mis-read as "chayit"/animal)
+    'העין': 'הָעַיִן', 'עין': 'עַיִן',          # ayin
+    'הריש': 'הָרֵישׁ', 'ריש': 'רֵישׁ',          # resh
+    'האות': 'הָאוֹת',                          # "the letter" (אוֹת, not the sign אוֹת — same; pinned for safety)
+}
+
+
+def _strip_nikkud(s):
+    """Remove Hebrew pointing (niqqud combining marks U+0591..U+05C7) so a vocalized surface
+    form can be matched back to its dictionary key."""
+    return ''.join(ch for ch in s if not ('֑' <= ch <= 'ׇ'))
+
+
+def apply_pronunciation_dictionary(text):
+    """Pin known-mispronounced Hebrew words (letter-names, homographs) to their pointed forms.
+    Applied AFTER the generic nikud pass so the pins WIN — phonikud re-vowels pointed input (it
+    clobbered הַחֵית back to הַחַית/"chayit" when the dict ran first, 2026-08-24). Matching is
+    on the STRIPPED surface form (so it catches the word whether the model pointed it or not);
+    the replacement is the fully-pointed letter-name. Deterministic, free, no model."""
+    # Map: stripped surface -> fully-pointed letter-name.
+    pinned = {_strip_nikkud(k): v for k, v in LETTER_NAME_NIKKUD.items()}
+    out_words = []
+    for word in text.split(' '):
+        stripped = _strip_nikkud(word)
+        out_words.append(pinned.get(stripped, word))
+    return ' '.join(out_words)
+
+
+def synth_text_for(text, nikkud):
+    """The exact string sent to edge-tts. With --nikkud: generic phonikud vocalizer first, THEN
+    the letter-name dictionary overrides its homograph misses. Without --nikkud: raw text."""
+    if not nikkud:
+        return text
+    import nikkud_g2p
+    return apply_pronunciation_dictionary(nikkud_g2p.add_nikkud(text))
+
 # The FIXED Hebrew acceptance script (nikkud-free; the same words every run so frames are
 # comparable across models). ~3 short lines, male+female voices exercised by the caller.
 SCRIPT = "שלום! אני האווטאר הדיגיטלי שלך. כותבים תסריט, והאווטאר מדבר אותו בעברית. מושלם לפרסום, להדרכה, ולמכירות."
@@ -69,12 +120,13 @@ TALK_MODELS = {
     # Fabric now defaults to 720p (AvatarSpec is 1080x1920; 480p upscaled 2.25x was soft).
     # Verified 2026-08-24 (fal.ai model page): STANDARD fabric-1.0 = $0.08/s @480p, $0.15/s @720p;
     # the /fast variant = $0.10/s @480p, $0.20/s @720p. (Earlier $0.20 here was the FAST tier.)
-    # ⚠ The fal API id is 'fal-ai/fabric-1.0' — the 'veed/' prefix on the website is the vendor
-    #    page, NOT the API namespace. 'fal-ai/veed/fabric-1.0' 404s ("Application veed not found").
-    #    As of 2026-08-24 even fal-ai/fabric-1.0 returns "Application fabric-1.0 not found" for
-    #    this key — Fabric may be gated/renamed; re-verify availability before relying on it.
-    'fabric-1.0':      {'falId': 'fal-ai/fabric-1.0',                         'input': 'image', 'costPerSecUsd': 0.15, 'res': '720p'},
-    'fabric-1.0-fast': {'falId': 'fal-ai/fabric-1.0/fast',                    'input': 'image', 'costPerSecUsd': 0.20, 'res': '720p'},
+    # ⚠ The fal id is 'veed/fabric-1.0' — VEED is a TOP-LEVEL partner namespace on fal (like
+    #    bytedance/, xai/, openai/), NOT under fal-ai/. Prefixing 'fal-ai/veed/...' makes fal
+    #    parse "veed" as the app under owner "fal-ai" -> 404. Verified 2026-08-24: the model
+    #    page fal.ai/models/veed/fabric-1.0 is live, GA (Partner + Commercial-use labels, no
+    #    gating), schema = {image_url, audio_url, resolution: 720p|480p}, output = video.
+    'fabric-1.0':      {'falId': 'veed/fabric-1.0',                           'input': 'image', 'costPerSecUsd': 0.15, 'res': '720p'},
+    'fabric-1.0-fast': {'falId': 'veed/fabric-1.0/fast',                      'input': 'image', 'costPerSecUsd': 0.20, 'res': '720p'},
     'omnihuman':       {'falId': 'fal-ai/bytedance/omnihuman',                'input': 'image', 'costPerSecUsd': 0.14, 'res': None},
     'musetalk':        {'falId': 'fal-ai/musetalk',                           'input': 'video', 'costPerSecUsd': 0.0,  'res': None},
     'kling-lipsync':   {'falId': 'fal-ai/kling-video/lipsync/audio-to-video', 'input': 'video', 'costPerSecUsd': 0.014, 'res': None},
@@ -171,7 +223,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--face', default=os.path.join(ROOT, 'webapp', '.storage', 'avatars', 'stock', 'dana.png'))
     ap.add_argument('--models', default='fabric-1.0', help='comma-separated TALK_MODELS keys')
-    ap.add_argument('--voice', default='he-IL-AvriNeural', help='edge-tts Hebrew voice')
+    ap.add_argument('--voice', default=None,
+                    help='edge-tts Hebrew voice. Default: derived from the stock face gender '
+                         '(FACE_VOICE map) so the voice matches the avatar.')
+    ap.add_argument('--nikkud', action='store_true',
+                    help='run the script through the letter-name dictionary + phonikud G2P before '
+                         'synthesis — fixes guttural letter-name pronunciation (חֵית not "chayit"). '
+                         'Recommended ON for the guttural gate.')
     ap.add_argument('--script', default='default', choices=list(SCRIPTS),
                     help='acceptance script: default (clean) or guttural (ח/ע/ר-dense + code-switch)')
     ap.add_argument('--out', default=os.path.join(ROOT, 'media', 'projects', '_bakeoff-talk'))
@@ -191,12 +249,23 @@ def main():
     if unknown:
         sys.exit(f"unknown models: {unknown} (known: {list(TALK_MODELS)})")
 
+    # Voice = explicit --voice, else derived from the stock face's gender (the HeyGen-IL
+    # constraint: the voice MUST match the avatar's gender). Unknown faces -> the female default.
+    face_stem = os.path.splitext(os.path.basename(args.face))[0].lower()
+    voice = args.voice or FACE_VOICE.get(face_stem, FEMALE_VOICE)
+    if not args.voice:
+        print(f"[voice] no --voice given; matched face '{face_stem}' -> {voice}")
+
     # 1) Synthesize the Hebrew voice once (free) — every model lip-syncs the SAME audio.
     script = SCRIPTS[args.script]
-    voice_mp3 = os.path.join(args.out, f'voice-{args.script}.mp3')
+    synth_text = synth_text_for(script, args.nikkud)
+    voice_tag = f'voice-{args.script}' + ('-nikkud' if args.nikkud else '') + f'-{voice}'
+    voice_mp3 = os.path.join(args.out, f'{voice_tag}.mp3')
     if not os.path.exists(voice_mp3):
-        print(f"[voice] edge-tts {args.voice} [{args.script}] -> {os.path.basename(voice_mp3)} ...", flush=True)
-        if not synth_voice(script, voice_mp3, args.voice):
+        print(f"[voice] edge-tts {voice} [{args.script}{'+nikkud' if args.nikkud else ''}] -> {os.path.basename(voice_mp3)} ...", flush=True)
+        if args.nikkud:
+            print(f"[voice] pointed text: {synth_text}", flush=True)
+        if not synth_voice(synth_text, voice_mp3, voice):
             sys.exit('edge-tts failed to synthesize the Hebrew voice')
     dur = ffprobe_duration(voice_mp3)
     print(f"[voice] {dur:.1f}s Hebrew track ready" if dur else "[voice] ready (duration unknown)", flush=True)
