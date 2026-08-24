@@ -19,10 +19,12 @@ Usage:
   python tools/gen_voice_edge.py --beats ... --dry-run                 # plan only
   python tools/gen_voice_edge.py --beats ... --voice he-IL-AvriNeural --nikkud   # Hebrew + nikkud G2P
 
---nikkud (he-IL voices only): runs each line through the phonikud nikkud G2P front-end
-(tools/nikkud_g2p.py) BEFORE synthesis, so edge-tts reads pointed Hebrew — steers vowels/
-stress on ambiguous words and code-switched lines. Display text stays unpointed; captions
-are unaffected. Needs the ONNX nakdan model (tools/fetch_phonikud.py). Default OFF.
+--nikkud (he-IL voices only): runs each line through the Hebrew pronunciation layer
+(tools/hebrew_pronounce.py — auto-nikud + letter-name dictionary + code-switch) BEFORE
+synthesis, so edge-tts reads pointed Hebrew — steers vowels/stress on ambiguous words,
+pins guttural letter-names (חֵית not "chayit"), and keeps code-switched loanwords (WhatsApp,
+email) in latin so they read English. Display text stays unpointed; captions are unaffected.
+Needs the ONNX nakdan model (tools/fetch_phonikud.py). Default OFF.
 
 Voice: default en-US-AriaNeural. Delivery tuned "soft & intimate" via rate/pitch.
 Needs edge-tts (pip install edge-tts) and ffmpeg/ffprobe on PATH. NO API KEY.
@@ -48,7 +50,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # compositor package (no separate install needed on this machine).
 import ffw  # resolved ffmpeg/ffprobe (full build, fails fast on the minimal one)
 import voice_cleanup  # the shared TTS cleanup front (highpass/deesser/compand)
-import nikkud_g2p  # Hebrew nikkud G2P front-end (phonikud); used only by --nikkud
+import hebrew_pronounce  # the Hebrew pronunciation layer (auto-nikud + dictionary + code-switch)
 
 
 def _find_tool(name):
@@ -162,9 +164,10 @@ def main():
         next_start = float(vo[i + 1]["start"]) if i + 1 < len(vo) else total - 0.3
         window = next_start - start - 0.05
         text = line["text"]
-        # Pronunciation-guided synthesis text: pointed Hebrew when --nikkud, else the raw
-        # line. The cache hash keys on the SYNTH text so a nikkud change re-synthesizes.
-        synth_text = nikkud_g2p.add_nikkud(text) if nikkud else text
+        # Pronunciation-guided synthesis text: routed through the Hebrew pronunciation layer
+        # (auto-nikud + letter-name dictionary + code-switch) when --nikkud, else the raw line.
+        # The cache hash keys on the SYNTH text so a pronunciation change re-synthesizes.
+        synth_text = hebrew_pronounce.to_tts(text) if nikkud else text
         h = hashlib.sha1(f"{args.voice}|{args.rate}|{args.pitch}|{synth_text}".encode()).hexdigest()[:8]
         raw = os.path.join(vdir, f"line-{i:02d}-{h}.mp3")
         fit = os.path.join(vdir, f"line-{i:02d}-{h}-fit.wav")
