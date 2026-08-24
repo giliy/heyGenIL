@@ -64,8 +64,48 @@
   "transparent": false
  },
  {
-  "id": "Number3Three",
-  "durationInSeconds": 25.699,
+  "id": "Letter2Bet",
+  "durationInSeconds": 27.365,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Letter3Gimel",
+  "durationInSeconds": 27.365,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Letter4Dalet",
+  "durationInSeconds": 27.365,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Letter5He",
+  "durationInSeconds": 27.365,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Letter6Vav",
+  "durationInSeconds": 27.365,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Letter7Zayin",
+  "durationInSeconds": 27.365,
   "fps": 30,
   "width": 1080,
   "height": 1920,

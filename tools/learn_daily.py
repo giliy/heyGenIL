@@ -220,7 +220,9 @@ def main():
             else:
                 comp = fps = dur = title = None  # dry-run: no derive output yet
             res["compId"] = comp
-            m = re.match(r"^(read-\d+|learn-\d+)", os.path.basename(proj))
+            # Mirror make_learn.write_wrapper's shots-group regex exactly — otherwise voice
+            # emits vo.gen.ts into the wrong dir (e.g. letter-4-dalet/ instead of letter-4/).
+            m = re.match(r"^(read-\d+|learn-\d+|letter-\d+|number-\d+|wordclass-\d+)", os.path.basename(proj))
             shots_group = m.group(1) if m else os.path.basename(proj)
             vo_ts = os.path.join(ROOT, "remotion", "src", "shots", shots_group, "vo.gen.ts")
 
