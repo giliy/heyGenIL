@@ -3,53 +3,54 @@ import type React from 'react';
 import Shot0, { compositionConfig as cfg0, defaultProps as dp0, calculateMetadata as cm0 } from './shots/ad-1/Ad1Liat';
 import Shot1, { compositionConfig as cfg1, defaultProps as dp1, calculateMetadata as cm1 } from './shots/ad-2/Ad2Noa';
 import Shot2, { compositionConfig as cfg2, defaultProps as dp2, calculateMetadata as cm2 } from './shots/ad-3/Ad3Formy';
-import Shot3, { compositionConfig as cfg3 } from './shots/ai-1/Ai1Door';
-import Shot4, { compositionConfig as cfg4, defaultProps as dp4, calculateMetadata as cm4 } from './shots/ai-1/AiSpec';
-import Shot5, { compositionConfig as cfg5, defaultProps as dp5, calculateMetadata as cm5 } from './shots/avatar-spec/AvatarSpec';
-import Shot6, { compositionConfig as cfg6 } from './shots/proof-1-lottie/Proof1Lottie';
-import Shot7, { compositionConfig as cfg7 } from './shots/proof-2-sketch/Proof2Sketch';
-import Shot8, { compositionConfig as cfg8 } from './shots/proof-3-captions/Proof3Captions';
-import Shot9, { compositionConfig as cfg9 } from './shots/proof-4-icons/Proof4Icons';
-import Shot10, { compositionConfig as cfg10 } from './shots/proof-5-morph/Proof5Morph';
-import Shot11, { compositionConfig as cfg11 } from './shots/proof-6-paper/Proof6Paper';
-import Shot12, { compositionConfig as cfg12 } from './shots/read-0-test/Read0Test';
-import Shot13, { compositionConfig as cfg13 } from './shots/read-1/Read1Kamatz';
-import Shot14, { compositionConfig as cfg14 } from './shots/read-2/Read2Patach';
-import Shot15, { compositionConfig as cfg15 } from './shots/read-3/Read3KamatzAba';
-import Shot16, { compositionConfig as cfg16 } from './shots/read-4/Read4KamatzAba';
-import Shot17, { compositionConfig as cfg17 } from './shots/short-10/Short10Fees';
-import Shot18, { compositionConfig as cfg18 } from './shots/short-11/Short11Map';
-import Shot19, { compositionConfig as cfg19 } from './shots/short-12/Short12Orbit';
-import Shot20, { compositionConfig as cfg20 } from './shots/short-13/Short13DadDaughter';
-import Shot21, { compositionConfig as cfg21 } from './shots/short-14/Short14TwoEnvelopes';
-import Shot22, { compositionConfig as cfg22 } from './shots/short-15/Short15Traffic';
-import Shot23, { compositionConfig as cfg23, defaultProps as dp23, calculateMetadata as cm23 } from './shots/short-16/Short16Formy';
-import Shot24, { compositionConfig as cfg24 } from './shots/short-17/Short17Sign';
-import Shot25, { compositionConfig as cfg25 } from './shots/short-18/Short18BuAleph';
-import Shot26, { compositionConfig as cfg26 } from './shots/short-19/Short19KamatzGan';
-import Shot27, { compositionConfig as cfg27, defaultProps as dp27, calculateMetadata as cm27 } from './shots/short-1/Short1Chess';
-import Shot28, { compositionConfig as cfg28 } from './shots/short-20-karaoke/Short20Karaoke';
-import Shot29, { compositionConfig as cfg29 } from './shots/short-2/Short2Math';
-import Shot30, { compositionConfig as cfg30 } from './shots/short-3/Short3Algo';
-import Shot31, { compositionConfig as cfg31 } from './shots/short-4/Short4Reflog';
-import Shot32, { compositionConfig as cfg32 } from './shots/short-5/Short5Monty';
-import Shot33, { compositionConfig as cfg33 } from './shots/short-6/Short6Sheet';
-import Shot34, { compositionConfig as cfg34 } from './shots/short-7/Short7Kids';
-import Shot35, { compositionConfig as cfg35 } from './shots/short-8/Short8Phish';
-import Shot36, { compositionConfig as cfg36 } from './shots/short-9/Short9Chords';
-import Shot37, { compositionConfig as cfg37 } from './shots/vox-1/Vox1Coffee';
-import Shot38, { compositionConfig as cfg38 } from './shots/vox-2/Vox2DadDaughter';
-import Shot39, { compositionConfig as cfg39 } from './shots/vox-3/Vox3DorSever';
-import Shot40, { compositionConfig as cfg40, defaultProps as dp40, calculateMetadata as cm40 } from './shots/vox-spec/VoxSpec';
+import Shot3, { compositionConfig as cfg3 } from './shots/ad-5/Ad5NoaStudio';
+import Shot4, { compositionConfig as cfg4 } from './shots/ai-1/Ai1Door';
+import Shot5, { compositionConfig as cfg5, defaultProps as dp5, calculateMetadata as cm5 } from './shots/ai-1/AiSpec';
+import Shot6, { compositionConfig as cfg6, defaultProps as dp6, calculateMetadata as cm6 } from './shots/avatar-spec/AvatarSpec';
+import Shot7, { compositionConfig as cfg7 } from './shots/proof-1-lottie/Proof1Lottie';
+import Shot8, { compositionConfig as cfg8 } from './shots/proof-2-sketch/Proof2Sketch';
+import Shot9, { compositionConfig as cfg9 } from './shots/proof-3-captions/Proof3Captions';
+import Shot10, { compositionConfig as cfg10 } from './shots/proof-4-icons/Proof4Icons';
+import Shot11, { compositionConfig as cfg11 } from './shots/proof-5-morph/Proof5Morph';
+import Shot12, { compositionConfig as cfg12 } from './shots/proof-6-paper/Proof6Paper';
+import Shot13, { compositionConfig as cfg13 } from './shots/read-0-test/Read0Test';
+import Shot14, { compositionConfig as cfg14 } from './shots/read-1/Read1Kamatz';
+import Shot15, { compositionConfig as cfg15 } from './shots/read-2/Read2Patach';
+import Shot16, { compositionConfig as cfg16 } from './shots/read-3/Read3KamatzAba';
+import Shot17, { compositionConfig as cfg17 } from './shots/read-4/Read4KamatzAba';
+import Shot18, { compositionConfig as cfg18 } from './shots/short-10/Short10Fees';
+import Shot19, { compositionConfig as cfg19 } from './shots/short-11/Short11Map';
+import Shot20, { compositionConfig as cfg20 } from './shots/short-12/Short12Orbit';
+import Shot21, { compositionConfig as cfg21 } from './shots/short-13/Short13DadDaughter';
+import Shot22, { compositionConfig as cfg22 } from './shots/short-14/Short14TwoEnvelopes';
+import Shot23, { compositionConfig as cfg23 } from './shots/short-15/Short15Traffic';
+import Shot24, { compositionConfig as cfg24, defaultProps as dp24, calculateMetadata as cm24 } from './shots/short-16/Short16Formy';
+import Shot25, { compositionConfig as cfg25 } from './shots/short-17/Short17Sign';
+import Shot26, { compositionConfig as cfg26 } from './shots/short-18/Short18BuAleph';
+import Shot27, { compositionConfig as cfg27 } from './shots/short-19/Short19KamatzGan';
+import Shot28, { compositionConfig as cfg28, defaultProps as dp28, calculateMetadata as cm28 } from './shots/short-1/Short1Chess';
+import Shot29, { compositionConfig as cfg29 } from './shots/short-20-karaoke/Short20Karaoke';
+import Shot30, { compositionConfig as cfg30 } from './shots/short-2/Short2Math';
+import Shot31, { compositionConfig as cfg31 } from './shots/short-3/Short3Algo';
+import Shot32, { compositionConfig as cfg32 } from './shots/short-4/Short4Reflog';
+import Shot33, { compositionConfig as cfg33 } from './shots/short-5/Short5Monty';
+import Shot34, { compositionConfig as cfg34 } from './shots/short-6/Short6Sheet';
+import Shot35, { compositionConfig as cfg35 } from './shots/short-7/Short7Kids';
+import Shot36, { compositionConfig as cfg36 } from './shots/short-8/Short8Phish';
+import Shot37, { compositionConfig as cfg37 } from './shots/short-9/Short9Chords';
+import Shot38, { compositionConfig as cfg38 } from './shots/vox-1/Vox1Coffee';
+import Shot39, { compositionConfig as cfg39 } from './shots/vox-2/Vox2DadDaughter';
+import Shot40, { compositionConfig as cfg40 } from './shots/vox-3/Vox3DorSever';
+import Shot41, { compositionConfig as cfg41, defaultProps as dp41, calculateMetadata as cm41 } from './shots/vox-spec/VoxSpec';
 
 export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculateMetadata?: any }[] = [
   { Comp: Shot0 as React.FC, config: cfg0, defaultProps: dp0, calculateMetadata: cm0 },
   { Comp: Shot1 as React.FC, config: cfg1, defaultProps: dp1, calculateMetadata: cm1 },
   { Comp: Shot2 as React.FC, config: cfg2, defaultProps: dp2, calculateMetadata: cm2 },
   { Comp: Shot3 as React.FC, config: cfg3 },
-  { Comp: Shot4 as React.FC, config: cfg4, defaultProps: dp4, calculateMetadata: cm4 },
+  { Comp: Shot4 as React.FC, config: cfg4 },
   { Comp: Shot5 as React.FC, config: cfg5, defaultProps: dp5, calculateMetadata: cm5 },
-  { Comp: Shot6 as React.FC, config: cfg6 },
+  { Comp: Shot6 as React.FC, config: cfg6, defaultProps: dp6, calculateMetadata: cm6 },
   { Comp: Shot7 as React.FC, config: cfg7 },
   { Comp: Shot8 as React.FC, config: cfg8 },
   { Comp: Shot9 as React.FC, config: cfg9 },
@@ -66,12 +67,12 @@ export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculate
   { Comp: Shot20 as React.FC, config: cfg20 },
   { Comp: Shot21 as React.FC, config: cfg21 },
   { Comp: Shot22 as React.FC, config: cfg22 },
-  { Comp: Shot23 as React.FC, config: cfg23, defaultProps: dp23, calculateMetadata: cm23 },
-  { Comp: Shot24 as React.FC, config: cfg24 },
+  { Comp: Shot23 as React.FC, config: cfg23 },
+  { Comp: Shot24 as React.FC, config: cfg24, defaultProps: dp24, calculateMetadata: cm24 },
   { Comp: Shot25 as React.FC, config: cfg25 },
   { Comp: Shot26 as React.FC, config: cfg26 },
-  { Comp: Shot27 as React.FC, config: cfg27, defaultProps: dp27, calculateMetadata: cm27 },
-  { Comp: Shot28 as React.FC, config: cfg28 },
+  { Comp: Shot27 as React.FC, config: cfg27 },
+  { Comp: Shot28 as React.FC, config: cfg28, defaultProps: dp28, calculateMetadata: cm28 },
   { Comp: Shot29 as React.FC, config: cfg29 },
   { Comp: Shot30 as React.FC, config: cfg30 },
   { Comp: Shot31 as React.FC, config: cfg31 },
@@ -83,5 +84,6 @@ export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculate
   { Comp: Shot37 as React.FC, config: cfg37 },
   { Comp: Shot38 as React.FC, config: cfg38 },
   { Comp: Shot39 as React.FC, config: cfg39 },
-  { Comp: Shot40 as React.FC, config: cfg40, defaultProps: dp40, calculateMetadata: cm40 },
+  { Comp: Shot40 as React.FC, config: cfg40 },
+  { Comp: Shot41 as React.FC, config: cfg41, defaultProps: dp41, calculateMetadata: cm41 },
 ];
