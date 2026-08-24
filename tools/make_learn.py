@@ -507,7 +507,10 @@ def main():
     declared = meta.get(pack["concept_key"]) or meta.get("key")
     if args.key:
         declared = args.key
-    if declared and declared != detected:
+    # A pack may supply key_matches(declared, detected) for keys that legitimately differ
+    # from the tally (e.g. number add-a-b keys teach the sum's count, not the key name).
+    km = pack.get("key_matches")
+    if declared and (declared != detected if km is None else not km(declared, detected)):
         sys.exit(f"CONTRACT FAIL: front matter/--key says {declared!r} but the pointed units "
                  f"teach {detected!r} (tally). Never teach a wrong sign name. Fix the transcript "
                  f"or override with --key {detected}.")

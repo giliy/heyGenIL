@@ -103,6 +103,22 @@ def detect(beats):
     return "one"
 
 
+def key_matches(declared, detected):
+    """Contract check for number keys. A counting key must equal what the beats teach.
+    An add key (add-a-b) is valid when its computed count (a+b) equals the detected
+    number's count — e.g. add-1-1 teaches the tally of 2 = the "two" count-along, which
+    is correct content, not a wrong sign name. A genuine mismatch still fails: declared
+    "five" but the beats count to three (five.count=5 != three.count=3)."""
+    if declared == detected:
+        return True
+    dr = get_number(declared)
+    dd = get_number(detected)
+    if dr is None or dd is None:
+        return False
+    # add rows have no numeral; compare the COMPUTED count (the tally the video teaches).
+    return dr.get("count") == dd.get("count")
+
+
 def _count_word(r, n):
     """The n-th counting word (1-based) for a row — the masculine count-along form."""
     w = r.get("word_m", "")
@@ -179,6 +195,7 @@ PACK = {
     "get_row": get_number,
     "keys": keys,
     "detect": detect,
+    "key_matches": key_matches,
     "sound_of_key": {},
     "composition_id": _composition_id,
     # a number's hero is a whole counting word (multi-grapheme), not a single glyph —
