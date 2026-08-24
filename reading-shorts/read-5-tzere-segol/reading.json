@@ -1,0 +1,53 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "AUTO-DERIVED by tools/make_learn.py from script.md. role in isolated|cv|blend|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back. word = one continuous clip -> NO units[].",
+  "units": [
+    {
+      "id": "isolated-bet-0",
+      "grapheme": "בֵּ",
+      "sound": "be",
+      "role": "isolated"
+    },
+    {
+      "id": "cv-bet-1",
+      "grapheme": "בֵּ",
+      "sound": "be",
+      "role": "cv"
+    },
+    {
+      "id": "cv-mem-2",
+      "grapheme": "מֵ",
+      "sound": "me",
+      "role": "cv"
+    },
+    {
+      "id": "cv-lamed-3",
+      "grapheme": "לֵ",
+      "sound": "le",
+      "role": "cv"
+    },
+    {
+      "id": "cv-shin-4",
+      "grapheme": "שֵׁ",
+      "sound": "she",
+      "role": "cv"
+    },
+    {
+      "id": "blend-daletlamedtav-5",
+      "grapheme": "דֶּלֶת",
+      "sound": "de-e",
+      "role": "blend",
+      "syllables": [
+        "דֶּ",
+        "לֶת"
+      ]
+    },
+    {
+      "id": "word-daletlamedtav-6",
+      "grapheme": "דֶּלֶת!",
+      "sound": "",
+      "role": "word"
+    }
+  ]
+}

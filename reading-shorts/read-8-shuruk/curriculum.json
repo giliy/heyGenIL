@@ -1,0 +1,56 @@
+{
+  "order": 6,
+  "key": "shuruk",
+  "sign": "בוּ",
+  "name_he": "שׁוּרוּק",
+  "sound": "u",
+  "status": "draft",
+  "mnemonic": null,
+  "note": "shuruk BEFORE kubutz (findings §1); shuruk = vav+dot, NOT a separate grapheme",
+  "targetLetters": [
+    "בּ",
+    "ג",
+    "ל",
+    "מ",
+    "ס"
+  ],
+  "cv": [
+    "בּוּ",
+    "גּוּ",
+    "לוּ",
+    "מוּ"
+  ],
+  "blendWords": [
+    {
+      "word": "מוּל",
+      "units": [
+        "מוּל"
+      ]
+    },
+    {
+      "word": "סוּס",
+      "units": [
+        "סוּס"
+      ]
+    },
+    {
+      "word": "גּוּל",
+      "units": [
+        "גּוּל"
+      ]
+    },
+    {
+      "word": "לוּל",
+      "units": [
+        "לוּל"
+      ]
+    },
+    {
+      "word": "בּוּז",
+      "units": [
+        "בּוּז"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

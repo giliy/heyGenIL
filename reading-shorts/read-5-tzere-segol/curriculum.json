@@ -1,0 +1,58 @@
+{
+  "order": 3,
+  "key": "tzere-segol",
+  "sign": "בֵּ/בֶּ",
+  "name_he": "צֵירֵי/סֶגּוֹל",
+  "sound": "e",
+  "status": "draft",
+  "mnemonic": null,
+  "note": "same-sound pair (/e/)",
+  "targetLetters": [
+    "בּ",
+    "מ",
+    "ל",
+    "שׁ",
+    "ד"
+  ],
+  "cv": [
+    "בֵּ",
+    "מֵ",
+    "לֵ",
+    "שֵׁ"
+  ],
+  "blendWords": [
+    {
+      "word": "בֵּית",
+      "units": [
+        "בֵּית"
+      ]
+    },
+    {
+      "word": "לֵב",
+      "units": [
+        "לֵב"
+      ]
+    },
+    {
+      "word": "שֵׁם",
+      "units": [
+        "שֵׁם"
+      ]
+    },
+    {
+      "word": "דֶּלֶת",
+      "units": [
+        "דֶּ",
+        "לֶת"
+      ]
+    },
+    {
+      "word": "יֶלֶד",
+      "units": [
+        "יֶ",
+        "לֶד"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

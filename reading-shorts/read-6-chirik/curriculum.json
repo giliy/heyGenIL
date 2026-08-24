@@ -1,0 +1,56 @@
+{
+  "order": 4,
+  "key": "chirik",
+  "sign": "בִּ",
+  "name_he": "חִירִיק",
+  "sound": "i",
+  "status": "draft",
+  "mnemonic": null,
+  "targetLetters": [
+    "בּ",
+    "ד",
+    "ל",
+    "מ",
+    "פ"
+  ],
+  "cv": [
+    "בִּ",
+    "דִ",
+    "לִ",
+    "מִ"
+  ],
+  "blendWords": [
+    {
+      "word": "דָּגִים",
+      "units": [
+        "דָּ",
+        "גִים"
+      ]
+    },
+    {
+      "word": "לִים",
+      "units": [
+        "לִים"
+      ]
+    },
+    {
+      "word": "מִים",
+      "units": [
+        "מִים"
+      ]
+    },
+    {
+      "word": "פִּיל",
+      "units": [
+        "פִּיל"
+      ]
+    },
+    {
+      "word": "דִּל",
+      "units": [
+        "דִּל"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

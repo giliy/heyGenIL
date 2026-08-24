@@ -1,0 +1,68 @@
+{
+  "_comment": "DAILY CURRICULUM QUEUE — the scheduling spine for the daily learn-shorts engine (tools/learn_daily.py). One entry per video, ordered by 'order'. type selects the learn_data pack; key is the per-type concept key. proj is the repo-relative project dir. status drives the runner: queued -> generating -> pass | failed. A script.md is auto-generated from the pack row when none exists (templated video, no human authoring). publishing copies the mastered mp4 to publish/<date>-<type>-<key>/ for a human to post.",
+  "videos": [
+    {
+      "order": 1,
+      "proj": "reading-shorts/read-1-kamatz",
+      "type": "nikkud",
+      "key": "kamatz",
+      "status": "pass"
+    },
+    {
+      "order": 2,
+      "proj": "reading-shorts/read-2-patach",
+      "type": "nikkud",
+      "key": "patach",
+      "status": "pass"
+    },
+    {
+      "order": 3,
+      "proj": "reading-shorts/read-5-tzere-segol",
+      "type": "nikkud",
+      "key": "tzere-segol",
+      "status": "pass"
+    },
+    {
+      "order": 4,
+      "proj": "reading-shorts/read-6-chirik",
+      "type": "nikkud",
+      "key": "chirik",
+      "status": "pass"
+    },
+    {
+      "order": 5,
+      "proj": "reading-shorts/read-7-cholam",
+      "type": "nikkud",
+      "key": "cholam",
+      "status": "queued"
+    },
+    {
+      "order": 6,
+      "proj": "reading-shorts/read-8-shuruk",
+      "type": "nikkud",
+      "key": "shuruk",
+      "status": "queued"
+    },
+    {
+      "order": 7,
+      "proj": "reading-shorts/read-9-kubutz",
+      "type": "nikkud",
+      "key": "kubutz",
+      "status": "queued"
+    },
+    {
+      "order": 8,
+      "proj": "reading-shorts/read-10-shva",
+      "type": "nikkud",
+      "key": "shva",
+      "status": "queued"
+    },
+    {
+      "order": 9,
+      "proj": "reading-shorts/read-11-dagesh-kal",
+      "type": "nikkud",
+      "key": "dagesh-kal",
+      "status": "queued"
+    }
+  ]
+}

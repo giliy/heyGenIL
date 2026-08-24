@@ -1,0 +1,12 @@
+{
+  "run": "2026-08-24",
+  "results": [
+    {
+      "dir": "reading-shorts/read-6-chirik",
+      "type": "nikkud",
+      "key": "chirik",
+      "ok": true,
+      "compId": "Read6Chirik"
+    }
+  ]
+}

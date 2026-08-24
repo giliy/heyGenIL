@@ -1,0 +1,31 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "AUTO-DERIVED by tools/make_learn.py from script.md. role in isolated|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back. word = one continuous clip -> NO units[].",
+  "units": [
+    {
+      "id": "isolated-alef-0",
+      "grapheme": "א",
+      "sound": "(א)",
+      "role": "isolated"
+    },
+    {
+      "id": "word-alefbetalef-1",
+      "grapheme": "אַבָּא",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefnunyod-2",
+      "grapheme": "אֲנִי",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefreshnun-3",
+      "grapheme": "אֹרֶן",
+      "sound": "",
+      "role": "word"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "id": "letter-1-alef",
+  "title": "בּוּ מְלַמֵּד אֶת הָאוֹת אָלֶף",
+  "mode": "letter",
+  "language": "he",
+  "series": "bu-koala-letters",
+  "composition": "Letter1Alef",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 27.365
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type letter) from script.md. Teaches אָלֶף (alef, /(א)/) to ages 5-7. mode:letter, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "letter": {
+    "letter": "א",
+    "sign": "א",
+    "sound": "(א)",
+    "targetLetters": [
+      "א"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "אַבָּא",
+      "אֲנִי",
+      "אֹרֶן"
+    ],
+    "name_he": "אָלֶף",
+    "sofit": false
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת אָלֶף!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת אָלֶף!",
+      "start": 0.0,
+      "end": 7.033
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "א",
+      "tts": "א",
+      "start": 8.033,
+      "end": 8.633,
+      "units": [
+        {
+          "g": "א",
+          "start": 8.333,
+          "end": 8.633
+        }
+      ],
+      "sub": "אָלֶף — צֹורָה שֶׁל הָאוֹת"
+    },
+    {
+      "beat": "read-word",
+      "text": "אַבָּא",
+      "tts": "אַבָּא",
+      "start": 10.333,
+      "end": 12.366
+    },
+    {
+      "beat": "read-word",
+      "text": "אֲנִי",
+      "tts": "אֲנִי",
+      "start": 13.666,
+      "end": 15.699
+    },
+    {
+      "beat": "read-word",
+      "text": "אֹרֶן",
+      "tts": "אֹרֶן",
+      "start": 16.999,
+      "end": 19.032,
+      "sub": "יוֹפִי! מִלִּים עִם הָאוֹת אָלֶף!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 20.332,
+      "end": 24.865,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם אוֹמְרִים!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 7.033
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 8.033,
+      "end_s": 8.633
+    },
+    {
+      "name": "read-word",
+      "start_s": 10.333,
+      "end_s": 12.366
+    },
+    {
+      "name": "read-word",
+      "start_s": 13.666,
+      "end_s": 15.699
+    },
+    {
+      "name": "read-word",
+      "start_s": 16.999,
+      "end_s": 19.032
+    },
+    {
+      "name": "call-response",
+      "start_s": 20.332,
+      "end_s": 27.365
+    }
+  ]
+}

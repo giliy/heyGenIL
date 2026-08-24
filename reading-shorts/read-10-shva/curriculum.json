@@ -1,0 +1,57 @@
+{
+  "order": 8,
+  "key": "shva",
+  "sign": "בְּ",
+  "name_he": "שְׁוָוא",
+  "sound": "ə/∅",
+  "status": "draft",
+  "mnemonic": null,
+  "note": "LATE, its own video; שווא נח (resting) before שווא נע (whisper)",
+  "targetLetters": [
+    "בּ",
+    "ד",
+    "ל",
+    "מ",
+    "שׁ"
+  ],
+  "cv": [
+    "בְּ",
+    "דְ",
+    "לְ",
+    "מְ"
+  ],
+  "blendWords": [
+    {
+      "word": "מְדִנָה",
+      "units": [
+        "מְ",
+        "דִ",
+        "נָה"
+      ]
+    },
+    {
+      "word": "לְבָנָה",
+      "units": [
+        "לְ",
+        "בָ",
+        "נָה"
+      ]
+    },
+    {
+      "word": "שְׁמֹנֶה",
+      "units": [
+        "שְׁ",
+        "מֹ",
+        "נֶה"
+      ]
+    },
+    {
+      "word": "דְּלִי",
+      "units": [
+        "דְּ",
+        "לִי"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

@@ -1,0 +1,50 @@
+{
+  "order": 9,
+  "key": "dagesh-kal",
+  "sign": "בּ",
+  "name_he": "דָּגֵשׁ קַל",
+  "sound": "b/v",
+  "status": "draft",
+  "mnemonic": null,
+  "note": "דגש קל only — B/K/P vs V/CH/F; דגש חזק later",
+  "targetLetters": [
+    "בּ",
+    "כּ",
+    "פּ"
+  ],
+  "cv": [
+    "בּ",
+    "כּ",
+    "פּ"
+  ],
+  "blendWords": [
+    {
+      "word": "בֵּית",
+      "units": [
+        "בֵּית"
+      ]
+    },
+    {
+      "word": "כֶּלֶב",
+      "units": [
+        "כֶּ",
+        "לֶב"
+      ]
+    },
+    {
+      "word": "פֶּרַח",
+      "units": [
+        "פֶּ",
+        "רַח"
+      ]
+    },
+    {
+      "word": "בֹּקֶר",
+      "units": [
+        "בֹּ",
+        "קֶר"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

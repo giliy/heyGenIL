@@ -1,0 +1,156 @@
+{
+  "id": "read-6-chirik",
+  "title": "בּוּ מְלַמֵּד חִירִיק",
+  "mode": "reading",
+  "language": "he",
+  "series": "bu-koala-reading",
+  "composition": "Read6Chirik",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 27.978
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type nikkud) from script.md. Teaches חִירִיק (chirik, /i/) to ages 5-7. mode:reading, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "reading": {
+    "nikkud": "chirik",
+    "sign": "בִּ",
+    "sound": "i",
+    "targetLetters": [
+      "בּ",
+      "ד",
+      "ל",
+      "מ"
+    ],
+    "progression": [
+      "isolated",
+      "cv",
+      "blend",
+      "word"
+    ],
+    "anchorWords": [
+      "פִּיל"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים חִירִיק! הַצְּלִיל \"אִי\"!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים חִירִיק! הַצְּלִיל \"אִי\"!",
+      "start": 0.0,
+      "end": 7.152
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "בִּ",
+      "tts": "בִּ",
+      "start": 8.033,
+      "end": 8.653,
+      "units": [
+        {
+          "g": "בִּ",
+          "start": 8.333,
+          "end": 8.653
+        }
+      ],
+      "sub": "חִירִיק — אוֹמְרִים \"אִי\""
+    },
+    {
+      "beat": "teach-cv",
+      "text": "בִּ דִ לִ מִ",
+      "tts": "בִּ דִ לִ מִ",
+      "start": 10.233,
+      "units": [
+        {
+          "g": "בִּ",
+          "start": 10.533,
+          "end": 10.853
+        },
+        {
+          "g": "דִ",
+          "start": 11.703,
+          "end": 12.023
+        },
+        {
+          "g": "לִ",
+          "start": 12.893,
+          "end": 13.213
+        },
+        {
+          "g": "מִ",
+          "start": 14.083,
+          "end": 14.423
+        }
+      ],
+      "end": 14.423
+    },
+    {
+      "beat": "blend",
+      "text": "פִּיל",
+      "tts": "פִּיל",
+      "start": 16.033,
+      "units": [
+        {
+          "g": "פִּיל",
+          "start": 16.333,
+          "end": 16.673
+        }
+      ],
+      "end": 17.809
+    },
+    {
+      "beat": "read-word",
+      "text": "פִּיל!",
+      "tts": "פִּיל!",
+      "start": 20.033,
+      "end": 21.833,
+      "sub": "יוֹפִי! קָרָאתָ מִלָּה!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 23.366,
+      "end": 25.478,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם אוֹמְרִים!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 8.033
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 8.033,
+      "end_s": 10.233
+    },
+    {
+      "name": "teach-cv",
+      "start_s": 10.233,
+      "end_s": 16.033
+    },
+    {
+      "name": "blend",
+      "start_s": 16.033,
+      "end_s": 20.033
+    },
+    {
+      "name": "read-word",
+      "start_s": 20.033,
+      "end_s": 23.366
+    },
+    {
+      "name": "call-response",
+      "start_s": 23.366,
+      "end_s": 27.978
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

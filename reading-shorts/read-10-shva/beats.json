@@ -1,0 +1,160 @@
+{
+  "id": "read-10-shva",
+  "title": "בּוּ מְלַמֵּד שְׁוָוא",
+  "mode": "reading",
+  "language": "he",
+  "series": "bu-koala-reading",
+  "composition": "Read10Shva",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 32.399
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type nikkud) from script.md. Teaches שְׁוָוא (shva, /ə/∅/) to ages 5-7. mode:reading, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "reading": {
+    "nikkud": "shva",
+    "sign": "בְּ",
+    "sound": "ə/∅",
+    "targetLetters": [
+      "בּ",
+      "ד",
+      "ל",
+      "מ"
+    ],
+    "progression": [
+      "isolated",
+      "cv",
+      "blend",
+      "word"
+    ],
+    "anchorWords": [
+      "דְּלִי"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שְׁוָוא! הַנְּקֻדָּה הַשּׁוֹקַעַת!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שְׁוָוא! הַנְּקֻדָּה הַשּׁוֹקַעַת!",
+      "start": 0.0,
+      "end": 7.033
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "בְּ",
+      "tts": "בְּ",
+      "start": 8.033,
+      "end": 8.633,
+      "units": [
+        {
+          "g": "בְּ",
+          "start": 8.333,
+          "end": 8.633
+        }
+      ],
+      "sub": "שְׁוָוא — אוֹמְרִים \"א\" חֲרִישִׁית"
+    },
+    {
+      "beat": "teach-cv",
+      "text": "בְּ דְ לְ מְ",
+      "tts": "בְּ דְ לְ מְ",
+      "start": 10.233,
+      "units": [
+        {
+          "g": "בְּ",
+          "start": 10.533,
+          "end": 10.833
+        },
+        {
+          "g": "דְ",
+          "start": 11.733,
+          "end": 12.033
+        },
+        {
+          "g": "לְ",
+          "start": 12.933,
+          "end": 13.233
+        },
+        {
+          "g": "מְ",
+          "start": 14.133,
+          "end": 14.433
+        }
+      ],
+      "end": 14.433
+    },
+    {
+      "beat": "blend",
+      "text": "דְּלִי",
+      "tts": "דְּלִי",
+      "start": 16.033,
+      "units": [
+        {
+          "g": "דְּ",
+          "start": 16.333,
+          "end": 16.633
+        },
+        {
+          "g": "לִי",
+          "start": 18.333,
+          "end": 18.633
+        }
+      ],
+      "end": 20.733
+    },
+    {
+      "beat": "read-word",
+      "text": "דְּלִי!",
+      "tts": "דְּלִי!",
+      "start": 22.033,
+      "end": 24.066,
+      "sub": "יוֹפִי! קָרָאתָ מִלָּה!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 25.366,
+      "end": 29.899,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם אוֹמְרִים!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 7.033
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 8.033,
+      "end_s": 8.633
+    },
+    {
+      "name": "teach-cv",
+      "start_s": 10.233,
+      "end_s": 14.433
+    },
+    {
+      "name": "blend",
+      "start_s": 16.033,
+      "end_s": 20.733
+    },
+    {
+      "name": "read-word",
+      "start_s": 22.033,
+      "end_s": 24.066
+    },
+    {
+      "name": "call-response",
+      "start_s": 25.366,
+      "end_s": 32.399
+    }
+  ]
+}

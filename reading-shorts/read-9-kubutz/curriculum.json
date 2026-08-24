@@ -1,0 +1,52 @@
+{
+  "order": 7,
+  "key": "kubutz",
+  "sign": "בֻּ",
+  "name_he": "קֻבּוּץ",
+  "sound": "u",
+  "status": "draft",
+  "mnemonic": null,
+  "note": "same sound, different look — confusion point",
+  "targetLetters": [
+    "בּ",
+    "ד",
+    "ל",
+    "ס",
+    "ת"
+  ],
+  "cv": [
+    "בֻּ",
+    "דֻ",
+    "לֻ",
+    "סֻ"
+  ],
+  "blendWords": [
+    {
+      "word": "סֻכָּר",
+      "units": [
+        "סֻ",
+        "כָּר"
+      ]
+    },
+    {
+      "word": "דֻּבִּי",
+      "units": [
+        "דֻּ",
+        "בִּי"
+      ]
+    },
+    {
+      "word": "לֻל",
+      "units": [
+        "לֻל"
+      ]
+    },
+    {
+      "word": "תֻּת",
+      "units": [
+        "תֻּת"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

@@ -1,0 +1,56 @@
+{
+  "order": 5,
+  "key": "cholam",
+  "sign": "בֹּ",
+  "name_he": "חוֹלָם",
+  "sound": "o",
+  "status": "draft",
+  "mnemonic": null,
+  "note": "cholam/shin-dot collision is its own teaching moment (findings §2/D)",
+  "targetLetters": [
+    "בּ",
+    "ל",
+    "מ",
+    "ר",
+    "שׁ"
+  ],
+  "cv": [
+    "בֹּ",
+    "לֹ",
+    "מֹ",
+    "רֹ"
+  ],
+  "blendWords": [
+    {
+      "word": "לֹא",
+      "units": [
+        "לֹא"
+      ]
+    },
+    {
+      "word": "רֹאשׁ",
+      "units": [
+        "רֹאשׁ"
+      ]
+    },
+    {
+      "word": "שׁוֹק",
+      "units": [
+        "שׁוֹק"
+      ]
+    },
+    {
+      "word": "בּוֹר",
+      "units": [
+        "בּוֹר"
+      ]
+    },
+    {
+      "word": "טוֹב",
+      "units": [
+        "טוֹב"
+      ]
+    }
+  ],
+  "musicBed": "kids-play-ukulele"
+}

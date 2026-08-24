@@ -107,7 +107,26 @@ RUBRIC_READING = {
     "objective": ["audio_gate", "pause"],
 }
 
-RUBRICS = {"ad": RUBRIC_AD, "kids": RUBRIC_KIDS, "reading": RUBRIC_READING}
+RUBRIC_LEARN = {
+    "title": "Learn track release rubric (\"does it teach ONE concept CORRECTLY, calm?\")",
+    "fatal": [
+        "TAUGHT CONCEPT IS CORRECT: the sign/letter/number/word = the spoken unit, and the "
+        "on-screen mark matches. A wrong vowel/letter/number taught to a child is the worst-case bug.",
+        "Highlight synced to the exact unit being spoken (no drift) — the product's promise.",
+        "CALM: no snap cuts, slowed motherese rate, warm resolution.",
+    ],
+    "critical": [
+        "Call-and-response with a GENUINE 2-4s engineered pause (the core differentiator).",
+        "Correct mark/word/count on every tile — a wrong sign teaches the wrong thing.",
+        "ONE concept per video, clear ladder (teach→practice→read→respond).",
+        "On-screen count/number equals the spoken number (computed, never asserted).",
+        "Parent-safe, ad-safe, no uncanny AI. Warm, repeating, predictable.",
+        "Would a parent trust this to teach their child Hebrew?",
+    ],
+    "objective": ["audio_gate", "pause"],
+}
+
+RUBRICS = {"ad": RUBRIC_AD, "kids": RUBRIC_KIDS, "reading": RUBRIC_READING, "learn": RUBRIC_LEARN}
 
 
 # ---------------------------------------------------------------------------
@@ -180,7 +199,7 @@ SUBCHECKS = {
 # ---------------------------------------------------------------------------
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("track", choices=["ad", "kids", "reading"], help="which track rubric")
+    ap.add_argument("track", choices=["ad", "kids", "reading", "learn"], help="which track rubric")
     ap.add_argument("beats", help="path to the beats.json for the video")
     ap.add_argument("--sfx-plan", default=None, help="optional sfx-plan.json (ad)")
     ap.add_argument("--audio", default=None, help="optional final muxed audio/video to run the delivery gate on")
