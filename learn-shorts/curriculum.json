@@ -69,56 +69,56 @@
       "proj": "letter-shorts/letter-1-alef",
       "type": "letter",
       "key": "alef",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 11,
       "proj": "letter-shorts/letter-2-bet",
       "type": "letter",
       "key": "bet",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 12,
       "proj": "letter-shorts/letter-3-gimel",
       "type": "letter",
       "key": "gimel",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 13,
       "proj": "letter-shorts/letter-4-dalet",
       "type": "letter",
       "key": "dalet",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 14,
       "proj": "letter-shorts/letter-5-he",
       "type": "letter",
       "key": "he",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 15,
       "proj": "letter-shorts/letter-6-vav",
       "type": "letter",
       "key": "vav",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 16,
       "proj": "letter-shorts/letter-7-zayin",
       "type": "letter",
       "key": "zayin",
-      "status": "queued"
+      "status": "pass"
     },
     {
       "order": 17,
       "proj": "letter-shorts/letter-8-chet",
       "type": "letter",
       "key": "chet",
-      "status": "queued"
+      "status": "pass"
     }
   ]
 }

@@ -57,7 +57,7 @@
  },
  {
   "id": "Letter1Alef",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -65,7 +65,7 @@
  },
  {
   "id": "Letter2Bet",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -73,7 +73,7 @@
  },
  {
   "id": "Letter3Gimel",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -81,7 +81,7 @@
  },
  {
   "id": "Letter4Dalet",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -89,7 +89,7 @@
  },
  {
   "id": "Letter5He",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -97,7 +97,7 @@
  },
  {
   "id": "Letter6Vav",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,
@@ -105,7 +105,15 @@
  },
  {
   "id": "Letter7Zayin",
-  "durationInSeconds": 27.365,
+  "durationInSeconds": 24.944,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Letter8Chet",
+  "durationInSeconds": 24.944,
   "fps": 30,
   "width": 1080,
   "height": 1920,

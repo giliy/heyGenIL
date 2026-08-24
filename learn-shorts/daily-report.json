@@ -2,39 +2,11 @@
   "run": "2026-08-24",
   "results": [
     {
-      "dir": "reading-shorts/read-7-cholam",
-      "type": "nikkud",
-      "key": "cholam",
+      "dir": "letter-shorts/letter-1-alef",
+      "type": "letter",
+      "key": "alef",
       "ok": true,
-      "compId": "Read7Cholam"
-    },
-    {
-      "dir": "reading-shorts/read-8-shuruk",
-      "type": "nikkud",
-      "key": "shuruk",
-      "ok": true,
-      "compId": "Read8Shuruk"
-    },
-    {
-      "dir": "reading-shorts/read-9-kubutz",
-      "type": "nikkud",
-      "key": "kubutz",
-      "ok": true,
-      "compId": "Read9Kubutz"
-    },
-    {
-      "dir": "reading-shorts/read-10-shva",
-      "type": "nikkud",
-      "key": "shva",
-      "ok": true,
-      "compId": "Read10Shva"
-    },
-    {
-      "dir": "reading-shorts/read-11-dagesh-kal",
-      "type": "nikkud",
-      "key": "dagesh-kal",
-      "ok": true,
-      "compId": "Read11DageshKal"
+      "compId": "Letter1Alef"
     }
   ]
 }

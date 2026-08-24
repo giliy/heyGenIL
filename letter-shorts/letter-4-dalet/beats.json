@@ -1,10 +1,10 @@
 {
-  "id": "letter-1-alef",
-  "title": "בּוּ מְלַמֵּד אֶת הָאוֹת אָלֶף",
+  "id": "letter-4-dalet",
+  "title": "בּוּ מְלַמֵּד אֶת הָאוֹת דָּלֶת",
   "mode": "letter",
   "language": "he",
   "series": "bu-koala-letters",
-  "composition": "Letter1Alef",
+  "composition": "Letter4Dalet",
   "characterRef": "ai-shorts/bu-koala/character.jpg",
   "musicBed": "kids-play-ukulele",
   "format": {
@@ -14,70 +14,70 @@
     "durationSec": 24.944
   },
   "loop": false,
-  "notes": "AUTO-DERIVED by tools/make_learn.py (--type letter) from script.md. Teaches אָלֶף (alef, /(א)/) to ages 5-7. mode:letter, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type letter) from script.md. Teaches דָּלֶת (dalet, /d/) to ages 5-7. mode:letter, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
   "letter": {
-    "letter": "א",
-    "sign": "א",
-    "sound": "(א)",
+    "letter": "ד",
+    "sign": "ד",
+    "sound": "d",
     "targetLetters": [
-      "א"
+      "ד"
     ],
     "progression": [
       "isolated",
       "word"
     ],
     "anchorWords": [
-      "אַבָּא",
-      "אֲנִי",
-      "אֹרֶן"
+      "דֶּלֶת",
+      "דָּג",
+      "דְּלִי"
     ],
-    "name_he": "אָלֶף",
+    "name_he": "דָּלֶת",
     "sofit": false
   },
   "vo": [
     {
       "beat": "hook",
-      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת אָלֶף!",
-      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת אָלֶף!",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת דָּלֶת!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים אֶת הָאוֹת דָּלֶת!",
       "start": 0.0,
-      "end": 5.208
+      "end": 5.136
     },
     {
       "beat": "teach-isolated",
-      "text": "א",
-      "tts": "א",
+      "text": "ד",
+      "tts": "ד",
       "start": 8.033,
-      "end": 8.693,
+      "end": 8.833,
       "units": [
         {
-          "g": "א",
-          "start": 8.413,
-          "end": 8.693
+          "g": "ד",
+          "start": 8.333,
+          "end": 8.833
         }
       ],
-      "sub": "אָלֶף — צֹורָה שֶׁל הָאוֹת"
+      "sub": "דָּלֶת — צוּרָה שֶׁל הָאוֹת"
     },
     {
       "beat": "read-word",
-      "text": "אַבָּא",
-      "tts": "אַבָּא",
+      "text": "דֶּלֶת",
+      "tts": "דֶּלֶת",
       "start": 10.333,
-      "end": 12.133
+      "end": 12.469
     },
     {
       "beat": "read-word",
-      "text": "אֲנִי",
-      "tts": "אֲנִי",
+      "text": "דָּג",
+      "tts": "דָּג",
       "start": 13.666,
-      "end": 15.466
+      "end": 15.658
     },
     {
       "beat": "read-word",
-      "text": "אֹרֶן",
-      "tts": "אֹרֶן",
+      "text": "דְּלִי",
+      "tts": "דְּלִי",
       "start": 16.999,
-      "end": 19.015,
-      "sub": "יוֹפִי! מִלִּים עִם הָאוֹת אָלֶף!"
+      "end": 18.895,
+      "sub": "יוֹפִי! מִלִּים עִם הָאוֹת!"
     },
     {
       "beat": "call-response",

@@ -14,49 +14,50 @@ import Shot10, { compositionConfig as cfg10 } from './shots/letter-4/Letter4Dale
 import Shot11, { compositionConfig as cfg11 } from './shots/letter-5/Letter5He';
 import Shot12, { compositionConfig as cfg12 } from './shots/letter-6/Letter6Vav';
 import Shot13, { compositionConfig as cfg13 } from './shots/letter-7/Letter7Zayin';
-import Shot14, { compositionConfig as cfg14 } from './shots/proof-1-lottie/Proof1Lottie';
-import Shot15, { compositionConfig as cfg15 } from './shots/proof-2-sketch/Proof2Sketch';
-import Shot16, { compositionConfig as cfg16 } from './shots/proof-3-captions/Proof3Captions';
-import Shot17, { compositionConfig as cfg17 } from './shots/proof-4-icons/Proof4Icons';
-import Shot18, { compositionConfig as cfg18 } from './shots/proof-5-morph/Proof5Morph';
-import Shot19, { compositionConfig as cfg19 } from './shots/proof-6-paper/Proof6Paper';
-import Shot20, { compositionConfig as cfg20 } from './shots/read-0-test/Read0Test';
-import Shot21, { compositionConfig as cfg21 } from './shots/read-10/Read10Shva';
-import Shot22, { compositionConfig as cfg22 } from './shots/read-11/Read11DageshKal';
-import Shot23, { compositionConfig as cfg23 } from './shots/read-1/Read1Kamatz';
-import Shot24, { compositionConfig as cfg24 } from './shots/read-2/Read2Patach';
-import Shot25, { compositionConfig as cfg25 } from './shots/read-3/Read3KamatzAba';
-import Shot26, { compositionConfig as cfg26 } from './shots/read-4/Read4KamatzAba';
-import Shot27, { compositionConfig as cfg27 } from './shots/read-5/Read5TzereSegol';
-import Shot28, { compositionConfig as cfg28 } from './shots/read-6/Read6Chirik';
-import Shot29, { compositionConfig as cfg29 } from './shots/read-7/Read7Cholam';
-import Shot30, { compositionConfig as cfg30 } from './shots/read-8/Read8Shuruk';
-import Shot31, { compositionConfig as cfg31 } from './shots/read-9/Read9Kubutz';
-import Shot32, { compositionConfig as cfg32 } from './shots/short-10/Short10Fees';
-import Shot33, { compositionConfig as cfg33 } from './shots/short-11/Short11Map';
-import Shot34, { compositionConfig as cfg34 } from './shots/short-12/Short12Orbit';
-import Shot35, { compositionConfig as cfg35 } from './shots/short-13/Short13DadDaughter';
-import Shot36, { compositionConfig as cfg36 } from './shots/short-14/Short14TwoEnvelopes';
-import Shot37, { compositionConfig as cfg37 } from './shots/short-15/Short15Traffic';
-import Shot38, { compositionConfig as cfg38, defaultProps as dp38, calculateMetadata as cm38 } from './shots/short-16/Short16Formy';
-import Shot39, { compositionConfig as cfg39 } from './shots/short-17/Short17Sign';
-import Shot40, { compositionConfig as cfg40 } from './shots/short-18/Short18BuAleph';
-import Shot41, { compositionConfig as cfg41 } from './shots/short-19/Short19KamatzGan';
-import Shot42, { compositionConfig as cfg42, defaultProps as dp42, calculateMetadata as cm42 } from './shots/short-1/Short1Chess';
-import Shot43, { compositionConfig as cfg43 } from './shots/short-20-karaoke/Short20Karaoke';
-import Shot44, { compositionConfig as cfg44 } from './shots/short-2/Short2Math';
-import Shot45, { compositionConfig as cfg45 } from './shots/short-3/Short3Algo';
-import Shot46, { compositionConfig as cfg46 } from './shots/short-4/Short4Reflog';
-import Shot47, { compositionConfig as cfg47 } from './shots/short-5/Short5Monty';
-import Shot48, { compositionConfig as cfg48 } from './shots/short-6/Short6Sheet';
-import Shot49, { compositionConfig as cfg49 } from './shots/short-7/Short7Kids';
-import Shot50, { compositionConfig as cfg50 } from './shots/short-8/Short8Phish';
-import Shot51, { compositionConfig as cfg51 } from './shots/short-9/Short9Chords';
-import Shot52, { compositionConfig as cfg52 } from './shots/vox-1/Vox1Coffee';
-import Shot53, { compositionConfig as cfg53 } from './shots/vox-2/Vox2DadDaughter';
-import Shot54, { compositionConfig as cfg54 } from './shots/vox-3/Vox3DorSever';
-import Shot55, { compositionConfig as cfg55, defaultProps as dp55, calculateMetadata as cm55 } from './shots/vox-spec/VoxSpec';
-import Shot56, { compositionConfig as cfg56 } from './shots/wordclass-1/Wordclass1Nouns';
+import Shot14, { compositionConfig as cfg14 } from './shots/letter-8/Letter8Chet';
+import Shot15, { compositionConfig as cfg15 } from './shots/proof-1-lottie/Proof1Lottie';
+import Shot16, { compositionConfig as cfg16 } from './shots/proof-2-sketch/Proof2Sketch';
+import Shot17, { compositionConfig as cfg17 } from './shots/proof-3-captions/Proof3Captions';
+import Shot18, { compositionConfig as cfg18 } from './shots/proof-4-icons/Proof4Icons';
+import Shot19, { compositionConfig as cfg19 } from './shots/proof-5-morph/Proof5Morph';
+import Shot20, { compositionConfig as cfg20 } from './shots/proof-6-paper/Proof6Paper';
+import Shot21, { compositionConfig as cfg21 } from './shots/read-0-test/Read0Test';
+import Shot22, { compositionConfig as cfg22 } from './shots/read-10/Read10Shva';
+import Shot23, { compositionConfig as cfg23 } from './shots/read-11/Read11DageshKal';
+import Shot24, { compositionConfig as cfg24 } from './shots/read-1/Read1Kamatz';
+import Shot25, { compositionConfig as cfg25 } from './shots/read-2/Read2Patach';
+import Shot26, { compositionConfig as cfg26 } from './shots/read-3/Read3KamatzAba';
+import Shot27, { compositionConfig as cfg27 } from './shots/read-4/Read4KamatzAba';
+import Shot28, { compositionConfig as cfg28 } from './shots/read-5/Read5TzereSegol';
+import Shot29, { compositionConfig as cfg29 } from './shots/read-6/Read6Chirik';
+import Shot30, { compositionConfig as cfg30 } from './shots/read-7/Read7Cholam';
+import Shot31, { compositionConfig as cfg31 } from './shots/read-8/Read8Shuruk';
+import Shot32, { compositionConfig as cfg32 } from './shots/read-9/Read9Kubutz';
+import Shot33, { compositionConfig as cfg33 } from './shots/short-10/Short10Fees';
+import Shot34, { compositionConfig as cfg34 } from './shots/short-11/Short11Map';
+import Shot35, { compositionConfig as cfg35 } from './shots/short-12/Short12Orbit';
+import Shot36, { compositionConfig as cfg36 } from './shots/short-13/Short13DadDaughter';
+import Shot37, { compositionConfig as cfg37 } from './shots/short-14/Short14TwoEnvelopes';
+import Shot38, { compositionConfig as cfg38 } from './shots/short-15/Short15Traffic';
+import Shot39, { compositionConfig as cfg39, defaultProps as dp39, calculateMetadata as cm39 } from './shots/short-16/Short16Formy';
+import Shot40, { compositionConfig as cfg40 } from './shots/short-17/Short17Sign';
+import Shot41, { compositionConfig as cfg41 } from './shots/short-18/Short18BuAleph';
+import Shot42, { compositionConfig as cfg42 } from './shots/short-19/Short19KamatzGan';
+import Shot43, { compositionConfig as cfg43, defaultProps as dp43, calculateMetadata as cm43 } from './shots/short-1/Short1Chess';
+import Shot44, { compositionConfig as cfg44 } from './shots/short-20-karaoke/Short20Karaoke';
+import Shot45, { compositionConfig as cfg45 } from './shots/short-2/Short2Math';
+import Shot46, { compositionConfig as cfg46 } from './shots/short-3/Short3Algo';
+import Shot47, { compositionConfig as cfg47 } from './shots/short-4/Short4Reflog';
+import Shot48, { compositionConfig as cfg48 } from './shots/short-5/Short5Monty';
+import Shot49, { compositionConfig as cfg49 } from './shots/short-6/Short6Sheet';
+import Shot50, { compositionConfig as cfg50 } from './shots/short-7/Short7Kids';
+import Shot51, { compositionConfig as cfg51 } from './shots/short-8/Short8Phish';
+import Shot52, { compositionConfig as cfg52 } from './shots/short-9/Short9Chords';
+import Shot53, { compositionConfig as cfg53 } from './shots/vox-1/Vox1Coffee';
+import Shot54, { compositionConfig as cfg54 } from './shots/vox-2/Vox2DadDaughter';
+import Shot55, { compositionConfig as cfg55 } from './shots/vox-3/Vox3DorSever';
+import Shot56, { compositionConfig as cfg56, defaultProps as dp56, calculateMetadata as cm56 } from './shots/vox-spec/VoxSpec';
+import Shot57, { compositionConfig as cfg57 } from './shots/wordclass-1/Wordclass1Nouns';
 
 export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculateMetadata?: any }[] = [
   { Comp: Shot0 as React.FC, config: cfg0, defaultProps: dp0, calculateMetadata: cm0 },
@@ -97,12 +98,12 @@ export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculate
   { Comp: Shot35 as React.FC, config: cfg35 },
   { Comp: Shot36 as React.FC, config: cfg36 },
   { Comp: Shot37 as React.FC, config: cfg37 },
-  { Comp: Shot38 as React.FC, config: cfg38, defaultProps: dp38, calculateMetadata: cm38 },
-  { Comp: Shot39 as React.FC, config: cfg39 },
+  { Comp: Shot38 as React.FC, config: cfg38 },
+  { Comp: Shot39 as React.FC, config: cfg39, defaultProps: dp39, calculateMetadata: cm39 },
   { Comp: Shot40 as React.FC, config: cfg40 },
   { Comp: Shot41 as React.FC, config: cfg41 },
-  { Comp: Shot42 as React.FC, config: cfg42, defaultProps: dp42, calculateMetadata: cm42 },
-  { Comp: Shot43 as React.FC, config: cfg43 },
+  { Comp: Shot42 as React.FC, config: cfg42 },
+  { Comp: Shot43 as React.FC, config: cfg43, defaultProps: dp43, calculateMetadata: cm43 },
   { Comp: Shot44 as React.FC, config: cfg44 },
   { Comp: Shot45 as React.FC, config: cfg45 },
   { Comp: Shot46 as React.FC, config: cfg46 },
@@ -114,6 +115,7 @@ export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculate
   { Comp: Shot52 as React.FC, config: cfg52 },
   { Comp: Shot53 as React.FC, config: cfg53 },
   { Comp: Shot54 as React.FC, config: cfg54 },
-  { Comp: Shot55 as React.FC, config: cfg55, defaultProps: dp55, calculateMetadata: cm55 },
-  { Comp: Shot56 as React.FC, config: cfg56 },
+  { Comp: Shot55 as React.FC, config: cfg55 },
+  { Comp: Shot56 as React.FC, config: cfg56, defaultProps: dp56, calculateMetadata: cm56 },
+  { Comp: Shot57 as React.FC, config: cfg57 },
 ];

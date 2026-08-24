@@ -1,0 +1,13 @@
+{
+  "order": 5,
+  "key": "he",
+  "letter": "ה",
+  "name_he": "הֵי",
+  "sound": "h",
+  "exampleWords": [
+    "הָר",
+    "הֵד",
+    "הוֹד"
+  ],
+  "status": "draft"
+}

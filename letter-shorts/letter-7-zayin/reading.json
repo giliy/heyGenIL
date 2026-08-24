@@ -1,0 +1,31 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "AUTO-DERIVED by tools/make_learn.py from script.md. role in isolated|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back. word = one continuous clip -> NO units[].",
+  "units": [
+    {
+      "id": "isolated-zayin-0",
+      "grapheme": "ז",
+      "sound": "zz",
+      "role": "isolated"
+    },
+    {
+      "id": "word-zayinhebet-1",
+      "grapheme": "זָהָב",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-zayinmemnun-2",
+      "grapheme": "זְמַן",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-zayinbetreshhe-3",
+      "grapheme": "זֶבְרָה",
+      "sound": "",
+      "role": "word"
+    }
+  ]
+}
