@@ -10,17 +10,24 @@
 
 The whole point: **stop paying fal ~$0.35–4.80 per 30s clip** for the avatar re-dub lane. Self-hosting the same audio-driven models lands at **$0.002–0.08/clip** — one to two orders of magnitude cheaper — on a rented 4090. Both candidate models condition on **Whisper audio-encoder embeddings (acoustic → viseme, never text)**, so they inherit Whisper's 99-language coverage **which formally includes Hebrew (`he`)**. That is the strongest available technical basis for Hebrew — but it is *inference, not a guarantee*, so every render still goes through the SyncNet QA gate (`tools/sync_gate.py`).
 
-**⚠ LICENSE CORRECTION (research finding, supersedes the earlier plan):**
+**⚠ TWO findings shape the pick — one legal, one QUALITY (added 2026-08-24 after a head-to-head research wave):**
 
-| Model | Code license | **Model-weights license** | Commercial re-dub product? |
-|---|---|---|---|
-| **MuseTalk 1.5** | **MIT** | README: models "available for any purpose, even commercially" (HF card tagged `creativeml-openrail-m`) | **✅ Primary pick** — cleanest |
-| **LatentSync 1.6** | Apache-2.0 | **OpenRAIL++** (use-restricted) | ⚠ **Legal flag** — verify before commercial |
+| | **LatentSync 1.6** | **MuseTalk 1.5** |
+|---|---|---|
+| **Output QUALITY** | ✅ **Leader** — wins every benchmark | Good, softer |
+| Sync confidence (LSE-C, HDTF) | **8.9** | 6.8 |
+| FID ↓ (visual) HDTF/VoxCeleb2 | **7.03 / 5.6** | 9.35 / 7.1 |
+| FVD ↓ (flicker) | **192.7 / 124.4** | 246.8 / 203.4 |
+| Mouth resolution | **512×512** | 256×256 paste-back |
+| Speed | slow (diffusion, 20–50 steps) | **real-time (30fps)** |
+| Code license | Apache-2.0 | **MIT** |
+| **Weights license** | ⚠ **OpenRAIL++** (use-restricted) | README: commercial OK (HF card `creativeml-openrail-m`) |
 
-Earlier we treated LatentSync as "Apache-2.0 clean." **That was wrong at the weights level.** Only the *code* is Apache-2.0; the *weights* on HuggingFace are OpenRAIL++. So:
+**On quality, LatentSync is the clear winner.** In the only direct head-to-head (its own paper, Table 1) it beats MuseTalk on *every* metric — including sync, by ~30% (LSE-C 8.9 vs 6.8) — and on visual fidelity (FID 7.03 vs 9.35) and temporal stability (FVD 192.7 vs 246.8). Community consensus agrees (sync.so, pixazo, Reddit): *"LatentSync is still the local model to beat; MuseTalk is the speed-oriented fallback."* The mechanism: LatentSync is true audio-conditioned **diffusion at 512×512** with pixel-space SyncNet supervision + a temporal layer; MuseTalk is **single-step inpainting at 256×256**, which is why it's real-time but softer, identity-drifting (its README admits mustache/lip-shape loss), and jitter-prone.
 
-- **MuseTalk is the self-host primary** (MIT, explicit commercial, real-time, ~4–10 GB VRAM). Note its own HF card is tagged `creativeml-openrail-m` too and its face-parse weights come from a third-party Google-Drive re-upload — get legal sign-off before shipping paid, but it is materially cleaner than LatentSync's OpenRAIL++.
-- **LatentSync 1.6 stays in the spec as the optional higher-quality re-dub**, gated on a legal review of OpenRAIL++ (it *is* sharper at 512×512). Do not ship it commercially until that clears.
+**Revised pick:** **LatentSync 1.6 leads for final/hero/close-up output** (the avatar IS the frame in a HeyGen-style product, so quality wins). **MuseTalk is the fast/draft/throughput lane** and the clean-license fallback if OpenRAIL++ legal review fails. The standard production pattern: *draft fast with MuseTalk → final-render adopted cuts with LatentSync.*
+
+**The license correction still stands (don't ignore it):** LatentSync's *code* is Apache-2.0 but its *weights* are **OpenRAIL++** — use-restricted, not permissive. So the quality leader carries a legal flag. **Action: start the OpenRAIL++ legal review now** (it permits commercial use subject to behavioral restrictions — many companies ship on it, but counsel should confirm); run MuseTalk in parallel as the zero-legal-risk throughput engine. Neither has been benchmarked on Hebrew — both use Whisper-tiny — so the guttural gate applies to both regardless.
 
 ---
 
@@ -44,7 +51,7 @@ Earlier we treated LatentSync as "Apache-2.0 clean." **That was wrong at the wei
 
 ---
 
-## 2. MuseTalk install (PRIMARY)
+## 2. MuseTalk install (fast / draft lane — also the clean-license fallback)
 
 > Env: **Python 3.10** (conda env `MuseTalk`), torch **2.0.1+cu118**. The `mmcv` stack only has prebuilt wheels for this exact combo — do not upgrade torch.
 
@@ -88,7 +95,7 @@ python -m scripts.inference \
 
 ---
 
-## 3. LatentSync install (OPTIONAL — gated on legal)
+## 3. LatentSync install (QUALITY LEAD — gated on OpenRAIL++ legal review)
 
 > Env: **Python 3.10.13** (conda env `latentsync`), torch **2.5.1/cu121**. Higher quality (512×512) but ~18 GB VRAM and OpenRAIL++ weights.
 
@@ -150,11 +157,12 @@ Once the box passes the gate, point the talk stage at it instead of fal. Concret
 
 ## 7. Execute checklist (when you approve GPU spend)
 
-1. [ ] Rent vast.ai 4090 (US/EU, inet_down>1000, reliability>0.99), CUDA-11.8-capable image.
-2. [ ] §2 MuseTalk install + re-pin `huggingface_hub==0.30.2` + drop the hf-mirror endpoint.
-3. [ ] First render: guttural test set → §4 SyncNet gate. **Decision point: PASS ≥6.9?**
-4. [ ] If PASS → wire `musetalk-selfhost` into the talk stage; keep fal as overflow.
-5. [ ] (Optional, after legal clears OpenRAIL++) §3 LatentSync 1.6 for the higher-quality lane.
-6. [ ] Destroy the instance when idle (vast.ai storage bills while stopped).
+1. [ ] **Start the OpenRAIL++ legal review of LatentSync weights** (parallel, no GPU needed) — it's the quality leader, so clear this early.
+2. [ ] Rent vast.ai 4090 (US/EU, inet_down>1000, reliability>0.99), CUDA-11.8-capable image (a CUDA-12.1 image also works if you only run LatentSync; MuseTalk needs 11.8).
+3. [ ] §2 MuseTalk install + re-pin `huggingface_hub==0.30.2` + drop the hf-mirror endpoint.
+4. [ ] §3 LatentSync 1.6 install (separate conda env, torch 2.5.1/cu121).
+5. [ ] **Hebrew guttural test set through BOTH engines → §4 SyncNet gate.** This is the decision point: which one keeps ח/ע/ר on the mouth (PASS ≥6.9). Neither has ever been benchmarked on Hebrew.
+6. [ ] Wire the winner(s) into the talk stage: MuseTalk = fast/draft lane, LatentSync = final/hero lane (once legal clears). Keep fal as overflow.
+7. [ ] Destroy the instance when idle (vast.ai storage bills while stopped).
 
-**Blockers to resolve before commercial ship:** MuseTalk HF `creativeml-openrail-m` tag + Google-Drive face-parse provenance; LatentSync OpenRAIL++ weights. Both are legal-review items, not engineering ones.
+**Blockers before commercial ship (all legal, not engineering):** LatentSync OpenRAIL++ weights; MuseTalk HF `creativeml-openrail-m` tag + Google-Drive face-parse provenance. Start the legal reviews now so they don't gate the quality winner.
