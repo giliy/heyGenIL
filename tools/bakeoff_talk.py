@@ -53,88 +53,17 @@ MALE_VOICE = 'he-IL-AvriNeural'
 FEMALE_VOICE = 'he-IL-HilaNeural'
 FACE_VOICE = {'dana': FEMALE_VOICE}
 
-# --- Hebrew letter-name pronunciation dictionary (nikud override). THE guttural fix: the
-# auto-vocalizer (phonikud) reads unvoweled letter-names as their common-word homographs — it
-# pointed החית as "ha-CHAY-it" (the animal) instead of the letter-name חֵית ("kheyt"). These
-# entries pin the exact letter-name vowel-points so the voice says the LETTER, not the word.
-# Applied BEFORE the generic nikud pass; entries win over the model. Extend as QA surfaces more
-# letter-name / homograph misses. Keys are the unvoweled surface forms; values are pointed.
-LETTER_NAME_NIKKUD = {
-    'החית': 'הַחֵית', 'חית': 'חֵית',          # khet  (was mis-read as "chayit"/animal)
-    'העין': 'הָעַיִן', 'עין': 'עַיִן',          # ayin
-    # resh: user QA 2026-08-24 — "reysh" (צירי) and phonikud's "reesh" (חיריק) both sound off;
-    # modern Israeli resh is closer to segol "resh". Pin segol WITHOUT the yod.
-    'הריש': 'הָרֶשׁ', 'ריש': 'רֶשׁ',            # resh  (segol, no yod — the Israeli reading)
-    'האות': 'הָאוֹת',                          # "the letter" (אוֹת — pinned for safety)
-}
-
-
-def _strip_nikkud(s):
-    """Remove Hebrew pointing (niqqud combining marks U+0591..U+05C7) so a vocalized surface
-    form can be matched back to its dictionary key."""
-    return ''.join(ch for ch in s if not ('֑' <= ch <= 'ׇ'))
-
-
-# Hebrew one-letter conjunction/preposition prefixes (וְ "and", בְּ "in", לְ "to", הַ "the",
-# כְּ "like", מִ "from"). A letter-name rarely stands alone — "והריש" = "and-the-resh" — so the
-# dictionary must match a pin as a SUFFIX and preserve the pointed prefix the vocalizer gave.
-_PREFIX_CHARS = 'ובלהכמ'
-
-
-def apply_pronunciation_dictionary(text):
-    """Pin known-mispronounced Hebrew words (letter-names, homographs) to their pointed forms.
-    Applied AFTER the generic nikud pass so the pins WIN — phonikud re-vowels pointed input (it
-    clobbered הַחֵית back to הַחַית/"chayit" when the dict ran first, 2026-08-24). Matching is
-    on the STRIPPED surface form, and handles prefix conjunctions (וְהָרִישׁ = "and-the-resh")
-    by pinning the longest matching base while KEEPING the vocalizer's pointed prefix.
-    Deterministic, free, no model."""
-    # Map: stripped base surface -> fully-pointed letter-name.
-    pinned = {_strip_nikkud(k): v for k, v in LETTER_NAME_NIKKUD.items()}
-    out_words = []
-    for word in text.split(' '):
-        # Separate trailing punctuation (., !, ?, :) so it neither blocks the pin match nor is
-        # lost — phonikud emits "וְהָרִישׁ." with the period attached and it must re-attach after.
-        trail = ''
-        core = word
-        while core and not ('֑' <= core[-1] <= 'ׇ') and not ('א' <= core[-1] <= 'ת'):
-            trail = core[-1] + trail
-            core = core[:-1]
-        stripped = _strip_nikkud(core)
-        if stripped in pinned:
-            out_words.append(pinned[stripped] + trail)   # exact hit
-            continue
-        # Try stripping 1-2 leading prefix chars (וְהָ... etc.) and match the remaining base.
-        hit = None
-        for n in (1, 2):
-            if len(stripped) > n and stripped[0] in _PREFIX_CHARS and stripped[n:] in pinned:
-                hit = n
-                break
-        if hit:
-            # Keep the vocalizer's own pointed prefix (first `hit` base letters + their marks),
-            # then append the pinned pointed base. We recover the pointed prefix by walking the
-            # CORE (punctuation already split off) until we've consumed `hit` base letters.
-            i = 0
-            consumed = 0
-            while i < len(core) and consumed < hit:
-                if not ('֑' <= core[i] <= 'ׇ'):
-                    consumed += 1
-                i += 1
-            # include any marks that attach to the last prefix letter
-            while i < len(core) and ('֑' <= core[i] <= 'ׇ'):
-                i += 1
-            out_words.append(core[:i] + pinned[stripped[hit:]] + trail)
-        else:
-            out_words.append(word)
-    return ' '.join(out_words)
+# The Hebrew pronunciation layer — auto-nikud + letter-name dictionary + code-switch policy —
+# lives in tools/hebrew_pronounce.py (the single source of truth every Hebrew voice uses).
+# bakeoff_talk delegates to it; the dictionary and pin-matching are NOT duplicated here.
+import hebrew_pronounce
 
 
 def synth_text_for(text, nikkud):
-    """The exact string sent to edge-tts. With --nikkud: generic phonikud vocalizer first, THEN
-    the letter-name dictionary overrides its homograph misses. Without --nikkud: raw text."""
-    if not nikkud:
-        return text
-    import nikkud_g2p
-    return apply_pronunciation_dictionary(nikkud_g2p.add_nikkud(text))
+    """The exact string sent to edge-tts, produced by the Hebrew pronunciation layer. With
+    --nikkud: auto-nikud (phonikud) fills the verse, then the letter-name dictionary pins the
+    homographs (חֵית not "chayit"). Without --nikkud: raw text (the TTS guesses)."""
+    return hebrew_pronounce.to_tts(text, use_nikkud=nikkud)
 
 # The FIXED Hebrew acceptance script (nikkud-free; the same words every run so frames are
 # comparable across models). ~3 short lines, male+female voices exercised by the caller.
