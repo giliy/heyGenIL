@@ -1,0 +1,4 @@
+{
+  "note": "P1 #17 starter manifest for tools/import_music.py. Add one row per curated track after downloading it into media/library/music/_staging/. See docs/music-sourcing.md.",
+  "clips": []
+}

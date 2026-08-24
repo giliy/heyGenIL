@@ -1,0 +1,78 @@
+{
+  "id": "short-1-chess",
+  "title": "The 4-Move Checkmate — Punished",
+  "template": "Short1Chess",
+  "engine": "tsx",
+  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "theme": { "accent": "#f5d76e", "font": "display" },
+  "voice": {
+    "engine": "elevenlabs",
+    "voiceId": "default",
+    "lines": [
+      { "text": "This trap wins millions of games — in just four moves.", "start": 0.4, "end": 4.02 },
+      { "text": "Pawn to e4.", "start": 4.1, "end": 5.63 },
+      { "text": "Bishop c4 — aiming at f7, the weakest square in Black's camp.", "start": 5.7, "end": 9.6 },
+      { "text": "Queen h5.", "start": 9.4, "end": 10.69 },
+      { "text": "If Black plays the natural move —", "start": 10.6, "end": 12.41 },
+      { "text": "checkmate. Four moves. Game over.", "start": 12.6, "end": 15.36 },
+      { "text": "But right here, Black has one move that stops everything.", "start": 14.9, "end": 17.86 },
+      { "text": "Pause. Find it.", "start": 17.9, "end": 20.03 },
+      { "text": "Pawn g6. It hits the queen — and kills the mate.", "start": 20.1, "end": 24.07 },
+      { "text": "The queen runs to f3, eyeing f7 again —", "start": 23.5, "end": 26.35 },
+      { "text": "but knight f6 slams the door.", "start": 26.4, "end": 28.64 },
+      { "text": "f7 is safe. Forever.", "start": 28.7, "end": 30.63 },
+      { "text": "Now count the moves.", "start": 30.7, "end": 32.26 },
+      { "text": "White's queen danced around for nothing.", "start": 32.3, "end": 34.34 },
+      { "text": "Black built an army — every move with tempo.", "start": 34.4, "end": 37.26 },
+      { "text": "Strong players never fear the four-move mate…", "start": 37.3, "end": 39.84 },
+      { "text": "they feed on it.", "start": 40.2, "end": 41.31 }
+    ]
+  },
+  "captions": { "preset": "pop", "burnIn": true },
+  "scenes": [
+    {
+      "id": "hook", "durationSec": 3.2, "beatId": "hook", "visual": "hook",
+      "overlays": [
+        { "id": "hook-1", "type": "text", "content": "THE 4-MOVE", "x": 40, "y": 190, "w": 1000, "h": 90, "start": 0, "end": 3.2, "animation": "rise", "style": { "font": "display", "size": 92, "weight": 700, "align": "center", "color": "#ffffff" } },
+        { "id": "hook-2", "type": "text", "content": "CHECKMATE TRAP", "x": 40, "y": 300, "w": 1000, "h": 90, "start": 0, "end": 3.2, "animation": "rise", "style": { "font": "display", "size": 92, "weight": 700, "align": "center", "color": "#f5d76e" } },
+        { "id": "hook-sub", "type": "text", "content": "…and the move that destroys it", "x": 40, "y": 420, "w": 1000, "h": 60, "start": 0, "end": 3.2, "animation": "rise", "style": { "font": "body", "size": 40, "weight": 500, "align": "center", "color": "rgba(255,255,255,0.82)" } }
+      ]
+    },
+    {
+      "id": "trap", "durationSec": 11.2, "beatId": "trap", "visual": "trap",
+      "overlays": [
+        { "id": "kicker-trap", "type": "text", "content": "THE TRAP", "x": 390, "y": 180, "w": 300, "h": 60, "start": 0.2, "end": 7.4, "animation": "rise", "style": { "font": "body", "size": 30, "weight": 600, "align": "center", "color": "#f5d76e" } },
+        { "id": "stamp-mate", "type": "text", "content": "CHECKMATE", "x": 380, "y": 900, "w": 320, "h": 110, "start": 6.2, "end": 8.9, "animation": "pop", "style": { "font": "display", "size": 96, "weight": 700, "align": "center", "color": "#e8879f" } }
+      ]
+    },
+    {
+      "id": "quiz", "durationSec": 5.4, "beatId": "quiz", "visual": "quiz",
+      "overlays": [
+        { "id": "kicker-quiz", "type": "text", "content": "FIND THE DEFENSE", "x": 290, "y": 180, "w": 500, "h": 60, "start": 0.4, "end": 5.4, "animation": "rise", "style": { "font": "body", "size": 30, "weight": 600, "align": "center", "color": "#e8879f" } }
+      ]
+    },
+    {
+      "id": "punish", "durationSec": 10.2, "beatId": "punish", "visual": "punish",
+      "overlays": [
+        { "id": "kicker-punish", "type": "text", "content": "THE PUNISH", "x": 360, "y": 180, "w": 360, "h": 60, "start": 0.2, "end": 10.2, "animation": "rise", "style": { "font": "body", "size": 30, "weight": 600, "align": "center", "color": "#4db8a8" } }
+      ]
+    },
+    {
+      "id": "damage", "durationSec": 7.4, "beatId": "damage", "visual": "damage",
+      "overlays": [
+        { "id": "kicker-damage", "type": "text", "content": "COUNT THE DAMAGE", "x": 250, "y": 180, "w": 580, "h": 60, "start": 0.4, "end": 4.0, "animation": "rise", "style": { "font": "body", "size": 30, "weight": 600, "align": "center", "color": "#f5d76e" } },
+        { "id": "chip-white", "type": "text", "content": "White — 2 queen moves · 0 threats left", "x": 60, "y": 280, "w": 460, "h": 110, "start": 1.4, "end": 7.4, "animation": "rise", "style": { "font": "body", "size": 30, "weight": 600, "align": "left", "color": "#e8879f" } },
+        { "id": "chip-black", "type": "text", "content": "Black — 3 pieces out · all with tempo", "x": 560, "y": 280, "w": 470, "h": 110, "start": 1.8, "end": 7.4, "animation": "rise", "style": { "font": "body", "size": 30, "weight": 600, "align": "left", "color": "#4db8a8" } }
+      ]
+    },
+    {
+      "id": "loop", "durationSec": 4.6, "beatId": "loop", "visual": "loop",
+      "overlays": [
+        { "id": "loop-1", "type": "text", "content": "THE 4-MOVE", "x": 40, "y": 190, "w": 1000, "h": 90, "start": 0, "end": 4.6, "animation": "fade", "style": { "font": "display", "size": 92, "weight": 700, "align": "center", "color": "#ffffff" } },
+        { "id": "loop-2", "type": "text", "content": "CHECKMATE TRAP", "x": 40, "y": 300, "w": 1000, "h": 90, "start": 0, "end": 4.6, "animation": "fade", "style": { "font": "display", "size": 92, "weight": 700, "align": "center", "color": "#f5d76e" } },
+        { "id": "loop-sub", "type": "text", "content": "now you punish it", "x": 40, "y": 420, "w": 1000, "h": 60, "start": 0, "end": 4.6, "animation": "fade", "style": { "font": "body", "size": 40, "weight": 500, "align": "center", "color": "rgba(255,255,255,0.82)" } }
+      ]
+    }
+  ],
+  "meta": { "revision": 0, "updatedAt": "2026-08-22" }
+}

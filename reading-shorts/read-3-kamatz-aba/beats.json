@@ -1,0 +1,275 @@
+{
+  "id": "read-3-kamatz-aba",
+  "title": "בּוּ מְלַמֵּד קָמָץ — אָ",
+  "mode": "reading",
+  "language": "he",
+  "series": "bu-koala-reading",
+  "composition": "Read3KamatzAba",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 72.042
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_reading.py from script.md (transcript-driven). Teaches קָמָץ (kamatz, /a/) to ages 5-7. mode:reading, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. The units[] here are PLANNED windows seeded from the P0 probe trim table; gen_voice_reading.py replaces them with REAL trimmed bounds. Register 5-7: short directive prompts + call-and-response. In-TSX koala tile (no AI stills, $0). Loop relaxed (loop:false). No CTA.",
+  "reading": {
+    "nikkud": "kamatz",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "א"
+    ],
+    "progression": [
+      "isolated",
+      "blend",
+      "word"
+    ],
+    "anchorWords": [
+      "אַבָּא",
+      "אָרוֹן",
+      "אָדוֹם",
+      "אֲרוּחָה",
+      "אֻמָּן"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "שָׁלוֹם יְלָדִים, כֵּיף שֶׁחֲזַרְתֶּם! הַיּוֹם לוֹמְדִים נִיקּוּד חָדָשׁ — קָמָץ!",
+      "tts": "שָׁלוֹם יְלָדִים, כֵּיף שֶׁחֲזַרְתֶּם! הַיּוֹם לוֹמְדִים נִיקּוּד חָדָשׁ — קָמָץ!",
+      "start": 0.0,
+      "end": 8.376
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "אָ",
+      "tts": "אָ",
+      "start": 10.533,
+      "end": 11.033,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 10.833,
+          "end": 11.033
+        }
+      ],
+      "sub": "קָמָץ — אוֹמְרִים \"אַא…\""
+    },
+    {
+      "beat": "blend",
+      "text": "אָ-בָּא",
+      "tts": "אָ-בָּא",
+      "start": 12.733,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 13.033,
+          "end": 13.233
+        },
+        {
+          "g": "בָּא",
+          "start": 14.665,
+          "end": 14.965
+        }
+      ],
+      "end": 16.141,
+      "sub": "בּוֹאוּ נִתְרַגֵּל יַחַד!"
+    },
+    {
+      "beat": "blend",
+      "text": "אָ-רוֹן",
+      "tts": "אָ-רוֹן",
+      "start": 18.633,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 18.933,
+          "end": 19.133
+        },
+        {
+          "g": "רוֹן",
+          "start": 20.605,
+          "end": 21.065
+        }
+      ],
+      "end": 22.209
+    },
+    {
+      "beat": "blend",
+      "text": "אָ-דוֹם",
+      "tts": "אָ-דוֹם",
+      "start": 24.533,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 24.833,
+          "end": 25.033
+        },
+        {
+          "g": "דוֹם",
+          "start": 26.465,
+          "end": 26.965
+        }
+      ],
+      "end": 28.133
+    },
+    {
+      "beat": "blend",
+      "text": "אָ-רוּחַ",
+      "tts": "אָ-רוּחַ",
+      "start": 30.433,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 30.733,
+          "end": 30.933
+        },
+        {
+          "g": "רוּ",
+          "start": 32.385,
+          "end": 32.705
+        },
+        {
+          "g": "חַ",
+          "start": 34.261,
+          "end": 34.501
+        }
+      ],
+      "end": 35.689
+    },
+    {
+      "beat": "blend",
+      "text": "אָ-מָּן",
+      "tts": "אָ-מָּן",
+      "start": 38.333,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 38.633,
+          "end": 38.833
+        },
+        {
+          "g": "מָּן",
+          "start": 40.285,
+          "end": 40.685
+        }
+      ],
+      "end": 41.909
+    },
+    {
+      "beat": "read-word",
+      "text": "אַבָּא",
+      "tts": "אַבָּא",
+      "start": 44.333,
+      "end": 46.133
+    },
+    {
+      "beat": "read-word",
+      "text": "אָרוֹן",
+      "tts": "אָרוֹן",
+      "start": 47.666,
+      "end": 49.658
+    },
+    {
+      "beat": "read-word",
+      "text": "אָדוֹם",
+      "tts": "אָדוֹם",
+      "start": 50.999,
+      "end": 52.967
+    },
+    {
+      "beat": "read-word",
+      "text": "אֲרוּחָה",
+      "tts": "אֲרוּחָה",
+      "start": 54.332,
+      "end": 56.372
+    },
+    {
+      "beat": "read-word",
+      "text": "אֻמָּן",
+      "tts": "אֻמָּן",
+      "start": 57.665,
+      "end": 59.705
+    },
+    {
+      "beat": "call-response",
+      "text": "כָּל הַכָּבוֹד יְלָדִים, לְמַדְתֶּם מְצֻיָּין! נִמְשִׁיךְ לִלְמֹד בַּפֶּרֶק הַבָּא. לְהִתְרָאוֹת!",
+      "tts": "כָּל הַכָּבוֹד יְלָדִים, לְמַדְתֶּם מְצֻיָּין! נִמְשִׁיךְ לִלְמֹד בַּפֶּרֶק הַבָּא. לְהִתְרָאוֹת!",
+      "start": 60.998,
+      "end": 69.542,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. The pause is REAL silence (the trailing tail), not a spoken filler word."
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 10.533
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 10.533,
+      "end_s": 12.733
+    },
+    {
+      "name": "blend",
+      "start_s": 12.733,
+      "end_s": 18.633
+    },
+    {
+      "name": "blend",
+      "start_s": 18.633,
+      "end_s": 24.533
+    },
+    {
+      "name": "blend",
+      "start_s": 24.533,
+      "end_s": 30.433
+    },
+    {
+      "name": "blend",
+      "start_s": 30.433,
+      "end_s": 38.333
+    },
+    {
+      "name": "blend",
+      "start_s": 38.333,
+      "end_s": 44.333
+    },
+    {
+      "name": "read-word",
+      "start_s": 44.333,
+      "end_s": 47.666
+    },
+    {
+      "name": "read-word",
+      "start_s": 47.666,
+      "end_s": 50.999
+    },
+    {
+      "name": "read-word",
+      "start_s": 50.999,
+      "end_s": 54.332
+    },
+    {
+      "name": "read-word",
+      "start_s": 54.332,
+      "end_s": 57.665
+    },
+    {
+      "name": "read-word",
+      "start_s": 57.665,
+      "end_s": 60.998
+    },
+    {
+      "name": "call-response",
+      "start_s": 60.998,
+      "end_s": 72.042
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

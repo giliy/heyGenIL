@@ -1,0 +1,16 @@
+{
+  "project": "vox-3-dor-sever",
+  "track": "vox",
+  "layers": [
+    { "id": "dor-01", "file": "media/projects/vox-3-dor-sever/layers/dor-01.png", "kind": "photo", "w": 608, "h": 936 },
+    { "id": "dor-01-cut", "file": "media/projects/vox-3-dor-sever/layers/dor-01-cut.png", "kind": "cutout", "w": 392, "h": 926 },
+    { "id": "dor-02", "file": "media/projects/vox-3-dor-sever/layers/dor-02.png", "kind": "photo", "w": 0, "h": 0 },
+    { "id": "dor-03", "file": "media/projects/vox-3-dor-sever/layers/dor-03.png", "kind": "photo", "w": 0, "h": 0 },
+    { "id": "dor-03-cut", "file": "media/projects/vox-3-dor-sever/layers/dor-03-cut.png", "kind": "cutout", "w": 0, "h": 0 },
+    { "id": "dor-04", "file": "media/projects/vox-3-dor-sever/layers/dor-04.png", "kind": "photo", "w": 0, "h": 0 },
+    { "id": "dor-04-cut", "file": "media/projects/vox-3-dor-sever/layers/dor-04-cut.png", "kind": "cutout", "w": 0, "h": 0 }
+  ],
+  "clips": [],
+  "hero": "media/projects/vox-3-dor-sever/layers/dor-01.png",
+  "cost": { "images": 4, "clips": 0, "total_usd": 0.0 }
+}

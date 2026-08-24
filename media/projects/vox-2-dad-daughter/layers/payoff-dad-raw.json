@@ -1,0 +1,10 @@
+{
+  "prompt": "Soft watercolor storybook illustration, warm washes and fine ink outlines, tender, warm light. Isolated single full-body figure on a plain pure white background, no scenery, no shadow, no props. No text, no letters, no watermark. The tall dad, front three-quarter view, rust-orange sweater, dark hair, smiling warmly.",
+  "model": "fal-ai/flux-pro/kontext",
+  "aspect_ratio": "1:1",
+  "seed": null,
+  "refs": [
+    "media\\projects\\vox-2-dad-daughter\\layers\\ref-family.png"
+  ],
+  "created": "2026-08-21T19:43:00"
+}

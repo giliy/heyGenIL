@@ -1,0 +1,11 @@
+{
+  "prompt": "This exact cute yellow koala creature (big fluffy round ears with cream inner fluff, soft plush body, huge dark glossy eyes, gentle open-mouth smile) standing beside a big, soft, friendly Hebrew letter Aleph (א) that floats in the air glowing gently, warm pastel storybook background, soft children's illustration, cozy, 9:16",
+  "model": "gemini-3.1-flash-image",
+  "aspect_ratio": "9:16",
+  "image_size": "2K",
+  "seed": null,
+  "refs": [
+    "ai-shorts\\bu-koala\\character.jpg"
+  ],
+  "created": "2026-08-23T11:07:04"
+}

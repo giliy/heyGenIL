@@ -1,0 +1,229 @@
+{
+  "id": "read-4-kamatz-aba",
+  "title": "בּוּ מְלַמֵּד קָמָץ — אַבָּא",
+  "mode": "reading",
+  "language": "he",
+  "series": "bu-koala-reading",
+  "composition": "Read4KamatzAba",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 56.464
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_reading.py from script.md (transcript-driven). Teaches קָמָץ (kamatz, /a/) to ages 5-7. mode:reading, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. The units[] here are PLANNED windows seeded from the P0 probe trim table; gen_voice_reading.py replaces them with REAL trimmed bounds. Register 5-7: short directive prompts + call-and-response. In-TSX koala tile (no AI stills, $0). Loop relaxed (loop:false). No CTA.",
+  "reading": {
+    "nikkud": "kamatz",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "א",
+      "בּ",
+      "מּ",
+      "קּ"
+    ],
+    "progression": [
+      "isolated",
+      "cv",
+      "blend",
+      "word"
+    ],
+    "anchorWords": [
+      "מָמָא",
+      "בָּבָּא",
+      "אַבָּא"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "שָׁלוֹם יְלָדִים, כֵּיף שֶׁחֲזַרְתֶּם! הַיּוֹם לוֹמְדִים נִיקּוּד חָדָשׁ — קָמָץ!",
+      "tts": "שָׁלוֹם יְלָדִים, כֵּיף שֶׁחֲזַרְתֶּם! הַיּוֹם לוֹמְדִים נִיקּוּד חָדָשׁ — קָמָץ!",
+      "start": 0.0,
+      "end": 8.376
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "אָ",
+      "tts": "אָ",
+      "start": 10.533,
+      "end": 11.033,
+      "units": [
+        {
+          "g": "אָ",
+          "start": 10.833,
+          "end": 11.033
+        }
+      ],
+      "sub": "קָמָץ — אוֹמְרִים \"אָה…\""
+    },
+    {
+      "beat": "teach-cv",
+      "text": "בָּ מָּ קָּ",
+      "tts": "בָּ מָּ קָּ",
+      "start": 12.733,
+      "units": [
+        {
+          "g": "בָּ",
+          "start": 13.033,
+          "end": 13.313
+        },
+        {
+          "g": "מָּ",
+          "start": 14.163,
+          "end": 14.463
+        },
+        {
+          "g": "קָּ",
+          "start": 15.453,
+          "end": 15.713
+        }
+      ],
+      "end": 15.713,
+      "sub": "בּוֹאוּ נִתְרַגֵּל יַחַד!"
+    },
+    {
+      "beat": "blend",
+      "text": "מָמָא",
+      "tts": "מָמָא",
+      "start": 17.333,
+      "units": [
+        {
+          "g": "מָ",
+          "start": 17.633,
+          "end": 17.933
+        },
+        {
+          "g": "מָא",
+          "start": 19.409,
+          "end": 19.709
+        }
+      ],
+      "end": 20.885
+    },
+    {
+      "beat": "blend",
+      "text": "בָּבָּא",
+      "tts": "בָּבָּא",
+      "start": 23.233,
+      "units": [
+        {
+          "g": "בָּ",
+          "start": 23.533,
+          "end": 23.813
+        },
+        {
+          "g": "בָּא",
+          "start": 25.309,
+          "end": 25.609
+        }
+      ],
+      "end": 26.785
+    },
+    {
+      "beat": "blend",
+      "text": "אַבָּא",
+      "tts": "אַבָּא",
+      "start": 29.133,
+      "units": [
+        {
+          "g": "אַ",
+          "start": 29.433,
+          "end": 29.633
+        },
+        {
+          "g": "בָּא",
+          "start": 31.209,
+          "end": 31.509
+        }
+      ],
+      "end": 32.685
+    },
+    {
+      "beat": "read-word",
+      "text": "מָמָא",
+      "tts": "מָמָא",
+      "start": 35.133,
+      "end": 36.981
+    },
+    {
+      "beat": "read-word",
+      "text": "בָּבָּא",
+      "tts": "בָּבָּא",
+      "start": 38.466,
+      "end": 40.314
+    },
+    {
+      "beat": "read-word",
+      "text": "אַבָּא",
+      "tts": "אַבָּא",
+      "start": 41.799,
+      "end": 43.599
+    },
+    {
+      "beat": "call-response",
+      "text": "כָּל הַכָּבוֹד יְלָדִים, לָמַדְתֶּם אֶת הַקָּמָץ! הִמְהוּם… לְהִתְרָאוֹת!",
+      "tts": "כָּל הַכָּבוֹד יְלָדִים, לָמַדְתֶּם אֶת הַקָּמָץ! הִמְהוּם… לְהִתְרָאוֹת!",
+      "start": 45.132,
+      "end": 53.964,
+      "pause": true,
+      "note": "call-and-response: 'you! [hum]' + the engineered hum-pause so the child answers. edge-tts can't synth bare '...', so the pause is the warm hum word (short-18 trick), then real silence to last-speech + ~2.5s tail."
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 10.533
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 10.533,
+      "end_s": 12.733
+    },
+    {
+      "name": "teach-cv",
+      "start_s": 12.733,
+      "end_s": 17.333
+    },
+    {
+      "name": "blend",
+      "start_s": 17.333,
+      "end_s": 23.233
+    },
+    {
+      "name": "blend",
+      "start_s": 23.233,
+      "end_s": 29.133
+    },
+    {
+      "name": "blend",
+      "start_s": 29.133,
+      "end_s": 35.133
+    },
+    {
+      "name": "read-word",
+      "start_s": 35.133,
+      "end_s": 38.466
+    },
+    {
+      "name": "read-word",
+      "start_s": 38.466,
+      "end_s": 41.799
+    },
+    {
+      "name": "read-word",
+      "start_s": 41.799,
+      "end_s": 45.132
+    },
+    {
+      "name": "call-response",
+      "start_s": 45.132,
+      "end_s": 56.464
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

@@ -1,0 +1,78 @@
+{
+  "id": "Vox2DadDaughter",
+  "format": "1080x1920@30",
+  "duration": 38.0,
+  "styleLock": "Soft watercolor storybook illustration, warm cream paper, gentle washes and fine ink outlines, cozy and tender, warm light. Dad is a tall man in a rust-orange sweater with dark hair. His daughter is small with a sunny yellow bow in her hair. No text, no letters, no words, no watermark.",
+  "scenes": [
+    {
+      "name": "wall",
+      "vo": "One photo hangs in our hallway.",
+      "voStartF": 12,
+      "voEndF": 103,
+      "art": "a framed photo of a dad holding his small daughter with a heart above them hangs on a warm hallway wall",
+      "type": "scenery"
+    },
+    {
+      "name": "newborn",
+      "vo": "…and he'll start at the beginning.",
+      "voStartF": 216,
+      "voEndF": 292,
+      "art": "dad cradling a swaddled newborn baby in a warm nursery, tender",
+      "chip": "the beginning",
+      "type": "card"
+    },
+    {
+      "name": "steps",
+      "vo": "The day she walked to him.",
+      "voStartF": 336,
+      "voEndF": 410,
+      "art": "dad kneeling with arms outstretched, a small toddler taking her first wobbly steps toward him",
+      "chip": "first steps",
+      "type": "card"
+    },
+    {
+      "name": "bike",
+      "vo": "The summer of scraped knees.",
+      "voStartF": 456,
+      "voEndF": 536,
+      "art": "a small child on a little red bike with training wheels, dad steadying it, a bandaged knee",
+      "chip": "scraped knees",
+      "type": "card"
+    },
+    {
+      "name": "storm",
+      "vo": "Every storm he quietly carried.",
+      "voStartF": 576,
+      "voEndF": 669,
+      "art": "dad holding a big umbrella over a small girl walking in the rain, warm light",
+      "chip": "quietly carried",
+      "type": "card"
+    },
+    {
+      "name": "grad",
+      "vo": "The day the whole sky clapped.",
+      "voStartF": 696,
+      "voEndF": 777,
+      "art": "a graduation cap tossed into the air, dad cheering below, confetti",
+      "chip": "the sky clapped",
+      "type": "card"
+    },
+    {
+      "name": "grown",
+      "vo": "Now the coffee stays hot a little longer.",
+      "voStartF": 816,
+      "voEndF": 918,
+      "art": "a grown daughter and an older dad side by side, two cups of tea, golden sunset",
+      "chip": "coffee stays hot",
+      "type": "card"
+    },
+    {
+      "name": "payoff",
+      "vo": "Ask him what's inside? His whole world.",
+      "voStartF": 942,
+      "voEndF": 1075,
+      "art": "a grown daughter and her dad standing together hanging the framed photo back on a warm hallway wall",
+      "type": "scenery"
+    }
+  ]
+}

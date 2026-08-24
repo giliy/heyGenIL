@@ -1,0 +1,114 @@
+{
+  "duration_s": 5.0,
+  "resolution": "1080p",
+  "created": "2026-08-22T10:54:25",
+  "verified": true,
+  "price_table": [
+    {
+      "endpoint": "fal-ai/bytedance/seedance/v1.5/pro/image-to-video",
+      "live_price": "query failed: fal API 429 at https://api.fal.ai/v1/models/pricing?endpoint_id=fal-ai%2Fbytedan",
+      "note": "seedance v1.5 pro (current default) — token-priced; ~$0.29 / 5s 1080p audio-off"
+    },
+    {
+      "endpoint": "fal-ai/bytedance/seedance/v1.5/lite/image-to-video",
+      "live_price": "$0.00017/compute seconds",
+      "note": "seedance v1.5 lite tier"
+    },
+    {
+      "endpoint": "fal-ai/bytedance/seedance/v1/pro/image-to-video",
+      "live_price": "$2.5/1m tokens",
+      "note": "seedance v1 pro — ~2x v1.5 token rate"
+    },
+    {
+      "endpoint": "bytedance/seedance-2.0/image-to-video",
+      "live_price": "$0.014/units",
+      "note": "Seedance 2.0 i2v — per-unit; several x v1.5 per clip (verify before switching)"
+    },
+    {
+      "endpoint": "bytedance/seedance-2.0/reference-to-video",
+      "live_price": "$0.014/units",
+      "note": "Seedance 2.0 reference-to-video"
+    },
+    {
+      "endpoint": "bytedance/seedance-2.5/image-to-video",
+      "live_price": "$0.0214/1000 tokens",
+      "note": "Seedance 2.5 i2v — token-priced; several x v1.5 (verify before switching)"
+    },
+    {
+      "endpoint": "bytedance/seedance-2.5/reference-to-video",
+      "live_price": "$0.0214/1000 tokens",
+      "note": "Seedance 2.5 reference-to-video"
+    },
+    {
+      "endpoint": "bytedance/seedance-2.5/text-to-video",
+      "live_price": "$0.0214/1000 tokens",
+      "note": "Seedance 2.5 text-to-video"
+    },
+    {
+      "endpoint": "lightricks/ltx-2.5/image-to-video/fast",
+      "live_price": "$0.00017/compute seconds",
+      "note": "LTX-2.5 fast — Apache-2.0; ~$0.13/s @1080p / $0.09/s @720p (resolution-tiered)"
+    },
+    {
+      "endpoint": "fal-ai/wan/v2.7/image-to-video",
+      "live_price": "$0.1/seconds",
+      "note": "Wan 2.7 image-to-video — flat $0.10/s"
+    },
+    {
+      "endpoint": "fal-ai/wan/v2.7/reference-to-video",
+      "live_price": "$0.1/seconds",
+      "note": "Wan 2.7 reference-to-video (built-in character lock) — flat $0.10/s"
+    },
+    {
+      "endpoint": "fal-ai/wan/v2.7/text-to-video",
+      "live_price": "$0.1/seconds",
+      "note": "Wan 2.7 text-to-video — flat $0.10/s"
+    },
+    {
+      "endpoint": "fal-ai/wan-25-preview/image-to-video",
+      "live_price": "$0.05/seconds",
+      "note": "Wan 2.5 preview i2v — flat $0.05/s (480p rate; 720p/1080p cost more)"
+    },
+    {
+      "endpoint": "fal-ai/wan/v2.6/image-to-video",
+      "live_price": "$0.00017/compute seconds",
+      "note": "Wan 2.6 image-to-video"
+    },
+    {
+      "endpoint": "fal-ai/wan/v2.2-a14b/image-to-video",
+      "live_price": "$0.08/seconds",
+      "note": "Wan 2.2-a14b image-to-video — flat $0.08/s"
+    }
+  ],
+  "panels": [
+    {
+      "key": "seedance",
+      "endpoint": "fal-ai/bytedance/seedance/v1.5/pro/image-to-video",
+      "duration_s": 5,
+      "resolution": "1080p",
+      "verified_cost_usd": 0.2916
+    },
+    {
+      "key": "seedance-2",
+      "endpoint": "bytedance/seedance-2.0/image-to-video",
+      "duration_s": 5,
+      "resolution": "1080p",
+      "verified_cost_usd": 0.07
+    },
+    {
+      "key": "ltx-fast",
+      "endpoint": "lightricks/ltx-2.5/image-to-video/fast",
+      "duration_s": 6,
+      "resolution": "1080p",
+      "verified_cost_usd": 0.78
+    },
+    {
+      "key": "wan-27",
+      "endpoint": "fal-ai/wan/v2.7/reference-to-video",
+      "duration_s": 5,
+      "resolution": "1080p",
+      "verified_cost_usd": 0.5
+    }
+  ],
+  "total_panel_usd": 1.6416
+}

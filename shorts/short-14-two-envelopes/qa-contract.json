@@ -1,0 +1,17 @@
+{
+  "compId": "Short14TwoEnvelopes",
+  "master": "remotion/out/Short14TwoEnvelopes.mp4",
+  "scale": 0.333,
+  "jpegQuality": 5,
+  "frames": [
+    { "f": 0, "at": "hook — sealed $10/$20 pair fully composed, thumbnail-grade; the loop target look" },
+    { "f": 117, "at": "setup settled (+0.5s past 102 boundary) — legend $10 AND $20, $X chip on YOURS, brace '? 2X or X/2'" },
+    { "f": 495, "at": "trick hero — '= 1.25X' teal pop complete; EV equation above, ALWAYS SWITCH? below" },
+    { "f": 627, "at": "flaw settled (+0.5s past 612) — 1.25X cracked apart, envelopes open revealing $10/$20, first outcome row" },
+    { "f": 840, "at": "flaw hero — '+$10' and '−$10' rows present, gold '= $0' reveal complete (local 228)" },
+    { "f": 1000, "at": "payoff — takeaway card 'NO FREE LUNCH / $0 EXPECTED GAIN' settled, 1.25X ghost faded" },
+    { "f": 1065, "at": "loop entrance — crossfade toward the frame-0 look begins" },
+    { "f": 1139, "at": "last frame — must visually equal frame 0 for the seamless loop" }
+  ],
+  "loop": { "f0": 0, "flast": 1139 }
+}

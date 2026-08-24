@@ -1,0 +1,11 @@
+{
+  "prompt": "this exact cute yellow koala creature, big fluffy round ears with cream inner fluff, soft plush body, huge dark glossy eyes, gentle smile, chubby cheeks, mitten paws sitting happily in the center of a sunny park surrounded by five small friendly objects in a gentle arc: a grown-up koala father, the same species as the little yellow koala but noticeably bigger and taller with a gentle warm smile, the same big fluffy round ears, soft amber-yellow fur standing small, a small brown rabbit, a little wooden bookcase, a red watermelon, and a shiny red apple, soft warm watercolor storybook illustration for a Hebrew children's short, gentle sunny palette, thick soft shapes, calm premium Bluey-like warmth, no text, no words, vertical 9:16 composition with the subject centered and clear space at the bottom for captions",
+  "model": "gemini-3.1-flash-image",
+  "aspect_ratio": "9:16",
+  "image_size": "2K",
+  "seed": null,
+  "refs": [
+    "ai-shorts\\bu-koala\\character.jpg"
+  ],
+  "created": "2026-08-23T17:50:58"
+}

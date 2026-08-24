@@ -1,0 +1,27 @@
+{
+  "id": "read-4-kamatz-aba",
+  "catalog": "media/library/sfx/catalog.json",
+  "master": "remotion/out/Read4KamatzAba.mp4",
+  "master_fps": 30,
+  "render": {
+    "preview": "remotion/out/Read4KamatzAba-voiced.mp4",
+    "out": "remotion/out/Read4KamatzAba-sfx.mp4",
+    "end_s": 56.464,
+    "duck": true
+  },
+  "events": [
+    { "at_s": 0.1, "sfx_id": "sparkle-soft", "gain_db": -8.0, "cue": "hook: koala + kamatz sign appear (frame-0 magic), under the hook VO" },
+    { "at_s": 10.6, "sfx_id": "chime-magic", "gain_db": -9.0, "cue": "attention cue into teach-isolated, just before the אָ pop (10.833)" },
+    { "at_s": 10.83, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "isolated אָ pop on its highlight onset" },
+    { "at_s": 13.03, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV בָּ pop on its highlight onset (touch-and-say)" },
+    { "at_s": 14.16, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV מָּ pop on its highlight onset" },
+    { "at_s": 15.45, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV קָּ pop on its highlight onset" },
+    { "at_s": 17.63, "sfx_id": "pop-reveal", "gain_db": -8.0, "cue": "blend מָמָא: first syllable highlight, sweep begins" },
+    { "at_s": 23.53, "sfx_id": "pop-reveal", "gain_db": -8.0, "cue": "blend בָּבָּא: first syllable highlight, sweep begins" },
+    { "at_s": 29.43, "sfx_id": "pop-reveal", "gain_db": -8.0, "cue": "blend אַבָּא: first syllable highlight, sweep begins" },
+    { "at_s": 35.13, "sfx_id": "chime-reward", "gain_db": -7.0, "cue": "read-word מָמָא: whole-word reward pop" },
+    { "at_s": 38.47, "sfx_id": "chime-reward", "gain_db": -7.0, "cue": "read-word בָּבָּא: whole-word reward pop" },
+    { "at_s": 41.8, "sfx_id": "chime-reward", "gain_db": -7.0, "cue": "read-word אַבָּא: whole-word reward pop" },
+    { "at_s": 45.13, "sfx_id": "rec-chime-highup", "gain_db": -9.0, "cue": "call-response: 'your turn' rising confirm into the engineered hum-pause" }
+  ]
+}

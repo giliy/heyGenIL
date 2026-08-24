@@ -1,0 +1,559 @@
+<title>פרסום בעברית — Hebrew Ads Research</title>
+<style>
+/* ---- Hebrew Ads Research · design tokens ---- */
+/* Palette grounded in the subject: paper/ink, a shekel-gold price accent,
+   WhatsApp green (the conversion channel), a red urgency badge. */
+:root{
+  --paper:#F8F5EF;          /* warm off-white, chosen not default */
+  --paper2:#FFFFFF;
+  --ink:#1F1B14;            /* warm near-black */
+  --muted:#6E6557;          /* warm grey biased to gold */
+  --line:#E5DECE;           /* hairline, paper-toned */
+  --accent:#A8342B;         /* badge red / urgency — the "sale" color */
+  --accent-soft:#F3E3DF;
+  --shekel:#9A7A1F;         /* shekel gold */
+  --shekel-soft:#F0E8CF;
+  --whatsapp:#25D366;
+  --wa-ink:#0E4A26;
+  --wa-soft:#E2F6EA;
+  --chip:#EFE9DB;
+  --code:#F1ECDF;
+  --focus:#1B5FD9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#191512;
+    --paper2:#221D18;
+    --ink:#F0EAE0;
+    --muted:#A79C8C;
+    --line:#3A342B;
+    --accent:#E26B5C;
+    --accent-soft:#3A241F;
+    --shekel:#D8B45A;
+    --shekel-soft:#37301C;
+    --whatsapp:#35E07B;
+    --wa-ink:#BFE9CF;
+    --wa-soft:#173A26;
+    --chip:#2C2620;
+    --code:#2B251E;
+    --focus:#7FA8F0;
+  }
+}
+:root[data-theme="dark"]{
+    --paper:#191512;
+    --paper2:#221D18;
+    --ink:#F0EAE0;
+    --muted:#A79C8C;
+    --line:#3A342B;
+    --accent:#E26B5C;
+    --accent-soft:#3A241F;
+    --shekel:#D8B45A;
+    --shekel-soft:#37301C;
+    --whatsapp:#35E07B;
+    --wa-ink:#BFE9CF;
+    --wa-soft:#173A26;
+    --chip:#2C2620;
+    --code:#2B251E;
+    --focus:#7FA8F0;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Heebo', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--shekel-soft)}
+
+/* Hebrew text runs RTL and uses the Hebrew display face */
+.he{ direction:rtl; font-family:'Rubik','Heebo',sans-serif; unicode-bidi:isolate; }
+[lang="he"]{ font-family:'Rubik','Heebo',sans-serif; }
+
+.wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+main{ max-width:760px; margin:0 auto; padding:0 24px 96px; }
+.prose{ max-width:66ch }
+
+h1,h2,h3,h4{ font-family:'Rubik','Heebo',sans-serif; line-height:1.12; letter-spacing:-0.01em; text-wrap:balance; margin:0 }
+h2{ font-size:clamp(1.5rem,3vw,1.9rem); font-weight:700; margin:0 0 18px; }
+h3{ font-size:1.18rem; font-weight:700; margin:34px 0 8px; }
+h4{ font-size:1rem; font-weight:700; }
+p{ margin:0 0 16px }
+strong{ font-weight:700 }
+a{ color:var(--accent); text-underline-offset:3px }
+a:focus-visible, button:focus-visible{ outline:2px solid var(--focus); outline-offset:2px; border-radius:3px }
+code{ font-family:ui-monospace,'Cascadia Code',Consolas,monospace; background:var(--code); padding:1px 6px; border-radius:5px; font-size:.86em }
+section{ padding:56px 0 8px; border-top:1px solid var(--line); }
+section:first-of-type{ border-top:none }
+
+.eyebrow{ font-family:'Rubik',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 10px }
+.lede{ font-size:1.16rem; color:var(--muted); max-width:60ch; line-height:1.6 }
+
+/* ---- hero ---- */
+.hero{ padding:72px 0 40px; border-bottom:1px solid var(--line); }
+.hero-inner{ display:flex; flex-wrap:wrap; gap:40px; align-items:flex-end }
+.hero-copy{ flex:1 1 480px; min-width:300px }
+.hero h1{ font-size:clamp(2.4rem,5.5vw,3.7rem); font-weight:800 }
+.hero h1 .he{ display:block; font-size:clamp(2.7rem,6vw,4.2rem) }
+.hero .sub{ font-family:'Rubik',sans-serif; font-weight:600; color:var(--muted); font-size:1.1rem; margin-top:6px }
+.meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:26px }
+.meta span{ font-family:'Rubik',sans-serif; font-size:.78rem; font-weight:600; background:var(--chip); color:var(--muted); padding:5px 11px; border-radius:999px }
+
+/* the phone mock — the subject's own object as the hero visual */
+.phone{ flex:0 0 300px; width:300px; margin:0 auto }
+.phone .screen{
+  background:linear-gradient(160deg,#232019,#171310); color:#fff;
+  border-radius:30px; border:1px solid var(--line); box-shadow:0 24px 60px rgba(20,15,8,.28);
+  padding:22px 18px; direction:rtl; overflow:hidden; position:relative;
+}
+.phone .cam{ width:80px; height:6px; background:#000; border-radius:99px; margin:0 auto 18px; opacity:.6 }
+.adcard .kicker{ font-family:'Rubik',sans-serif; font-weight:800; font-size:1.34rem; line-height:1.15 }
+.adcard .biz{ font-size:.82rem; opacity:.72; margin-top:3px; font-family:'Rubik',sans-serif }
+.badge{ display:inline-flex; align-items:baseline; gap:7px; background:var(--accent); color:#fff; font-family:'Rubik',sans-serif; border-radius:12px; padding:9px 14px; margin:16px 0 4px }
+.badge .now{ font-size:1.9rem; font-weight:800; letter-spacing:-.02em }
+.badge .old{ font-size:1rem; font-weight:600; text-decoration:line-through; opacity:.8 }
+.badge .off{ font-size:.8rem; font-weight:700; background:rgba(255,255,255,.2); padding:2px 7px; border-radius:99px }
+.adcard .cap{ font-family:'Rubik',sans-serif; font-size:.92rem; background:rgba(255,255,255,.12); border-radius:8px; padding:6px 10px; margin-top:12px }
+.adcard .cap b{ background:var(--shekel); color:#171204; padding:0 5px; border-radius:5px }
+.wabtn{ display:flex; align-items:center; justify-content:center; gap:8px; background:var(--whatsapp); color:#06301A; font-family:'Rubik',sans-serif; font-weight:800; font-size:1rem; border-radius:12px; padding:12px; margin-top:16px }
+.wabtn svg{ width:18px; height:18px; fill:currentColor }
+.phone .caption{ text-align:center; direction:ltr; font-size:.75rem; color:var(--muted); margin-top:14px; font-family:'Rubik',sans-serif }
+
+/* sticky section nav */
+.toc{ position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); margin-top:34px }
+.toc .wrap{ display:flex; gap:6px; overflow-x:auto; padding-top:10px; padding-bottom:10px; scrollbar-width:none }
+.toc .wrap::-webkit-scrollbar{ display:none }
+.toc a{ white-space:nowrap; font-family:'Rubik',sans-serif; font-size:.82rem; font-weight:600; color:var(--muted); text-decoration:none; padding:7px 13px; border-radius:999px }
+.toc a:hover{ background:var(--chip); color:var(--ink) }
+
+/* stat grid */
+.stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px; margin:26px 0 }
+.stat{ background:var(--paper2); border:1px solid var(--line); border-radius:16px; padding:18px }
+.stat .n{ font-family:'Rubik',sans-serif; font-weight:800; font-size:1.9rem; letter-spacing:-.02em; font-variant-numeric:tabular-nums }
+.stat .n.gold{ color:var(--shekel) } .stat .n.red{ color:var(--accent) } .stat .n.wa{ color:var(--whatsapp) }
+.stat .l{ font-size:.84rem; color:var(--muted); margin-top:4px; line-height:1.4 }
+
+/* tables */
+.tablewrap{ overflow-x:auto; border:1px solid var(--line); border-radius:16px; background:var(--paper2); margin:20px 0 }
+table{ border-collapse:collapse; width:100%; font-size:.92rem; min-width:640px }
+caption{ text-align:left; font-family:'Rubik',sans-serif; font-weight:700; font-size:.85rem; color:var(--muted); padding:14px 18px 0 }
+th,td{ text-align:left; vertical-align:top; padding:13px 18px; border-bottom:1px solid var(--line) }
+tr:last-child td{ border-bottom:none }
+thead th{ font-family:'Rubik',sans-serif; font-size:.74rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); background:var(--chip) }
+td.num, th.num{ font-variant-numeric:tabular-nums; white-space:nowrap }
+
+/* pills */
+.pill{ display:inline-block; font-family:'Rubik',sans-serif; font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:999px; white-space:nowrap }
+.pill.yes{ background:var(--wa-soft); color:var(--wa-ink) }
+.pill.no{ background:var(--accent-soft); color:var(--accent) }
+.pill.part{ background:var(--shekel-soft); color:var(--shekel) }
+.pill.b{ background:var(--accent-soft); color:var(--accent) }   /* blocker */
+.pill.m{ background:var(--shekel-soft); color:var(--shekel) }  /* major */
+.pill.n{ background:var(--chip); color:var(--muted) }          /* minor */
+
+/* callouts & cards */
+.callout{ border:1px solid var(--line); border-inline-start:4px solid var(--shekel); background:var(--paper2); border-radius:14px; padding:20px 22px; margin:22px 0 }
+.callout.warn{ border-inline-start-color:var(--accent) }
+.callout.go{ border-inline-start-color:var(--whatsapp) }
+.callout h4{ font-family:'Rubik',sans-serif; margin-bottom:6px }
+.callout p:last-child{ margin-bottom:0 }
+blockquote{ margin:20px 0; padding:16px 22px; border-inline-start:4px solid var(--accent); background:var(--accent-soft); border-radius:0 14px 14px 0; font-family:'Rubik',sans-serif; font-weight:600 }
+blockquote .en{ display:block; font-family:'Heebo',sans-serif; font-weight:400; font-size:.85rem; color:var(--muted); margin-top:4px }
+
+/* phrase chips */
+.chips{ display:flex; flex-wrap:wrap; gap:9px; margin:14px 0 20px }
+.chip{ background:var(--paper2); border:1px solid var(--line); border-radius:999px; padding:7px 14px; font-size:.88rem }
+.chip .he{ font-family:'Rubik',sans-serif; font-weight:700; font-size:.95rem }
+.chip .en{ color:var(--muted); font-size:.78rem; margin-inline-start:7px }
+
+/* number rules (psychology) */
+.rules{ counter-reset:rule; display:grid; gap:14px; margin:20px 0 }
+.rule{ counter-increment:rule; display:flex; gap:16px; background:var(--paper2); border:1px solid var(--line); border-radius:16px; padding:18px 20px }
+.rule::before{ content:counter(rule,decimal-leading-zero); font-family:'Rubik',sans-serif; font-weight:800; font-size:1.3rem; color:var(--accent); line-height:1; flex:0 0 auto; margin-top:2px }
+.rule p{ margin:0 }
+.rule b{ font-family:'Rubik',sans-serif }
+
+/* vertical cards */
+.vgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; margin:20px 0 }
+.vcard{ background:var(--paper2); border:1px solid var(--line); border-radius:16px; padding:20px }
+.vcard h4{ font-family:'Rubik',sans-serif; font-size:1.02rem; margin-bottom:4px }
+.vcard .reg{ font-size:.75rem; font-weight:700; color:var(--shekel); font-family:'Rubik',sans-serif; text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px }
+.vcard p{ font-size:.9rem; margin-bottom:10px }
+.vcard .cta-ex{ font-size:.85rem; background:var(--chip); border-radius:9px; padding:8px 12px }
+
+/* calendar */
+.cal{ overflow-x:auto; margin:20px 0 }
+.cal table{ min-width:720px }
+
+/* build steps */
+.steps{ counter-reset:step; display:grid; gap:12px; margin:20px 0 }
+.step{ counter-increment:step; display:flex; gap:16px; align-items:flex-start; background:var(--paper2); border:1px solid var(--line); border-radius:14px; padding:16px 18px }
+.step::before{ content:counter(step); flex:0 0 30px; height:30px; display:grid; place-items:center; background:var(--ink); color:var(--paper); font-family:'Rubik',sans-serif; font-weight:700; border-radius:9px; font-size:.95rem }
+.step .what{ font-family:'Rubik',sans-serif; font-weight:700 }
+.step .detail{ color:var(--muted); font-size:.9rem; margin-top:2px }
+
+/* do / don't */
+.dodont{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; margin:18px 0 }
+.do,.dont{ border-radius:16px; padding:18px 20px; border:1px solid var(--line) }
+.do{ background:var(--wa-soft) } .dont{ background:var(--accent-soft) }
+.do h4{ color:var(--wa-ink) } .dont h4{ color:var(--accent) }
+ul.clean{ margin:8px 0 0; padding-inline-start:18px } ul.clean li{ margin-bottom:8px; font-size:.92rem }
+
+.checks{ list-style:none; padding:0; margin:14px 0 }
+.checks li{ display:flex; gap:11px; align-items:flex-start; padding:9px 0; border-bottom:1px dashed var(--line); font-size:.95rem }
+.checks li:last-child{ border-bottom:none }
+.checks .mark{ flex:0 0 20px; height:20px; border-radius:6px; display:grid; place-items:center; font-family:'Rubik',sans-serif; font-weight:800; font-size:.8rem; margin-top:2px }
+.checks .have .mark{ background:var(--wa-soft); color:var(--wa-ink) }
+.checks .miss .mark{ background:var(--accent-soft); color:var(--accent) }
+
+.sources{ font-size:.84rem; color:var(--muted) }
+.sources li{ margin-bottom:5px }
+footer{ border-top:1px solid var(--line); margin-top:64px; padding:30px 0 60px; color:var(--muted); font-size:.85rem }
+footer .wrap{ display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center }
+.pbtn{ display:inline-flex; align-items:center; gap:8px; background:var(--whatsapp); color:#06301A; font-family:'Rubik',sans-serif; font-weight:700; font-size:.88rem; border:none; border-radius:999px; padding:10px 18px; cursor:pointer; text-decoration:none }
+.pbtn svg{ width:16px; height:16px; fill:currentColor }
+
+@media (max-width:680px){
+  .hero-inner{ flex-direction:column; align-items:stretch }
+  .phone{ margin:8px auto 0 }
+  body{ font-size:16px }
+}
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto } }
+</style>
+
+<header class="hero"><div class="wrap hero-inner">
+  <div class="hero-copy">
+    <p class="eyebrow">Deep research · Israeli SMB video ads</p>
+    <h1><span class="he" lang="he">פרסום בעברית</span><span class="sub">Harnessing the shorts factory for Hebrew advertising</span></h1>
+    <p class="lede" style="margin-top:18px">How to turn this Remotion-based faceless-shorts factory into a generator that lets Israeli small businesses produce their own Hebrew short-video ads — the market, the language, the culture, the tech, and the plan.</p>
+    <div class="meta">
+      <span>2026-08-22</span><span>3 workflows</span><span>17 agents</span><span>~1.1M tokens</span><span>871 tool calls</span>
+    </div>
+  </div>
+  <div class="phone">
+    <div class="screen">
+      <div class="cam"></div>
+      <div class="adcard">
+        <div class="kicker" lang="he">מספיק לחפש קוסמטיקאית בחיפה.</div>
+        <div class="biz" lang="he">ליאת קוסמטיקה · קליפ פרסומי</div>
+        <div class="badge"><span class="now" lang="he">199 ₪</span><span class="old" lang="he">290 ₪</span><span class="off">31%−</span></div>
+        <div class="cap" lang="he">החודש: <b>199 שקל</b> במקום 290.</div>
+        <div class="wabtn"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8.9-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3z"/></svg><span lang="he">להזמנת תור בוואטסאפ</span></div>
+      </div>
+    </div>
+    <div class="caption">An ad this system should produce — RTL, price badge, WhatsApp CTA.</div>
+  </div>
+</div>
+
+<nav class="toc"><div class="wrap">
+  <a href="#thesis">Thesis</a><a href="#market">Market</a><a href="#budgets">Budgets</a><a href="#competitors">Competitors</a><a href="#language">Language</a><a href="#slang">Slang</a><a href="#psychology">Psychology</a><a href="#verticals">Verticals</a><a href="#onscreen">On-screen</a><a href="#regulation">Regulation</a><a href="#calendar">Calendar</a><a href="#repo">Repo audit</a><a href="#plan">Plan</a>
+</div></nav>
+
+<main>
+
+<section id="thesis">
+  <p class="eyebrow">The one-line answer</p>
+  <h2>The open lane</h2>
+  <blockquote><span lang="he">אף כלי לא מייצר היום פרסומת של 30 שניות בעברית עם קריינות טבעית, כתוביות RTL נכונות, והקשר ישראלי — במחיר של עסק קטן.</span>
+    <span class="en">No tool today natively produces a polished 30-second Hebrew ad with a natural voice, correct RTL burned-in captions, and Israeli cultural context — at SMB prices. Global AI video tools treat Hebrew as a checkbox; Israeli production is expensive. That gap is the product.</span>
+  </blockquote>
+  <div class="callout go">
+    <h4>And the repo is ~80% ready</h4>
+    <p>A working Hebrew RTL commercial already exists — <code>shorts/short-16-formy</code> — proving the whole chain (edge-tts Hebrew voice → word-exact <code>.words.json</code> → RTL captions with vendored Hebrew fonts). The missing 20% is a <code>/make-ad</code> skill, three ad components, a bidi-safe number fix, and a louder ad style. <a href="#plan">Jump to the plan.</a></p>
+  </div>
+</section>
+
+<section id="market">
+  <p class="eyebrow">Where Israelis actually watch</p>
+  <h2>A video-first, WhatsApp-centric market</h2>
+  <p>Israel is young (median age <strong>29.2</strong>), near-universally online (<strong>91.3%</strong> internet, 109% mobile connections), and <strong>93.8% of adults</strong> use social media. Short vertical video is the dominant ad surface.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">7.01M</div><div class="l">YouTube reach — 73.4% of the population, the broadest canvas</div></div>
+    <div class="stat"><div class="n">5.05M</div><div class="l">Facebook — the SMB paid lead-gen workhorse, ~78% of social referral traffic</div></div>
+    <div class="stat"><div class="n">5.00M</div><div class="l">Instagram / Reels — fastest-growing (+13.6% YoY), 54% female, under-45</div></div>
+    <div class="stat"><div class="n">4.49M</div><div class="l">TikTok adults — 69% of 18+, male-skewed, the "innovation" channel</div></div>
+    <div class="stat"><div class="n wa">99%</div><div class="l">WhatsApp penetration — 98% use it daily; the de-facto commerce layer</div></div>
+    <div class="stat"><div class="n gold">29.2</div><div class="l">Median age — a structurally young, mobile-first audience</div></div>
+  </div>
+  <h3>Design for sound-on</h3>
+  <p>Hebrew audio carries tone, humor, and colloquialism that captions alone can't — so <strong>sound-on is the norm in Israel, the opposite of US silent-first design</strong>. The voiceover is the primary meaning layer; captions reinforce it.</p>
+  <div class="callout">
+    <h4>The posting rhythm is shaped by the Jewish week</h4>
+    <p>Weekday evenings (18:00–23:00) are the core window. Friday afternoon drops steeply into Shabbat. <strong>Saturday night after Shabbat (~20:00+) is the single peak scrolling window of the week.</strong> Never post on Shabbat, Yom Kippur, or Memorial Day.</p>
+  </div>
+</section>
+
+<section id="budgets">
+  <p class="eyebrow">What an Israeli SMB can and will pay</p>
+  <h2>Budgets &amp; price psychology</h2>
+  <p>~700–730K active businesses, <strong>68% one-person self-employed</strong>. SMBs produce ~55% of national output but access only ~24% of business credit — price-sensitive, ROI-focused, churn-prone. Their #1 and #2 pain points are <strong>time and money</strong>; 48% feel enslaved to their business.</p>
+  <div class="tablewrap"><table>
+    <caption>What things cost an Israeli SMB today (₪)</caption>
+    <thead><tr><th>Item</th><th class="num">Low</th><th class="num">Typical</th><th class="num">High</th></tr></thead>
+    <tbody>
+      <tr><td>Facebook/Instagram ads budget / month</td><td class="num">1,500</td><td class="num">3,500–6,000</td><td class="num">7,000–15,000</td></tr>
+      <tr><td>Social-media management / month</td><td class="num">1,200–3,000</td><td class="num">3,000–5,000</td><td class="num">8,000–15,000+</td></tr>
+      <tr><td>AI-content tools / month</td><td class="num">109</td><td class="num">319–700</td><td class="num">1,399</td></tr>
+      <tr><td>A produced promo video (סרטון תדמית)</td><td class="num">1,200–2,800</td><td class="num">3,000–5,500</td><td class="num">12,000–25,000+</td></tr>
+    </tbody>
+  </table></div>
+  <div class="dodont">
+    <div class="do"><h4>SaaS price anchor: ₪50–60/month</h4>
+      <ul class="clean">
+        <li>ActiveTrail (10,000+ Israeli businesses) anchors the market at ₪50 Basic / ₪60 "popular".</li>
+        <li>Under ~₪100/mo = impulse-buy, card-on-file, treated like Netflix. Above ~₪150 it becomes a "business expense."</li>
+        <li>Norm: 14-day free trial, no card required, 15% off annual prepay.</li>
+      </ul>
+    </div>
+    <div class="dont"><h4>The churn trap</h4>
+      <ul class="clean">
+        <li>The $25–50/mo band has the <strong>highest churn in B2B SaaS</strong> — 8.6% monthly.</li>
+        <li>AI-native tools under $50 retain only <strong>23% of revenue</strong>; 60–70% of churn lands in the first 90 days.</li>
+        <li>Survival = habit loops: weekly WhatsApp video prompts, saved brand assets, visible view/lead counters.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout warn">
+    <h4>The AI-trust caveat</h4>
+    <p>Israelis adopt AI fast (28% of businesses, 2× the EU average) — but consumers are wary: fully-AI ads get +19% clicks, yet a "Created with AI" label cuts clicks ~31.5%, and the Coca-Cola AI ad drew real backlash in Israel. → Market <strong>"your products, AI-assisted" / authentic UGC-style</strong>, not obvious synthetic avatars.</p>
+  </div>
+</section>
+
+<section id="competitors">
+  <p class="eyebrow">Who's serving Hebrew today</p>
+  <h2>Competitors: Hebrew is a checkbox</h2>
+  <div class="tablewrap"><table>
+    <caption>Hebrew capability of the tools an Israeli SMB would actually reach for</caption>
+    <thead><tr><th>Tool</th><th>Hebrew voice</th><th>RTL captions</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td><strong>HeyGen</strong></td><td><span class="pill part">Creator plan $29/mo</span></td><td><span class="pill no">not documented</span></td><td>Possible but gated; no slang tuning</td></tr>
+      <tr><td><strong>Synthesia</strong></td><td><span class="pill part">in 140+ dubbing langs</span></td><td><span class="pill part">claims RTL</span></td><td>Corporate presenters, not casual SMB ads</td></tr>
+      <tr><td><strong>D-ID</strong> (Israeli)</td><td><span class="pill part">Azure: 2 flat voices</span></td><td><span class="pill no">—</span></td><td>Minute-based, no styles, robotic Hebrew</td></tr>
+      <tr><td><strong>CapCut</strong></td><td><span class="pill no">no Hebrew TTS</span></td><td><span class="pill no">no RTL</span></td><td>Dominant free editor — Hebrew absent</td></tr>
+      <tr><td><strong>Canva</strong></td><td><span class="pill no">no Hebrew AI voice</span></td><td><span class="pill no">long complaint</span></td><td>SMB favorite, not a Hebrew VO tool</td></tr>
+      <tr><td><strong>ElevenLabs</strong> (inside Pictory/Powtoon/invideo)</td><td><span class="pill part">v3 only, not v2/flash</span></td><td><span class="pill no">—</span></td><td>Quality trap — depends which model a tool routes to</td></tr>
+      <tr><td><strong>Wix + Hour One</strong> (Israeli)</td><td><span class="pill no">—</span></td><td><span class="pill no">—</span></td><td><strong>The direct future threat</strong> — Wix owns the SMB website relationship</td></tr>
+    </tbody>
+  </table></div>
+  <p>The open lane: <strong>natural Hebrew voice + correct RTL burned captions + Israeli-culture templates + ₪ SMB pricing.</strong> Move before Wix productizes Hour One.</p>
+</section>
+
+<section id="language">
+  <p class="eyebrow">The Hebrew of Israeli ads</p>
+  <h2>Write like 9 million people talk</h2>
+  <p>The rule: <strong>"ISRAELI &gt; ACADEMY."</strong> Semiformal spoken Hebrew (תקנית-לייט) — never formal (אנו, הינך, לפיכך read as stiff and alienating), rarely pure street. Hebrish is expected (סייל, דיל, ברנד, אונליין).</p>
+
+  <h3>The CTA &amp; urgency toolkit</h3>
+  <div class="chips">
+    <span class="chip"><span class="he" lang="he">הזמינו עכשיו</span><span class="en">order now — plural imperative, the default CTA</span></span>
+    <span class="chip"><span class="he" lang="he">חסכו 30% עכשיו</span><span class="en">save 30% now</span></span>
+    <span class="chip"><span class="he" lang="he">משלוח חינם היום</span><span class="en">free shipping today</span></span>
+    <span class="chip"><span class="he" lang="he">עד גמר המלאי</span><span class="en">until stock runs out</span></span>
+    <span class="chip"><span class="he" lang="he">נגמר היום. 50% הנחה</span><span class="en">ends today, 50% off — FOMO</span></span>
+  </div>
+  <div class="callout go">
+    <h4>The two magic phrases</h4>
+    <p><span class="he" lang="he"><strong>בלי מנוי</strong></span> (no subscription) and <span class="he" lang="he"><strong>חד פעמי</strong></span> (one-time payment) — Israelis hate recurring payments. And prices are <strong>always in ₪, never $</strong>.</p>
+  </div>
+
+  <h3>The slogan formula</h3>
+  <p>3–6 words, rhyming or punning, built on a Hebrew root verb or a naturalized English noun:</p>
+  <div class="chips">
+    <span class="chip"><span class="he" lang="he">זה טוב, זה אסם</span><span class="en">Osem — puns on "strength"</span></span>
+    <span class="chip"><span class="he" lang="he">מה הקשר? בירה נשר!</span><span class="en">Nesher — entered slang</span></span>
+    <span class="chip"><span class="he" lang="he">ככה זה כשאוהבים</span><span class="en">Cellcom — colloquial warmth</span></span>
+  </div>
+
+  <div class="callout warn">
+    <h4>Gender is vertical-dependent, not universal</h4>
+    <p>Masculine-plural (אתם) is the broad default — but it is <strong>actively wrong for women's beauty</strong> (use feminine-singular את). Barbershops &amp; trades take masculine; restaurants &amp; real estate take neutral/mixed. Bake a per-vertical register into the generator.</p>
+    <p style="margin-top:8px">And <strong>never use ניקוד (vowel marks)</strong> in digital Hebrew — write ktiv maleh, short unambiguous words, Hebrew quotes (״ ״), gershayim abbreviations (סה"כ).</p>
+  </div>
+</section>
+
+<section id="slang">
+  <p class="eyebrow">Hooks &amp; spoken slang</p>
+  <h2>The 3-second hook</h2>
+  <p>Land the hook before 2 seconds or they scroll. Israeli openings are conversational imperatives and exclamations:</p>
+  <div class="chips">
+    <span class="chip"><span class="he" lang="he">רגע, אתם חייבים לראות את זה</span><span class="en">wait, you have to see this</span></span>
+    <span class="chip"><span class="he" lang="he">סיפור מטורף</span><span class="en">an insane story</span></span>
+    <span class="chip"><span class="he" lang="he">אף אחד לא מדבר על זה</span><span class="en">no one's talking about this</span></span>
+    <span class="chip"><span class="he" lang="he">רגע, תקשיבו לי</span><span class="en">wait, listen to me</span></span>
+  </div>
+  <h3>Energy markers (Arabic-derived, instantly native)</h3>
+  <div class="chips">
+    <span class="chip"><span class="he" lang="he">יאללה</span><span class="en">let's go</span></span>
+    <span class="chip"><span class="he" lang="he">וואלה</span><span class="en">wow / really</span></span>
+    <span class="chip"><span class="he" lang="he">סבבה</span><span class="en">cool</span></span>
+    <span class="chip"><span class="he" lang="he">אחלה</span><span class="en">awesome</span></span>
+    <span class="chip"><span class="he" lang="he">תכלס</span><span class="en">bottom line</span></span>
+    <span class="chip"><span class="he" lang="he">חבל"ז</span><span class="en">ironic = amazing</span></span>
+    <span class="chip"><span class="he" lang="he">סחתן</span><span class="en">props</span></span>
+  </div>
+  <p><strong>Directness is a feature, not a bug:</strong> dugri (דוגרי) bluntness and tachles are trust signals. Fast, high-energy, first-person to-camera — "סבבה, בואו נדבר על…" Match the register to the audience: secular Tel Aviv is maximally slangy; national-religious adds blessings (ב"ה); Haredi avoids internet slang; Arab-Israeli leans on Arabic interjections.</p>
+</section>
+
+<section id="psychology">
+  <p class="eyebrow">The cultural code</p>
+  <h2>Consumer psychology</h2>
+  <p>Israeli consumer behavior is driven by a few deep codes. Get these right and the ad feels native; get them wrong and the freier-alarm goes off.</p>
+  <div class="rules">
+    <div class="rule"><p><b>Never make the viewer a פרייר (freier/sucker).</b> The "11th commandment." Frame every deal as proof the buyer is <strong>smart</strong> — "you beat the system" — not merely cheap. Show the math of the deal.</p></div>
+    <div class="rule"><p><b>שווה ("worth it") beats "cheap."</b> Israelis are value-maximizers. The 2011 cottage-cheese boycott (100K FB members, −30% demand, price reversed in days) made consumers durably price-militant. Justify the price.</p></div>
+    <div class="rule"><p><b>Speak דוגרי from a named, visible owner.</b> Polish reads as "someone's trying to fool me." The family shop (חנות של משפחה) and word-of-mouth (מפה לאוזן) out-trust any faceless brand.</p></div>
+    <div class="rule"><p><b>Warmth + משפחתיות + nostalgia is the payload.</b> The Bamba playbook — 25% of the snack market via a baby mascot and intergenerational memory.</p></div>
+    <div class="rule"><p><b>Make the brand the customer's ally</b> against profiteering (the Shufersal-vs-Tnuva playbook). Side with the customer in the price fight.</p></div>
+    <div class="rule"><p><b>חוצפה + דווקא humor punches UP.</b> Self-deprecate first, mock the situation (bureaucracy, traffic), never punch down at the customer.</p></div>
+  </div>
+  <div class="callout warn">
+    <h4>Hard taboos — non-negotiable</h4>
+    <p>No Holocaust, no terror victims, no fallen soldiers, no army-as-sales-device (the Cellcom 2009 lesson), no casual politics/religion. In wartime: sober, service-oriented, or "strategic silence."</p>
+  </div>
+</section>
+
+<section id="verticals">
+  <p class="eyebrow">Per-sector lexicons</p>
+  <h2>Each vertical speaks its own Hebrew</h2>
+  <p>The #1 product rule: <strong>each vertical loads its own vocabulary, offer structure, register, CTA, and proof type</strong> — generic ad-Hebrew reads as "not written for my business."</p>
+  <div class="vgrid">
+    <div class="vcard"><h4>Restaurants / food</h4><div class="reg">Register: neutral/mixed</div>
+      <p>Fixed-price packages with price-anchoring (<span class="he" lang="he">ארוחה לזוג ב-165 ש"ח במקום 336</span>), course vocabulary, transliterated dishes (אנטריקוט, צ'יפס), kosher/premium signals.</p>
+      <div class="cta-ex"><strong>CTA:</strong> <span class="he" lang="he">הזמנת שולחן / הזמנת מקום</span> — <em>not</em> "תפוס מקום" (not idiomatic).</div></div>
+    <div class="vcard"><h4>Beauty / salon (women)</h4><div class="reg">Register: feminine singular</div>
+      <p>All persuasive copy feminine (<span class="he" lang="he">אני מזמינה אותך, עצרי, בחרי</span>); clinical vocabulary (אבחון, פרוטוקול, רטינול); concern→empathy→solution→invitation.</p>
+      <div class="cta-ex"><strong>Proof:</strong> before/after as a narrative transformation line.</div></div>
+    <div class="vcard"><h4>Salon / barbershop</h4><div class="reg">Register: masculine</div>
+      <p>The appointment economy (קביעת תור, תזכרות אוטומטיות); first-visit perk, word-of-mouth discount (<span class="he" lang="he">הנחה למעבירי מילת הפה</span>), off-peak special.</p>
+      <div class="cta-ex"><strong>Offers:</strong> first-visit perk, referral discount, off-peak deal.</div></div>
+    <div class="vcard"><h4>Real estate</h4><div class="reg">Register: neutral</div>
+      <p>Discount typology (הנחה אמיתית, הנחה פיננסית), payment splits (10%-90%), room-count sizing, the ממ"ד (safe room) selling point, anchor against מחיר מחירון.</p>
+      <div class="cta-ex"><strong>CTA:</strong> buyer-empowerment — <span class="he" lang="he">בדיקת עסקאות דומות</span>.</div></div>
+    <div class="vcard"><h4>Fitness / gyms</h4><div class="reg">Register: energetic neutral</div>
+      <p>The offer is a <strong>trial</strong> (שיעור ניסיון חינם / שבוע התנסות) with real fine print as trust (מוגבל לשימוש 1 בחצי שנה).</p>
+      <div class="cta-ex"><strong>Proof:</strong> לפני ואחרי (before/after) transformation.</div></div>
+    <div class="vcard"><h4>Trades (plumber/electrician/AC)</h4><div class="reg">Register: masculine</div>
+      <p>Emergency/speed (<span class="he" lang="he">צנרת שהתפוצצה לא מחכה</span>, מי שעונה ראשון לוקח את העבודה) + trust credentials (מאומתים, אחריות שנה-שנתיים) + tiered pricing.</p>
+      <div class="cta-ex"><strong>CTA:</strong> <span class="he" lang="he">השוו הצעות</span> via one free WhatsApp inquiry.</div></div>
+  </div>
+</section>
+
+<section id="onscreen">
+  <p class="eyebrow">Hebrew on screen</p>
+  <h2>RTL, fonts &amp; captions</h2>
+  <ul class="checks">
+    <li class="have"><span class="mark">✓</span><p><strong>Burn captions in.</strong> Subtitles were always "part of the image" in Israel; dubbing never won. Max <strong>2 lines</strong> per card, ~60 chars full-width, ktiv maleh, no nikud.</p></li>
+    <li class="have"><span class="mark">✓</span><p><strong>Fonts designers use:</strong> Assistant, Heebo, Rubik, Alef, Varela Round (sans); Frank Ruhl (serif, premium); Secular One (display). All free, full Hebrew coverage.</p></li>
+    <li class="miss"><span class="mark">!</span><p><strong>The #1 technical risk is bidi, not fonts.</strong> Trailing punctuation/percent/phone can jump to the wrong side. Fix = RTL base direction + isolate numbers/Latin. Test <code>50% הנחה</code>, phone numbers, line-end <code>!</code>.</p></li>
+    <li class="miss"><span class="mark">!</span><p><strong>Avoid per-character typewriter</strong> on Hebrew — it scrambles word order. Reveal whole line blocks, wipe right-to-left, slide in from the right.</p></li>
+    <li class="have"><span class="mark">✓</span><p><strong>Caption style:</strong> bold weight, white/bright on a dark strip/heavy outline, bottom-third, emoji only at line start/end (1–3 max, e.g. <span class="he" lang="he">🔥 מבצע חם</span>).</p></li>
+  </ul>
+</section>
+
+<section id="regulation">
+  <p class="eyebrow">Stay legal</p>
+  <h2>Israeli ad regulation</h2>
+  <p>Bake these into the generator so an ad can't be published non-compliant:</p>
+  <ul class="checks">
+    <li class="miss"><span class="mark">§2</span><p><strong>Consumer Protection Law, Sec. 2</strong> — no misleading the consumer on any material matter.</p></li>
+    <li class="miss"><span class="mark">§15</span><p><strong>Sec. 15</strong> — any special sale must disclose scope, terms, and the discount rate; show the <strong>total price</strong> online.</p></li>
+    <li class="miss"><span class="mark">§7a</span><p><strong>Sec. 7a + 1991 regs</strong> — special protection against deceptive marketing to minors.</p></li>
+    <li class="miss"><span class="mark">שת"פ</span><p><strong>Influencer/native ads</strong> must be visibly labeled <span class="he" lang="he">פרסום בשיתוף פעולה / שת״פ ממומן</span> up front, not buried in hashtags.</p></li>
+    <li class="miss"><span class="mark">+</span><p>Also: <strong>Privacy Protection Law Amendment 13</strong> (in force Aug 2025) for customer data, and <strong>ACUM</strong> music licensing for commercial video.</p></li>
+  </ul>
+  <p style="font-size:.84rem;color:var(--muted)"><em>Exact fine amounts weren't verifiable from gov.il in this environment (it blocks automated fetch) — confirm current figures before relying on them in an ad.</em></p>
+</section>
+
+<section id="calendar">
+  <p class="eyebrow">The demand engine</p>
+  <h2>The Israeli marketing calendar</h2>
+  <p>Demand concentrates into holiday spikes. A calendar-aware generator templates the angle per vertical and pre-loads 1–2 weeks ahead.</p>
+  <div class="cal tablewrap"><table>
+    <caption>Holiday → verticals that spike → the ad angle</caption>
+    <thead><tr><th>Season</th><th>Verticals</th><th>Angle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Tishrei</strong> (Sep–Oct)<br>Rosh Hashana → Sukkot + back-to-school</td><td>Food, gifts, fashion, beauty, home, school</td><td>Family dinner, new beginnings, gifts for the new year</td></tr>
+      <tr><td><strong>Hanukkah</strong> (Dec) + <strong>Black Friday</strong> (late Nov)</td><td>Toys, electronics, fashion, beauty gift sets, food (sufganiyot)</td><td>The biggest gift+discount window of the year</td></tr>
+      <tr><td><strong>Purim</strong> (Mar)</td><td>Costumes, party, beauty, event venues, bakeries</td><td>Festive dress-up, party energy</td></tr>
+      <tr><td><strong>Passover</strong> (Apr)</td><td>Supermarkets/food, catering, cleaning, cookware</td><td>The Seder table, kosher-for-Passover pantry replacement</td></tr>
+      <tr><td><strong>Independence Day</strong> (May)</td><td>Meat/butchers, venues, beverages, summer fashion</td><td>BBQ / mangal + blue-white celebration</td></tr>
+      <tr><td><strong>Tu B'Av</strong> (Aug)</td><td>Beauty, restaurants, jewelry, date-night venues</td><td>The "Jewish Valentine's Day" romance/gift mini-peak</td></tr>
+      <tr><td><strong>Summer</strong> (Jul–Aug)</td><td>Fashion clearance, gyms/beauty (body season)</td><td>End-of-season sales (up to 70% off)</td></tr>
+      <tr><td><strong>Ramadan / Eid</strong> (Feb–Mar 2026)</td><td>Arab-Israeli verticals</td><td>Arabic-language track</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="repo">
+  <p class="eyebrow">What this repo already does</p>
+  <h2>Tech audit: ~80% built</h2>
+  <p>The chain is already proven end-to-end by <code>shorts/short-16-formy</code>, a real 36-second Hebrew RTL commercial.</p>
+  <ul class="checks">
+    <li class="have"><span class="mark">✓</span><p><strong>Hebrew voice, $0:</strong> <code>gen_voice_edge.py</code> with <code>he-IL-AvriNeural</code> / <code>he-IL-HilaNeural</code> — free, unlimited, native per-word timestamps.</p></li>
+    <li class="have"><span class="mark">✓</span><p><strong>Hebrew aligner fallback:</strong> whisperX <code>--lang he</code> → <code>imvladikon/wav2vec2-xls-r-300m-hebrew</code>, wired end-to-end.</p></li>
+    <li class="have"><span class="mark">✓</span><p><strong>RTL captions:</strong> <code>direction:'rtl'</code>, <code>unicodeBidi:'isolate'</code>, RLM anchoring, <code>stripNikkud()</code> in <code>shorts.tsx</code>.</p></li>
+    <li class="have"><span class="mark">✓</span><p><strong>Hebrew fonts vendored offline:</strong> Heebo + Rubik, <code>hebrew+latin</code> ranges including ₪.</p></li>
+  </ul>
+  <h3>What's missing</h3>
+  <div class="tablewrap"><table>
+    <caption>Gaps, severity, and the fix</caption>
+    <thead><tr><th>Gap</th><th>Severity</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td>ElevenLabs default model v2 has <strong>no Hebrew</strong></td><td><span class="pill b">blocker</span></td><td>Use <code>--model eleven_multilingual_v3 --lang he</code>; default to edge-tts</td></tr>
+      <tr><td>kokoro offered but has <strong>no Hebrew voice</strong></td><td><span class="pill m">major</span></td><td>Exclude kokoro for Hebrew; edge-tts is the $0 path</td></tr>
+      <tr><td>No <code>/make-ad</code> skill or ad template</td><td><span class="pill m">major</span></td><td>Author it; reuse short-16-formy as reference</td></tr>
+      <tr><td><strong>No CTA end-card / ₪ price-badge / logo</strong> component</td><td><span class="pill b">blocker</span></td><td>Add <code>remotion/src/lib/ads.tsx</code> (AdEndCard, PriceBadge, Logo)</td></tr>
+      <tr><td>brand.md forbids CTA outros + loud energy</td><td><span class="pill m">major</span></td><td>Explicit ad-mode override (drop loop, allow CTA card)</td></tr>
+      <tr><td>Mixed Hebrew+digit caption tokens can bidi-reorder</td><td><span class="pill m">major</span></td><td><code>formatILPrice()</code> + isolated-digit phone formatter</td></tr>
+      <tr><td>Ad contract fields not validated</td><td><span class="pill m">major</span></td><td><code>validate_ad_beats()</code> in <code>tools/contracts.py</code></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="plan">
+  <p class="eyebrow">The harness</p>
+  <h2>The plan, in build order</h2>
+  <div class="steps">
+    <div class="step"><div><div class="what">A /make-ad skill</div><div class="detail">Brief → interrogation for business{} → hook per vertical → Hebrew script.md + beats.json (register per line) → edge-tts voice → RTL captions → CTA end card → QA → SFX/music → cost report.</div></div></div>
+    <div class="step"><div><div class="what">Three ad components</div><div class="detail"><code>remotion/src/lib/ads.tsx</code>: AdEndCard (phone + wa.me, safe-area-correct), PriceBadge (bidi-safe ₪, struck oldPrice, discount stamp), Logo/Watermark.</div></div></div>
+    <div class="step"><div><div class="what">Bidi-safe numbers</div><div class="detail"><code>formatILPrice()</code> + isolated-digit phone formatter so 50%, 12,345 ₪, 050-123-4567 never reorder inside a Hebrew caption token.</div></div></div>
+    <div class="step"><div><div class="what">Per-vertical lexicon templates</div><div class="detail">Each vertical loads its own vocabulary, register, offer structure, CTA, and proof type (section 7).</div></div></div>
+    <div class="step"><div><div class="what">Holiday-aware template engine</div><div class="detail">Pick the ad angle from today's date on the Israeli calendar; pre-load campaigns 1–2 weeks ahead.</div></div></div>
+    <div class="step"><div><div class="what">Ad style variant</div><div class="detail">An explicit mode:"ad" override: louder energy, higher-contrast stroke, bolder scale-pop, an urgency accent, a defined CTA-card ending. Keep calm premium for non-ad shorts.</div></div></div>
+    <div class="step"><div><div class="what">Contract validation</div><div class="detail"><code>validate_ad_beats()</code> — required ad.business/offer/cta, numeric price, currency default ₪, a phoneDisplay or wa.me link, cta.type ∈ {phone, whatsapp, both, visit}.</div></div></div>
+  </div>
+
+  <h3>Two deliberate rule overrides (ads ≠ shorts)</h3>
+  <div class="dodont">
+    <div class="do"><h4>Drop the seamless loop</h4><p style="margin:0">Ads are one-shot linear persuasion; the end card must hold so the phone/WhatsApp is tappable. An ad-mode exception, not style drift.</p></div>
+    <div class="do"><h4>Override the no-CTA rule</h4><p style="margin:0">The conversion CTA <em>is</em> the payoff for an ad — the end card replaces the "end on the payoff line" rule for mode:"ad" only.</p></div>
+  </div>
+
+  <h3>Voice decision</h3>
+  <p><strong>Default to edge-tts</strong> (he-IL-AvriNeural / he-IL-HilaNeural) — free, unlimited, native word boundaries, already proven. ElevenLabs is an optional upgrade but <strong>only</strong> with <code>--model eleven_multilingual_v3 --lang he</code> (~$0.03–0.10/ad). <strong>Exclude kokoro for Hebrew entirely.</strong></p>
+
+  <div class="callout go">
+    <h4>Product &amp; GTM shape</h4>
+    <p><strong>WhatsApp-native</strong> (onboarding, drafts, revision, view-notifications over WhatsApp; one-tap "forward to a fellow business owner" referral). <strong>Price</strong> ₪49 starter / ₪99 popular / ₪399 agency, 14-day free trial no card. <strong>Channels:</strong> accountants/bookkeepers (the iCount/GreenInvoice playbook), active Hebrew Facebook SMB groups, Lahav + the SBA/Maof network, bank/card SMB hubs.</p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Appendix</p>
+  <h2>Sources</h2>
+  <p>Full per-finding source URLs are embedded in each workflow's raw output and in the repo's <code>research/hebrew-ads/hebrew-ads-deep-dive.md</code>. Primary sources:</p>
+  <ul class="sources">
+    <li>DataReportal Digital Israel (2024 / 2025 / 2026) · ISOC social-media survey 2025 · Bezeq State of the Internet 2025</li>
+    <li>Globes, TheMarker, Calcalist, ICE, Ynet, Times of Israel, Jerusalem Post, Maariv, Davar</li>
+    <li>Hebrew Wikipedia — סלנג עברי · סיסמה (פרסום) · פראייר · כתוביות · חוק הגנת הצרכן · פרטנר תקשורת · בנק הפועלים</li>
+    <li>ActiveTrail / vcita / Canva / Monday / MailerLite / OpusClip pricing pages · HeyGen / Synthesia / D-ID / ElevenLabs docs</li>
+    <li>rest.co.il · Israeli SMB marketing guides (natigold, smartpush, shivuknet, ckdigital360, airdigital, lemel, lunsoulsocial, activelead, vibe-fit, fgmp, experts.co.il)</li>
+  </ul>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <div><strong style="font-family:'Rubik',sans-serif">פרסום בעברית — Hebrew Ads Research</strong><br>claude-faceless-shorts-creator · research/hebrew-ads/</div>
+  <a class="pbtn" href="#thesis"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>Back to the thesis</a>
+</div></footer>

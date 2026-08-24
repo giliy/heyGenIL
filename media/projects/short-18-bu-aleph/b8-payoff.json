@@ -1,0 +1,11 @@
+{
+  "prompt": "This exact cute yellow koala creature (big fluffy round ears with cream inner fluff, soft plush body, huge dark glossy eyes, gentle open-mouth smile) giving a warm hug toward the viewer, eyes soft and happy, a gentle warm glow all around, serene and loving, soft storybook children's illustration, the warm payoff, 9:16",
+  "model": "gemini-3.1-flash-image",
+  "aspect_ratio": "9:16",
+  "image_size": "2K",
+  "seed": null,
+  "refs": [
+    "ai-shorts\\bu-koala\\character.jpg"
+  ],
+  "created": "2026-08-23T11:09:20"
+}

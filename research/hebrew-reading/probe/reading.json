@@ -1,0 +1,7 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "units": [
+    { "id": "kamatz-bet", "grapheme": "בָּ", "sound": "ba", "role": "isolated" },
+    { "id": "word-baba",  "grapheme": "בָּבָּא", "sound": "baba", "role": "word" }
+  ]
+}

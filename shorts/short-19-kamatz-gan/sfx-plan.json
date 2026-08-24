@@ -1,0 +1,92 @@
+{
+  "id": "short-19-kamatz-gan",
+  "catalog": "media/library/sfx/catalog.json",
+  "master": "remotion/out/Short19KamatzGan.mp4",
+  "master_fps": 30,
+  "render": {
+    "preview": "remotion/out/Short19KamatzGan-voiced.mp4",
+    "out": "remotion/out/Short19KamatzGan-sfx.mp4",
+    "end_s": 48.0,
+    "duck": true
+  },
+  "events": [
+    {
+      "at_s": 0.1,
+      "sfx_id": "sparkle-soft",
+      "gain_db": -8.0,
+      "cue": "hook: Bu appears under the first caption line (frame-0 magic)"
+    },
+    {
+      "at_s": 5.987,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "אַבָּא word pop as spoken (first kamatz keyword of the story)"
+    },
+    {
+      "at_s": 10.12,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "אַרְנָב word pop as spoken (the rabbit appears in the scene)"
+    },
+    {
+      "at_s": 14.985,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "אֲרוֹן word pop as spoken (the park bookcase is opened)"
+    },
+    {
+      "at_s": 21.515,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "אֲבַטִּיחַ word pop as spoken (dad pulls out the watermelon)"
+    },
+    {
+      "at_s": 22.153,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "אָדֹם word pop as spoken (it's red!)"
+    },
+    {
+      "at_s": 32.0,
+      "sfx_id": "chime-reward",
+      "gain_db": -8.0,
+      "cue": "כָּל הַכָּבוֹד payoff chime — the recap line starts"
+    },
+    {
+      "at_s": 38.585,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "keywords recap: אַבָּא"
+    },
+    {
+      "at_s": 39.482,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "keywords recap: אַרְנָב"
+    },
+    {
+      "at_s": 40.61,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "keywords recap: אֲרוֹן"
+    },
+    {
+      "at_s": 41.588,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "keywords recap: אֲבַטִּיחַ"
+    },
+    {
+      "at_s": 42.838,
+      "sfx_id": "pop-reveal",
+      "gain_db": -10.0,
+      "cue": "keywords recap: אָדֹם"
+    },
+    {
+      "at_s": 44.0,
+      "sfx_id": "chime-magic",
+      "gain_db": -9.0,
+      "cue": "gentle magic close after the last keyword (אָדֹם ends 43.436)"
+    }
+  ]
+}

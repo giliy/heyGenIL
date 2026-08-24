@@ -1,0 +1,29 @@
+{
+  "master": "remotion/out/Vox3DorSever-voiced.mp4",
+  "master_fps": 30,
+  "catalog": "media/library/sfx/catalog.json",
+  "render": {
+    "preview": "remotion/out/Vox3DorSever-voiced.mp4",
+    "out": "vox-shorts/vox-3-dor-sever/output/vox-3-sfx.mp4",
+    "end_s": 33.0,
+    "duck": true
+  },
+  "note": "Dor Sever (vox-3): calm/premium collage taste — felt-not-heard, sparse, nothing under the narration except the storybook river ambience. Every cue is anchored to Vox3DorSever.tsx CUE frames (keyed to real Edge-TTS word times): hook riser into the headline, a pop as dor-01 lands, a soft chime on the lottery, a UI tick on the exam, a felt impact on the loan, a wind pull-back into the moral, and the one HERO drop — the rubber stamp at the punchline. Reuses the existing library catalog (no new SFX generated).",
+  "events": [
+    { "at_s": 1.2, "sfx_id": "riser-soft", "gain_db": -4, "shot": "hook", "cue": "gentle anticipation into the hook headline 'דור סבר חיפש קיצורי דרך' (f45)" },
+
+    { "at_s": 4.9, "sfx_id": "pop-reveal", "gain_db": 0, "shot": "meet", "cue": "dor-01 portrait drops in on 'זה דור סבר' (f142) — reveals the man" },
+
+    { "at_s": 10.2, "sfx_id": "chime-reward", "gain_db": 2, "shot": "gag-1", "cue": "lottery 'הלוטו' chip pins on 'קנה לוטו' (f304) — soft positive as he buys the ticket", "note": "ironic lilt — reward chime on a bad idea" },
+
+    { "at_s": 14.5, "sfx_id": "ui-click-soft", "gain_db": 0, "shot": "gag-2", "cue": "exam 'המבחן' chip pins on 'סימן תשובות' (f432) — quick dry tick for marking answers" },
+
+    { "at_s": 19.0, "sfx_id": "impact-soft", "gain_db": 0, "shot": "gag-3", "cue": "loan 'ההלוואה' chip pins on 'לקח הלוואה' (f566) — felt weight of taking on debt" },
+
+    { "at_s": 22.6, "sfx_id": "whoosh-wind", "gain_db": -3, "shot": "moral", "cue": "camera pulls back to the widest framing over the river on 'כל קיצור דרך הוביל אותו' (f682) — breath before the turn" },
+
+    { "at_s": 27.07, "sfx_id": "stamp-hit", "gain_db": 3, "shot": "punchline", "cue": "rubber stamp 'קיצור דרך' slams on 'בסוף' (f810)", "note": "HERO — the scene's whole point lands: the verdict. Slightly pre-rolled to the slam." },
+
+    { "at_s": 0.0, "sfx_id": "stream-soft", "gain_db": -14, "optional": true, "shot": "ambient", "cue": "storybook river bed under the whole short — matches the river backdrop, one continuous loop, no under-voice ducking needed at -14" }
+  ]
+}

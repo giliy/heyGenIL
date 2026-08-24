@@ -1,0 +1,87 @@
+{
+  "id": "short-16-formy",
+  "title": "Formy — טופס דיגיטלי בעברית",
+  "template": "Short16Formy",
+  "engine": "tsx",
+  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "theme": { "accent": "#6366F1", "font": "hebrew" },
+  "voice": {
+    "engine": "edge",
+    "voiceId": "he-IL-AvriNeural",
+    "lines": [
+      { "text": "צריך להחתים הרבה לקוחות?", "start": 0.5, "end": 3.23 },
+      { "text": "טפסים על הנייר. חתימות שצריך לשלוח בדואר.", "start": 3.3, "end": 7.71 },
+      { "text": "הכירו את פורמי — פלטפורמת הטפסים הדיגיטליים של ישראל.", "start": 7.9, "end": 12.83 },
+      { "text": "בונים טופס מרהיב בכמה לחיצות.", "start": 12.95, "end": 15.93 },
+      { "text": "חתימה דיגיטלית. חוקית. עם שרשרת ראיות.", "start": 16.0, "end": 21.27 },
+      { "text": "לוגיקה מותנית, ואנליטיקה חיה בזמן אמת.", "start": 21.5, "end": 25.23 },
+      { "text": "מתחבר לשלאק ולגוגל שיטס.", "start": 25.35, "end": 28.05 },
+      { "text": "עסקים בישראל כבר בונים איתנו.", "start": 28.15, "end": 30.77 },
+      { "text": "מתחילים בחינם. בלי כרטיס אשראי.", "start": 30.87, "end": 35.62 }
+    ]
+  },
+  "captions": { "preset": "pill", "burnIn": true, "style": { "rtl": true } },
+  "scenes": [
+    {
+      "id": "hook", "durationSec": 3.3, "beatId": "hook", "visual": "hook",
+      "overlays": [
+        { "id": "hook-title-1", "type": "text", "content": "צריך להחתים", "x": 40, "y": 240, "w": 1000, "h": 100, "start": 0, "end": 3.3, "animation": "rise", "style": { "font": "hebrew", "size": 88, "weight": 700, "align": "center", "color": "#ffffff" } },
+        { "id": "hook-title-2", "type": "text", "content": "הרבה לקוחות?", "x": 40, "y": 340, "w": 1000, "h": 110, "start": 0, "end": 3.3, "animation": "rise", "style": { "font": "hebrew", "size": 88, "weight": 700, "align": "center", "color": "#6366F1" } }
+      ]
+    },
+    {
+      "id": "pain", "durationSec": 4.5, "beatId": "pain", "visual": "pain",
+      "overlays": [
+        { "id": "pain-line", "type": "text", "content": "טפסים על נייר. חתימות בדואר.", "x": 40, "y": 1250, "w": 1000, "h": 100, "start": 0, "end": 4.5, "animation": "rise", "style": { "font": "hebrew", "size": 70, "weight": 700, "align": "center", "color": "#f5d76e" } }
+      ]
+    },
+    {
+      "id": "intro", "durationSec": 5.03, "beatId": "intro", "visual": "intro",
+      "overlays": [
+        { "id": "intro-tagline", "type": "text", "content": "פלטפורמת הטפסים הדיגיטליים של ישראל", "x": 40, "y": 1430, "w": 1000, "h": 90, "start": 0, "end": 5.03, "animation": "fade", "style": { "font": "hebrew", "size": 40, "weight": 500, "align": "center", "color": "rgba(255,255,255,0.85)" } }
+      ]
+    },
+    {
+      "id": "builder", "durationSec": 3.1, "beatId": "builder", "visual": "builder",
+      "overlays": [
+        { "id": "kicker-builder", "type": "text", "content": "גרירה ויזואלית", "x": 340, "y": 190, "w": 400, "h": 60, "start": 0, "end": 3.1, "animation": "rise", "style": { "font": "hebrew", "size": 30, "weight": 600, "align": "center", "color": "#6366F1" } }
+      ]
+    },
+    {
+      "id": "signature", "durationSec": 5.34, "beatId": "signature", "visual": "signature",
+      "overlays": [
+        { "id": "kicker-sign", "type": "text", "content": "חתימה דיגיטלית חוקית", "x": 300, "y": 190, "w": 480, "h": 60, "start": 0, "end": 5.34, "animation": "rise", "style": { "font": "hebrew", "size": 30, "weight": 600, "align": "center", "color": "#4db8a8" } }
+      ]
+    },
+    {
+      "id": "logic", "durationSec": 3.96, "beatId": "logic", "visual": "logic",
+      "overlays": [
+        { "id": "kicker-logic", "type": "text", "content": "לוגיקה מותנית", "x": 340, "y": 190, "w": 400, "h": 60, "start": 0, "end": 3.96, "animation": "rise", "style": { "font": "hebrew", "size": 30, "weight": 600, "align": "center", "color": "#9b7cc4" } }
+      ]
+    },
+    {
+      "id": "integrations", "durationSec": 2.82, "beatId": "integrations", "visual": "integrations",
+      "overlays": [
+        { "id": "integ-slack", "type": "text", "content": "Slack", "x": 190, "y": 560, "w": 180, "h": 70, "start": 0, "end": 2.82, "animation": "pop", "style": { "font": "body", "size": 28, "weight": 600, "align": "center", "color": "#9b7cc4" } },
+        { "id": "integ-gsheets", "type": "text", "content": "Google Sheets", "x": 700, "y": 580, "w": 260, "h": 70, "start": 0.2, "end": 2.82, "animation": "pop", "style": { "font": "body", "size": 28, "weight": 600, "align": "center", "color": "#4db8a8" } },
+        { "id": "integ-webhooks", "type": "text", "content": "Webhooks", "x": 180, "y": 1240, "w": 220, "h": 70, "start": 0.4, "end": 2.82, "animation": "pop", "style": { "font": "body", "size": 28, "weight": 600, "align": "center", "color": "#6366F1" } },
+        { "id": "integ-zapier", "type": "text", "content": "Zapier", "x": 740, "y": 1240, "w": 200, "h": 70, "start": 0.6, "end": 2.82, "animation": "pop", "style": { "font": "body", "size": 28, "weight": 600, "align": "center", "color": "#f5d76e" } },
+        { "id": "integ-notion", "type": "text", "content": "Notion", "x": 440, "y": 600, "w": 200, "h": 70, "start": 0.8, "end": 2.82, "animation": "pop", "style": { "font": "body", "size": 28, "weight": 600, "align": "center", "color": "#c9d1d9" } }
+      ]
+    },
+    {
+      "id": "proof", "durationSec": 2.77, "beatId": "proof", "visual": "proof",
+      "overlays": []
+    },
+    {
+      "id": "cta", "durationSec": 4.8, "beatId": "cta", "visual": "cta",
+      "overlays": [
+        { "id": "cta-button", "type": "text", "content": "מתחילים בחינם", "x": 240, "y": 720, "w": 600, "h": 130, "start": 0, "end": 4.8, "animation": "pop", "style": { "font": "hebrew", "size": 54, "weight": 700, "align": "center", "color": "#0d1117" } },
+        { "id": "cta-badge", "type": "text", "content": "בלי כרטיס אשראי", "x": 290, "y": 880, "w": 500, "h": 70, "start": 0, "end": 4.8, "animation": "fade", "style": { "font": "hebrew", "size": 34, "weight": 500, "align": "center", "color": "rgba(255,255,255,0.8)" } },
+        { "id": "cta-url", "type": "text", "content": "formy.co.il", "x": 390, "y": 1020, "w": 300, "h": 60, "start": 0, "end": 4.8, "animation": "fade", "style": { "font": "body", "size": 30, "weight": 500, "align": "center", "color": "rgba(255,255,255,0.5)" } }
+      ]
+    },
+    { "id": "loop", "durationSec": 0.38, "beatId": "loop", "visual": "loop", "overlays": [] }
+  ],
+  "meta": { "revision": 0, "updatedAt": "2026-08-22" }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hebrew Avatar Quality Plan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Source+Serif+4:opsz,wght@8..60,400..700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F7F5F1; --paper-raised:#FFFFFF; --ink:#1C1A17; --ink-2:#4A463F; --ink-3:#8A847A;
+  --line:#E3DED4; --accent:#1F4FD8; --accent-soft:#E7EDFB; --crit:#B3372B; --crit-soft:#F8E9E6;
+  --ok:#2C6E49; --ok-soft:#E6F0EA;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16150F; --paper-raised:#201E17; --ink:#EDEAE0; --ink-2:#B9B3A6; --ink-3:#7C766A;
+  --line:#35312A; --accent:#8FA9F2; --accent-soft:#232A45; --crit:#E48B7E; --crit-soft:#40211C;
+  --ok:#8CC4A4; --ok-soft:#1E2E24;
+}}
+:root[data-theme="dark"]{
+  --paper:#16150F; --paper-raised:#201E17; --ink:#EDEAE0; --ink-2:#B9B3A6; --ink-3:#7C766A;
+  --line:#35312A; --accent:#8FA9F2; --accent-soft:#232A45; --crit:#E48B7E; --crit-soft:#40211C;
+  --ok:#8CC4A4; --ok-soft:#1E2E24;
+}
+*{box-sizing:border-box}
+body{background:var(--paper); color:var(--ink); margin:0;
+  font-family:"Source Serif 4", Georgia, serif; font-size:1.06rem; line-height:1.62; }
+.wrap{max-width:46rem; margin:0 auto; padding:0 1.25rem 6rem}
+h1,h2,h3{font-family:"Fraunces", serif; font-weight:560; line-height:1.12; text-wrap:balance; letter-spacing:-0.01em}
+h1{font-size:2.6rem; margin:0 0 .4rem}
+h2{font-size:1.55rem; margin:2.6rem 0 .8rem; padding-top:1.4rem; border-top:1px solid var(--line)}
+h3{font-size:1.08rem; margin:1.6rem 0 .3rem; font-weight:600}
+p{margin:.5rem 0}
+.eyebrow{font-family:"JetBrains Mono", monospace; font-size:.72rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 1rem}
+.lede{font-size:1.18rem; color:var(--ink-2); max-width:38rem}
+header{padding:3.2rem 0 1.6rem}
+code, .mono{font-family:"JetBrains Mono", monospace; font-size:.82em}
+code{background:var(--accent-soft); padding:.08em .34em; border-radius:4px}
+.tgrid{overflow-x:auto; margin:1rem 0 1.4rem}
+table{border-collapse:collapse; width:100%; font-size:.92rem; min-width:34rem}
+th{font-family:"JetBrains Mono", monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); text-align:left; padding:.5rem .7rem; border-bottom:2px solid var(--ink); font-weight:600}
+td{padding:.5rem .7rem; border-bottom:1px solid var(--line); vertical-align:top}
+td.num{font-variant-numeric:tabular-nums; font-family:"JetBrains Mono", monospace; font-size:.8rem}
+.verdict{display:inline-block; font-family:"JetBrains Mono", monospace; font-size:.7rem; font-weight:600;
+  padding:.12em .5em; border-radius:99px; letter-spacing:.04em}
+.v-ok{background:var(--ok-soft); color:var(--ok)} .v-no{background:var(--crit-soft); color:var(--crit)}
+.callout{border-left:3px solid var(--accent); background:var(--paper-raised); padding:.9rem 1.1rem; margin:1.2rem 0; border-radius:0 6px 6px 0}
+.callout.warn{border-color:var(--crit); background:var(--crit-soft)}
+.callout p{margin:.2rem 0}
+.callout strong{font-family:"Fraunces", serif}
+ul,ol{padding-left:1.3rem} li{margin:.35rem 0}
+.phase{display:grid; grid-template-columns:5.5rem 1fr; gap:1rem; padding:1rem 0; border-top:1px solid var(--line)}
+.phase .ph-no{font-family:"JetBrains Mono", monospace; font-size:.72rem; color:var(--accent); padding-top:.3rem; letter-spacing:.06em}
+footer{margin-top:4rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--ink-3); font-size:.85rem}
+a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px}
+strong{font-weight:680}
+@media (max-width:40rem){ .phase{grid-template-columns:1fr} h1{font-size:2rem} }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">Deep-dive research &amp; implementation plan · 2026-08-24</p>
+  <h1>Hebrew Avatar Quality Plan</h1>
+  <p class="lede">Where the HeyGen-style Hebrew talking-avatar pipeline stands today, where the quality actually is, and how to raise it toward HeyGen for (almost) no money — with the lipsync and Hebrew-sync work front and center.</p>
+</header>
+
+<h2>Where we are right now</h2>
+<p>The scaffold for a HeyGen-like product is <strong>already built and type-clean</strong> — CLI tools, a worker <code>talk</code> stage, database, APIs, a wizard UI, a spec-driven Remotion comp, and a spoken-Hebrew consent gate. The one thing missing: <strong>it has never rendered a single real frame.</strong> The entire lip-sync core is a dry-run; <code>media/projects/_bakeoff-talk/</code> holds only a 13-second <code>voice.mp3</code> and no video.</p>
+
+<div class="tgrid"><table>
+<tr><th>Layer</th><th>Status</th><th>Verdict</th></tr>
+<tr><td>Hebrew voice (edge-tts he-IL)</td><td class="num">Working, $0</td><td><span class="verdict v-ok">PROVEN</span></td></tr>
+<tr><td>Word-exact RTL captions</td><td class="num">WordBoundary events</td><td><span class="verdict v-ok">PROVEN</span></td></tr>
+<tr><td>Hebrew ASR alignment (WhisperX)</td><td class="num">imvladikon wav2vec2</td><td><span class="verdict v-ok">PROVEN</span></td></tr>
+<tr><td>Credits / tiers / quote spine</td><td class="num">₪0/39/99, 6× gap</td><td><span class="verdict v-ok">BUILT</span></td></tr>
+<tr><td>Consent gate (digital twins)</td><td class="num">2-tier ASR+fallback</td><td><span class="verdict v-ok">BUILT</span></td></tr>
+<tr><td>Stock avatar marketplace</td><td class="num">8 Hebrew faces</td><td><span class="verdict v-ok">BUILT</span></td></tr>
+<tr><td><strong>Lip-sync generation</strong></td><td class="num">0 real renders</td><td><span class="verdict v-no">UN-PROVEN</span></td></tr>
+<tr><td>Lip-sync QA gate</td><td class="num">motion-only check</td><td><span class="verdict v-no">INSUFFICIENT</span></td></tr>
+<tr><td>Render resolution</td><td class="num">480p → 1080p comp</td><td><span class="verdict v-no">2.25× UPSCALE</span></td></tr>
+</table></div>
+
+<p>Three load-bearing facts the plan rests on, all adversarially verified against the code and live vendor pages:</p>
+<ul>
+<li><strong>Kling lipsync IS live on fal</strong> (<code>fal-ai/kling-video/lipsync/audio-to-video</code>, $0.014/s) — the older research claiming "not on fal" probed a malformed hyphenated URL and was wrong. The shipped registry is correct.</li>
+<li><strong>No phoneme/viseme data exists anywhere in the repo</strong> — timings stop at whole words. The lip-sync backends don't need it (they map audio→visemes internally), but any future custom sync driver would.</li>
+<li><strong>Avatar track is gated to the PRO tier</strong> (<code>avatars_require_pro</code>); talk billing is exactly 6× premium (4 vs 24 credits/sec).</li>
+</ul>
+
+<h2>The quality bar — what "HeyGen-good" actually is</h2>
+<p>The 2023–2026 literature is unambiguous that perceived realism is a <strong>full-face bundle</strong>, not lip-corner accuracy. Ranked by leverage:</p>
+<ol>
+<li><strong>A task-matched, sync-trained audio encoder</strong> — beats both joint-trained and large Wav2Vec2 encoders (LSE-C 7.27 vs 7.12 / 7.22). This is the single biggest lever.</li>
+<li><strong>Native 512×512 mouth-region resolution</strong> with explicit teeth/gum — not post-hoc upscale. Cheap lip-sync is recognizable precisely by a smeared mouth interior.</li>
+<li><strong>Reference-Attention identity injection</strong> — not channel-concat or image embeddings.</li>
+<li><strong>A temporal motion module</strong> — kills the single-frame jitter that single-step models (MuseTalk) admit to.</li>
+<li><strong>Fixing identity-reference "lip leaking"</strong> — QA must test with identity frames whose mouth is <em>not</em> already near the target pose.</li>
+</ol>
+
+<h2>Where we can improve — the four gaps that matter</h2>
+
+<h3>1. The lip-sync engine is un-chosen and un-proven</h3>
+<p>Two structural lanes exist and no single endpoint does both: <strong>photo→avatar</strong> (image+audio) and <strong>twin video→re-dub</strong> (video+audio). The decisive Hebrew fact: these models map <em>acoustic features → visemes</em> and never see text, so "supports Hebrew" means "its audio encoder wasn't English/Chinese-only." <strong>Whisper-encoder models (LatentSync, MuseTalk) inherit Whisper's 99-language coverage — which formally includes Hebrew.</strong> The Wan2.1-family (InfiniteTalk, MultiTalk) uses a Chinese-wav2vec2 encoder — the biggest Hebrew-quality risk.</p>
+
+<div class="tgrid"><table>
+<tr><th>Lane</th><th>Model</th><th>License</th><th>Cost / 30s</th><th>Hebrew basis</th></tr>
+<tr><td>Zero-budget self-host</td><td><strong>MuseTalk</strong> (re-dub) + <strong>LatentSync</strong> (quality)</td><td>MIT / Apache-2.0</td><td class="num">$0.003–0.015</td><td>Whisper encoder ✅</td></tr>
+<tr><td>&lt;$50/mo</td><td>Rented RTX 4090 (~$0.36/hr) running the above</td><td>—</td><td class="num">~$0.006 avg</td><td>Whisper encoder ✅</td></tr>
+<tr><td>Quality-first-cheap</td><td>fal <code>omnihuman/v1.5</code> (photo) + <code>sync-lipsync/v2</code> (dub)</td><td>commercial</td><td class="num">$0.75–4.80</td><td>"any language" own-audio</td></tr>
+<tr><td>Cheapest hosted photo</td><td>Replicate <code>prunaai/p-video-avatar</code></td><td>—</td><td class="num">$0.75</td><td>own audio, any lang</td></tr>
+</table></div>
+
+<div class="callout"><p><strong>Hebrew gutturals (ח/ע/ר) are UNVERIFIED</strong> in every published lip-sync paper. The nearest evidence (MuEx) covers Arabic pharyngeals and flags them underrepresented. Gutturals are largely pharyngeal with minimal lip articulation — actually <em>easier</em> for a sync model than rounded labials — but this is inference, not evidence. <strong>An empirical guttural-heavy Hebrew test set is non-negotiable and is itself the product's moat.</strong></p></div>
+
+<h3>2. The Hebrew voice is intelligible but flat</h3>
+<p>The ivrit-ai <strong>TTS-Arena-Hebrew</strong> leaderboard (live pull) ranks paid cloud voices on top for Israeli ears — Deepdub (#1, Elo 1575), Google Gemini 3.1 Flash TTS (#2), ElevenLabs v3 (#3). <strong>Not a single free edge-tts/Azure he-IL voice or open model is on the board.</strong> The two edge-tts voices (<code>he-IL-AvriNeural</code>, <code>he-IL-HilaNeural</code>) are intelligible with trustworthy WordBoundary timings, but flat, single-energy, and Microsoft removed SSML — and edge-tts is a GPL/ToS risk for a paid product.</p>
+<ul>
+<li><strong>Code-switching Hebrew↔English is the defining failure mode</strong> — "mixed-language sentences are the real failure mode" (nisai.dev). QA must use real Israeli transcripts, not clean demo text.</li>
+<li><strong>Phonikud</strong> (INTERSPEECH 2026, CC BY 4.0) is the documented nikkud→IPA disambiguation layer — add it in front of any engine for ambiguous words.</li>
+<li>Recommended ladder: <strong>default-free edge-tts</strong> → Azure direct for targeted phoneme fixes (F0 free 0.5M chars/mo, restores SSML) → <strong>ElevenLabs v3</strong> for punchy ads (~$165–200/1M chars) → <strong>Gemini 3.1 / Deepdub</strong> for premium (no timestamps — pair with WhisperX) → free wildcard <strong>Chatterbox V3 + Phonikud</strong> (MIT, only commercial-legal free expressive Hebrew) pending a bakeoff.</li>
+</ul>
+
+<h3>3. Captions &amp; RTL are a solved asset — keep them</h3>
+<p>Best free word-exact Hebrew timing = <strong>edge-tts WordBoundary first</strong> (already wired), <strong>WhisperX + <code>imvladikon/wav2vec2-xls-r-300m-hebrew</code></strong> as fallback (~10–30 ms word jitter, fine for captions; MFA and Gentle are dead ends). RTL caption bugs come from skipped bidi + wrong base direction, not fonts: set <code>dir="rtl"</code>, isolate embedded Latin/numbers with RLI…PDI, and keep <strong>Rubik (display) / Heebo (captions)</strong> — both SIL OFL 1.1, niqqud-safe.</p>
+
+<h3>4. No real sync QA gate exists</h3>
+<p>The plan called for a mouth-motion check but <code>bakeoff_talk.py</code> only asserts "the clip moved at all." A clip that moves but lip-syncs badly still passes. The fix is <strong>SyncNet</strong>: <code>joonson/syncnet_python</code> is MIT, current stack (Py 3.10 / torch 2.5.1 / CUDA 12.4). Gate on <strong>LSE-C ≥ ~6.9</strong> (real-video baseline 7.6–7.9), hard-reject <strong>confidence &lt; 3</strong> (LatentSync's own cutoff), and always pair with a rendered-frame visual read at phone scale.</p>
+
+<h2>The plan — phased, near-zero budget</h2>
+
+<div class="phase"><div class="ph-no">PHASE 0<br>$0 · 1–2 days</div><div>
+<strong>Fix the landmines + prove the core.</strong> This is the unlock — everything else waits on a real rendered frame.
+<ul>
+<li>Fix the <strong>kokoro-as-default-Hebrew</strong> landmine and the <strong>edge→kokoro fallback</strong> that silently swaps a broken Hebrew voice for an English one.</li>
+<li>Fix <code>live-portrait</code> mislabeled as audio-input (it needs a driving video).</li>
+<li>Set <code>TALK_RESOLUTION=720p</code> — kill the 480p→1080p upscale.</li>
+<li>Add a <strong>SyncNet LSE-C gate</strong> to <code>bakeoff_talk.py</code> (replace motion-only).</li>
+<li>Build the <strong>guttural-heavy Hebrew test set</strong> (a ח/ע/ר-dense newsreader script + a photo avatar).</li>
+<li><strong>Run the bakeoff</strong>: render the same Hebrew script through MuseTalk &amp; LatentSync (self-host, ~$0 on a rented 4090 for an afternoon) vs fal Fabric/Kling/OmniHuman (~$5–10 of FAL credit). Judge at phone scale. Pick the winner per lane.</li>
+</ul>
+</div></div>
+
+<div class="phase"><div class="ph-no">PHASE 1<br>&lt;$20 · 1 week</div><div>
+<strong>Voice quality + pipeline hardening.</strong>
+<ul>
+<li>Add <strong>Phonikud</strong> G2P preprocessing for ambiguous/code-switched lines.</li>
+<li>Bakeoff <strong>Chatterbox V3 + Phonikud</strong> (free, MIT) vs edge-tts with Israeli listeners — if it wins on expressiveness, it becomes the free default.</li>
+<li>Move consent store out of in-memory (multi-process safe).</li>
+<li>Per-line resegment in <code>talk.ts</code> (the deferred <code>talkDir</code> path) — enables re-rolling one line and per-scene camera variety.</li>
+</ul>
+</div></div>
+
+<div class="phase"><div class="ph-no">PHASE 2<br>&lt;$50/mo · 2–3 weeks</div><div>
+<strong>HeyGen-grade motion &amp; self-serve editor.</strong>
+<ul>
+<li>If a rented 4090 (&lt;$50/mo) beats hosted economics at your volume, migrate to <strong>self-hosted MuseTalk/LatentSync</strong> as the standard engine — $0.003–0.04 per 30s clip, 1–2 orders under fal.</li>
+<li>Add the <strong>scene-based RTL script editor</strong> (the big net-new UI): script-first scenes, per-scene script segments, audio-only preview before spend (the HeyGen iteration funnel).</li>
+<li>Add speed/pitch/pause controls and per-line emotion to the Hebrew voice picker.</li>
+</ul>
+</div></div>
+
+<div class="phase"><div class="ph-no">PHASE 3<br>scale</div><div>
+<strong>Upscale &amp; advanced.</strong> Prefer a generator that gives 512²+ mouth natively over upscaling a 256² face. When needed: GFPGAN (Apache-2.0, face) + Real-ESRGAN (BSD-3, background), with RealBasicVSR for temporal consistency. Then translation/dubbing (EN↔HE) and the Hebrew Video Agent.</div></div>
+
+<h2>What it costs — the honest math</h2>
+<div class="tgrid"><table>
+<tr><th>Path</th><th>Cost / 30s talking-head</th><th>vs HeyGen API</th></tr>
+<tr><td>Self-host 4090 (MuseTalk/LatentSync)</td><td class="num">$0.003 – 0.04</td><td>~40–250× cheaper</td></tr>
+<tr><td>fal sync-lipsync v1.9 (re-dub)</td><td class="num">$0.35</td><td>~4× cheaper</td></tr>
+<tr><td>Replicate prunaai photo-avatar</td><td class="num">$0.75</td><td>~2× cheaper</td></tr>
+<tr><td>fal OmniHuman v1.5 (premium)</td><td class="num">$4.80</td><td>premium tier</td></tr>
+<tr><td><strong>HeyGen API (the bar)</strong></td><td class="num">$1.50 (Avatar IV/V)</td><td>—</td></tr>
+</table></div>
+<p>Voice stays $0 (edge-tts) or ~$0.03–0.10/ad on ElevenLabs v3. The blended launch cost lands at <strong>well under $0.10 per 30s video self-hosted</strong>, ~$1 hosted — against HeyGen's $1.50.</p>
+
+<div class="callout warn"><p><strong>Two decisions are yours, not the research's:</strong></p>
+<p>① <strong>Engine lane</strong> — self-host (cheapest at scale, you rent a GPU, you own MLOps + the Hebrew QA gate) vs. hosted fal/Replicate (fastest to ship, ~$1/30s, zero ops). My recommendation: <strong>prove quality on hosted first (Phase 0), migrate to self-host only when volume justifies the GPU box.</strong></p>
+<p>② <strong>Voice default</strong> — keep edge-tts (free, flat) vs. adopt Chatterbox+Phonikud (free, expressive, unproven) vs. pay ElevenLabs v3 (expressive, ~$165/1M chars). Recommendation: <strong>run the Chatterbox bakeoff; it's free and MIT-licensed, and if it wins it's the single biggest free quality jump available.</strong></p></div>
+
+<footer>
+<p>Sources: full reports in <code>research/hebrew-avatar/01–04</code> (repo audit · lip-sync models · Hebrew TTS · sync/alignment), each claim carrying a source URL. Key external sources: ivrit-ai TTS-Arena-Hebrew leaderboard · arXiv:2307.09368 (sync-trained encoder) · arXiv:2008.10010 (Wav2Lip, language-agnostic ReSyncED) · bytedance/LatentSync &amp; TMElyralab/MuseTalk READMEs · joonson/syncnet_python (MIT) · phonikud/phonikud (CC BY 4.0) · fal.ai &amp; Replicate &amp; vast.ai live pricing 2026-08-24 · heygen.com enterprise pricing. Eight load-bearing claims adversarially verified; one prior-research claim ("Kling not on fal") refuted and corrected.</p>
+</footer>
+</div>
+</body>
+</html>

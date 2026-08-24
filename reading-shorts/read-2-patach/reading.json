@@ -1,0 +1,53 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "AUTO-DERIVED by tools/make_reading.py from script.md. role in isolated|cv|blend|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back (continuous blending). word = one continuous clip -> NO units[] (whole-word highlight).",
+  "units": [
+    {
+      "id": "isolated-bet-0",
+      "grapheme": "בַּ",
+      "sound": "ba",
+      "role": "isolated"
+    },
+    {
+      "id": "cv-bet-1",
+      "grapheme": "בַּ",
+      "sound": "ba",
+      "role": "cv"
+    },
+    {
+      "id": "cv-mem-2",
+      "grapheme": "מַּ",
+      "sound": "ma",
+      "role": "cv"
+    },
+    {
+      "id": "cv-gimel-3",
+      "grapheme": "גַּ",
+      "sound": "ga",
+      "role": "cv"
+    },
+    {
+      "id": "cv-dalet-4",
+      "grapheme": "דַּ",
+      "sound": "da",
+      "role": "cv"
+    },
+    {
+      "id": "blend-daletdalet-5",
+      "grapheme": "דַּדַּ",
+      "sound": "da-da",
+      "role": "blend",
+      "syllables": [
+        "דַּ",
+        "דַּ"
+      ]
+    },
+    {
+      "id": "word-gimelmem-6",
+      "grapheme": "גַּם!",
+      "sound": "",
+      "role": "word"
+    }
+  ]
+}

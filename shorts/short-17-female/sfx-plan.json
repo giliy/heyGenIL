@@ -1,0 +1,30 @@
+{
+  "master": "remotion/out/Short17Sign-female-voiced.mp4",
+  "master_fps": 30,
+  "catalog": "media/library/sfx/catalog.json",
+  "render": {
+    "preview": "remotion/out/Short17Sign-female-voiced.mp4",
+    "out": "shorts/short-17-female/output/short-17-female-sfx.mp4",
+    "end_s": 15,
+    "duck": true
+  },
+  "events": [
+    {
+      "at_s": 9.9,
+      "sfx_id": "brand-cue-rise",
+      "gain_db": 1,
+      "shot": "Short17Sign",
+      "cue": "checkmark-circle Lottie stamps in on the payoff",
+      "note": "HERO: the brand sonic signature (rising two-note resolve) lands with the 'נחתם!' checkmark. This is the recurring payoff stamp."
+    },
+    {
+      "at_s": 11.4,
+      "sfx_id": "chime-reward",
+      "gain_db": -4,
+      "optional": true,
+      "shot": "Short17Sign",
+      "cue": "after the brand cue resolves, under 'חוקי ובטוח'",
+      "note": "deniable: a soft warm chime tucked well under the brand cue — texture, not a second signature."
+    }
+  ]
+}

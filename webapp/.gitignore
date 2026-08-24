@@ -1,0 +1,28 @@
+# deps / build
+node_modules/
+.next/
+dist/
+out/
+.turbo/
+
+# env (commit .env.example only)
+.env
+.env.local
+.env.*.local
+
+# local storage (rendered videos / assets live here; regenerable)
+.storage/
+
+# bundle cache
+.cache/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# QA / debug artifacts at apps/web root (screenshots, posters, spec dumps)
+apps/web/*.png
+apps/web/*.poster.jpg
+apps/web/spec-dump.json
+
+# logs
+*.log

@@ -1,0 +1,58 @@
+{
+  "order": 2,
+  "key": "patach",
+  "sign": "בַּ",
+  "name_he": "פַּתָּח",
+  "sound": "a",
+  "targetLetters": [
+    "בּ",
+    "מּ",
+    "גּ",
+    "דּ",
+    "ר"
+  ],
+  "cv": [
+    "בַּ",
+    "מַּ",
+    "גַּ",
+    "דַּ"
+  ],
+  "blendWords": [
+    {
+      "word": "דַּדַּ",
+      "units": [
+        "דַּ",
+        "דַּ"
+      ]
+    },
+    {
+      "word": "גַּמַּ",
+      "units": [
+        "גַּ",
+        "מַּ"
+      ]
+    },
+    {
+      "word": "גַּם",
+      "units": [
+        "גַּם"
+      ]
+    },
+    {
+      "word": "דַּג",
+      "units": [
+        "דַּג"
+      ]
+    },
+    {
+      "word": "בַּר",
+      "units": [
+        "בַּר"
+      ]
+    }
+  ],
+  "mnemonic": null,
+  "musicBed": "kids-play-ukulele",
+  "status": "vetted",
+  "note": "same-sound pair with kamatz (/a/); taught right after it. Blend word is a patach CV+CV cluster (no natural 2-syllable all-patach word exists)."
+}

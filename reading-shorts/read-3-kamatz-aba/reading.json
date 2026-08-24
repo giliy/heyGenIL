@@ -1,0 +1,94 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "AUTO-DERIVED by tools/make_reading.py from script.md. role in isolated|cv|blend|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back (continuous blending). word = one continuous clip -> NO units[] (whole-word highlight).",
+  "units": [
+    {
+      "id": "isolated-alef-0",
+      "grapheme": "אָ",
+      "sound": "a",
+      "role": "isolated"
+    },
+    {
+      "id": "blend-alefbetalef-1",
+      "grapheme": "אָ-בָּא",
+      "sound": "a-a",
+      "role": "blend",
+      "syllables": [
+        "אָ",
+        "בָּא"
+      ]
+    },
+    {
+      "id": "blend-alefreshvavnun-2",
+      "grapheme": "אָ-רוֹן",
+      "sound": "a-a",
+      "role": "blend",
+      "syllables": [
+        "אָ",
+        "רוֹן"
+      ]
+    },
+    {
+      "id": "blend-alefdaletvavmem-3",
+      "grapheme": "אָ-דוֹם",
+      "sound": "a-a",
+      "role": "blend",
+      "syllables": [
+        "אָ",
+        "דוֹם"
+      ]
+    },
+    {
+      "id": "blend-alefreshvavchet-4",
+      "grapheme": "אָ-רוּחַ",
+      "sound": "a-a-cha",
+      "role": "blend",
+      "syllables": [
+        "אָ",
+        "רוּ",
+        "חַ"
+      ]
+    },
+    {
+      "id": "blend-alefmemnun-5",
+      "grapheme": "אָ-מָּן",
+      "sound": "a-a",
+      "role": "blend",
+      "syllables": [
+        "אָ",
+        "מָּן"
+      ]
+    },
+    {
+      "id": "word-alefbetalef-6",
+      "grapheme": "אַבָּא",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefreshvavnun-7",
+      "grapheme": "אָרוֹן",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefdaletvavmem-8",
+      "grapheme": "אָדוֹם",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefreshvavchethe-9",
+      "grapheme": "אֲרוּחָה",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefmemnun-10",
+      "grapheme": "אֻמָּן",
+      "sound": "",
+      "role": "word"
+    }
+  ]
+}

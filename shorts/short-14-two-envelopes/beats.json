@@ -1,0 +1,517 @@
+{
+  "id": "short-14-two-envelopes",
+  "title": "The Two Envelopes Paradox",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_s": 38
+  },
+  "audio": {
+    "voice": "ElevenLabs (Liam), per-line via tools/gen_voice.py",
+    "sfx": "library-first: whoosh-soft (slide), ui-click-soft (X chip, EV ticks), pop-reveal (1.25X), impact-soft (crack), chime-reward ($0 cancel), ui-toggle-on (switch motif)",
+    "music": "none"
+  },
+  "vo": [
+    {
+      "text": "Two envelopes. One has double the other. Should you switch?",
+      "start": 0.3,
+      "end": 5.31,
+      "words": [
+        {
+          "w": "Two",
+          "start": 0.379,
+          "end": 0.594
+        },
+        {
+          "w": "envelopes",
+          "start": 0.605,
+          "end": 1.269
+        },
+        {
+          "w": "One",
+          "start": 1.978,
+          "end": 2.223
+        },
+        {
+          "w": "has",
+          "start": 2.233,
+          "end": 2.418
+        },
+        {
+          "w": "double",
+          "start": 2.428,
+          "end": 2.673
+        },
+        {
+          "w": "the",
+          "start": 2.683,
+          "end": 2.775
+        },
+        {
+          "w": "other",
+          "start": 2.785,
+          "end": 3.113
+        },
+        {
+          "w": "Should",
+          "start": 3.829,
+          "end": 4.065
+        },
+        {
+          "w": "you",
+          "start": 4.075,
+          "end": 4.167
+        },
+        {
+          "w": "switch",
+          "start": 4.177,
+          "end": 4.606
+        }
+      ]
+    },
+    {
+      "text": "Mine has some amount, call it X.",
+      "start": 4.0,
+      "end": 6.93,
+      "words": [
+        {
+          "w": "Mine",
+          "start": 4.091,
+          "end": 4.421
+        },
+        {
+          "w": "has",
+          "start": 4.432,
+          "end": 4.632
+        },
+        {
+          "w": "some",
+          "start": 4.644,
+          "end": 4.785
+        },
+        {
+          "w": "amount",
+          "start": 4.797,
+          "end": 5.208
+        },
+        {
+          "w": "call",
+          "start": 5.385,
+          "end": 5.609
+        },
+        {
+          "w": "it",
+          "start": 5.62,
+          "end": 5.691
+        },
+        {
+          "w": "X",
+          "start": 5.702,
+          "end": 6.137
+        }
+      ]
+    },
+    {
+      "text": "So yours has half X, or double X. Fifty-fifty.",
+      "start": 7.0,
+      "end": 11.63,
+      "words": [
+        {
+          "w": "So",
+          "start": 7.103,
+          "end": 7.356
+        },
+        {
+          "w": "yours",
+          "start": 7.369,
+          "end": 7.702
+        },
+        {
+          "w": "has",
+          "start": 7.715,
+          "end": 7.941
+        },
+        {
+          "w": "half",
+          "start": 7.954,
+          "end": 8.234
+        },
+        {
+          "w": "X",
+          "start": 8.247,
+          "end": 8.632
+        },
+        {
+          "w": "or",
+          "start": 8.845,
+          "end": 9.018
+        },
+        {
+          "w": "double",
+          "start": 9.031,
+          "end": 9.404
+        },
+        {
+          "w": "X",
+          "start": 9.417,
+          "end": 9.736
+        },
+        {
+          "w": "Fifty-fifty",
+          "start": 9.856,
+          "end": 10.72
+        }
+      ]
+    },
+    {
+      "text": "Half of half-X, plus half of two-X…",
+      "start": 12.7,
+      "end": 16.13,
+      "words": [
+        {
+          "w": "Half",
+          "start": 12.797,
+          "end": 13.072
+        },
+        {
+          "w": "of",
+          "start": 13.084,
+          "end": 13.172
+        },
+        {
+          "w": "half-X",
+          "start": 13.184,
+          "end": 13.784
+        },
+        {
+          "w": "plus",
+          "start": 13.947,
+          "end": 14.197
+        },
+        {
+          "w": "half",
+          "start": 14.209,
+          "end": 14.471
+        },
+        {
+          "w": "of",
+          "start": 14.483,
+          "end": 14.584
+        },
+        {
+          "w": "two-X",
+          "start": 14.596,
+          "end": 15.283
+        }
+      ]
+    },
+    {
+      "text": "…is one-point-two-five X. Switch and you win? Pause.",
+      "start": 16.2,
+      "end": 20.43,
+      "words": [
+        {
+          "w": "is",
+          "start": 16.284,
+          "end": 16.447
+        },
+        {
+          "w": "one-point-two-five",
+          "start": 16.458,
+          "end": 17.271
+        },
+        {
+          "w": "X",
+          "start": 17.283,
+          "end": 17.478
+        },
+        {
+          "w": "Switch",
+          "start": 17.564,
+          "end": 17.879
+        },
+        {
+          "w": "and",
+          "start": 17.89,
+          "end": 17.977
+        },
+        {
+          "w": "you",
+          "start": 17.988,
+          "end": 18.097
+        },
+        {
+          "w": "win",
+          "start": 18.107,
+          "end": 18.4
+        },
+        {
+          "w": "Pause",
+          "start": 19.152,
+          "end": 19.705
+        }
+      ]
+    },
+    {
+      "text": "But it's the same ten dollars.",
+      "start": 20.5,
+      "end": 23.26,
+      "words": [
+        {
+          "w": "But",
+          "start": 20.603,
+          "end": 20.789
+        },
+        {
+          "w": "it's",
+          "start": 20.803,
+          "end": 20.976
+        },
+        {
+          "w": "the",
+          "start": 20.989,
+          "end": 21.108
+        },
+        {
+          "w": "same",
+          "start": 21.122,
+          "end": 21.441
+        },
+        {
+          "w": "ten",
+          "start": 21.454,
+          "end": 21.72
+        },
+        {
+          "w": "dollars",
+          "start": 21.734,
+          "end": 22.359
+        }
+      ]
+    },
+    {
+      "text": "Win it when you're low. Lose it when you're high.",
+      "start": 23.4,
+      "end": 27.63,
+      "words": [
+        {
+          "w": "Win",
+          "start": 23.499,
+          "end": 23.781
+        },
+        {
+          "w": "it",
+          "start": 23.794,
+          "end": 23.909
+        },
+        {
+          "w": "when",
+          "start": 23.922,
+          "end": 24.062
+        },
+        {
+          "w": "you're",
+          "start": 24.076,
+          "end": 24.204
+        },
+        {
+          "w": "low",
+          "start": 24.216,
+          "end": 24.625
+        },
+        {
+          "w": "Lose",
+          "start": 25.512,
+          "end": 25.845
+        },
+        {
+          "w": "it",
+          "start": 25.857,
+          "end": 25.985
+        },
+        {
+          "w": "when",
+          "start": 25.998,
+          "end": 26.139
+        },
+        {
+          "w": "you're",
+          "start": 26.152,
+          "end": 26.28
+        },
+        {
+          "w": "high",
+          "start": 26.292,
+          "end": 26.741
+        }
+      ]
+    },
+    {
+      "text": "Those cancel. Switching gains you nothing.",
+      "start": 27.7,
+      "end": 31.12,
+      "words": [
+        {
+          "w": "Those",
+          "start": 27.779,
+          "end": 28.055
+        },
+        {
+          "w": "cancel",
+          "start": 28.066,
+          "end": 28.547
+        },
+        {
+          "w": "Switching",
+          "start": 29.265,
+          "end": 29.664
+        },
+        {
+          "w": "gains",
+          "start": 29.675,
+          "end": 29.93
+        },
+        {
+          "w": "you",
+          "start": 29.94,
+          "end": 30.012
+        },
+        {
+          "w": "nothing",
+          "start": 30.022,
+          "end": 30.411
+        }
+      ]
+    },
+    {
+      "text": "One-point-two-five was an illusion. The math cancels out.",
+      "start": 30.9,
+      "end": 35.05,
+      "words": [
+        {
+          "w": "One-point-two-five",
+          "start": 30.979,
+          "end": 31.869
+        },
+        {
+          "w": "was",
+          "start": 31.879,
+          "end": 31.992
+        },
+        {
+          "w": "an",
+          "start": 32.002,
+          "end": 32.053
+        },
+        {
+          "w": "illusion",
+          "start": 32.064,
+          "end": 32.524
+        },
+        {
+          "w": "The",
+          "start": 33.242,
+          "end": 33.375
+        },
+        {
+          "w": "math",
+          "start": 33.385,
+          "end": 33.652
+        },
+        {
+          "w": "cancels",
+          "start": 33.662,
+          "end": 34.03
+        },
+        {
+          "w": "out",
+          "start": 34.04,
+          "end": 34.368
+        }
+      ]
+    },
+    {
+      "text": "Two envelopes. Symmetric. Now you know.",
+      "start": 35.1,
+      "end": 39.56,
+      "words": [
+        {
+          "w": "Two",
+          "start": 35.179,
+          "end": 35.394
+        },
+        {
+          "w": "envelopes",
+          "start": 35.405,
+          "end": 36.069
+        },
+        {
+          "w": "Symmetric",
+          "start": 36.778,
+          "end": 37.483
+        },
+        {
+          "w": "Now",
+          "start": 38.179,
+          "end": 38.394
+        },
+        {
+          "w": "you",
+          "start": 38.404,
+          "end": 38.537
+        },
+        {
+          "w": "know",
+          "start": 38.547,
+          "end": 38.854
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "n": 1,
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 3.4,
+      "visual": "Frame 0 composed: two sealed envelopes side by side, left stamped YOURS. Kicker 'ONE HAS DOUBLE'. Title 'TWO ENVELOPES / SWITCH OR KEEP?'. Punch-in settle 1.05->1."
+    },
+    {
+      "n": 2,
+      "name": "setup",
+      "start_s": 3.4,
+      "end_s": 12.6,
+      "visual": "Legend '$10 and $20'. Left envelope -> YOURS + '$X' chip. Brace '? $2X or $X/2' appears over the right envelope."
+    },
+    {
+      "n": 3,
+      "name": "trick",
+      "start_s": 12.6,
+      "end_s": 20.4,
+      "visual": "EV equation builds on right envelope: 1/2 (X/2) + 1/2 (2X) -> '= 1.25X' pops teal + up-arrow 'ALWAYS SWITCH?'. PauseCard 'SWITCH?' countdown ring."
+    },
+    {
+      "n": 4,
+      "name": "flaw",
+      "start_s": 20.4,
+      "end_s": 30.4,
+      "visual": "'1.25X' splits apart. Pair resolves to concrete '$10 / $20'. Two rows stack: 'hold $10 -> +$10' teal, 'hold $20 -> -$10' pink. They cancel to '= $0'."
+    },
+    {
+      "n": 5,
+      "name": "payoff",
+      "start_s": 30.4,
+      "end_s": 35.0,
+      "visual": "Clean takeaway card 'NO FREE LUNCH' + '$0 EXPECTED GAIN'. The 1.25X ghost fades out."
+    },
+    {
+      "n": 6,
+      "name": "loop",
+      "start_s": 35.0,
+      "end_s": 38.0,
+      "visual": "Back to the two sealed envelopes, left stamped YOURS, kicker 'ONE HAS DOUBLE' — rhymes with frame 0, mode grow scale ends ~1.06, dissolves into the intro. No CTA."
+    }
+  ],
+  "voiceStatus": "edge-tts:en-US-AriaNeural"
+}

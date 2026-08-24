@@ -1,0 +1,35 @@
+{
+  "master": "remotion/out/Short14TwoEnvelopes.mp4",
+  "master_fps": 30,
+  "catalog": "media/library/sfx/catalog.json",
+  "render": {
+    "preview": "shorts/short-14-two-envelopes/output/short-14-voiced.mp4",
+    "out": "shorts/short-14-two-envelopes/output/short-14-sfx.mp4",
+    "end_s": 38.0,
+    "duck": true
+  },
+  "note": "Two Envelopes Paradox (short-14): calm/premium math-explain taste — felt-not-heard, sparse, nothing under the narration. Reuses the existing library catalog (no new SFX generated). Cue anchors are keyed to the real Edge-TTS word times in vo.gen.ts: a soft whoosh into the hook, UI clicks on each math step, the pop-reveal on the 1.25X illusion, an impact on the crack, the reward chime is deliberately inverted on the '$0 cancel' reveal (irony: a 'reward' chime on 'no free lunch'), a whoosh-reverse on the payoff card, and a ui-toggle-on on the final switch motif.",
+  "events": [
+    { "at_s": 0.8, "sfx_id": "whoosh-soft", "gain_db": -4, "shot": "hook", "cue": "gentle whoosh into the two-envelope hook as the title 'TWO ENVELOPES / SWITCH OR KEEP?' composes" },
+
+    { "at_s": 5.7, "sfx_id": "ui-click-soft", "gain_db": 6, "shot": "setup", "cue": "'$X' chip pins on YOURS envelope as he says 'call it X' (vo.gen line 2)", "note": "intentionally subtle — soft UI tick on a quiet beat (clip is ~-29dB by design)" },
+
+    { "at_s": 7.6, "sfx_id": "ui-click-soft", "gain_db": -2, "shot": "setup", "cue": "brace '? 2X or X/2' appears over the right envelope on 'half X, or double X' (line 3)" },
+
+    { "at_s": 16.5, "sfx_id": "pop-reveal", "gain_db": 0, "shot": "trick", "cue": "'= 1.25X' pops teal on 'one-point-two-five' (line 4/5) — the illusion lands", "note": "HERO-ish: the wrong-answer payoff pops bright" },
+
+    { "at_s": 17.9, "sfx_id": "ui-toggle-on", "gain_db": -3, "shot": "trick", "cue": "'ALWAYS SWITCH?' / switch motif flicks on right after the pop (line 5 'Switch and you win?')" },
+
+    { "at_s": 21.0, "sfx_id": "impact-soft", "gain_db": -2, "shot": "flaw", "cue": "1.25X cracks apart / envelopes open on 'same ten dollars' (line 6) — the turn" },
+
+    { "at_s": 24.4, "sfx_id": "ui-click-soft", "gain_db": -2, "shot": "flaw", "cue": "'hold $10 → +$10' row lands on 'win it when you're low' (line 7)" },
+
+    { "at_s": 26.4, "sfx_id": "ui-click-soft", "gain_db": -2, "shot": "flaw", "cue": "'hold $20 → −$10' row lands on 'lose it when you're high' (line 7)" },
+
+    { "at_s": 28.4, "sfx_id": "chime-reward", "gain_db": 2, "shot": "flaw", "cue": "gold '= $0' reveal on 'those cancel' (line 8) — reward chime on the zero-sum truth", "note": "ironic lilt: a 'reward' chime on 'no free lunch' — the joke is the chime celebrates $0" },
+
+    { "at_s": 31.0, "sfx_id": "impact-soft", "gain_db": -4, "shot": "payoff", "cue": "takeaway card 'NO FREE LUNCH' lands on 'was an illusion' (line 9)" },
+
+    { "at_s": 35.3, "sfx_id": "whoosh-reverse", "gain_db": 2, "shot": "loop", "cue": "reverse whoosh pulls back to the sealed pair on 'Two envelopes. Symmetric.' (line 10) — resolves into the loop" }
+  ]
+}

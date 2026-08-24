@@ -1,0 +1,23 @@
+{
+  "id": "read-2-patach",
+  "catalog": "media/library/sfx/catalog.json",
+  "master": "remotion/out/Read2Patach.mp4",
+  "master_fps": 30,
+  "render": {
+    "preview": "remotion/out/Read2Patach-voiced.mp4",
+    "out": "remotion/out/Read2Patach-sfx.mp4",
+    "end_s": 33.637,
+    "duck": true
+  },
+  "events": [
+    { "at_s": 0.1, "sfx_id": "sparkle-soft", "gain_db": -8.0, "cue": "hook: Bu + patach tile appear (frame-0 magic), under the hook VO" },
+    { "at_s": 7.7, "sfx_id": "chime-magic", "gain_db": -9.0, "cue": "attention cue into teach-isolated, in the gap after hook VO ends (7.632)" },
+    { "at_s": 12.2, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV bet pop on its highlight onset (supports the decode)" },
+    { "at_s": 13.33, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV mem pop on its highlight onset" },
+    { "at_s": 14.5, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV gimel pop on its highlight onset" },
+    { "at_s": 15.79, "sfx_id": "pop-reveal", "gain_db": -9.0, "cue": "CV dalet pop on its highlight onset" },
+    { "at_s": 18.02, "sfx_id": "pop-reveal", "gain_db": -8.0, "cue": "blend start: tiles slide together, highlight sweep begins (da)" },
+    { "at_s": 23.7, "sfx_id": "chime-reward", "gain_db": -7.0, "cue": "read-word: whole-word reward on gam" },
+    { "at_s": 27.03, "sfx_id": "rec-chime-highup", "gain_db": -9.0, "cue": "call-response: 'your turn' rising confirm into the engineered pause" }
+  ]
+}

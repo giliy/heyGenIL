@@ -1,0 +1,328 @@
+<title>Ad1Liat · Bidi Proof</title>
+<style>
+:root{
+  --bg:#0b0e13; --panel:#11161f; --panel2:#0f141c; --line:#232a36; --line2:#2c3543;
+  --ink:#e8ecf1; --dim:#8b949e; --dim2:#5c6672;
+  --accent:#A8342B; --accent-soft:rgba(168,52,43,.14);
+  --wa:#25D366; --paper:#fffef7;
+  --good:#3fb950; --warn:#d29922; --mono:ui-monospace,'Cascadia Mono','JetBrains Mono',Consolas,monospace;
+  --he:'Heebo','Rubik','Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--he);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px 120px}
+a{color:#79a7ff;text-decoration:none}
+
+/* header */
+header{padding:34px 0 8px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2);font-weight:700}
+h1{font-size:30px;margin:6px 0 2px;font-weight:800;letter-spacing:-.01em}
+h1 .he{direction:rtl;unicode-bidi:isolate}
+.sub{color:var(--dim);font-size:14px;max-width:70ch}
+.badge{display:inline-flex;gap:7px;align-items:center;background:var(--panel);border:1px solid var(--line2);border-radius:999px;padding:5px 12px;font-size:12px;color:var(--dim);margin:14px 8px 0 0;font-family:var(--mono)}
+.badge b{color:var(--ink);font-weight:600}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 8px var(--good)}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.chip{font-size:12px;padding:5px 11px;border-radius:6px;border:1px solid var(--line2);background:var(--panel2);color:var(--dim)}
+.chip b{color:var(--ink)}
+
+/* instruction banner */
+.note{background:linear-gradient(180deg,rgba(210,153,34,.08),rgba(210,153,34,.03));border:1px solid rgba(210,153,34,.3);border-radius:12px;padding:14px 18px;margin:22px 0;font-size:13.5px;color:#e6c690}
+.note b{color:#f0d49a}
+.note .he{direction:rtl;unicode-bidi:isolate;font-weight:600}
+
+/* frame grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));gap:18px;margin-top:8px}
+.phone{background:var(--panel);border:1px solid var(--line2);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.phone:hover{transform:translateY(-3px);border-color:var(--line2)}
+.screen{position:relative;background:#0d1117;aspect-ratio:9/16;overflow:hidden}
+.safebox{position:absolute;left:calc(60/1080*100%);right:calc(160/1080*100%);top:calc(150/1920*100%);bottom:calc(500/1920*100%);border:1.5px dashed rgba(210,153,34,.55);border-radius:4px;pointer-events:none;z-index:6}
+.safebox::after{content:'SAFE';position:absolute;top:3px;left:6px;font:700 8px var(--mono);color:rgba(210,153,34,.8);letter-spacing:.1em}
+.logo{position:absolute;left:calc(60/1080*100%);top:calc(156/1920*100%);direction:rtl;unicode-bidi:isolate;font-weight:800;font-size:clamp(11px,2.6cqw,15px);color:var(--paper);background:var(--accent);padding:3px 9px;border-radius:6px;z-index:5;font-family:var(--he)}
+.phone .scene{position:absolute;inset:0;direction:rtl;text-align:center;display:flex;flex-direction:column;align-items:center;z-index:4}
+.foot{padding:11px 13px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:7px}
+.frow{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.fname{font:600 12.5px var(--mono);color:var(--ink)}
+.ftime{font:600 10.5px var(--mono);color:var(--dim2)}
+.fdesc{font-size:11.5px;color:var(--dim);line-height:1.4}
+.abtn{appearance:none;border:1px solid var(--line2);background:var(--panel2);color:var(--dim);border-radius:7px;padding:4px 9px;font:600 10.5px var(--he);cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:.15s}
+.abtn:hover{border-color:var(--accent);color:var(--ink)}
+.abtn.playing{border-color:var(--wa);color:var(--wa)}
+.abtn svg{width:9px;height:9px}
+
+/* scene content */
+.cent{position:absolute;left:0;right:0;top:calc(250/1920*100%);padding:0 6%}
+.hookline{direction:rtl;unicode-bidi:isolate;font-weight:700;font-size:clamp(13px,3.4cqw,19px);color:#fff;line-height:1.3;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.offerword{position:absolute;left:0;right:0;top:calc(1300/1920*100%);direction:rtl;unicode-bidi:isolate;font-weight:600;font-size:clamp(10px,2.6cqw,13px);color:var(--accent);letter-spacing:.02em}
+/* price badge — the bidi-critical block */
+.badge-wrap{position:absolute;left:0;right:0;top:calc(820/1920*100%);display:flex;justify-content:center}
+.pbadge{direction:rtl;unicode-bidi:isolate;display:flex;align-items:baseline;gap:.4em;background:var(--paper);color:#0d1117;border-radius:14px;padding:.35em .8em;box-shadow:0 8px 30px rgba(168,52,43,.35);font-family:var(--he)}
+.pbadge .new{font-weight:800;font-size:clamp(17px,5cqw,26px)}
+.pbadge .old{font-weight:600;font-size:clamp(11px,3cqw,15px);color:#8b949e;text-decoration:line-through}
+.pbadge .pct{font-weight:800;font-size:clamp(11px,3cqw,15px);color:#fff;background:var(--accent);border-radius:8px;padding:.1em .45em}
+.proofline{direction:rtl;unicode-bidi:isolate;font-weight:700;font-size:clamp(13px,3.4cqw,18px);color:#fff;line-height:1.3}
+.proofmark{position:absolute;left:0;right:0;top:calc(1080/1920*100%);direction:rtl;unicode-bidi:isolate;font-weight:600;font-size:clamp(9px,2.4cqw,12px);color:var(--paper);opacity:.85}
+
+/* end card */
+.endcard{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(14/1920*100%*16);direction:rtl;text-align:center;padding:0 8%;z-index:4}
+.ec-name{direction:rtl;unicode-bidi:isolate;font-weight:800;font-size:clamp(15px,4cqw,22px);color:var(--paper)}
+.ec-tag{direction:rtl;unicode-bidi:isolate;font-weight:600;font-size:clamp(9px,2.4cqw,12px);color:var(--dim);margin-top:-1.2em}
+.ec-price{display:flex;justify-content:center;margin:.4em 0}
+.ec-price .pbadge{position:static}
+.wabtn{direction:rtl;unicode-bidi:isolate;display:inline-flex;align-items:center;gap:.5em;background:var(--wa);color:#06301a;font-weight:800;font-size:clamp(11px,3cqw,15px);border-radius:999px;padding:.55em 1.1em;box-shadow:0 6px 24px rgba(37,211,102,.4);font-family:var(--he)}
+.wabtn svg{width:1.1em;height:1.1em;flex:none}
+.ec-phone{direction:rtl;unicode-bidi:isolate;font:700 clamp(12px,3.2cqw,17px) var(--mono);color:var(--paper);letter-spacing:.04em}
+.ec-web{direction:ltr;unicode-bidi:isolate;font:600 clamp(9px,2.3cqw,12px) var(--mono);color:var(--dim)}
+
+/* captions */
+.caps{position:absolute;left:0;right:0;top:calc(1560/1920*100%);display:flex;justify-content:center;z-index:7}
+.cap-pill{direction:rtl;unicode-bidi:isolate;background:rgba(13,17,23,.82);border:1px solid rgba(168,52,43,.5);color:#fff;font-weight:600;font-size:clamp(8px,2.1cqw,11px);border-radius:999px;padding:.3em .9em;backdrop-filter:blur(2px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:88%}
+
+/* checklist */
+.checklist{margin:34px 0 8px;display:grid;gap:11px}
+.chk{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px 16px;cursor:pointer;transition:border-color .2s}
+.chk:hover{border-color:var(--line2)}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk .box{flex:none;width:22px;height:22px;border-radius:7px;border:1.5px solid var(--line2);background:var(--panel2);display:grid;place-items:center;margin-top:2px;transition:.18s}
+.chk .box svg{width:13px;height:13px;opacity:0;transform:scale(.4);transition:.18s}
+.chk input:checked~.box{background:var(--good);border-color:var(--good)}
+.chk input:checked~.box svg{opacity:1;transform:scale(1)}
+.chk .txt{flex:1}
+.chk .t{font-weight:700;font-size:14px}
+.chk .t .he{direction:rtl;unicode-bidi:isolate}
+.chk .d{font-size:12.5px;color:var(--dim);margin-top:2px}
+.chk .d code{font-family:var(--mono);font-size:11px;background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:#f0b46a;direction:ltr;unicode-bidi:isolate}
+.chk input:checked~.txt{opacity:.62}
+.chk input:checked~.txt .t{text-decoration:line-through}
+.chkstatus{font:600 11px var(--mono);color:var(--dim2);white-space:nowrap;margin-top:3px}
+.chk input:checked~.chkstatus{color:var(--good)}
+
+/* evidence strips */
+.strips{margin-top:34px}
+.stripttl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim2);font-weight:700;margin:0 0 4px}
+.stripsub{font-size:12px;color:var(--dim);margin:0 0 14px}
+.strip{background:var(--panel);border:1px solid var(--line2);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.strip img{display:block;width:100%;height:auto}
+.strip .cap{padding:9px 13px;font-size:12px;color:var(--dim);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.strip .cap b{color:var(--ink)}
+.strip .cap .he{direction:rtl;unicode-bidi:isolate}
+
+/* section titles */
+.sec{margin:40px 0 6px}
+.sec h2{font-size:19px;margin:0;font-weight:800;display:flex;align-items:center;gap:10px}
+.sec h2::after{content:'';flex:1;height:1px;background:var(--line)}
+.sec .n{font:700 11px var(--mono);color:var(--accent);background:var(--accent-soft);border:1px solid rgba(168,52,43,.35);width:24px;height:24px;border-radius:7px;display:grid;place-items:center}
+.sec p{margin:6px 0 0;font-size:12.5px;color:var(--dim)}
+
+/* spec table */
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim2);font-weight:700}
+td .he{direction:rtl;unicode-bidi:isolate;font-weight:600}
+td.mono{font-family:var(--mono);font-size:11.5px;color:#f0b46a;direction:ltr;unicode-bidi:isolate}
+tr:hover td{background:rgba(255,255,255,.02)}
+
+.progress{position:sticky;top:0;z-index:50;background:rgba(11,14,19,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 0;margin:0 -20px 24px;padding-left:20px;padding-right:20px;display:flex;align-items:center;gap:14px}
+.progress .bar{flex:1;height:6px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.progress .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--wa));border-radius:99px;transition:width .3s}
+.progress .lbl{font:700 12px var(--mono);color:var(--dim)}
+.progress .lbl b{color:var(--good)}
+
+.phone{container-type:inline-size}
+@media (max-width:520px){.wrap{padding:0 14px 80px}.progress{margin:0 -14px 18px;padding:10px 14px}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Reference Production · /make-ad · Beauty vertical</div>
+  <h1>Ad1Liat — <span class="he">ליאת קוסמטיקה</span></h1>
+  <p class="sub">Human-verification proof for the first <code style="font-family:var(--mono);font-size:12px;color:#f0b46a">/make-ad</code> output. The pipeline verified structure, color, safe-area, audio gates, and the SFX cue deltas programmatically. <b style="color:var(--ink)">The one thing pixels can't prove is bidi order</b> — whether the Hebrew+digit tokens below render in the correct reading sequence. That's what you're checking.</p>
+  <div>
+    <span class="badge"><span class="dot"></span> All gates green</span>
+    <span class="badge">comp <b>Ad1Liat</b></span>
+    <span class="badge">1080×1920 · 30fps · <b>30.0s</b></span>
+    <span class="badge">voice <b>he-IL-HilaNeural</b></span>
+    <span class="badge">beats <b>ad-beats ✓</b></span>
+  </div>
+  <div class="legend">
+    <span class="chip">accent <b>#A8342B</b></span>
+    <span class="chip">whatsapp <b>#25D366</b></span>
+    <span class="chip">hook 3.0s · offer 3.2s · proof 3.2s · cta 20.6s</span>
+    <span class="chip">dashed box = <b>SAFE area</b></span>
+  </div>
+</header>
+
+<div class="note">
+  <b>How to read the tokens.</b> Hebrew runs right-to-left, digits run left-to-right. A correct render shows the Hebrew phrase flowing RTL with the digit group intact and sitting at the phrase's logical edge — <span class="he">199 ₪</span> reads "199 shekels", <span class="he">31%−</span> reads "minus 31 percent", <span class="he">050-123-4567</span> keeps its digit order. A <b>broken</b> render flips a digit to the wrong side of a word, splits the phone groups, or drops the ₪ to the far edge. Each scene below is a live HTML re-render with the same <code>direction:rtl; unicode-bidi:isolate</code> the pipeline uses — not a screenshot — plus two real pixel crops as ground truth.
+</div>
+
+<div class="progress">
+  <span class="lbl" id="plbl"><b>0</b>/6 verified</span>
+  <div class="bar"><div class="fill" id="pfill"></div></div>
+</div>
+
+<!-- ============ SCENES ============ -->
+<div class="sec"><h2><span class="n">1</span>The four scenes</h2><p>Live re-renders at the real safe-area geometry. ▶ plays that line's actual edge-tts voice.</p></div>
+<div class="grid" id="scenegrid"><!-- built by JS --></div>
+
+<!-- ============ CHECKLIST ============ -->
+<div class="sec"><h2><span class="n">2</span>Bidi eyeball checklist</h2><p>Tick each as you confirm it. Stored only in your browser.</p></div>
+<div class="checklist" id="checklist"></div>
+
+<!-- ============ EVIDENCE ============ -->
+<div class="sec"><h2><span class="n">3</span>Real-pixel evidence</h2><p>Cropped straight from the rendered frames — these are the actual glyphs the pipeline drew, not a re-render.</p></div>
+<div class="strips">
+  <p class="stripttl">Offer beat · PriceBadge (frame 140)</p>
+  <p class="stripsub">Full-res crop, y700–1000 of 1920. Confirm <span class="he" style="direction:rtl;unicode-bidi:isolate;font-weight:600">199 ₪</span> and <span class="he" style="direction:rtl;unicode-bidi:isolate;font-weight:600">31%−</span> token order.</p>
+  <div class="strip"><img id="img-price" alt="PriceBadge crop"><div class="cap"><b>PriceBadge</b><span class="he">החודש: 199 שקל במקום 290</span><span>accent #A8342B · y≈820</span></div></div>
+
+  <p class="stripttl" style="margin-top:26px">CTA beat · WhatsApp button (frame 899)</p>
+  <p class="stripsub">Full-res crop, y940–1120. The green button + phone line, inside the safe area (y984–1096 measured).</p>
+  <div class="strip"><img id="img-wa" alt="WhatsApp button crop"><div class="cap"><b>AdEndCard CTA</b><span class="he">להזמנת תור בוואטסאפ · 050-123-4567</span><span>wa #25D366 · holds 0.0% drift</span></div></div>
+</div>
+
+<!-- ============ SPEC ============ -->
+<div class="sec"><h2><span class="n">4</span>Production spec</h2><p>What the contract validated and the gates measured.</p></div>
+<table>
+  <tr><th>Layer</th><th>Value</th><th>Status</th></tr>
+  <tr><td class="mono">contract</td><td><span class="he">מצב: ad · שפה: he · vertical: beauty</span></td><td class="mono" style="color:var(--good)">ad-beats ✓</td></tr>
+  <tr><td class="mono">offer</td><td><span class="he">199 ₪ במקום 290 ₪ · הנחה 31%</span></td><td class="mono">price&lt;oldPrice ✓ · pct∈(0,100) ✓</td></tr>
+  <tr><td class="mono">cta</td><td><span class="he">וואטסאפ · 050-123-4567</span></td><td class="mono">whatsapp present ✓ · hold 0.0% ✓</td></tr>
+  <tr><td class="mono">voice</td><td>he-IL-HilaNeural · edge-tts · word-exact</td><td class="mono">4 lines · RMS −23.1dB ✓</td></tr>
+  <tr><td class="mono">sfx</td><td>7 library-first cues</td><td class="mono">pop +13.3dB · wa +75.3dB ✓</td></tr>
+  <tr><td class="mono">output</td><td>Ad1Liat-sfx.mp4 · 1080×1920 · 30.0s</td><td class="mono">overall RMS −21.4dB ✓</td></tr>
+</table>
+
+</div>
+
+<script>
+(function(){
+  var RLM='‏';
+  function isolate(s){return s;}
+  // ---- scene data: exact tokens + VO + per-scene layout ----
+  var scenes=[
+    {id:'hook', f:'f000', time:'0.0–3.0s', vo:'מספיק לחפש קוסמטיקאית בחיפה.', voAud:'hook',
+     desc:'Pain-question hook. Plain Hebrew, no digits — the baseline RTL line.'},
+    {id:'offer',f:'f140', time:'3.0–6.2s', vo:'החודש: 199 שקל במקום 290.', voAud:'offer',
+     desc:'The bidi-critical scene: price badge mixes Hebrew + digits + ₪ + %.', offer:true},
+    {id:'proof',f:'f282', time:'6.2–9.4s', vo:'אבחון עור אישי. תוצאות שרואים.', voAud:'proof',
+     desc:'Proof beat. Plain Hebrew again — register check (feminine-singular).'},
+    {id:'cta',  f:'f899', time:'9.4–30.0s', vo:'הזמינו תור עכשיו בוואטסאפ.', voAud:'cta',
+     desc:'End card holds to last frame. Phone digits + WhatsApp button are the payoff.', cta:true}
+  ];
+  var ACC='#A8342B', WA='#25D366';
+  var cap=scenes.map(function(s){return s.vo;});
+
+  // WhatsApp glyph
+  var waSvg='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5 13.6c-.2.6-1.2 1.1-1.7 1.2-.4 0-.9.2-3-.6-2.5-1-4.1-3.6-4.2-3.8-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6c-.1.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4.1.2.1.7-.1 1.2z"/></svg>';
+
+  function priceBadgeHTML(){
+    return '<div class="pbadge">'
+      +'<span class="new">'+'199 ₪'+RLM+'</span>'
+      +'<span class="old">'+'290 ₪'+RLM+'</span>'
+      +'<span class="pct">'+'31%−'+RLM+'</span>'
+      +'</div>';
+  }
+
+  var grid=document.getElementById('scenegrid');
+  var html='';
+  scenes.forEach(function(s,i){
+    html+='<div class="phone">'
+      +'<div class="screen">'
+      +'<div class="safebox"></div>'
+      +'<div class="logo">ליאת קוסמטיקה</div>';
+    if(s.id==='hook'){
+      html+='<div class="scene"><div class="cent hookline">'+s.vo+'</div></div>';
+    } else if(s.id==='offer'){
+      html+='<div class="scene">'
+        +'<div class="badge-wrap">'+priceBadgeHTML()+'</div>'
+        +'<div class="offerword">'+'החודש בלבד'+RLM+'</div>'
+        +'</div>';
+    } else if(s.id==='proof'){
+      html+='<div class="scene"><div class="cent proofline">'+s.vo+'</div>'
+        +'<div class="proofmark">✓ מקצועית · מומלצת · בחיפה</div></div>';
+    } else if(s.id==='cta'){
+      html+='<div class="scene endcard">'
+        +'<div class="ec-name">ליאת קוסמטיקה</div>'
+        +'<div class="ec-tag">קוסמטיקאית מוסמכת · חיפה</div>'
+        +'<div class="ec-price">'+priceBadgeHTML()+'</div>'
+        +'<div class="wabtn">'+waSvg+'<span>להזמנת תור בוואטסאפ</span></div>'
+        +'<div class="ec-phone">'+'050-123-4567'+RLM+'</div>'
+        +'<div class="ec-web">liat-beauty.co.il</div>'
+        +'</div>';
+    }
+    html+='<div class="caps"><div class="cap-pill">'+s.vo+'</div></div>'
+      +'</div>' // screen
+      +'<div class="foot">'
+      +'<div class="frow"><span class="fname">'+s.f+'</span><span class="ftime">'+s.time+'</span></div>'
+      +'<div class="fdesc">'+s.desc+'</div>'
+      +'<div class="frow"><button class="abtn" data-aud="'+s.voAud+'">'
+      +'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+      +'<span>voice · '+s.voAud+'</span></button>'
+      +'<span class="ftime">'+s.vo+'</span></div>'
+      +'</div></div>';
+  });
+  grid.innerHTML=html;
+
+  // ---- audio: embedded data URIs, one shared player ----
+  var VO={hook:'data:audio/mp3;base64,__VO_HOOK__',
+          offer:'data:audio/mp3;base64,__VO_OFFER__',
+          proof:'data:audio/mp3;base64,__VO_PROOF__',
+          cta:'data:audio/mp3;base64,__VO_CTA__'};
+  var cur=null,curBtn=null;
+  function stopCur(){ if(cur){cur.pause();cur.currentTime=0;} if(curBtn){curBtn.classList.remove('playing');} }
+  document.querySelectorAll('.abtn[data-aud]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var k=btn.getAttribute('data-aud');
+      if(curBtn===btn && cur && !cur.paused){ stopCur(); return; }
+      stopCur();
+      cur=new Audio(VO[k]); curBtn=btn; btn.classList.add('playing');
+      cur.onended=function(){ btn.classList.remove('playing'); };
+      cur.play().catch(function(){ btn.classList.remove('playing'); });
+    });
+  });
+
+  // ---- checklist ----
+  var items=[
+    {t:'Price reads in order', d:'In the offer badge, <span class="he" style="direction:rtl;unicode-bidi:isolate">199 ₪</span> must read "199 shekels" — the digits stay grouped and the ₪ hugs the number, not the far edge.'},
+    {t:'Old price struck, after the new', d:'<span class="he" style="direction:rtl;unicode-bidi:isolate">290 ₪</span> is the struck reference and sits in logical order after the new price.'},
+    {t:'Discount = minus-31-percent', d:'<span class="he" style="direction:rtl;unicode-bidi:isolate">31%−</span> reads "minus 31%" with the − leading and % hugging the digits — not reordered to <code>%31−</code> or <code>−%31</code>.'},
+    {t:'Phone digits keep order', d:'<code>050-123-4567</code> never splits or flips its groups — it reads as one number, left-to-right inside the RTL card.'},
+    {t:'Urgency line stays RTL', d:'<span class="he" style="direction:rtl;unicode-bidi:isolate">החודש בלבד</span> flows right-to-left with no digit bleed.'},
+    {t:'Website stays Latin LTR', d:'<code>liat-beauty.co.il</code> renders left-to-right and does not get mirrored or re-anchored.'}
+  ];
+  var LS='ad1-bidi-proof';
+  var saved={}; try{ saved=JSON.parse(localStorage.getItem(LS)||'{}'); }catch(e){}
+  var cl=document.getElementById('checklist');
+  var chkHtml='';
+  items.forEach(function(it,i){
+    chkHtml+='<label class="chk"><input type="checkbox" data-i="'+i+'"'+(saved[i]?' checked':'')+'>'
+      +'<span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#06130b" stroke-width="3.4" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>'
+      +'<span class="txt"><span class="t">'+it.t+'</span><span class="d">'+it.d+'</span></span>'
+      +'<span class="chkstatus">'+(saved[i]?'✓':'○')+'</span></label>';
+  });
+  cl.innerHTML=chkHtml;
+  function refresh(){
+    var boxes=cl.querySelectorAll('input[type=checkbox]'); var n=0;
+    boxes.forEach(function(b){ var st=b.parentElement.querySelector('.chkstatus'); if(b.checked){n++;st.textContent='✓';}else{st.textContent='○';} });
+    document.getElementById('plbl').innerHTML='<b>'+n+'</b>/'+boxes.length+' verified';
+    document.getElementById('pfill').style.width=(n/boxes.length*100)+'%';
+  }
+  cl.addEventListener('change',function(e){
+    if(e.target.matches('input[type=checkbox]')){
+      saved[e.target.getAttribute('data-i')]=e.target.checked;
+      try{ localStorage.setItem(LS,JSON.stringify(saved)); }catch(err){}
+      refresh();
+    }
+  });
+  refresh();
+
+  // ---- evidence images ----
+  document.getElementById('img-price').src='data:image/png;base64,__IMG_PRICE__';
+  document.getElementById('img-wa').src='data:image/png;base64,__IMG_WA__';
+})();
+</script>

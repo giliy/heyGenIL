@@ -1,0 +1,10 @@
+{
+  "prompt": "Soft watercolor storybook illustration on warm cream paper, gentle washes and fine ink outlines, cozy and tender, warm light. Dad is a tall man in a rust-orange sweater with dark hair. His daughter is small with a sunny yellow bow in her hair. No text, no letters, no words, no watermark. The daughter, now grown and taller but still wearing her yellow bow, sits at a small kitchen table having coffee with the dad, warm steam rising from two mugs, quiet golden morning, loving and calm.",
+  "model": "fal-ai/flux-pro/kontext",
+  "aspect_ratio": "4:5",
+  "seed": null,
+  "refs": [
+    "media\\projects\\vox-2-dad-daughter\\layers\\ref-family.png"
+  ],
+  "created": "2026-08-21T19:42:17"
+}

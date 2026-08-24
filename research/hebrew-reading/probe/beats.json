@@ -1,0 +1,61 @@
+{
+  "id": "read-probe",
+  "title": "Probe",
+  "mode": "reading",
+  "language": "he",
+  "composition": "ReadProbe",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 6.0
+  },
+  "reading": {
+    "nikkud": "kamatz",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "בּ"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "teach-isolated",
+      "text": "בָּ",
+      "tts": "בָּ",
+      "start": 1.0,
+      "end": 1.58,
+      "units": [
+        {
+          "g": "בָּ",
+          "start": 1.3,
+          "end": 1.58
+        }
+      ]
+    },
+    {
+      "beat": "read-word",
+      "text": "בָּבָּא",
+      "tts": "בָּבָּא",
+      "start": 4.0,
+      "end": 5.848
+    }
+  ],
+  "beats": [
+    {
+      "name": "teach-isolated",
+      "start_s": 1.0,
+      "end_s": 4.0
+    },
+    {
+      "name": "read-word",
+      "start_s": 4.0,
+      "end_s": 6.0
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

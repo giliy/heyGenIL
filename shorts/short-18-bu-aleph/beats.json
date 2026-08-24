@@ -1,0 +1,314 @@
+{
+  "id": "short-18-bu-aleph",
+  "title": "בּוּ — בּוּ וְהָאוֹת א (Bu and the letter Aleph)",
+  "subtype": "image-story",
+  "series": "bu-koala",
+  "audience": "ages 3-5, Hebrew-native",
+  "mode": "kids",
+  "language": "he",
+  "composition": "Short18BuAleph",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 36
+  },
+  "voiceStatus": "edge-tts:he-IL-HilaNeural",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "notes": "Bu's debut — the letter aleph. mode:kids. Nikkud captions ON (kidsNikkud), lineHeight ~1.5. Voice = FREE edge-tts he-IL-HilaNeural motherese (--rate -8% --pitch +4Hz); no ElevenLabs emotion tags (edge-tts has none) — warmth comes from rate/pitch + script. Call-and-response pauses are written into the beats (engineered [— 2.5s] gaps in the script are realized by voice window spacing, NOT a word). Images: 8 beats x fast tier via gen_image.py --ref character.jpg. Seamless loop: last frame visually settles to match frame 0. `text` = clean Hebrew (nikkud) for captions; `tts` = same line, nikkud kept (edge-tts reads nikkud fine; Hila is warm).",
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! שָׁלוֹם, יְלָדִים וִילָדוֹת!",
+      "tts": "בּוּ בּוּ! שָׁלוֹם, יְלָדִים וִילָדוֹת!",
+      "start": 0.0,
+      "end": 4.8,
+      "words": [
+        {
+          "w": "בּוּ",
+          "start": 0.1,
+          "end": 0.426
+        },
+        {
+          "w": "בּוּ",
+          "start": 0.426,
+          "end": 0.806
+        },
+        {
+          "w": "שָׁלוֹם",
+          "start": 1.739,
+          "end": 2.486
+        },
+        {
+          "w": "יְלָדִים",
+          "start": 2.745,
+          "end": 3.22
+        },
+        {
+          "w": "וִילָדוֹת",
+          "start": 3.22,
+          "end": 3.913
+        }
+      ]
+    },
+    {
+      "beat": "intro-letter",
+      "text": "זוֹהִי הָאוֹת א.",
+      "tts": "זוֹהִי הָאוֹת א.",
+      "start": 5.0,
+      "end": 7.47,
+      "words": [
+        {
+          "w": "זוֹהִי",
+          "start": 5.104,
+          "end": 5.58
+        },
+        {
+          "w": "הָאוֹת",
+          "start": 5.58,
+          "end": 5.906
+        },
+        {
+          "w": "א",
+          "start": 5.906,
+          "end": 6.585
+        }
+      ]
+    },
+    {
+      "beat": "mystery",
+      "text": "מָה מַתְחִיל בְּאוֹת א?",
+      "tts": "מָה מַתְחִיל בְּאוֹת א?",
+      "start": 9.0,
+      "end": 11.55,
+      "words": [
+        {
+          "w": "מָה",
+          "start": 9.101,
+          "end": 9.318
+        },
+        {
+          "w": "מַתְחִיל",
+          "start": 9.318,
+          "end": 9.712
+        },
+        {
+          "w": "בְּאוֹת",
+          "start": 9.713,
+          "end": 9.984
+        },
+        {
+          "w": "א",
+          "start": 9.984,
+          "end": 10.65
+        }
+      ]
+    },
+    {
+      "beat": "pause-1",
+      "text": "הִמְהוּם…",
+      "tts": "הִמְהוּם…",
+      "start": 12.0,
+      "end": 13.87,
+      "pause": true,
+      "note": "engineered expectant pause — Bu hums softly while the child answers. edge-tts can't synthesize bare '...' (NoAudioReceived), so we use a soft warm hum word as the pause filler.",
+      "words": [
+        {
+          "w": "הִמְהוּם",
+          "start": 12.1,
+          "end": 12.97
+        }
+      ]
+    },
+    {
+      "beat": "first-answer",
+      "text": "תַּפּוּחַ! אָדוֹם וּמָתוֹק!",
+      "tts": "תַּפּוּחַ! אָדוֹם וּמָתוֹק!",
+      "start": 14.5,
+      "end": 18.43,
+      "words": [
+        {
+          "w": "תַּפּוּחַ",
+          "start": 14.625,
+          "end": 15.498
+        },
+        {
+          "w": "אָדוֹם",
+          "start": 16.36,
+          "end": 16.834
+        },
+        {
+          "w": "וּמָתוֹק",
+          "start": 16.834,
+          "end": 17.58
+        }
+      ]
+    },
+    {
+      "beat": "second-answer",
+      "text": "וְגַם אֶפְרוֹחַ! קְטַן־קְטַן!",
+      "tts": "וְגַם אֶפְרוֹחַ! קְטַן־קְטַן!",
+      "start": 18.5,
+      "end": 22.68,
+      "words": [
+        {
+          "w": "וְגַם",
+          "start": 18.604,
+          "end": 18.998
+        },
+        {
+          "w": "אֶפְרוֹחַ",
+          "start": 18.998,
+          "end": 19.8
+        },
+        {
+          "w": "קְטַן־קְטַן",
+          "start": 20.742,
+          "end": 21.788
+        }
+      ]
+    },
+    {
+      "beat": "repetition-build",
+      "text": "אוֹת א, אוֹת א — אֶפְשָׁר לְהַמְשִׁיךְ!",
+      "tts": "אוֹת א, אוֹת א — אֶפְשָׁר לְהַמְשִׁיךְ!",
+      "start": 23.0,
+      "end": 27.63,
+      "words": [
+        {
+          "w": "אוֹת",
+          "start": 23.118,
+          "end": 23.349
+        },
+        {
+          "w": "א",
+          "start": 23.349,
+          "end": 24.042
+        },
+        {
+          "w": "אוֹת",
+          "start": 24.273,
+          "end": 24.531
+        },
+        {
+          "w": "א",
+          "start": 24.531,
+          "end": 25.183
+        },
+        {
+          "w": "אֶפְשָׁר",
+          "start": 25.55,
+          "end": 25.93
+        },
+        {
+          "w": "לְהַמְשִׁיךְ",
+          "start": 25.93,
+          "end": 26.746
+        }
+      ]
+    },
+    {
+      "beat": "the-big-one",
+      "text": "אֲבָל הַיּוֹם, הָאוֹת א עוֹשָׂה אוֹתְךָ!",
+      "tts": "אֲבָל הַיּוֹם, הָאוֹת א עוֹשָׂה אוֹתְךָ!",
+      "start": 28.0,
+      "end": 31.6,
+      "words": [
+        {
+          "w": "אֲבָל",
+          "start": 28.1,
+          "end": 28.467
+        },
+        {
+          "w": "הַיּוֹם",
+          "start": 28.467,
+          "end": 29.037
+        },
+        {
+          "w": "הָאוֹת",
+          "start": 29.282,
+          "end": 29.635
+        },
+        {
+          "w": "א",
+          "start": 29.635,
+          "end": 29.975
+        },
+        {
+          "w": "עוֹשָׂה",
+          "start": 29.975,
+          "end": 30.233
+        },
+        {
+          "w": "אוֹתְךָ",
+          "start": 30.233,
+          "end": 30.695
+        }
+      ]
+    },
+    {
+      "beat": "catchphrase-payoff",
+      "text": "בּוּ בּוּ — אוֹהֵב אוֹתְךָ!",
+      "tts": "בּוּ בּוּ — אוֹהֵב אוֹתְךָ!",
+      "start": 32.0,
+      "end": 34.79,
+      "words": [
+        {
+          "w": "בּוּ",
+          "start": 32.132,
+          "end": 32.335
+        },
+        {
+          "w": "בּוּ",
+          "start": 32.335,
+          "end": 32.784
+        },
+        {
+          "w": "אוֹהֵב",
+          "start": 33.069,
+          "end": 33.422
+        },
+        {
+          "w": "אוֹתְךָ",
+          "start": 33.422,
+          "end": 33.898
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "beat": "hook",
+      "prompt": "This exact cute yellow koala creature (big fluffy round ears with cream inner fluff, soft plush body, huge dark glossy eyes, gentle open-mouth smile), close-up so his big friendly face fills the frame, one fluffy ear waving hello, warm sunny soft-focus background, soft storybook children's illustration, cozy and inviting, 9:16"
+    },
+    {
+      "beat": "intro-letter",
+      "prompt": "This exact cute yellow koala creature standing beside a big, soft, friendly Hebrew letter Aleph (א) that floats in the air glowing gently, warm pastel storybook background, soft children's illustration, cozy, 9:16"
+    },
+    {
+      "beat": "mystery",
+      "prompt": "This exact cute yellow koala creature tilting his head curiously and pointing up at the floating Hebrew letter Aleph (א), a soft question-mark sparkle nearby, warm storybook children's illustration, curious and gentle, 9:16"
+    },
+    {
+      "beat": "first-answer",
+      "prompt": "This exact cute yellow koala creature standing beside a giant, glowing red apple (תַּפּוּחַ) with a big happy smile, warm sunny orchard storybook background, soft children's illustration, joyful, 9:16"
+    },
+    {
+      "beat": "second-answer",
+      "prompt": "This exact cute yellow koala creature smiling warmly down at a tiny fluffy yellow baby chick (אֶפְרוֹחַ) beside him, both small and sweet, soft warm storybook children's illustration, tender and cute, 9:16"
+    },
+    {
+      "beat": "repetition-build",
+      "prompt": "This exact cute yellow koala creature happily holding up the big glowing Hebrew letter Aleph (א) which grows larger and warmer with light, sparkles around, warm celebratory storybook children's illustration, joyful, 9:16"
+    },
+    {
+      "beat": "the-big-one",
+      "prompt": "This exact cute yellow koala creature with a warm glowing heart on his chest and arms spread wide toward the viewer in a loving hug gesture, big warm smile, soft radiant warm storybook background, heartfelt and cozy, 9:16"
+    },
+    {
+      "beat": "catchphrase-payoff",
+      "prompt": "This exact cute yellow koala creature giving a warm hug toward the viewer, eyes soft and happy, a gentle warm glow all around, serene and loving, soft storybook children's illustration, the warm payoff, 9:16"
+    }
+  ]
+}

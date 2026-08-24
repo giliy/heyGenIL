@@ -1,0 +1,43 @@
+{
+  "compId": "Vox3DorSever",
+  "verdict": "PASS",
+  "perFrame": [
+    {
+      "f": 0,
+      "pass": true,
+      "note": "Fully composed collage board: river background, cutout sticker lower-left, 'דור סבר' title readable in Hebrew with correct RTL glyphs, no tofu. Sub-headline, label chip 'הסיפור', and bottom captions all render in valid Hebrew."
+    },
+    {
+      "f": 150,
+      "pass": true,
+      "note": "Statement beat reads 'איש עני,' correctly (not 'איש ענין'). Dor chip 'דור סבר' pinned to the cutout; Hebrew serif statement + captions legible at phone scale."
+    },
+    {
+      "f": 315,
+      "pass": true,
+      "note": "Lottery beat: chip 'הלוטו' pinned above cutout. Scratch/lotto paper layer visible under sticker; serif statement 'הוא קנה לוטו' high-contrast and readable."
+    },
+    {
+      "f": 445,
+      "pass": true,
+      "note": "Exam beat: chip 'המבחן' pinned; exam/answer paper layer visible; statement 'הוא סימן תשובות' readable, captions valid Hebrew."
+    },
+    {
+      "f": 580,
+      "pass": true,
+      "note": "Loan beat: chip 'ההלוואה' pinned above cutout; loan paper layer visible; statement 'הוא לקח הלוואה' readable; captions valid."
+    },
+    {
+      "f": 825,
+      "pass": true,
+      "note": "Punchline: red rubber stamp 'קיצור דרך' slammed over the 'בסוף' statement at upper-left; stamp Hebrew reads correctly; statement 'כי בסוף — קיצורי דרך יהפכו אותך לדור סבר' legible."
+    },
+    {
+      "f": 989,
+      "pass": true,
+      "note": "Last frame visually identical to frame 0 (same board, camera framing, title, chip, captions). Seamless loop."
+    }
+  ],
+  "loop_match": true,
+  "issues": []
+}

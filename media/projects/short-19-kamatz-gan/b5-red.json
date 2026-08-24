@@ -1,0 +1,11 @@
+{
+  "prompt": "a glossy juicy red watermelon slice close-up with sparkling juice drops, warm picnic background softly blurred, soft warm watercolor storybook illustration for a Hebrew children's short, gentle sunny palette, thick soft shapes, calm premium Bluey-like warmth, no text, no words, vertical 9:16 composition with the subject centered and clear space at the bottom for captions",
+  "model": "gemini-3.1-flash-image",
+  "aspect_ratio": "9:16",
+  "image_size": "2K",
+  "seed": null,
+  "refs": [
+    "ai-shorts\\bu-koala\\character.jpg"
+  ],
+  "created": "2026-08-23T17:50:21"
+}

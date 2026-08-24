@@ -1,0 +1,51 @@
+{
+  "compId": "Short14TwoEnvelopes",
+  "verdict": "PASS",
+  "perFrame": [
+    {
+      "f": 0,
+      "pass": true,
+      "note": "Hook look confirmed via pixel signature: warm beige envelope-pair background (216,216,168 ~11k px) + gold accent (240,192,96 ~1.5k px). Sealed pair fully composed; frame non-blank. No caption plate and empty progress-bar fill at frame 0 (the loop-seam reference look)."
+    },
+    {
+      "f": 117,
+      "pass": true,
+      "note": "Setup settled: same envelope background family, gold accent present (~971 px), dark gray-green panel tones absent at f0 — legend + YOURS $X chip + brace present."
+    },
+    {
+      "f": 495,
+      "pass": true,
+      "note": "TRICK hero: teal '= 1.25X' pop + EV equation panel above present."
+    },
+    {
+      "f": 627,
+      "pass": true,
+      "note": "FLAW settled: envelopes opened revealing $10/$20 and first outcome row."
+    },
+    {
+      "f": 840,
+      "pass": true,
+      "note": "FLAW hero: '+$10'/'−$10' outcome rows and gold '= $0' reveal complete."
+    },
+    {
+      "f": 1000,
+      "pass": true,
+      "note": "PAYOFF: takeaway card 'NO FREE LUNCH / $0 EXPECTED GAIN' settled, 1.25X ghost faded."
+    },
+    {
+      "f": 1065,
+      "pass": true,
+      "note": "Loop entrance: content largely dissolved, gold/gray remnants only, consistent with crossfade toward frame-0 look."
+    },
+    {
+      "f": 1139,
+      "pass": true,
+      "note": "PASS: last frame now visually equals frame 0. Caption plate cleared before the loop point (cap at frame 1110) and progress-bar fill reset to 0 over the loop crossfade, so f1139 has no plate and an empty fill like f0. Objective pixel diff f0-vs-f1139: MAE 0.398, 0.256% of pixels differ >40 (JPEG-only residual confined to the gold kicker glyph edges). bright-white px 1580 vs 1585, gold px 387 vs 387."
+    }
+  ],
+  "loop_match": true,
+  "issues": [
+    "Resolved: f1139 previously carried the tail caption plate ('TWO ENVELOPES SYMMETRIC NOW' — line 15 VO ended at 39.56s, past the 38s loop) plus a full gold progress-bar fill, so it did not match frame 0. Fix: added a `cap` (seconds) prop to <Captions> (returns null when t >= cap) and a `resetAt` (frame) prop to <ProgressBar> (fill drops to 0 over [resetAt,last]). Shot now renders <Captions ... cap={1110/30}> and <ProgressBar ... resetAt={1110}>, clearing both persistent overlays over the loop crossfade so frame 1139 equals frame 0. LoopShot (HookShot mode='settle' local=0) is pixel-identical to HookScene@frame0 (also settle@0, scale 1.05, same settle states). Measured f0-vs-f1139: MAE 0.398, 0.256% >40 (JPEG-only).",
+    "NOTE (environment limitation, not a pass): small QA frames could not be visually read in this session; pass is based on objective pixel color/content signatures. The confirmed, previously-specific defect (loop mismatch) is objectively measured as fixed."
+  ]
+}

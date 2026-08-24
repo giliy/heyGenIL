@@ -1,0 +1,214 @@
+{
+  "id": "ad-2-noa",
+  "title": "נועה גלילי יופי — טיפול פנים החודש",
+  "composition": "Ad2Noa",
+  "mode": "ad",
+  "language": "he",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 16.5
+  },
+  "voicePlan": "edge-tts:he-IL-HilaNeural (Hebrew, female, word-exact)",
+  "ad": {
+    "business": {
+      "name": "נועה גלילי יופי",
+      "vertical": "beauty",
+      "phone": "052-9876543",
+      "whatsapp": "052-9876543",
+      "city": "חיפה"
+    },
+    "offer": {
+      "headline": "טיפול פנים + אבחון עור אישי",
+      "price": 249,
+      "oldPrice": 350,
+      "discountPct": 29,
+      "urgency": "החודש בלבד"
+    },
+    "cta": {
+      "type": "whatsapp",
+      "text": "להזמנת תור בוואטסאפ",
+      "phoneDisplay": "052-987-6543"
+    },
+    "brand": {
+      "accent": "#A8342B",
+      "hookStyle": "pain-question"
+    },
+    "disclosure": {
+      "scope": "עד גמר המלאי או ללקוחות כמות מוגבלת",
+      "totalPrice": "המחיר כולל הכל, ללא עלויות נוספות"
+    }
+  },
+  "vo": [
+    {
+      "text": "מתקפת בקמטוטים סביב העיניים?",
+      "start": 0.4,
+      "end": 3.03,
+      "beat": "hook",
+      "words": [
+        {
+          "w": "מתקפת",
+          "start": 0.508,
+          "end": 0.905
+        },
+        {
+          "w": "בקמטוטים",
+          "start": 0.906,
+          "end": 1.457
+        },
+        {
+          "w": "סביב",
+          "start": 1.457,
+          "end": 1.711
+        },
+        {
+          "w": "העיניים",
+          "start": 1.711,
+          "end": 2.307
+        }
+      ]
+    },
+    {
+      "text": "החודש בלבד: 249 שקל במקום 350.",
+      "start": 3.1,
+      "end": 7.53,
+      "beat": "offer",
+      "words": [
+        {
+          "w": "החודש",
+          "start": 3.19,
+          "end": 3.538
+        },
+        {
+          "w": "בלבד",
+          "start": 3.538,
+          "end": 4.059
+        },
+        {
+          "w": "249",
+          "start": 4.274,
+          "end": 5.205
+        },
+        {
+          "w": "שקל",
+          "start": 5.205,
+          "end": 5.522
+        },
+        {
+          "w": "במקום",
+          "start": 5.522,
+          "end": 5.87
+        },
+        {
+          "w": "350",
+          "start": 5.87,
+          "end": 6.852
+        }
+      ]
+    },
+    {
+      "text": "אבחון עור אישי ופרוטוקול מדויק. תוצאות שרואים.",
+      "start": 7.3,
+      "end": 11.64,
+      "beat": "proof",
+      "words": [
+        {
+          "w": "אבחון",
+          "start": 7.377,
+          "end": 7.827
+        },
+        {
+          "w": "עור",
+          "start": 7.827,
+          "end": 8.052
+        },
+        {
+          "w": "אישי",
+          "start": 8.052,
+          "end": 8.348
+        },
+        {
+          "w": "ופרוטוקול",
+          "start": 8.348,
+          "end": 8.788
+        },
+        {
+          "w": "מדויק",
+          "start": 8.788,
+          "end": 9.362
+        },
+        {
+          "w": "תוצאות",
+          "start": 10.062,
+          "end": 10.43
+        },
+        {
+          "w": "שרואים",
+          "start": 10.43,
+          "end": 10.962
+        }
+      ]
+    },
+    {
+      "text": "אז בואי להזמין תור בוואטסאפ.",
+      "start": 11.2,
+      "end": 14.3,
+      "beat": "cta",
+      "words": [
+        {
+          "w": "אז",
+          "start": 11.301,
+          "end": 11.567
+        },
+        {
+          "w": "בואי",
+          "start": 11.567,
+          "end": 11.846
+        },
+        {
+          "w": "להזמין",
+          "start": 11.846,
+          "end": 12.365
+        },
+        {
+          "w": "תור",
+          "start": 12.365,
+          "end": 12.604
+        },
+        {
+          "w": "בוואטסאפ",
+          "start": 12.604,
+          "end": 13.428
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 3.0,
+      "visual": "pain-question hook, composed at frame 0"
+    },
+    {
+      "name": "offer",
+      "start_s": 3.0,
+      "end_s": 7.2,
+      "visual": "PriceBadge pops: 249 ₪ vs 350, 29%−"
+    },
+    {
+      "name": "proof",
+      "start_s": 7.2,
+      "end_s": 11.1,
+      "visual": "clinical vocab + before/after narrative line"
+    },
+    {
+      "name": "cta",
+      "start_s": 11.1,
+      "end_s": 16.5,
+      "visual": "AdEndCard holds ~2.5s past VO end (tappable, no dead air)"
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

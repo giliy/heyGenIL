@@ -1,0 +1,62 @@
+{
+  "name": "bu-koala",
+  "display_he": "בּוּ",
+  "role": "THE LOCKED REFERENCE — the recurring character every ai-video shot drives from",
+  "rule": "NEVER generate this character from text twice. Every still that needs him is gen_image.py --ref character.png; every clip is image-to-video from a frame that already contains him. Re-deriving him from the prompt is a bug.",
+  "image": "character.jpg",
+  "source_asset": "photos/cute-kuala.jpg (user-created original — the design is the user's, locked with their approval)",
+  "locked": "2026-08-23",
+  "approved": "Option A chosen by user 2026-08-23 — JPG locked AS-IS, zero regeneration",
+  "language": "he",
+  "audience": "ages 3-5, YouTube Made-for-Kids shorts, Hebrew-native",
+
+  "voice": {
+    "engine": "edge-tts",
+    "voice_id": "he-IL-HilaNeural",
+    "tool": "tools/gen_voice_edge.py",
+    "register": "motherese — warm, slightly slowed, rising gentle intonation; see research/hebrew-kids/07-hebrew-language-kids.md",
+    "signature_sound": "soft coo 'בּוּ בּוּ' before/after lines",
+    "notes": "kokoro excluded (no Hebrew). ElevenLabs only eleven_multilingual_v3 --lang he if a richer take is ever needed. Word-exact timings come free from edge-tts."
+  },
+
+  "catchphrase": {
+    "he": "בּוּ בּוּ — אוֹהֵב אוֹתְךָ!",
+    "transliteration": "Bu bu — ohev otcha!",
+    "meaning": "Bu bu — loves you!",
+    "design_rules": "research/hebrew-kids/08-character-concepts-v2.md §9 — 4 syllables + payoff, trochaic, ends on open vowel, singable, repeatable x3 per short"
+  },
+
+  "design": {
+    "species": "a cute yellow koala-like creature (user's original design)",
+    "body": "plush-toy chubby rounded body, soft matte warm yellow fur, cream belly patch, stubby mitten paws, short legs",
+    "head": "oversized round head (~1/3 to 1/2 of total height), huge low-set dark glossy eyes, tiny nose, gentle open-mouth smile, chubby cheeks",
+    "identity_marker": "the big fluffy round EARS with cream inner fluff — his silhouette signature, must appear in every shot (the way blue-man's mustard scarf does)",
+    "retired": "the teal mood-glow antenna from concept v1/v2 — dropped; the ears already carry the silhouette identity",
+    "palette": {
+      "body_yellow": "warm saturated yellow (sample from locked character.jpg)",
+      "inner_ear_cream": "soft cream (sample from locked character.jpg)",
+      "belly_cream": "soft cream (sample from locked character.jpg)"
+    },
+    "proportions": "baby-schema — oversized head, large low-set eyes, chubby cheeks, mitten paws, stubby limbs"
+  },
+
+  "generation": {
+    "status": "LOCKED — no generation needed",
+    "method": "Option A: user's own art copied verbatim. No gen_image call was ever made for the reference itself.",
+    "note": "Every FUTURE still still derives via --ref character.jpg. This file is the single source of truth."
+  },
+
+  "shot_workflow": [
+    "1. start frame: gen_image.py --ref ai-shorts/bu-koala/character.jpg --prompt '<this exact yellow koala creature with his fluffy round ears, in SCENE...>' -> media/projects/bu-koala-<ep>/shots/NN-slug.png",
+    "2. clip: image-to-video from that start frame (gen_clip.py / bakeoff_clip.py) — state derived cost BEFORE spending",
+    "3. loop shots: end-frame input = same frame as start (frame 0 == last frame is a constraint we hand the model, not luck)",
+    "4. per-episode media lives in media/projects/bu-koala-<ep>/, referenced as staticFile('projects/bu-koala-<ep>/x')"
+  ],
+
+  "script_rules": {
+    "language_harness": "research/hebrew-kids/07-hebrew-language-kids.md — motherese register, 3-6 word sentences, greeting 'שלום ילדים וילדות', מה זה? prompts, 2.5s engineered pauses, expand/recast correctly, warm resolve",
+    "format": "hook <2s, repetition >=3x, call-and-response with pauses, one idea resolved warmly, seamless loop, NO CTA outro (kids mode)",
+    "captions": "RTL via remotion/src/lib/shorts.tsx rtl prop + stripNikkud(); nikkud ON for kids (brand.md exception), lineHeight ~1.5, Heebo/Rubik from media/library/fonts",
+    "motion_override": "kids mode permits gentle bouncy/cartoon squash-and-stretch that default brand.md bans — declared per-project, not silently"
+  }
+}

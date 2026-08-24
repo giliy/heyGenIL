@@ -1,0 +1,17 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "Unit manifest for tools/gen_voice_reading.py (P3). role in isolated|cv|blend|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back at known offsets (NO gaps = continuous blending, findings §1). word = one continuous clip -> NO units[] (whole-word highlight). Derived from tools/nikkud_data.py kamatz row — the closed vetted lexicon. Do NOT add vowels by hand.",
+  "units": [
+    { "id": "isolated-bet-kamatz", "grapheme": "בָּ", "sound": "ba", "role": "isolated" },
+
+    { "id": "cv-bet", "grapheme": "בָּ", "sound": "ba", "role": "cv" },
+    { "id": "cv-mem", "grapheme": "מָּ", "sound": "ma", "role": "cv" },
+    { "id": "cv-qof", "grapheme": "קָּ", "sound": "qa", "role": "cv" },
+
+    { "id": "blend-baba", "grapheme": "בָּבָּא", "sound": "ba-ba", "role": "blend",
+      "syllables": ["בָּ", "בָּא"] },
+
+    { "id": "word-baba", "grapheme": "בָּבָּא", "sound": "baba", "role": "word" }
+  ]
+}

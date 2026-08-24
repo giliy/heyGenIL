@@ -1,0 +1,68 @@
+{
+  "note": "Recipes for the shared stock b-roll / stills library (media/library/broll/). SOURCE OF TRUTH for what the library should contain: one entry per reusable, generically-named b-roll need. tools/fetch_stock.py reads this for the --palette quick-picks and documents fetched hits in catalog.json. Organized by the visual job they serve on the three tracks: mood/atmosphere (rain, fog, city), subject cutaways (coffee, paper, hands), and documentary stills (Commons, public-domain/CC only). Brand taste: calm/premium (Linear/Anthropic/Vercel) — soft, understated, vertical-friendly, no loud stock clichés. Every entry maps to a suggested Pexels/Pixabay/Commons query; the actual fetched files live in catalog.json.",
+  "palette": [
+    {
+      "id": "broll-rainy-city",
+      "category": "atmosphere",
+      "query": "rainy city night",
+      "orientation": "portrait",
+      "source": "pexels",
+      "tags": ["rain", "city", "night", "neon", "atmosphere", "vertical"],
+      "usage": "establishing mood / transition underlay on moody shorts"
+    },
+    {
+      "id": "broll-fog",
+      "category": "atmosphere",
+      "query": "fog forest",
+      "orientation": "portrait",
+      "source": "pexels",
+      "tags": ["fog", "forest", "mist", "calm", "atmosphere", "vertical"],
+      "usage": "soft, premium background bed for vox/explainer segments"
+    },
+    {
+      "id": "broll-city-aerial",
+      "category": "atmosphere",
+      "query": "city aerial skyline",
+      "orientation": "portrait",
+      "source": "pexels",
+      "tags": ["city", "aerial", "skyline", "vertical"],
+      "usage": "establishing city shots for tech/business shorts"
+    },
+    {
+      "id": "broll-paper-texture",
+      "category": "cutaway",
+      "query": "paper texture",
+      "orientation": "portrait",
+      "source": "pexels",
+      "tags": ["paper", "texture", "craft", "cutaway", "vertical"],
+      "usage": "tactile cutaway for craft/handmade/vox paper-collage context"
+    },
+    {
+      "id": "broll-coffee",
+      "category": "cutaway",
+      "query": "coffee cup",
+      "orientation": "portrait",
+      "source": "pexels",
+      "tags": ["coffee", "cup", "warm", "cutaway", "vertical"],
+      "usage": "warm product/lifestyle cutaway (e.g. vox-1-coffee)"
+    },
+    {
+      "id": "broll-hands-typing",
+      "category": "cutaway",
+      "query": "hands typing laptop",
+      "orientation": "portrait",
+      "source": "pexels",
+      "tags": ["hands", "typing", "laptop", "coding", "cutaway", "vertical"],
+      "usage": "generic 'person working' cutaway for coding/tech shorts"
+    },
+    {
+      "id": "stills-documentary",
+      "category": "stills",
+      "query": "steam locomotive history",
+      "orientation": "landscape",
+      "source": "commons",
+      "tags": ["documentary", "history", "public-domain", "still"],
+      "usage": "public-domain/CC documentary stills for vox documentary tracks (Commons)"
+    }
+  ]
+}

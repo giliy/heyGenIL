@@ -1,0 +1,67 @@
+# secrets
+.env
+
+# dependencies / build output
+node_modules/
+remotion/out/
+__pycache__/
+*.pyc
+venv/
+
+# heavy regenerable per-short artifacts:
+# voice/ = cached ElevenLabs TTS lines, output/ = rendered videos.
+# Both are rebuilt by the pipeline; finals are linked from the README instead.
+shorts/*/voice/
+shorts/*/output/
+ai-shorts/*/voice/
+ai-shorts/*/output/
+vox-shorts/*/voice/
+vox-shorts/*/output/
+
+# ai-shorts working copies of generated clips — the canonical (committed) copies
+# live in media/projects/<name>/ where the composition reads them via staticFile()
+ai-shorts/*/shots/*.mp4
+ai-shorts/*/bakeoff/*.mp4
+
+# local editor config
+.vscode/
+
+# vendored full ffmpeg (downloaded by tools/ffw.py bootstrap; large, out of git)
+tools/bin/
+
+# Phonikud ONNX nakdan model (~300MB, CC BY 4.0) — fetched per-machine by
+# tools/fetch_phonikud.py for the Hebrew TTS nikkud front-end (tools/nikkud_g2p.py).
+models/phonikud/
+
+# professional SFX tier (Sonniss GDC / 99Sounds) — the license FORBIDS committing the
+# raw files to a distributed repo. Each machine downloads them via tools/fetch_pro_sfx.py
+# into this gitignored local dir. Only CC0/MIT clips live in the committed clips/.
+media/library/sfx/pro/
+
+# SFX staging area: holds source clones/extracted packs (soundcn clone, Sonniss zips) used
+# to import into clips/. These are bulky source downloads, not library assets — re-fetched
+# per docs/sfx-sources.md. The curated import manifest lives at tools/sfx-import-manifest.json.
+media/library/sfx/_staging/
+
+# --- local scratch / session noise (never commit) ---
+work/
+photos/
+artifacts/
+.attic/
+.tmp-research/
+.claude/conversations/
+.claude/plans/
+.claude/scratch/
+_timeline.txt
+upgrade-plan.md
+collage-upgrade-research.html
+rive-canvas.tsx
+package.json
+package-lock.json
+docs/
+.remotion/
+remotion/remotion/
+
+# python venvs (rebuilt per-machine; see CLAUDE.md)
+.venv-voice312/
+.venv-image312/

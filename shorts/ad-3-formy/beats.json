@@ -1,0 +1,232 @@
+{
+  "id": "ad-3-formy",
+  "title": "פורמי — חתימה דיגיטלית בחינם",
+  "composition": "Ad3Formy",
+  "mode": "ad",
+  "language": "he",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 19.0
+  },
+  "voicePlan": "edge-tts:he-IL-AvriNeural (Hebrew, male, word-exact)",
+  "ad": {
+    "business": {
+      "name": "פורמי",
+      "vertical": "saas",
+      "phone": "050-679-3057",
+      "whatsapp": "050-679-3057",
+      "website": "formy.co.il"
+    },
+    "offer": {
+      "headline": "פורמי — טפסים דיגיטליים בעברית, בחינם",
+      "price": 0
+    },
+    "cta": {
+      "type": "whatsapp",
+      "text": "דברו איתנו בוואטסאפ",
+      "phoneDisplay": "050-679-3057",
+      "website": "formy.co.il"
+    },
+    "brand": {
+      "accent": "#6366F1",
+      "hookStyle": "free-trial"
+    }
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "חתימה דיגיטלית בחינם.",
+      "start": 0.0,
+      "end": 2.54,
+      "words": [
+        {
+          "w": "חתימה",
+          "start": 0.083,
+          "end": 0.611
+        },
+        {
+          "w": "דיגיטלית",
+          "start": 0.611,
+          "end": 1.183
+        },
+        {
+          "w": "בחינם",
+          "start": 1.183,
+          "end": 1.808
+        }
+      ]
+    },
+    {
+      "beat": "intro",
+      "text": "פורמי. פלטפורמת הטפסים של ישראל.",
+      "start": 2.6,
+      "end": 6.28,
+      "words": [
+        {
+          "w": "פורמי",
+          "start": 2.677,
+          "end": 3.25
+        },
+        {
+          "w": "פלטפורמת",
+          "start": 3.938,
+          "end": 4.469
+        },
+        {
+          "w": "הטפסים",
+          "start": 4.469,
+          "end": 4.899
+        },
+        {
+          "w": "של",
+          "start": 4.899,
+          "end": 5.032
+        },
+        {
+          "w": "ישראל",
+          "start": 5.032,
+          "end": 5.605
+        }
+      ]
+    },
+    {
+      "beat": "build",
+      "text": "בונים טופס בעברית בכמה לחיצות.",
+      "start": 6.3,
+      "end": 9.83,
+      "words": [
+        {
+          "w": "בונים",
+          "start": 6.395,
+          "end": 6.819
+        },
+        {
+          "w": "טופס",
+          "start": 6.819,
+          "end": 7.353
+        },
+        {
+          "w": "בעברית",
+          "start": 7.354,
+          "end": 7.914
+        },
+        {
+          "w": "בכמה",
+          "start": 7.914,
+          "end": 8.25
+        },
+        {
+          "w": "לחיצות",
+          "start": 8.25,
+          "end": 9.009
+        }
+      ]
+    },
+    {
+      "beat": "sign",
+      "text": "חתימה דיגיטלית חוקית. עם שרשרת ראיות.",
+      "start": 9.9,
+      "end": 14.0,
+      "words": [
+        {
+          "w": "חתימה",
+          "start": 9.978,
+          "end": 10.489
+        },
+        {
+          "w": "דיגיטלית",
+          "start": 10.489,
+          "end": 10.981
+        },
+        {
+          "w": "חוקית",
+          "start": 10.981,
+          "end": 11.533
+        },
+        {
+          "w": "עם",
+          "start": 12.219,
+          "end": 12.424
+        },
+        {
+          "w": "שרשרת",
+          "start": 12.424,
+          "end": 12.895
+        },
+        {
+          "w": "ראיות",
+          "start": 12.895,
+          "end": 13.468
+        }
+      ]
+    },
+    {
+      "beat": "cta",
+      "text": "התחילו עכשיו. בלי כרטיס אשראי.",
+      "start": 14.1,
+      "end": 18.63,
+      "words": [
+        {
+          "w": "התחילו",
+          "start": 14.197,
+          "end": 14.753
+        },
+        {
+          "w": "עכשיו",
+          "start": 14.753,
+          "end": 15.451
+        },
+        {
+          "w": "בלי",
+          "start": 16.322,
+          "end": 16.645
+        },
+        {
+          "w": "כרטיס",
+          "start": 16.645,
+          "end": 17.136
+        },
+        {
+          "w": "אשראי",
+          "start": 17.136,
+          "end": 17.77
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 2.5,
+      "visual": "HOOK fully composed at frame 0: 'חתימה דיגיטלית' (white) over 'בחינם.' (teal), a faint form card behind. The payoff visible on the first frame."
+    },
+    {
+      "name": "intro",
+      "start_s": 2.5,
+      "end_s": 6.2,
+      "visual": "gradient 'פורמי' wordmark (indigo→violet→teal) + tagline 'פלטפורמת הטפסים של ישראל'; a paper form card assembles."
+    },
+    {
+      "name": "build",
+      "start_s": 6.2,
+      "end_s": 9.8,
+      "visual": "the form card BUILDS: name + email fields fill, a checkbox checks (RTL). Drag-and-drop feel."
+    },
+    {
+      "name": "sign",
+      "start_s": 9.8,
+      "end_s": 14.0,
+      "visual": "an ink signature stroke draws across a signature box; a green '✓ מאומת' seal stamps in; an evidence-chain chip."
+    },
+    {
+      "name": "cta",
+      "start_s": 14.0,
+      "end_s": 19.0,
+      "visual": "the WhatsApp AdEndCard pops and HOLDS to the last frame: ₪0 + 'בלי כרטיס אשראי' + formy.co.il + 050-679-3057. Tappable."
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-AvriNeural"
+}

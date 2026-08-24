@@ -1,0 +1,20 @@
+{
+  "id": "ad-3-formy",
+  "catalog": "media/library/sfx/catalog.json",
+  "render": {
+    "preview": "remotion/out/Ad3Formy-voiced.mp4",
+    "out": "remotion/out/Ad3Formy-sfx.mp4",
+    "end_s": 19.0,
+    "duck": true
+  },
+  "events": [
+    { "at_s": 0.4,  "sfx_id": "whoosh-soft",  "gain_db": -7.0, "cue": "hook entrance sweep under 'חתימה דיגיטלית' (VO 0.0–2.54)" },
+    { "at_s": 3.05, "sfx_id": "whoosh-soft",  "gain_db": -8.0, "cue": "FormCard card-in sweep (cardIn 3.1s), intro VO running" },
+    { "at_s": 11.4, "sfx_id": "riser-soft",   "gain_db": -5.5, "cue": "build into the ₪0 offer — sign VO tail 'שרשרת ראיות' (ends 13.468)" },
+    { "at_s": 12.2, "sfx_id": "impact-soft",  "gain_db": -2.5, "cue": "PriceBadge ₪0 pop (12.2s) — the free-plan payoff" },
+    { "at_s": 13.9, "sfx_id": "whoosh-soft",  "gain_db": -8.0, "cue": "transition sweep into AdEndCard (card-in 14.2s)" },
+    { "at_s": 14.2, "sfx_id": "pop-reveal",   "gain_db": 0.5,  "cue": "AdEndCard card-in pop; CTA VO 'התחילו' just started 14.1" },
+    { "at_s": 16.5, "sfx_id": "chime-reward", "gain_db": -3.0, "cue": "reward sparkle on 'בלי כרטיס אשראי' (16.32–17.77) — free/no-card payoff" },
+    { "at_s": 18.05,"sfx_id": "ui-send",      "gain_db": -2.5, "cue": "WhatsApp send click after CTA VO ends (17.77) — clear of speech, before 19.0" }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "note": "Shared LOTTIE library manifest for the AI Video Editor. Curated CALM vector animations (Lottie JSON in media/library/lottie/clips/), rendered in Remotion shots via <LibraryLottie id=\"...\"> (remotion/src/lib/lottie.tsx). staticFile('library/lottie/clips/<file>') resolves here. Curated HARD toward calm / Linear-style accents (brand.md forbids bouncy sticker looks) — each entry is a small vector-only animation, no embedded raster images, chosen to sit UNDER typography as a quiet accent. All entries are LottieFiles-hosted free animations under the Lottie Simple License (https://lottiefiles.com/page/license) — free for personal + commercial use, attribution not required but recorded per entry. 'used_in' grows every video (library-first) — record the video slug when a clip is used.",
+  "clips": [
+    {
+      "id": "checkmark-circle",
+      "file": "clips/checkmark-circle.json",
+      "category": "success",
+      "tags": [
+        "checkmark",
+        "success",
+        "done",
+        "confirm",
+        "result",
+        "circle",
+        "draw-on",
+        "calm"
+      ],
+      "fr": 29.97,
+      "duration_s": 1.0,
+      "width": 512,
+      "height": 512,
+      "vector_only": true,
+      "name": "checkmark",
+      "creator": "Jenny Seong",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/animations/checkmark-3yTUIXzeNb",
+      "license": "Lottie Simple License",
+      "license_url": "https://lottiefiles.com/page/license",
+      "used_in": [
+        "short-17-sign"
+      ]
+    },
+    {
+      "id": "sparkles",
+      "file": "clips/sparkles.json",
+      "category": "accent",
+      "tags": [
+        "sparkle",
+        "sparkles",
+        "twinkle",
+        "accent",
+        "magic",
+        "subtle",
+        "calm"
+      ],
+      "fr": 25,
+      "duration_s": 2.0,
+      "width": 600,
+      "height": 600,
+      "vector_only": true,
+      "name": "sparkles",
+      "creator": "Javad HP",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/animations/sparkles-hSvFKzMnWx",
+      "license": "Lottie Simple License",
+      "license_url": "https://lottiefiles.com/page/license",
+      "used_in": [
+        "short-17-sign"
+      ]
+    },
+    {
+      "id": "chart-up",
+      "file": "clips/chart-up.json",
+      "category": "data",
+      "tags": [
+        "chart",
+        "growth",
+        "line-chart",
+        "up",
+        "data",
+        "trend",
+        "draw-on",
+        "calm"
+      ],
+      "fr": 60,
+      "duration_s": 1.5,
+      "width": 1080,
+      "height": 1080,
+      "vector_only": true,
+      "name": "growth chart",
+      "creator": "Didar",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/animations/growth-chart-V7KcVfanz8",
+      "license": "Lottie Simple License",
+      "license_url": "https://lottiefiles.com/page/license",
+      "used_in": []
+    },
+    {
+      "id": "rocket-launch",
+      "file": "clips/rocket-launch.json",
+      "category": "launch",
+      "tags": [
+        "rocket",
+        "launch",
+        "ship",
+        "release",
+        "deploy",
+        "start",
+        "calm"
+      ],
+      "fr": 30,
+      "duration_s": 5.03,
+      "width": 1080,
+      "height": 1080,
+      "vector_only": true,
+      "name": "rocket",
+      "creator": "William",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/animations/rocket-s7XkKYVwug",
+      "license": "Lottie Simple License",
+      "license_url": "https://lottiefiles.com/page/license",
+      "used_in": []
+    },
+    {
+      "id": "gear-spin",
+      "file": "clips/gear-spin.json",
+      "category": "settings",
+      "tags": [
+        "gear",
+        "settings",
+        "cog",
+        "mechanism",
+        "config",
+        "spin",
+        "calm"
+      ],
+      "fr": 29.97,
+      "duration_s": 2.0,
+      "width": 500,
+      "height": 500,
+      "vector_only": true,
+      "name": "gear",
+      "creator": "Allan Ribas",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/animations/gear-gz4AiM8px3",
+      "license": "Lottie Simple License",
+      "license_url": "https://lottiefiles.com/page/license",
+      "used_in": []
+    },
+    {
+      "id": "confetti-burst",
+      "file": "clips/confetti-burst.json",
+      "category": "accent",
+      "tags": [
+        "confetti",
+        "burst",
+        "celebration",
+        "reward",
+        "accent",
+        "use-sparingly"
+      ],
+      "fr": 30,
+      "duration_s": 3.0,
+      "width": 800,
+      "height": 500,
+      "vector_only": true,
+      "name": "confetti",
+      "creator": "王忍让",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/animations/沙湖-9fDmLhfAme",
+      "license": "Lottie Simple License",
+      "license_url": "https://lottiefiles.com/page/license",
+      "used_in": []
+    }
+  ]
+}

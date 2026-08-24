@@ -1,0 +1,29 @@
+{
+  "note": "Project-scoped media for the proof-1-lottie POC shot (remotion/src/shots/proof-1-lottie/). NOT in media/library because the LottieFiles Simple License forbids standalone redistribution/resale of the animation file itself — it is bundled inside this one rendered video only. Read by the shot via staticFile('projects/proof-1-lottie/...').",
+  "assets": [
+    {
+      "file": "checkmark.json",
+      "kind": "lottie",
+      "title": "Face ID iOS checkmark UI animation",
+      "source": "lottiefiles",
+      "source_url": "https://lottiefiles.com/free-animation/face-id-ios-checkmark-ui-animation-SAEU0Y3XHU",
+      "asset_url": "https://assets-v2.lottiefiles.com/a/040f3a6a-1150-11ef-b652-ef42ec1f0ff8/V2JqEYkKqb.lottie",
+      "creator": "Artyom Konakov",
+      "creator_url": "https://lottiefiles.com/artkonakov",
+      "license": "Lottie Simple License (free tier) — commercial use OK, no attribution required; standalone redistribution/resale of the file itself not permitted",
+      "fetched_at": "2026-08-22",
+      "format": {
+        "lottie_version": "4.8.0",
+        "fr": 60,
+        "ip": 0,
+        "op": 90,
+        "width": 512,
+        "height": 512,
+        "layers": 18,
+        "bytes": 27550
+      },
+      "colors": ["#80fa80"],
+      "notes": "Teal/green success checkmark, calm single-sweep draw, brand-appropriate (near signal #4db8a8 family). 60fps/90 frames = 1.5s native; shot plays it at playbackRate=2 to run real-time in the 30fps comp. NO text inside the Lottie layer (lottie-web has open RTL bugs) — caption is 100% TSX."
+    }
+  ]
+}

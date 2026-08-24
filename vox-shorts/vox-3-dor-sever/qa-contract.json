@@ -1,0 +1,16 @@
+{
+  "compId": "Vox3DorSever",
+  "master": "remotion/out/Vox3DorSever.mp4",
+  "scale": 0.333,
+  "jpegQuality": 5,
+  "frames": [
+    { "f": 0, "at": "hook/f0", "expect": "fully composed; 'דור סבר' title readable, no tofu" },
+    { "f": 150, "at": "meet/statement", "expect": "statement 'איש עני' reads correctly (no 'איש ענין')" },
+    { "f": 315, "at": "lottery", "expect": "'הלוטו' chip pinned; text contrast over bg" },
+    { "f": 445, "at": "exam", "expect": "'המבחן' chip pinned; exam paper layer visible" },
+    { "f": 580, "at": "loan", "expect": "'ההלוואה' chip pinned" },
+    { "f": 825, "at": "moral/punchline", "expect": "rubber stamp 'קיצור דרך' on 'בסוף'" },
+    { "f": 989, "at": "loop/last", "expect": "last frame == frame 0 (seamless loop)" }
+  ],
+  "loop": { "f0": 0, "flast": 989, "expect": "flast == f0 (seamless)" }
+}

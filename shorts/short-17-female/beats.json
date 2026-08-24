@@ -1,0 +1,155 @@
+{
+  "id": "short-17-sign",
+  "title": "רושם — חתימה דיגיטלית בעברית",
+  "composition": "Short17Sign",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 15
+  },
+  "voicePlan": "edge-tts:he-IL-AvriNeural (Hebrew, male, word-exact) — $0 free tier test",
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "צריך לחתום על מסמך דחוף?",
+      "start": 0.5,
+      "end": 3.41,
+      "words": [
+        {
+          "w": "צריך",
+          "start": 0.6,
+          "end": 0.999
+        },
+        {
+          "w": "לחתום",
+          "start": 0.999,
+          "end": 1.385
+        },
+        {
+          "w": "על",
+          "start": 1.385,
+          "end": 1.478
+        },
+        {
+          "w": "מסמך",
+          "start": 1.478,
+          "end": 1.85
+        },
+        {
+          "w": "דחוף",
+          "start": 1.85,
+          "end": 2.515
+        }
+      ]
+    },
+    {
+      "beat": "pain",
+      "text": "בלי מדפסת. בלי סריקה. בלי ריצה לדואר.",
+      "start": 4.2,
+      "end": 9.73,
+      "words": [
+        {
+          "w": "בלי",
+          "start": 4.329,
+          "end": 4.558
+        },
+        {
+          "w": "מדפסת",
+          "start": 4.558,
+          "end": 5.315
+        },
+        {
+          "w": "בלי",
+          "start": 6.122,
+          "end": 6.386
+        },
+        {
+          "w": "סריקה",
+          "start": 6.386,
+          "end": 6.939
+        },
+        {
+          "w": "בלי",
+          "start": 7.78,
+          "end": 8.007
+        },
+        {
+          "w": "ריצה",
+          "start": 8.007,
+          "end": 8.32
+        },
+        {
+          "w": "לדואר",
+          "start": 8.32,
+          "end": 8.945
+        }
+      ]
+    },
+    {
+      "beat": "payoff",
+      "text": "רושם חותם בעשרים שניות. חוקי ובטוח.",
+      "start": 9.8,
+      "end": 14.63,
+      "words": [
+        {
+          "w": "רושם",
+          "start": 9.922,
+          "end": 10.245
+        },
+        {
+          "w": "חותם",
+          "start": 10.245,
+          "end": 10.606
+        },
+        {
+          "w": "בעשרים",
+          "start": 10.606,
+          "end": 11.004
+        },
+        {
+          "w": "שניות",
+          "start": 11.004,
+          "end": 11.626
+        },
+        {
+          "w": "חוקי",
+          "start": 12.487,
+          "end": 12.96
+        },
+        {
+          "w": "ובטוח",
+          "start": 12.96,
+          "end": 13.806
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "start": 0.0,
+      "end": 4.0,
+      "visual": "dark brand-mesh stage. Hook headline drops in (warm at frame 0). A red X strikes a faint paper+printer glyph behind it."
+    },
+    {
+      "id": "pain",
+      "start": 4.0,
+      "end": 9.6,
+      "visual": "the paper glyph slides off; a signature ink-stroke draws itself (motion path) with a Lottie sparkles accent at the pen tip."
+    },
+    {
+      "id": "payoff",
+      "start": 9.6,
+      "end": 14.4,
+      "visual": "checkmark-circle Lottie stamps in beside the signature; 'נחתם!' wordmark; clean end card, no CTA outro."
+    },
+    {
+      "id": "loop",
+      "start": 14.4,
+      "end": 15.0,
+      "visual": "loop restore to frame 0 so the short loops cleanly."
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

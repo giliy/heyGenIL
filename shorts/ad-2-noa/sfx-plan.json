@@ -1,0 +1,19 @@
+{
+  "id": "ad-2-noa",
+  "catalog": "media/library/sfx/catalog.json",
+  "render": {
+    "preview": "remotion/out/Ad2Noa-voiced.mp4",
+    "out": "remotion/out/Ad2Noa-sfx.mp4",
+    "end_s": 16.5,
+    "duck": true
+  },
+  "events": [
+    { "at_s": 0.4,  "sfx_id": "whoosh-soft",  "gain_db": -6.0, "cue": "hook entrance sweep under first word" },
+    { "at_s": 3.0,  "sfx_id": "riser-soft",   "gain_db": -5.0, "cue": "offer build into PriceBadge pop" },
+    { "at_s": 3.2,  "sfx_id": "impact-soft",  "gain_db": -2.5, "cue": "PriceBadge pop 249 vs 350 (offer VO starts 3.19)" },
+    { "at_s": 7.3,  "sfx_id": "whoosh-soft",  "gain_db": -8.0, "cue": "proof beat transition" },
+    { "at_s": 11.1, "sfx_id": "pop-reveal",   "gain_db": 1.0,  "cue": "AdEndCard pop at CTA card-in (11.1s), VO follows 11.3" },
+    { "at_s": 11.4, "sfx_id": "chime-reward", "gain_db": -3.0, "cue": "reward sparkle on CTA vo line" },
+    { "at_s": 13.6, "sfx_id": "ui-send",      "gain_db": -2.0, "cue": "WhatsApp send click after CTA VO ends (13.43) — clear of speech" }
+  ]
+}

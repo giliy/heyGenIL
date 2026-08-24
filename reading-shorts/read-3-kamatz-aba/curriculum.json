@@ -1,0 +1,47 @@
+{
+  "order": 1,
+  "key": "kamatz",
+  "sign": "בָּ",
+  "name_he": "קָמָץ",
+  "sound": "a",
+  "targetLetters": [
+    "בּ",
+    "מ",
+    "ק",
+    "שׁ",
+    "א"
+  ],
+  "cv": [
+    "בָּ",
+    "מָּ",
+    "קָּ",
+    "שָׁ",
+    "אָ"
+  ],
+  "blendWords": [
+    {
+      "word": "אַבָּא",
+      "units": [
+        "אַ",
+        "בָּא"
+      ]
+    },
+    {
+      "word": "מָמָא",
+      "units": [
+        "מָ",
+        "מָא"
+      ]
+    },
+    {
+      "word": "בָּבָּא",
+      "units": [
+        "בָּ",
+        "בָּא"
+      ]
+    }
+  ],
+  "mnemonic": null,
+  "musicBed": "kids-play-ukulele",
+  "status": "vetted"
+}

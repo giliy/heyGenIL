@@ -1,0 +1,79 @@
+{
+  "voice": "he-IL-HilaNeural",
+  "rate": "-18%",
+  "note": "AUTO-DERIVED by tools/make_reading.py from script.md. role in isolated|cv|blend|word. isolated/cv = one clip per unit -> vo[].units[] (real trimmed windows). blend = each syllable its own clip, stitched back-to-back (continuous blending). word = one continuous clip -> NO units[] (whole-word highlight).",
+  "units": [
+    {
+      "id": "isolated-alef-0",
+      "grapheme": "אָ",
+      "sound": "a",
+      "role": "isolated"
+    },
+    {
+      "id": "cv-bet-1",
+      "grapheme": "בָּ",
+      "sound": "ba",
+      "role": "cv"
+    },
+    {
+      "id": "cv-mem-2",
+      "grapheme": "מָּ",
+      "sound": "ma",
+      "role": "cv"
+    },
+    {
+      "id": "cv-qof-3",
+      "grapheme": "קָּ",
+      "sound": "ka",
+      "role": "cv"
+    },
+    {
+      "id": "blend-memmemalef-4",
+      "grapheme": "מָמָא",
+      "sound": "ma-a",
+      "role": "blend",
+      "syllables": [
+        "מָ",
+        "מָא"
+      ]
+    },
+    {
+      "id": "blend-betbetalef-5",
+      "grapheme": "בָּבָּא",
+      "sound": "ba-a",
+      "role": "blend",
+      "syllables": [
+        "בָּ",
+        "בָּא"
+      ]
+    },
+    {
+      "id": "blend-alefbetalef-6",
+      "grapheme": "אַבָּא",
+      "sound": "a-a",
+      "role": "blend",
+      "syllables": [
+        "אַ",
+        "בָּא"
+      ]
+    },
+    {
+      "id": "word-memmemalef-7",
+      "grapheme": "מָמָא",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-betbetalef-8",
+      "grapheme": "בָּבָּא",
+      "sound": "",
+      "role": "word"
+    },
+    {
+      "id": "word-alefbetalef-9",
+      "grapheme": "אַבָּא",
+      "sound": "",
+      "role": "word"
+    }
+  ]
+}

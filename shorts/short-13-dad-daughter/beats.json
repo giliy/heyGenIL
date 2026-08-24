@@ -1,0 +1,421 @@
+{
+  "id": "short-13-dad-daughter",
+  "title": "The Photo on the Wall",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_s": 38
+  },
+  "audio": {
+    "voice": "none — no ElevenLabs key; the story is told by on-screen caption lines (hand-timed VoLines, word-pop sync via timeWords estimate)",
+    "sfx": "none",
+    "music": "none"
+  },
+  "vo": [
+    {
+      "text": "One photo hangs in our hallway.",
+      "start": 0.4,
+      "end": 3.43,
+      "words": [
+        {
+          "w": "One",
+          "start": 0.503,
+          "end": 0.862
+        },
+        {
+          "w": "photo",
+          "start": 0.876,
+          "end": 1.221
+        },
+        {
+          "w": "hangs",
+          "start": 1.235,
+          "end": 1.633
+        },
+        {
+          "w": "in",
+          "start": 1.647,
+          "end": 1.74
+        },
+        {
+          "w": "our",
+          "start": 1.753,
+          "end": 1.886
+        },
+        {
+          "w": "hallway",
+          "start": 1.899,
+          "end": 2.511
+        }
+      ]
+    },
+    {
+      "text": "Ask my dad what's inside it…",
+      "start": 4.0,
+      "end": 6.95,
+      "words": [
+        {
+          "w": "Ask",
+          "start": 4.103,
+          "end": 4.462
+        },
+        {
+          "w": "my",
+          "start": 4.476,
+          "end": 4.622
+        },
+        {
+          "w": "dad",
+          "start": 4.635,
+          "end": 4.981
+        },
+        {
+          "w": "what's",
+          "start": 4.994,
+          "end": 5.194
+        },
+        {
+          "w": "inside",
+          "start": 5.207,
+          "end": 5.699
+        },
+        {
+          "w": "it",
+          "start": 5.712,
+          "end": 6.031
+        }
+      ]
+    },
+    {
+      "text": "…and he'll start at the beginning.",
+      "start": 7.2,
+      "end": 9.72,
+      "words": [
+        {
+          "w": "and",
+          "start": 7.303,
+          "end": 7.489
+        },
+        {
+          "w": "he'll",
+          "start": 7.503,
+          "end": 7.689
+        },
+        {
+          "w": "start",
+          "start": 7.702,
+          "end": 8.035
+        },
+        {
+          "w": "at",
+          "start": 8.048,
+          "end": 8.114
+        },
+        {
+          "w": "the",
+          "start": 8.128,
+          "end": 8.207
+        },
+        {
+          "w": "beginning",
+          "start": 8.221,
+          "end": 8.819
+        }
+      ]
+    },
+    {
+      "text": "The day she walked to him.",
+      "start": 11.2,
+      "end": 13.67,
+      "words": [
+        {
+          "w": "The",
+          "start": 11.303,
+          "end": 11.489
+        },
+        {
+          "w": "day",
+          "start": 11.503,
+          "end": 11.742
+        },
+        {
+          "w": "she",
+          "start": 11.755,
+          "end": 11.915
+        },
+        {
+          "w": "walked",
+          "start": 11.928,
+          "end": 12.247
+        },
+        {
+          "w": "to",
+          "start": 12.261,
+          "end": 12.38
+        },
+        {
+          "w": "him",
+          "start": 12.394,
+          "end": 12.766
+        }
+      ]
+    },
+    {
+      "text": "The summer of scraped knees.",
+      "start": 15.2,
+      "end": 17.87,
+      "words": [
+        {
+          "w": "The",
+          "start": 15.303,
+          "end": 15.476
+        },
+        {
+          "w": "summer",
+          "start": 15.489,
+          "end": 15.862
+        },
+        {
+          "w": "of",
+          "start": 15.875,
+          "end": 15.955
+        },
+        {
+          "w": "scraped",
+          "start": 15.968,
+          "end": 16.394
+        },
+        {
+          "w": "knees",
+          "start": 16.407,
+          "end": 16.952
+        }
+      ]
+    },
+    {
+      "text": "Every storm he quietly carried.",
+      "start": 19.2,
+      "end": 22.3,
+      "words": [
+        {
+          "w": "Every",
+          "start": 19.303,
+          "end": 19.649
+        },
+        {
+          "w": "storm",
+          "start": 19.662,
+          "end": 20.048
+        },
+        {
+          "w": "he",
+          "start": 20.061,
+          "end": 20.221
+        },
+        {
+          "w": "quietly",
+          "start": 20.234,
+          "end": 20.753
+        },
+        {
+          "w": "carried",
+          "start": 20.766,
+          "end": 21.391
+        }
+      ]
+    },
+    {
+      "text": "The day the whole sky clapped.",
+      "start": 23.2,
+      "end": 25.91,
+      "words": [
+        {
+          "w": "The",
+          "start": 23.303,
+          "end": 23.476
+        },
+        {
+          "w": "day",
+          "start": 23.489,
+          "end": 23.676
+        },
+        {
+          "w": "the",
+          "start": 23.689,
+          "end": 23.795
+        },
+        {
+          "w": "whole",
+          "start": 23.809,
+          "end": 24.061
+        },
+        {
+          "w": "sky",
+          "start": 24.074,
+          "end": 24.407
+        },
+        {
+          "w": "clapped",
+          "start": 24.42,
+          "end": 25.005
+        }
+      ]
+    },
+    {
+      "text": "Now the coffee stays hot a little longer.",
+      "start": 27.2,
+      "end": 30.59,
+      "words": [
+        {
+          "w": "Now",
+          "start": 27.303,
+          "end": 27.609
+        },
+        {
+          "w": "the",
+          "start": 27.622,
+          "end": 27.742
+        },
+        {
+          "w": "coffee",
+          "start": 27.755,
+          "end": 28.168
+        },
+        {
+          "w": "stays",
+          "start": 28.181,
+          "end": 28.54
+        },
+        {
+          "w": "hot",
+          "start": 28.553,
+          "end": 28.806
+        },
+        {
+          "w": "a",
+          "start": 28.819,
+          "end": 28.859
+        },
+        {
+          "w": "little",
+          "start": 28.872,
+          "end": 29.138
+        },
+        {
+          "w": "longer",
+          "start": 29.152,
+          "end": 29.683
+        }
+      ]
+    },
+    {
+      "text": "Ask him what's inside? His whole world.",
+      "start": 31.4,
+      "end": 35.82,
+      "words": [
+        {
+          "w": "Ask",
+          "start": 31.503,
+          "end": 31.849
+        },
+        {
+          "w": "him",
+          "start": 31.862,
+          "end": 32.022
+        },
+        {
+          "w": "what's",
+          "start": 32.035,
+          "end": 32.248
+        },
+        {
+          "w": "inside",
+          "start": 32.261,
+          "end": 32.939
+        },
+        {
+          "w": "His",
+          "start": 33.86,
+          "end": 34.086
+        },
+        {
+          "w": "whole",
+          "start": 34.099,
+          "end": 34.352
+        },
+        {
+          "w": "world",
+          "start": 34.365,
+          "end": 34.911
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "n": 1,
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 3.5,
+      "visual": "warm wall, framed photo (dad+daughter+heart), fully composed at frame 0, gentle settle 1.05→1"
+    },
+    {
+      "n": 2,
+      "name": "setup-empty",
+      "start_s": 3.5,
+      "end_s": 7.0,
+      "visual": "photo paper lifts off the frame, title settles, frame left empty + glowing"
+    },
+    {
+      "n": 3,
+      "name": "memory-newborn",
+      "start_s": 7.0,
+      "end_s": 11.0,
+      "visual": "memory paper 1 pins up: dad cradles swaddled bundle, mobile stars"
+    },
+    {
+      "n": 4,
+      "name": "memory-steps",
+      "start_s": 11.0,
+      "end_s": 15.0,
+      "visual": "memory paper 2: first steps, toddler arms out, dad kneeling"
+    },
+    {
+      "n": 5,
+      "name": "memory-bike",
+      "start_s": 15.0,
+      "end_s": 19.0,
+      "visual": "memory paper 3: bike wobble, dad's hand steadying the seat"
+    },
+    {
+      "n": 6,
+      "name": "memory-storm",
+      "start_s": 19.0,
+      "end_s": 23.0,
+      "visual": "memory paper 4: umbrella held over her, rain streaks"
+    },
+    {
+      "n": 7,
+      "name": "memory-grad",
+      "start_s": 23.0,
+      "end_s": 27.0,
+      "visual": "memory paper 5: graduation cap tossed, dad cheering"
+    },
+    {
+      "n": 8,
+      "name": "memory-grown",
+      "start_s": 27.0,
+      "end_s": 31.0,
+      "visual": "memory paper 6: side by side with tea, sunset band"
+    },
+    {
+      "n": 9,
+      "name": "payoff-loop",
+      "start_s": 31.0,
+      "end_s": 38.0,
+      "visual": "grown daughter + dad hang the photo together, heart beats twice, dissolve lands exactly on frame 0"
+    }
+  ],
+  "voiceStatus": "edge-tts:en-US-AriaNeural"
+}

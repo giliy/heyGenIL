@@ -1,0 +1,627 @@
+{
+  "id": "short-15-traffic",
+  "title": "The Traffic Jam With No Cause",
+  "composition": "Short15Traffic",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 42
+  },
+  "voiceStatus": "kokoro:af_bella",
+  "voicePlan": "kokoro:af_bella",
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "There's a traffic jam on this road. Nothing caused it.",
+      "start": 0.4,
+      "end": 4.17,
+      "words": [
+        {
+          "w": "There's",
+          "start": 0.75,
+          "end": 0.912
+        },
+        {
+          "w": "a",
+          "start": 0.912,
+          "end": 0.975
+        },
+        {
+          "w": "traffic",
+          "start": 0.975,
+          "end": 1.4
+        },
+        {
+          "w": "jam",
+          "start": 1.4,
+          "end": 1.638
+        },
+        {
+          "w": "on",
+          "start": 1.638,
+          "end": 1.737
+        },
+        {
+          "w": "this",
+          "start": 1.737,
+          "end": 1.9
+        },
+        {
+          "w": "road.",
+          "start": 1.9,
+          "end": 2.637
+        },
+        {
+          "w": "Nothing",
+          "start": 2.637,
+          "end": 3.0
+        },
+        {
+          "w": "caused",
+          "start": 3.0,
+          "end": 3.413
+        },
+        {
+          "w": "it.",
+          "start": 3.413,
+          "end": 4.075
+        }
+      ]
+    },
+    {
+      "beat": "setup",
+      "text": "No crash. No red light. Twenty-two drivers, each one just following the car in front.",
+      "start": 5.2,
+      "end": 10.86,
+      "words": [
+        {
+          "w": "No",
+          "start": 5.568,
+          "end": 5.773
+        },
+        {
+          "w": "crash.",
+          "start": 5.773,
+          "end": 6.445
+        },
+        {
+          "w": "No",
+          "start": 6.445,
+          "end": 6.672
+        },
+        {
+          "w": "red",
+          "start": 6.672,
+          "end": 6.867
+        },
+        {
+          "w": "light.",
+          "start": 6.867,
+          "end": 7.528
+        },
+        {
+          "w": "Twenty-two",
+          "start": 7.528,
+          "end": 7.971
+        },
+        {
+          "w": "drivers,",
+          "start": 7.971,
+          "end": 8.534
+        },
+        {
+          "w": "each",
+          "start": 8.534,
+          "end": 8.729
+        },
+        {
+          "w": "one",
+          "start": 8.729,
+          "end": 8.923
+        },
+        {
+          "w": "just",
+          "start": 8.923,
+          "end": 9.118
+        },
+        {
+          "w": "following",
+          "start": 9.118,
+          "end": 9.497
+        },
+        {
+          "w": "the",
+          "start": 9.497,
+          "end": 9.583
+        },
+        {
+          "w": "car",
+          "start": 9.583,
+          "end": 9.876
+        },
+        {
+          "w": "in",
+          "start": 9.876,
+          "end": 10.016
+        },
+        {
+          "w": "front.",
+          "start": 10.016,
+          "end": 10.763
+        }
+      ]
+    },
+    {
+      "beat": "setup",
+      "text": "Watch this one. A single tap of the brakes.",
+      "start": 10.9,
+      "end": 13.64,
+      "words": [
+        {
+          "w": "Watch",
+          "start": 11.221,
+          "end": 11.462
+        },
+        {
+          "w": "this",
+          "start": 11.462,
+          "end": 11.623
+        },
+        {
+          "w": "one.",
+          "start": 11.623,
+          "end": 12.055
+        },
+        {
+          "w": "A",
+          "start": 12.055,
+          "end": 12.154
+        },
+        {
+          "w": "single",
+          "start": 12.154,
+          "end": 12.466
+        },
+        {
+          "w": "tap",
+          "start": 12.466,
+          "end": 12.657
+        },
+        {
+          "w": "of",
+          "start": 12.657,
+          "end": 12.717
+        },
+        {
+          "w": "the",
+          "start": 12.717,
+          "end": 12.787
+        },
+        {
+          "w": "brakes.",
+          "start": 12.787,
+          "end": 13.57
+        }
+      ]
+    },
+    {
+      "beat": "quiz",
+      "text": "Pause. What do you think happens next?",
+      "start": 13.7,
+      "end": 16.67,
+      "words": [
+        {
+          "w": "Pause.",
+          "start": 14.05,
+          "end": 14.75
+        },
+        {
+          "w": "What",
+          "start": 14.75,
+          "end": 14.888
+        },
+        {
+          "w": "do",
+          "start": 14.888,
+          "end": 14.988
+        },
+        {
+          "w": "you",
+          "start": 14.988,
+          "end": 15.063
+        },
+        {
+          "w": "think",
+          "start": 15.063,
+          "end": 15.225
+        },
+        {
+          "w": "happens",
+          "start": 15.225,
+          "end": 15.625
+        },
+        {
+          "w": "next?",
+          "start": 15.625,
+          "end": 16.575
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "The car behind brakes a little harder. Then the next one.",
+      "start": 17.6,
+      "end": 21.47,
+      "words": [
+        {
+          "w": "The",
+          "start": 17.95,
+          "end": 18.025
+        },
+        {
+          "w": "car",
+          "start": 18.025,
+          "end": 18.288
+        },
+        {
+          "w": "behind",
+          "start": 18.288,
+          "end": 18.675
+        },
+        {
+          "w": "brakes",
+          "start": 18.675,
+          "end": 18.963
+        },
+        {
+          "w": "a",
+          "start": 18.963,
+          "end": 19.013
+        },
+        {
+          "w": "little",
+          "start": 19.013,
+          "end": 19.2
+        },
+        {
+          "w": "harder.",
+          "start": 19.2,
+          "end": 19.988
+        },
+        {
+          "w": "Then",
+          "start": 19.988,
+          "end": 20.212
+        },
+        {
+          "w": "the",
+          "start": 20.212,
+          "end": 20.3
+        },
+        {
+          "w": "next",
+          "start": 20.3,
+          "end": 20.6
+        },
+        {
+          "w": "one.",
+          "start": 20.6,
+          "end": 21.375
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "The bunching grows into a jam. And the jam travels backward, against the traffic.",
+      "start": 21.8,
+      "end": 27.62,
+      "words": [
+        {
+          "w": "The",
+          "start": 22.15,
+          "end": 22.225
+        },
+        {
+          "w": "bunching",
+          "start": 22.225,
+          "end": 22.725
+        },
+        {
+          "w": "grows",
+          "start": 22.725,
+          "end": 23.038
+        },
+        {
+          "w": "into",
+          "start": 23.038,
+          "end": 23.275
+        },
+        {
+          "w": "a",
+          "start": 23.275,
+          "end": 23.387
+        },
+        {
+          "w": "jam.",
+          "start": 23.387,
+          "end": 24.25
+        },
+        {
+          "w": "And",
+          "start": 24.25,
+          "end": 24.387
+        },
+        {
+          "w": "the",
+          "start": 24.387,
+          "end": 24.488
+        },
+        {
+          "w": "jam",
+          "start": 24.488,
+          "end": 24.85
+        },
+        {
+          "w": "travels",
+          "start": 24.85,
+          "end": 25.3
+        },
+        {
+          "w": "backward,",
+          "start": 25.3,
+          "end": 26.025
+        },
+        {
+          "w": "against",
+          "start": 26.025,
+          "end": 26.362
+        },
+        {
+          "w": "the",
+          "start": 26.362,
+          "end": 26.45
+        },
+        {
+          "w": "traffic.",
+          "start": 26.45,
+          "end": 27.525
+        }
+      ]
+    },
+    {
+      "beat": "twist",
+      "text": "Every driver escapes it. But the jam stays.",
+      "start": 29.8,
+      "end": 33.46,
+      "words": [
+        {
+          "w": "Every",
+          "start": 30.175,
+          "end": 30.45
+        },
+        {
+          "w": "driver",
+          "start": 30.45,
+          "end": 30.85
+        },
+        {
+          "w": "escapes",
+          "start": 30.85,
+          "end": 31.288
+        },
+        {
+          "w": "it.",
+          "start": 31.288,
+          "end": 31.75
+        },
+        {
+          "w": "But",
+          "start": 31.75,
+          "end": 31.887
+        },
+        {
+          "w": "the",
+          "start": 31.887,
+          "end": 31.988
+        },
+        {
+          "w": "jam",
+          "start": 31.988,
+          "end": 32.362
+        },
+        {
+          "w": "stays.",
+          "start": 32.362,
+          "end": 33.35
+        }
+      ]
+    },
+    {
+      "beat": "payoff",
+      "text": "It's a wave. And you are the water.",
+      "start": 34.6,
+      "end": 37.34,
+      "words": [
+        {
+          "w": "It's",
+          "start": 34.95,
+          "end": 35.112
+        },
+        {
+          "w": "a",
+          "start": 35.112,
+          "end": 35.2
+        },
+        {
+          "w": "wave.",
+          "start": 35.2,
+          "end": 35.875
+        },
+        {
+          "w": "And",
+          "start": 35.875,
+          "end": 36.025
+        },
+        {
+          "w": "you",
+          "start": 36.025,
+          "end": 36.15
+        },
+        {
+          "w": "are",
+          "start": 36.15,
+          "end": 36.237
+        },
+        {
+          "w": "the",
+          "start": 36.237,
+          "end": 36.325
+        },
+        {
+          "w": "water.",
+          "start": 36.325,
+          "end": 37.25
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "start": 0.0,
+      "end": 4.9,
+      "visual": "frame-0 composed: the ring road fully drawn with 22 cars mid-flow, ONE car highlighted in warn-yellow, and the red jam cluster already visible on the far side. BigTitle over the top. Punch-in settles 1.05 -> 1."
+    },
+    {
+      "id": "setup",
+      "start": 4.9,
+      "end": 13.6,
+      "visual": "the ring keeps flowing; a follow-line links each car to the one ahead to sell 'just following'. At ~11s the highlighted car emits a red brake pulse (the single tap, 1.2s)."
+    },
+    {
+      "id": "quiz",
+      "start": 13.6,
+      "end": 17.4,
+      "visual": "PauseCard — 'What happens next?' — over the still-flowing ring; the first faint bunching already starting behind the tapper."
+    },
+    {
+      "id": "reveal",
+      "start": 17.4,
+      "end": 29.6,
+      "visual": "the ripple grows: cars behind the tapper bunch, their dots flare red as they slow, the cluster tightens into a JAM — and a curved arrow draws showing it moving BACKWARD while every car drives forward. The jam-stat chip lands (cars in jam / avg speed in jam)."
+    },
+    {
+      "id": "twist",
+      "start": 29.6,
+      "end": 40.7,
+      "visual": "the arrow and stat clear to a clean read: a single highlighted car rides INTO the jam, crawls, and exits the front — proving the jam is a wave, not a place. Chip: 'the jam is a wave'. GlowReveal on the payoff line."
+    },
+    {
+      "id": "loop",
+      "start": 40.7,
+      "end": 42.0,
+      "visual": "chip + arrows fade; the title fades back in over the flowing ring -> last frame == frame 0. NO CTA."
+    }
+  ],
+  "physics": {
+    "note": "ONE SOURCE OF TRUTH. lib/agents.tsx runs the intelligent-driver model (IDM) and returns every car's position and speed each frame. The composition ONLY draws what the sim returns; the jam cluster, the backward arrow and the stat chip are measured off the sim, never asserted. Same ethos as prob.tsx's seeded Monte Carlo, map.tsx's real Mercator, orbit.tsx's velocity Verlet.",
+    "model": {
+      "name": "Intelligent Driver Model (Treiber, Hennecke & Helbing 2000)",
+      "accel": "a = A * (1 - (v/V)^4 - (s*(v,dv)/gap)^2),  s*(v,dv) = s0 + v*T + v*dv/(2*sqrt(A*B))",
+      "params": {
+        "A_m_s2": 1.5,
+        "B_m_s2": 2.0,
+        "V_m_s": 30.0,
+        "T_s": 1.5,
+        "s0_m": 2.0,
+        "car_len_m": 4.5
+      }
+    },
+    "ring": {
+      "cars": 22,
+      "length_m": 800,
+      "note": "closed ring = Sugiyama 2008 setup; there is no merge, no light, no exit"
+    },
+    "trigger": {
+      "car": 0,
+      "from_s": 5.0,
+      "to_s": 6.2,
+      "brake_m_s2": -4.5,
+      "note": "ONE car brakes ~1.2 s, dipping ~25 -> ~16 m/s. Nothing else touches the traffic. That tiny tap is the entire cause."
+    },
+    "emergent": {
+      "jam_min_speed_m_s": 16.0,
+      "free_speed_m_s": 19.0,
+      "backward_travel": "the slowest-car index walks 0 -> 19 -> 15 -> 12 -> 9 -> 6 -> 3 -> 0 ... i.e. UPSTREAM, against the direction of travel. Measured from the sim, not scripted.",
+      "wave_not_place": "each car passes through the jam and exits the front; the jam persists while its members change. That is the twist."
+    },
+    "integrator": {
+      "dt_s": 0.05,
+      "note": "semi-implicit Euler is fine at this dt for IDM; positions wrap mod ring length"
+    },
+    "reference": "Sugiyama et al. 2008 — real drivers on a real circular road produced a stop-and-go wave with no bottleneck."
+  },
+  "cues": [
+    {
+      "at_s": 0.4,
+      "event": "frame-0 ring already flowing, jam cluster visible far side, title on",
+      "word": "'There's' @ 0.40"
+    },
+    {
+      "at_s": 5.2,
+      "event": "follow-lines appear (each car -> the car ahead)",
+      "word": "'No crash.' @ 5.20"
+    },
+    {
+      "at_s": 11.0,
+      "event": "the highlighted car emits its red brake pulse (the single tap)",
+      "word": "'A single tap' @ ~11.50"
+    },
+    {
+      "at_s": 13.7,
+      "event": "PauseCard",
+      "word": "'Pause.' @ 13.70"
+    },
+    {
+      "at_s": 17.6,
+      "event": "cars behind the tapper start to bunch; their dots flare red as they slow",
+      "word": "'The car behind' @ 17.60"
+    },
+    {
+      "at_s": 21.8,
+      "event": "the jam cluster is fully formed",
+      "word": "'grows into a jam' @ ~23.00"
+    },
+    {
+      "at_s": 24.5,
+      "event": "the BACKWARD arrow draws across the cluster",
+      "word": "'travels backward' @ ~25.00"
+    },
+    {
+      "at_s": 27.0,
+      "event": "jam-stat chip lands (cars in jam / avg speed in jam)",
+      "word": "'against the traffic' @ ~27.00"
+    },
+    {
+      "at_s": 29.8,
+      "event": "arrow + stat clear; one car highlighted riding into the jam",
+      "word": "'Every driver' @ 29.80"
+    },
+    {
+      "at_s": 33.0,
+      "event": "that car exits the FRONT of the jam",
+      "word": "'the jam stays' @ ~32.60"
+    },
+    {
+      "at_s": 34.6,
+      "event": "'the jam is a wave' chip + GlowReveal on the payoff",
+      "word": "'It's a wave' @ 34.60"
+    },
+    {
+      "at_s": 40.8,
+      "event": "loop restore begins — after the payoff line has landed",
+      "word": "(after 'water.' @ ~38.20)"
+    }
+  ]
+}

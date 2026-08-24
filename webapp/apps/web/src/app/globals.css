@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+/* Brand tokens (brand.md) mapped to CSS vars. Light-only for Phase 1. */
+:root {
+  --accent: #6366f1; /* indigo — primary */
+  --accent-2: #9b7cc4; /* violet */
+  --signal: #4db8a8; /* teal — success */
+  --signal-alt: #4ecdc4;
+  --warn: #f5d76e;
+  --danger: #e8879f;
+  --ink: #1a1a2e;
+  --muted: #6b6b7b;
+  --paper: #fffef7;
+  --cream: #faf8f5;
+  --line: #e7e3da;
+  --radius-card: 16px;
+  --radius-panel: 14px;
+  --shadow-soft: 0 8px 32px rgba(26, 26, 46, 0.1);
+  --shadow-card: 0 10px 40px rgba(26, 26, 46, 0.08);
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-signal: var(--signal);
+  --color-signal-alt: var(--signal-alt);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-paper: var(--paper);
+  --color-cream: var(--cream);
+  --color-line: var(--line);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --radius-card: 16px;
+  --radius-panel: 14px;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}

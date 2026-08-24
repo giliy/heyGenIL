@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Shorts — Implementation Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#faf9f6;
+    --surface:#ffffff;
+    --ink:#1e2430;
+    --muted:#5c6472;
+    --faint:#8a91a0;
+    --line:#e5e2da;
+    --accent:#5b54d6;
+    --accent-soft:#eceaff;
+    --accent-ink:#3f39a8;
+    --target:#b8860b;
+    --target-soft:#faf0d7;
+    --code-bg:#11141b;
+    --code-ink:#e6e9f0;
+    --code-kw:#8b84f0;
+    --code-str:#7fb98e;
+    --code-com:#6b7280;
+    --good:#2f9e6e;
+    --warn:#c07a1a;
+    --shadow:0 1px 2px rgba(20,23,31,.05),0 8px 28px rgba(20,23,31,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171f;
+      --surface:#1a1e28;
+      --ink:#eceae4;
+      --muted:#a4adbd;
+      --faint:#7c8494;
+      --line:#2a2f3c;
+      --accent:#8b84f0;
+      --accent-soft:#241f4d;
+      --accent-ink:#b6b0f7;
+      --target:#e0aa3e;
+      --target-soft:#3a2f14;
+      --code-bg:#0d1016;
+      --code-ink:#e6e9f0;
+      --code-kw:#a5a0f5;
+      --code-str:#8fd0a0;
+      --code-com:#6b7280;
+      --good:#3fb98a;
+      --warn:#e0aa3e;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14171f; --surface:#1a1e28; --ink:#eceae4; --muted:#a4adbd; --faint:#7c8494;
+    --line:#2a2f3c; --accent:#8b84f0; --accent-soft:#241f4d; --accent-ink:#b6b0f7;
+    --target:#e0aa3e; --target-soft:#3a2f14; --code-bg:#0d1016; --code-ink:#e6e9f0;
+    --code-kw:#a5a0f5; --code-str:#8fd0a0; --code-com:#6b7280; --good:#3fb98a; --warn:#e0aa3e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{animation:none!important;transition:none!important} }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    font-size:16.5px; line-height:1.68; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px; margin:0 auto; padding:56px 24px 96px}
+  a{color:var(--accent-ink); text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+
+  /* ---------- header ---------- */
+  header.top{border-bottom:1px solid var(--line); padding-bottom:34px; margin-bottom:14px}
+  .eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:500}
+  h1{font-family:'Heebo',sans-serif; font-weight:800; font-size:clamp(30px,5vw,44px); line-height:1.06; letter-spacing:-.02em; margin:12px 0 6px; text-wrap:balance}
+  .lede{font-size:18px; color:var(--muted); max-width:62ch; margin:8px 0 0}
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:22px; font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--faint)}
+  .meta-row b{color:var(--muted); font-weight:500}
+  .sign-samples{display:flex; gap:10px; margin-top:26px; flex-wrap:wrap}
+  .sig{font-family:'Heebo',sans-serif; font-weight:700; font-size:30px; line-height:1.5; width:58px; height:58px; display:flex; align-items:center; justify-content:center; background:var(--surface); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); color:var(--ink)}
+  .sig small{position:absolute; margin-top:64px; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); font-weight:400; letter-spacing:.02em}
+  .sig.hot{background:var(--target-soft); border-color:var(--target); color:var(--target)}
+
+  .northstar{margin:26px 0 8px; padding:18px 22px; background:var(--accent-soft); border-left:4px solid var(--accent); border-radius:0 14px 14px 0}
+  .northstar p{margin:0; font-size:15.5px}
+  .northstar b{color:var(--accent-ink)}
+
+  /* ---------- sections ---------- */
+  section{padding:34px 0 6px; border-top:1px solid var(--line); margin-top:34px}
+  section:first-of-type{border-top:0; margin-top:0}
+  .sec-eyebrow{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); font-weight:500; display:flex; align-items:center; gap:12px}
+  .sec-eyebrow::after{content:""; height:1px; flex:1; background:var(--line)}
+  h2{font-family:'Heebo',sans-serif; font-weight:700; font-size:clamp(22px,3.4vw,28px); letter-spacing:-.015em; line-height:1.12; margin:10px 0 6px; text-wrap:balance}
+  h3{font-family:'Heebo',sans-serif; font-weight:700; font-size:19px; margin:26px 0 6px; letter-spacing:-.01em}
+  h4{font-family:'Heebo',sans-serif; font-weight:600; font-size:16px; margin:20px 0 4px}
+  p{margin:10px 0; max-width:68ch}
+  .muted{color:var(--muted)}
+  ul,ol{margin:10px 0; padding-left:22px; max-width:68ch}
+  li{margin:6px 0}
+  li::marker{color:var(--accent)}
+  b,strong{font-weight:600}
+  .he{font-family:'Heebo',sans-serif; direction:rtl; unicode-bidi:isolate; font-weight:600}
+  .tcolor{color:var(--target); font-weight:700}
+  code:not(pre code){font-family:'JetBrains Mono',monospace; font-size:.86em; background:var(--accent-soft); color:var(--accent-ink); padding:.12em .38em; border-radius:6px; white-space:nowrap}
+
+  /* ---------- tables ---------- */
+  .tbl{overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:var(--shadow)}
+  table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:560px}
+  caption{caption-side:top; text-align:left; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.06em; color:var(--faint); padding:10px 16px 0}
+  th{font-family:'Heebo',sans-serif; font-weight:600; text-align:left; font-size:13px; letter-spacing:.02em; color:var(--muted); padding:12px 16px; border-bottom:1px solid var(--line); background:transparent; white-space:nowrap}
+  td{padding:11px 16px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left}
+  tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--accent-soft)}
+  td.num, th.num{font-variant-numeric:tabular-nums; text-align:right}
+  td .he{font-size:16px}
+
+  /* ---------- code ---------- */
+  pre{background:var(--code-bg); color:var(--code-ink); border-radius:14px; padding:18px 20px; overflow-x:auto; font-family:'JetBrains Mono',monospace; font-size:13px; line-height:1.6; margin:14px 0; box-shadow:var(--shadow)}
+  pre code{font-family:inherit; background:none; color:inherit; padding:0; white-space:pre}
+  .c-com{color:var(--code-com)} .c-kw{color:var(--code-kw)} .c-str{color:var(--code-str)}
+
+  /* ---------- callouts / pills ---------- */
+  .note{border:1px solid var(--line); border-left:4px solid var(--target); background:var(--surface); border-radius:0 12px 12px 0; padding:14px 18px; margin:16px 0; font-size:14.5px}
+  .note.warn{border-left-color:var(--warn)}
+  .note p{margin:4px 0}
+  .pill{display:inline-block; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.05em; padding:2px 9px; border-radius:999px; border:1px solid var(--line); color:var(--muted); vertical-align:middle; white-space:nowrap}
+  .pill.free{color:var(--good); border-color:var(--good)}
+  .pill.cond{color:var(--warn); border-color:var(--warn)}
+  .pill.new{color:var(--accent-ink); border-color:var(--accent)}
+
+  /* reuse/build two-col */
+  .rb{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:16px 0}
+  @media (max-width:640px){ .rb{grid-template-columns:1fr} }
+  .rb .col{border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:16px 18px; box-shadow:var(--shadow)}
+  .rb .col h4{margin:0 0 8px; font-size:14px; letter-spacing:.04em; text-transform:uppercase}
+  .rb .col.reuse h4{color:var(--good)} .rb .col.build h4{color:var(--accent-ink)}
+  .rb ul{padding-left:18px; margin:0; font-size:14px}
+  .rb li{margin:5px 0}
+
+  /* phase rail */
+  .phase{display:grid; grid-template-columns:78px 1fr; gap:18px; padding:18px 0; border-top:1px dashed var(--line)}
+  .phase:first-of-type{border-top:0}
+  .phase .ph{font-family:'Heebo',sans-serif; font-weight:800; font-size:13px; color:var(--accent); letter-spacing:.04em; padding-top:3px}
+  .phase .cost{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); display:block; margin-top:4px}
+  .phase h4{margin:0 0 4px}
+  .phase p{margin:4px 0; font-size:14.5px}
+  .gate{font-size:13.5px; color:var(--muted); margin-top:6px}
+  .gate b{color:var(--ink)}
+
+  footer{margin-top:54px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--faint)}
+  footer .he{font-size:15px}
+  .tag{color:var(--accent-ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">Hebrew Reading · Feature Plan · mode:"reading"</div>
+    <h1>Reading Shorts</h1>
+    <p class="lede">Short videos that teach Hebrew <em>decoding</em> to ages 5–7 — one nikkud per video, with the pointed letter (<span class="he">בָּ</span>) lighting up in sync with the exact sound. Sub-word highlight, one level finer than the pilot's whole-word pop. Built on the proven <code>short-18-bu-aleph</code> chain, hosted by <span class="he">בּוּ</span>.</p>
+    <div class="sign-samples" aria-hidden="true">
+      <div class="sig hot">בָּ<small>kamatz /a/</small></div>
+      <div class="sig">בַּ<small>patach</small></div>
+      <div class="sig">בֵּ<small>tzere</small></div>
+      <div class="sig">בִּ<small>chirik</small></div>
+      <div class="sig">בֹּ<small>cholam</small></div>
+      <div class="sig">בוּ<small>shuruk</small></div>
+      <div class="sig">בְּ<small>shva</small></div>
+    </div>
+    <div class="meta-row">
+      <span><b>Hand-off for</b> engineer / agent</span>
+      <span><b>Why</b> research/hebrew-reading/00-findings.md</span>
+      <span><b>Canvas</b> 1080×1920 @30 · 30–60s</span>
+      <span><b>Voice</b> edge-tts he-IL-HilaNeural · <span class="tag">$0</span></span>
+    </div>
+    <div class="northstar">
+      <p><b>North-star rule (the product's promise):</b> the on-screen <b>pointed letter / צירוף (CV cluster)</b> lights up <b>in exact sync</b> with the sound. Highlight the <b>whole pointed letter, never the vowel mark alone</b> — the decodable unit is the cluster (§1), and the aligner can't time vowels anyway (§2).</p>
+    </div>
+  </header>
+
+  <!-- ============ 0. ARCHITECTURE ============ -->
+  <section id="arch">
+    <div class="sec-eyebrow">§0 · The architecture in one paragraph</div>
+    <h2>Isolate the sound, and the timing is free</h2>
+    <p>Pedagogy forces isolated units (a grapheme, a CV syllable) to be <b>spoken in isolation anyway</b> — that's the method. So make each unit <b>its own edge-tts clip</b>; timing becomes <b>exact by construction</b> (clip == unit). The only moving part is trimming edge-tts's per-clip silence pad with an RMS energy trim (§2). No sub-word forced alignment of one long clip (probed, disqualified — boundaries land in silence), no edge-tts phoneme events (they don't exist).</p>
+    <ul>
+      <li><b>Blend</b> beats stitch per-syllable clips back-to-back at known offsets → continuous blending (§1), deterministic unit times, no aligner.</li>
+      <li><b>Word</b> beats use one continuous clip + the existing whole-word Captions highlight (already correct, no new code).</li>
+      <li>Display font stays <b>Heebo/Rubik</b> (pointed-safe, §4), gated on a per-mark pixel QA. Voice stays <b>edge-tts <code>he-IL-HilaNeural</code></b>, per-clip with a slowed global rate (§5).</li>
+      <li>Nikkud text is a <b>curated lexicon + stdlib rule engine</b> (§3) — the vocabulary is closed and teacher-vetted. A wrong vowel taught to a 5-year-old is the worst-case bug; no model ships unverified.</li>
+    </ul>
+  </section>
+
+  <!-- ============ TL;DR decision table ============ -->
+  <section id="decisions">
+    <div class="sec-eyebrow">Decision summary</div>
+    <h2>The seven calls, already made</h2>
+    <div class="tbl"><table>
+      <thead><tr><th class="num">#</th><th>Decision</th><th>Choice</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Pedagogy</td><td>Synthetic phonics on pointed script; order /a/→/e/→/i/→/o/→/u/, <span class="he">קמץ</span>+<span class="he">פתח</span> first; ladder isolated→CV→blend→word</td></tr>
+        <tr><td class="num">2</td><td>Sub-word timing</td><td><b>Per-clip isolation + energy trim</b> (exact by construction). Fallback: WhisperX char onsets, whole-clip windows only</td></tr>
+        <tr><td class="num">3</td><td>Nikkud tooling</td><td><b>Curated lexicon + stdlib rule engine</b> (<code>nikkud.py</code>+<code>nikkud_data.py</code>); phonikud-onnx optional authoring cross-check only</td></tr>
+        <tr><td class="num">4</td><td>Display font</td><td><b>Keep Heebo/Rubik</b> (pointed-safe); per-mark pixel QA gate; SBL Hebrew only if gate fails</td></tr>
+        <tr><td class="num">5</td><td>Voice</td><td><b>Keep edge-tts he-IL-HilaNeural</b> per-clip, slowed rate; upgrade = direct Azure SSML (same voices, IPA control)</td></tr>
+        <tr><td class="num">6</td><td>Curriculum</td><td>One nikkud per 30–60s Short, <span class="he">בּוּ</span>-hosted, 2–3 anchor words; gap is real — no synced sub-word highlight exists anywhere</td></tr>
+        <tr><td class="num">7</td><td>Build new</td><td><code>gen_voice_reading.py</code>, <code>nikkud.py(+_data)</code>, Captions <code>units</code> + GraphemeTile, <code>validate_reading_beats</code></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============ 1. SKILL ============ -->
+  <section id="skill">
+    <div class="sec-eyebrow">§1 · New skill</div>
+    <h2><code>/make-reading-short</code></h2>
+    <p><b>File:</b> <code>.claude/skills/make-reading-short/SKILL.md</code>, modeled on <code>make-ad/SKILL.md</code> (which extends <code>make-short</code>). It's a <b>stage contract</b>: each stage emits a narrow artifact a validator checks, so a bad handoff fails fast at the seam — the repo's whole architecture (<code>tools/contracts.py</code>).</p>
+
+    <h3>Front-matter + routing</h3>
+<pre><code><span class="c-com">---</span>
+<span class="c-kw">name:</span> make-reading-short
+<span class="c-kw">description:</span> Build a HEBREW READING-INSTRUCTION short (1080x1920, 30-60s) that teaches
+  ONE nikkud to ages 5-7 — the pointed letter/syllable (בָּ) highlights in sync with the
+  exact spoken sound (sub-word, finer than whole-word). Ladder isolated -> CV -> blend -> word.
+  mode:"reading" inherits mode:"kids" (no CTA, calm) but the seamless loop is relaxed.
+  Reuses בּוּ (locked), edge-tts voice, kids music beds. TSX crash rules -> vidtsx-2d-generator,
+  grapheme/tile components -> lib/reading.tsx, SFX taste -> suggest-sfx + brand §7 (kids).
+<span class="c-com">---</span></code></pre>
+    <p class="muted">Routing note to add near the top (mirrors make-ad's multi-agent callout): this track is <b>curriculum-data-driven</b> — the nikkud, target letters, CV syllables, and blend words come from <code>tools/nikkud_data.py</code> (§4), not free scripting.</p>
+
+    <h3>Project layout — new top-level dir, parallel to <code>shorts/</code></h3>
+<pre><code>reading-shorts/read-N-&lt;nikkud&gt;/      <span class="c-com">e.g. read-1-kamatz, read-2-patach …</span>
+  curriculum.json   <span class="c-com">— resolved per-video teaching spec (from nikkud_data.py, §4)</span>
+  script.md         <span class="c-com">— beat sheet (teach->blend->read->call-response), register 5-7</span>
+  beats.json        <span class="c-com">— mode:"reading" (base + reading{} + vo[].units[])</span>
+  reading.json      <span class="c-com">— unit manifest gen_voice_reading.py consumes (id/grapheme/sound/role)</span>
+  voice/            <span class="c-com">— per-UNIT clips + voice.wav   (gen_voice_reading.py)   [gitignored]</span>
+  sfx-plan.json     <span class="c-com">— cue sheet (kids flavor, library-first)</span>
+  output/           <span class="c-com">— read-N-&lt;nikkud&gt;-sfx.mp4                          [gitignored]</span>
+remotion/src/shots/read-N/
+  ReadN&lt;Nikkud&gt;.tsx <span class="c-com">— THE composition (registered by npm run gen)</span>
+  vo.gen.ts         <span class="c-com">— AUTO-GENERATED VO with per-word AND per-unit times (never hand-edit)</span></code></pre>
+    <p><b>Why a new dir (not <code>shorts/</code>):</b> the artifact contract differs — a <code>curriculum.json</code> + <code>reading.json</code> per video, and the composition is generated <em>from</em> the curriculum, not hand-scripted. Keeps the three existing tracks untouched.</p>
+    <div class="note"><p><b>gen-registry mapping:</b> <code>remotion/scripts/gen-registry.mjs</code> <code>typeOfGroup()</code> has no <code>read-</code> prefix — a <code>src/shots/read-N/</code> group falls through to <code>'other'</code>. That's <b>fine for rendering</b> (rendering doesn't filter by type), but to keep the Studio type-filter clean add one line:</p>
+<pre><code><span class="c-kw">if</span> (/^read-/.test(g)) <span class="c-kw">return</span> <span class="c-str">'faceless'</span>;   <span class="c-com">// reading shorts ride with the faceless track</span></code></pre></div>
+
+    <h3>beats.json contract — additive, non-breaking</h3>
+    <p>Existing validators ignore unknown keys (<code>validate_beats</code> only requires <code>id/title/format/vo</code>). The reading shape <b>extends</b> the base:</p>
+<pre><code>{
+  <span class="c-str">"id"</span>: <span class="c-str">"read-1-kamatz"</span>, <span class="c-str">"mode"</span>: <span class="c-str">"reading"</span>, <span class="c-str">"language"</span>: <span class="c-str">"he"</span>,
+  <span class="c-str">"series"</span>: <span class="c-str">"bu-koala-reading"</span>, <span class="c-str">"characterRef"</span>: <span class="c-str">"ai-shorts/bu-koala/character.jpg"</span>,
+  <span class="c-str">"musicBed"</span>: <span class="c-str">"kids-play-ukulele"</span>, <span class="c-str">"composition"</span>: <span class="c-str">"Read1Kamatz"</span>,
+  <span class="c-str">"format"</span>: { <span class="c-str">"width"</span>:1080, <span class="c-str">"height"</span>:1920, <span class="c-str">"fps"</span>:30, <span class="c-str">"durationSec"</span>: 34.5 },
+
+  <span class="c-str">"reading"</span>: {
+    <span class="c-str">"nikkud"</span>: <span class="c-str">"kamatz"</span>,                       <span class="c-com">// key into nikkud_data.py</span>
+    <span class="c-str">"sign"</span>: <span class="c-str">"בָּ"</span>,                             <span class="c-com">// the sign (display, stable target color)</span>
+    <span class="c-str">"sound"</span>: <span class="c-str">"a"</span>,
+    <span class="c-str">"targetLetters"</span>: [<span class="c-str">"בּ"</span>,<span class="c-str">"מ"</span>,<span class="c-str">"ק"</span>,<span class="c-str">"שׁ"</span>],
+    <span class="c-str">"progression"</span>: [<span class="c-str">"isolated"</span>,<span class="c-str">"cv"</span>,<span class="c-str">"blend"</span>,<span class="c-str">"word"</span>],
+    <span class="c-str">"anchorWords"</span>: [<span class="c-str">"אַבָּא"</span>,<span class="c-str">"מָמָא"</span>,<span class="c-str">"בָּבָּא"</span>]
+  },
+
+  <span class="c-str">"vo"</span>: [{
+    <span class="c-str">"beat"</span>: <span class="c-str">"teach-isolated"</span>, <span class="c-str">"text"</span>: <span class="c-str">"בָּ"</span>, <span class="c-str">"tts"</span>: <span class="c-str">"בָּ"</span>,
+    <span class="c-str">"start"</span>: 2.0, <span class="c-str">"end"</span>: 3.6,
+    <span class="c-str">"units"</span>: [ { <span class="c-str">"g"</span>: <span class="c-str">"בָּ"</span>, <span class="c-str">"start"</span>: 2.27, <span class="c-str">"end"</span>: 2.51 } ]   <span class="c-com">// per-grapheme window (gen fills)</span>
+  }],
+
+  <span class="c-str">"beats"</span>: [
+    { <span class="c-str">"name"</span>: <span class="c-str">"hook"</span>,           <span class="c-str">"start_s"</span>: 0.0,  <span class="c-str">"end_s"</span>: 2.0 },
+    { <span class="c-str">"name"</span>: <span class="c-str">"teach-isolated"</span>, <span class="c-str">"start_s"</span>: 2.0,  <span class="c-str">"end_s"</span>: 8.0 },
+    { <span class="c-str">"name"</span>: <span class="c-str">"teach-cv"</span>,       <span class="c-str">"start_s"</span>: 8.0,  <span class="c-str">"end_s"</span>: 16.0 },
+    { <span class="c-str">"name"</span>: <span class="c-str">"blend"</span>,          <span class="c-str">"start_s"</span>: 16.0, <span class="c-str">"end_s"</span>: 26.0 },
+    { <span class="c-str">"name"</span>: <span class="c-str">"read-word"</span>,      <span class="c-str">"start_s"</span>: 26.0, <span class="c-str">"end_s"</span>: 32.0 },
+    { <span class="c-str">"name"</span>: <span class="c-str">"call-response"</span>,  <span class="c-str">"start_s"</span>: 32.0, <span class="c-str">"end_s"</span>: 34.5 }
+  ]
+}</code></pre>
+    <p><b>Contract rules</b> (enforced by <code>validate_reading_beats</code>, §2.4/§5):</p>
+    <ul>
+      <li><code>mode:"reading"</code> + <code>language:"he"</code> + a <code>reading{}</code> block are <b>required</b>.</li>
+      <li><code>reading.progression</code> must be the 4 steps in order (a suffix allowed — e.g. a <span class="he">דגש</span> video may drop <code>cv</code>) — but <code>isolated</code> is always present and first.</li>
+      <li>The four canonical beats (<code>teach-isolated</code>, <code>teach-cv</code>, <code>blend</code>, <code>read-word</code>) appear in <code>beats[]</code> in progression order.</li>
+      <li><code>vo[].units[]</code> is optional per line; on an isolated/CV line it's the highlight schedule. <code>g</code> = displayed unit WITH nikkud; <code>start/end</code> absolute seconds ⊆ parent word span; units sorted, non-overlapping.</li>
+      <li>Lines without <code>units[]</code> → existing whole-word Captions highlight (blend/word beats need no new data).</li>
+    </ul>
+
+    <h3>Stage contract</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Stage</th><th>make-ad equivalent</th><th>reading-track form</th></tr></thead>
+      <tbody>
+        <tr><td><b>0 — interrogation</b></td><td>business / offer / CTA / brand</td><td><b>Which nikkud</b> + confirm the resolved <code>curriculum.json</code>. State cost (edge-tts <span class="pill free">$0</span>; image gen only if בּוּ illustrations wanted, §7).</td></tr>
+        <tr><td><b>1 — script + beats</b></td><td>lexicon + beats (mode:"ad")</td><td>Pull curriculum from <code>nikkud_data.py</code>; write <code>script.md</code> (register <b>5–7</b>: short directive prompts + call-and-response, NOT toddler cooing), <code>reading.json</code>, <code>beats.json</code> (mode:"reading").</td></tr>
+        <tr><td><b>2 — composition</b></td><td><code>ad-N/AdN‹Biz›.tsx</code> + ads.tsx</td><td><code>read-N/ReadN‹Nikkud›.tsx</code> + <code>lib/reading.tsx</code> (GraphemeTile/SyllableTile + Captions <code>units</code>). 1080×1920@30.</td></tr>
+        <tr><td><b>3 — QA</b></td><td>qa_frames + timing audit</td><td>qa_frames at phone scale <b>+ nikkud/bidi/highlight-sync checklist (§5)</b> + <code>validate_reading_beats</code>.</td></tr>
+        <tr><td><b>4 — voice</b></td><td>gen_voice_edge + mux + audio_gate</td><td><b>gen_voice_reading.py</b> (per-unit clips + energy trim → <code>units[]</code>) → emit-ts → re-render → mux via <code>ffw.ffmpeg</code> → <code>audio_gate.py</code>.</td></tr>
+        <tr><td><b>5 — SFX</b></td><td>suggest-sfx, ad flavor</td><td>suggest-sfx, <b>kids flavor</b> (brand §5: playful boing/pop/sparkle, still under the voice).</td></tr>
+        <tr><td><b>6 — music</b></td><td>mix_music</td><td><code>kids-*</code> beds (kids-play-ukulele default; curious-pizzicato for discovery; lullaby-musicbox for calm recap). Hard-ducked.</td></tr>
+      </tbody>
+    </table></div>
+
+    <p><b>Beat grammar (30–60s, the synthetic ladder §1):</b> HOOK (frame 0 fully composed — בּוּ + the target sign visible) → <b>TEACH-ISOLATED</b> (the sound alone; GraphemeTile huge; touch-and-say) → <b>TEACH-CV</b> (sign on 2–3 consonants; SyllableTile per צירוף, each its own clip) → <b>BLEND</b> (syllables stitch into a word, continuous blending /bbbaaa/, highlight sweeps across) → <b>READ-WORD</b> (whole anchor word, one continuous clip, whole-word pop) → <b>CALL-AND-RESPONSE</b> ("your turn", a genuine 2–4s pause — reuse the pilot's engineered <span class="he">הִמְהוּם</span> trick, NOT a bare <code>...</code> which edge-tts rejects).</p>
+    <div class="note warn"><p><b>Register raise (hard note):</b> <code>character.json</code> targets ages 3–5 (motherese, 3–6-word cap). For 5–7 keep the character/voice/catchphrase but write <b>short directive prompts</b> ("now you say <span class='he'>בָּ</span>") — not cooing. This is the single content change from the kids track.</p></div>
+
+    <h3>Reuse vs build</h3>
+    <div class="rb">
+      <div class="col reuse"><h4>Reuse as-is</h4><ul>
+        <li>בּוּ <code>character.jpg</code> + <code>character.json</code> (<code>gen_image --ref</code>; never re-derive)</li>
+        <li><code>gen_voice_edge.py</code> plumbing (WordBoundary → <code>vo[].words[]</code>)</li>
+        <li><code>shorts.tsx</code> Captions (rtl / plate / kidsNikkud / anchorRtl / stripNikkud)</li>
+        <li>Fonts Heebo/Rubik + <code>gen-fontfaces.mjs</code></li>
+        <li><code>validate_ad_beats</code> — the copy pattern for the new validator</li>
+        <li><code>short-18-bu-aleph</code> reference (<code>&lt;Captions plate rtl kidsNikkud/&gt;</code>)</li>
+        <li>kids music beds (ukulele / musicbox / pizzicato)</li>
+      </ul></div>
+      <div class="col build"><h4>Build new</h4><ul>
+        <li><code>tools/gen_voice_reading.py</code> <span class="pill new">new</span></li>
+        <li><code>tools/nikkud.py</code> + <code>tools/nikkud_data.py</code> <span class="pill new">new</span></li>
+        <li>Captions <code>units</code> path + <b>GraphemeTile/SyllableTile</b> (<code>lib/reading.tsx</code>) <span class="pill new">new</span></li>
+        <li><code>validate_reading_beats</code> in <code>contracts.py</code> <span class="pill new">new</span></li>
+        <li>SBL Hebrew font entry — only if §4 pixel gate fails <span class="pill cond">conditional</span></li>
+        <li>Azure direct-SSML voice — only if §5 listening QA bites <span class="pill cond">conditional</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. TOOLING ============ -->
+  <section id="tooling">
+    <div class="sec-eyebrow">§2 · Tooling to build</div>
+    <h2>Text module + the timing tool</h2>
+    <div class="note warn"><p><b>Python constraint (CLAUDE.md hard rule):</b> anything touching voice runs under <b><code>.venv-voice312</code> (Python 3.12.10), NOT 3.13+</b> — edge-tts 7.28.6, whisperx, kokoro have no cp313 wheels. Pure-stdlib tooling (nikkud segmentation) can be any Python 3.10+. Run voice work as <code>.venv-voice312\Scripts\python.exe tools/gen_voice_reading.py ...</code>.</p></div>
+
+    <h3>2.1 <code>tools/nikkud.py</code> + <code>tools/nikkud_data.py</code> — nikkud text module <span class="pill free">stdlib</span></h3>
+    <p>Curated lexicon + rule engine. <b>No live ML nakdan in the product path</b> — the vocabulary is a closed, teacher-vetted set (~20 words/syllables per video). phonikud-onnx is an <b>optional authoring-time cross-check only</b> (never ships unverified).</p>
+<pre><code><span class="c-com"># --- grapheme segmentation (per findings §3 spec) ---</span>
+NIKKUD     = range(0x05B0, 0x05C0)   <span class="c-com"># U+05B0–05BF (incl. dagesh U+05BC, shva U+05B0)</span>
+SHIN_DOT   = (0x05C1, 0x05C2)        <span class="c-com"># shin/sin dots stay with the letter</span>
+HEB_LETTER = range(0x05D0, 0x05EB)   <span class="c-com"># U+05D0–05EA incl. sofits</span>
+
+<span class="c-kw">def</span> graphemes(word: str) -&gt; list[str]:
+    <span class="c-str">"""Split a pointed word into graphemes: one HEBREW LETTER + its following
+    combining marks. Dagesh (U+05BC) and shin/sin dots stay INSIDE the grapheme
+    (pedagogically load-bearing: ב/בּ). Never splits a letter from its nikkud."""</span>
+
+<span class="c-kw">def</span> syllabify(word: str) -&gt; list[str]:
+    <span class="c-str">"""Greedy-left CV/CVC split into צירופים. Shva na/nach is the hard case:
+    initial or after a full vowel in an open syllable -> נע; between identical
+    consonants or word-final -> נח; else consult the lexicon flag. Matres (א ה ו י)
+    resolved from their nikkud. Maqaf/whitespace = hard boundaries."""</span>
+
+<span class="c-kw">def</span> strip_to_base(g: str) -&gt; str: ...      <span class="c-com"># grapheme -> bare letter (for grouping)</span>
+<span class="c-kw">def</span> nikkud_of(g: str) -&gt; str | None: ...   <span class="c-com"># grapheme -> its vowel sign name</span>
+<span class="c-kw">def</span> has_dagesh(g: str) -&gt; bool: ...</code></pre>
+    <p><b>pip installs:</b> none for the engine (stdlib). Optional authoring cross-check: <code>.venv-voice312\Scripts\python.exe -m pip install phonikud phonikud-onnx</code> (one-time 308MB int8 model, then offline; <code>&gt;=3.8,&lt;3.13</code> fits the venv). Keep <code>dictabert-large-char-menaked</code> as the accuracy referee for a contested word. <b>Human verifies every word before commit.</b></p>
+
+    <h3>2.2 <code>tools/gen_voice_reading.py</code> — per-unit synth + energy trim <span class="pill new">~80 lines</span></h3>
+    <p>The heart of the timing guarantee. <b>Imports and reuses</b> <code>gen_voice_edge</code> (<code>_tts</code>, <code>probe_duration</code>, <code>ffw</code> resolution, hash-caching) rather than duplicating it.</p>
+<pre><code><span class="c-com"># reads reading.json: {"voice":"he-IL-HilaNeural","units":[{"id","grapheme","sound","role"}]}</span>
+<span class="c-com"># role ∈ isolated|cv|blend|word ; letter-naming units may set say:"characters"</span>
+<span class="c-kw">def</span> main():
+    <span class="c-com"># for each unit:</span>
+    <span class="c-com">#   1. edge-tts synth the unit's OWN clip (boundary=WordBoundary gives a coarse window)</span>
+    <span class="c-com">#      --rate slowed (e.g. -18%) so the single sound is held/stretched (per-clip global</span>
+    <span class="c-com">#      prosody sidesteps edge-tts's missing per-word SSML — findings §5)</span>
+    <span class="c-com">#   2. energy-trim the clip -> exact [onset,end]   (see _rms_trim)</span>
+    <span class="c-com">#   3. write vo[].units[] = [{g,start,end}] into beats.json (start = beat_offset + onset)</span>
+    <span class="c-com"># blend: synth each syllable as its own clip, trim, schedule back-to-back at known offsets</span>
+    <span class="c-com">#   (NO gaps = continuous blending §1) -> deterministic unit times, no aligner</span>
+    <span class="c-com"># word:  one continuous clip + existing whole-word highlight (no units[] written)</span>
+
+<span class="c-kw">def</span> _rms_trim(path: str, thresh: float = 0.15) -&gt; tuple[float, float]:
+    <span class="c-str">"""numpy RMS energy trim. edge-tts pads ~0.22-0.40s lead / ~1.05s trail, VARYING
+    per clip (findings §2 probe table) — NO fixed global offset is safe, so measure it.
+    Returns [onset,end] where RMS first/last exceeds thresh*peak.
+    torchaudio/soundfile already in .venv-voice312. ~15 lines."""</span></code></pre>
+    <p>CLI mirrors gen_voice_edge: <code>--beats &lt;beats.json&gt; --reading &lt;reading.json&gt; --emit-ts remotion/src/shots/read-N/vo.gen.ts [--mux out.mp4] [--dry-run] [--force] [--rate -18%]</code>. Emits a <code>vo.gen.ts</code> whose <code>VoLine[]</code> now also carries the optional <code>units</code> array (§3).</p>
+    <div class="note warn"><p><b>BREAKAGE DRILL (edge-tts is unofficial):</b> <code>pip install -U edge-tts</code> first; if still down, synthesize the unit clips with any local TTS and recover <b>whole-clip</b> bounds via <code>tools/align_words.py --lang he</code> (WhisperX). <b>Hard rule (findings §2):</b> feed WhisperX <b>whole-clip (or silence-trimmed) windows only — NEVER edge-tts WordBoundary windows</b> (they over-report and alignment lands on silence). Never attempt a mid-syllable vowel boundary — a grapheme span runs letter-onset → next-letter-onset.</p></div>
+
+    <h3>2.3 (conditional) <code>tools/fonts/manifest.json</code> SBL entry <span class="pill cond">only if §4 gate fails</span></h3>
+    <p>Only if the §4 pixel QA gate fails: vendor <b>SBL Hebrew</b> (SIL/free, gold-standard mark placement) as one manifest entry → <code>gen-fontfaces.mjs</code> → a new <code>FONT_NIKKUD_DISPLAY</code> in <code>fonts.ts</code>, used <b>only</b> inside GraphemeTile/SyllableTile. Captions stay Heebo/Rubik for continuity. <b>Do not vendor on spec.</b></p>
+  </section>
+
+  <!-- ============ 3. TSX ============ -->
+  <section id="tsx">
+    <div class="sec-eyebrow">§3 · TSX lib additions</div>
+    <h2>Per-grapheme highlight</h2>
+    <p>Put the reading components in a <b>new <code>remotion/src/lib/reading.tsx</code></b> (mirrors how <code>lib/ads.tsx</code> is the ad-mode kit non-ad shots never import). <b>Extend <code>shorts.tsx</code> Captions with a <code>units</code> path</b> rather than forking it — the RTL/nikkud/plate machinery is already correct there and must not drift.</p>
+
+    <h3>3.1 Type extension (shorts.tsx)</h3>
+<pre><code><span class="c-kw">export type</span> TimedUnit = { g: string; start: number; end: number };   <span class="c-com">// g WITH nikkud</span>
+<span class="c-kw">export type</span> TimedWord = { w: string; start: number; end: number; units?: TimedUnit[] };
+<span class="c-kw">export type</span> VoLine    = { text: string; start: number; end: number;
+                            words?: TimedWord[]; units?: TimedUnit[] };</code></pre>
+    <p><code>units</code> is optional everywhere → every existing shot renders identically (back-compat, same trick as the <code>mode='pop'</code> default that "keeps every existing shot untouched").</p>
+
+    <h3>3.2 Captions <code>units</code> path (CaptionsPop — the pilot uses pop)</h3>
+    <p>When the active word (or line) has <code>units[]</code>, render the word as <b>per-grapheme spans</b> and tint+pop the grapheme whose <code>[start,end)</code> window contains <code>t</code>; else whole-word (today's path).</p>
+<pre><code><span class="c-com">// inside the word span, when word.units?.length:</span>
+<span class="c-com">//   split word.w into grapheme spans (splitting MUST match tools/nikkud.py graphemes() —</span>
+<span class="c-com">//   keep a tiny TS port, or pre-split in vo.gen.ts and ship spans as data)</span>
+<span class="c-com">//   activeG = units.find(u => t >= u.start && t < u.end + 0.04)</span>
+<span class="c-com">//   each grapheme span: color: isActive ? accent : '#fff',</span>
+<span class="c-com">//                       transform: scale(1 + (isActive ? 0.12 : 0))  // pop, redundant w/ color</span></code></pre>
+    <p><b>Highlight treatment (findings §4, PlanetRead/SLS):</b> color the active grapheme in exact sync <b>plus</b> the scale pop — <b>never color alone</b> (redundant cue survives color-vision deficiency and inattention). One consistent <b>accent for "sounding now"</b>; a <b>separate stable color for the target nikkud sign itself</b> across the whole video so the child learns to find the sign.</p>
+    <p><b>RTL/bidi + nikkud (already solved in shorts.tsx — keep it):</b></p>
+    <ul>
+      <li>Grapheme spans keep <b>logical order</b> (never reversed); container stays <code>direction:'rtl'</code>; each span keeps <code>unicodeBidi:'isolate'</code> so one grapheme's marks can't drag neighbors.</li>
+      <li>Keep <code>kidsNikkud</code>: nikkud <b>kept</b> (skip stripNikkud) + <code>lineHeight:1.5</code> so the below-letter point never clips. For reading, nikkud is the <em>content</em>, so this path is always on.</li>
+      <li>Do <b>NOT</b> <code>textTransform:'uppercase'</code> — the tile sets it explicitly off so a Latin sound-label isn't uppercased against brand.</li>
+      <li>Add <code>letterSpacing</code>/tracking on blends so an above-letter <span class="he">חוֹלָם</span> or shin-dot doesn't drift onto the neighbor (§2/B).</li>
+    </ul>
+
+    <h3>3.3 <code>lib/reading.tsx</code> — GraphemeTile / SyllableTile</h3>
+<pre><code><span class="c-kw">export const</span> GraphemeTile: React.FC&lt;{
+  g: string;              <span class="c-com">// pointed grapheme, e.g. "בָּ"</span>
+  at: number;             <span class="c-com">// seconds (global) when it enters</span>
+  soundWindow?: { start: number; end: number };  <span class="c-com">// from vo[].units[] — the pop/tint window</span>
+  nikkudColor?: string;   <span class="c-com">// stable color for the target sign (default brand accent)</span>
+  accent?: string;        <span class="c-com">// "sounding now" color</span>
+  size?: number;          <span class="c-com">// default as large as SAFE allows — size for the MARK's legibility (§4/B)</span>
+  y?: number;
+  showSoundLabel?: boolean; <span class="c-com">// small Latin/phonetic label under the tile</span>
+}&gt;;
+
+<span class="c-kw">export const</span> SyllableTile: React.FC&lt;{ syllable: string; <span class="c-com">/* a צירוף like בָּ */</span> ... }&gt;;</code></pre>
+    <ul>
+      <li>Font: <code>FONT_HEBREW_CAPTION</code> (Rubik→Heebo). If the §4 gate fails, swap the tile's <code>fontFamily</code> to <code>FONT_NIKKUD_DISPLAY</code> — <b>tile only</b>, captions unchanged.</li>
+      <li><b>Cholam/shin collision + קמץ קטן</b> (§2/D): give a pointed <span class="he">שׁ</span> with <span class="he">חוֹלָם</span> extra room; <span class="he">קמץ קטן</span> is <b>deferred</b> from the series (printed identically to <span class="he">קמץ גדול</span>) — note it in the curriculum as "not in v1."</li>
+    </ul>
+    <p class="muted"><b>No new font wiring needed</b> unless the gate fails (then §2.3).</p>
+  </section>
+
+  <!-- ============ 4. CURRICULUM ============ -->
+  <section id="curriculum">
+    <div class="sec-eyebrow">§4 · Curriculum data</div>
+    <h2><code>tools/nikkud_data.py</code> drives every video</h2>
+    <p>A single data file drives <b>every</b> video in the series (the skill reads it; the validator checks against it). One entry per nikkud, in the §1 introduction order.</p>
+<pre><code><span class="c-com"># tools/nikkud_data.py  (stdlib data; engine + skill + validator all read THIS, never drift)</span>
+CURRICULUM = [
+  { <span class="c-str">"order"</span>: 1, <span class="c-str">"key"</span>: <span class="c-str">"kamatz"</span>,  <span class="c-str">"sign"</span>: <span class="c-str">"בָּ"</span>, <span class="c-str">"name_he"</span>: <span class="c-str">"קָמָץ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"a"</span>,
+    <span class="c-str">"targetLetters"</span>: [<span class="c-str">"בּ"</span>,<span class="c-str">"מ"</span>,<span class="c-str">"ק"</span>,<span class="c-str">"שׁ"</span>,<span class="c-str">"א"</span>],
+    <span class="c-str">"cv"</span>:    [<span class="c-str">"בָּ"</span>,<span class="c-str">"מָּ"</span>,<span class="c-str">"קָּ"</span>,<span class="c-str">"שָׁ"</span>,<span class="c-str">"אָ"</span>],
+    <span class="c-str">"blendWords"</span>: [ {<span class="c-str">"word"</span>:<span class="c-str">"אַבָּא"</span>,<span class="c-str">"units"</span>:[<span class="c-str">"אַ"</span>,<span class="c-str">"בָּא"</span>]},
+                    {<span class="c-str">"word"</span>:<span class="c-str">"מָמָא"</span>,<span class="c-str">"units"</span>:[<span class="c-str">"מָ"</span>,<span class="c-str">"מָא"</span>]},
+                    {<span class="c-str">"word"</span>:<span class="c-str">"בָּבָּא"</span>,<span class="c-str">"units"</span>:[<span class="c-str">"בָּ"</span>,<span class="c-str">"בָּא"</span>]} ],
+    <span class="c-str">"mnemonic"</span>: None,              <span class="c-com"># ⚠ UNVERIFIED — findings §2/E; source before shipping</span>
+    <span class="c-str">"musicBed"</span>: <span class="c-str">"kids-play-ukulele"</span> },
+  { <span class="c-str">"order"</span>: 2, <span class="c-str">"key"</span>: <span class="c-str">"patach"</span>,  <span class="c-str">"sign"</span>: <span class="c-str">"בַּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"a"</span>, ... },  <span class="c-com"># same-sound pair w/ kamatz</span>
+  { <span class="c-str">"order"</span>: 3, <span class="c-str">"key"</span>: <span class="c-str">"tzere-segol"</span>, <span class="c-str">"sign"</span>: <span class="c-str">"בֵּ/בֶּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"e"</span>, ... },
+  { <span class="c-str">"order"</span>: 4, <span class="c-str">"key"</span>: <span class="c-str">"chirik"</span>,  <span class="c-str">"sign"</span>: <span class="c-str">"בִּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"i"</span>, ... },
+  { <span class="c-str">"order"</span>: 5, <span class="c-str">"key"</span>: <span class="c-str">"cholam"</span>,  <span class="c-str">"sign"</span>: <span class="c-str">"בֹּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"o"</span>, ... },
+  { <span class="c-str">"order"</span>: 6, <span class="c-str">"key"</span>: <span class="c-str">"shuruk"</span>,  <span class="c-str">"sign"</span>: <span class="c-str">"בוּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"u"</span>, ... },  <span class="c-com"># shuruk BEFORE kubutz (§1)</span>
+  { <span class="c-str">"order"</span>: 7, <span class="c-str">"key"</span>: <span class="c-str">"kubutz"</span>,  <span class="c-str">"sign"</span>: <span class="c-str">"בֻּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"u"</span>, ... },  <span class="c-com"># "same sound, different look"</span>
+  { <span class="c-str">"order"</span>: 8, <span class="c-str">"key"</span>: <span class="c-str">"shva"</span>,    <span class="c-str">"sign"</span>: <span class="c-str">"בְּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"ə/∅"</span>, ... },<span class="c-com"># LATE, own video; נח before נע</span>
+  { <span class="c-str">"order"</span>: 9, <span class="c-str">"key"</span>: <span class="c-str">"dagesh-kal"</span>,<span class="c-str">"sign"</span>: <span class="c-str">"בּ"</span>, <span class="c-str">"sound"</span>: <span class="c-str">"b/v"</span>, ... },<span class="c-com"># דגש קל only (B/K/P vs V/CH/F)</span>
+  <span class="c-com"># DEFERRED: hataf forms; kamatz katan (printed identically to kamatz gadol — §2/D)</span>
+]</code></pre>
+    <p>Each <code>blendWords[].units</code> is the <b>per-video closed lexicon</b> the rule engine + phonikud cross-check operate on — the ~20-words-per-video "teacher-vetted" set. <b>Mnemonics are deliberately <code>None</code></b> — findings §2/E: do NOT fabricate per-sign child mnemonics (Hebrew teacher-blog search was engine-blocked). Open a to-source task or derive + validate with an Israeli teacher.</p>
+    <p class="muted">A TS mirror (<code>remotion/src/lib/readingCurriculum.ts</code>) can be <b>generated</b> from this by a tiny <code>gen</code> step so the composition imports typed curriculum without hand-copying. Pick one source of truth: <b><code>nikkud_data.py</code> is the source</b>.</p>
+  </section>
+
+  <!-- ============ 5. PIPELINE ============ -->
+  <section id="pipeline">
+    <div class="sec-eyebrow">§5 · Pipeline wiring</div>
+    <h2>Register, QA, render, gate</h2>
+    <ol>
+      <li><b>Registration:</b> drop <code>ReadN‹Nikkud›.tsx</code> under <code>remotion/src/shots/read-N/</code> with an exported <code>compositionConfig</code>; run <code>cd remotion && npm run gen</code> (gen-registry does NOT run itself from frames/render). Add the <code>read-</code> prefix line to <code>typeOfGroup()</code> (§1). Sanity-check the registered <code>durationInSeconds</code> ≈ last-speech-end + ~2.5s (the truncation/dead-tail lesson from ads).</li>
+      <li><b>QA at phone scale (mandatory):</b>
+<pre><code>cd remotion && npm run gen
+node scripts/qa_frames.mjs ReadN&lt;Nikkud&gt; 0,&lt;beat-boundaries+each-unit-highlight&gt;,&lt;last&gt; --scale=0.333</code></pre>
+      READ every small JPG. <b>Reading-specific checklist (on top of the standard one):</b>
+        <ul>
+          <li><b>Per-mark pixel gate (§4):</b> render each target mark (<span class="he">קמץ/פתח/…/דגש</span>) on 2–3 base letters at real tile size in Heebo-700 and Rubik-900 and READ them. PASS = marks distinguishable at a glance — esp. <span class="he">חיריק</span> vs <span class="he">סגול</span> vs <span class="he">צירי</span>; <span class="he">חוֹלָם</span>'s top-left dot clear of the tile top; <span class="he">דגש</span> centered; pointed <span class="he">שׁ</span>+<span class="he">חוֹלָם</span> not merged. FAIL → vendor SBL Hebrew (§2.3).</li>
+          <li><b>Highlight == sound:</b> step frames across each <code>units[]</code> window; confirm the lit grapheme is the one being spoken (the product's promise). No two graphemes lit at once, none lit in silence.</li>
+          <li><b>Bidi:</b> Hebrew + any digit/Latin sound-label tokens didn't reorder (anchorRtl/RLM already in lib).</li>
+          <li><b>Nikkud legibility:</b> points don't clip at <code>lineHeight 1.5</code>; tile clears SAFE zones (bottom 500 / right 160).</li>
+          <li>Frame 0 composed & thumbnail-grade (target sign visible); the loop seam (if used) matches.</li>
+        </ul>
+      </li>
+      <li><b>Render + mux + audio gate</b> (always via <code>ffw</code>, never bare ffmpeg — the silent-AAC bug):
+<pre><code>node scripts/render-all.mjs ReadN&lt;Nikkud&gt; --scale=1
+.venv-voice312\Scripts\python.exe tools/gen_voice_reading.py --beats .../beats.json \
+    --reading .../reading.json --emit-ts remotion/src/shots/read-N/vo.gen.ts
+<span class="c-com"># re-render after voice (captions/tiles retimed), then mux via tools/ffw.py and GATE it:</span>
+.venv-voice312\Scripts\python.exe tools/audio_gate.py remotion/out/ReadN&lt;Nikkud&gt;-voiced.mp4</code></pre>
+      </li>
+      <li><b>Contract gate:</b> add <code>validate_reading_beats</code> to <code>tools/contracts.py</code> (mirror <code>validate_ad_beats</code>: wrap <code>validate_beats</code> + require mode/language/reading{} + the 4 progression beats in order + <b>conditional units audit</b> — numeric start&lt;end, sorted, non-overlapping, ⊆ parent word span; isolated/CV lines must carry units once voice gen ran). Register <code>"reading-beats"</code> in <code>_VALIDATORS</code> and update the <code>main()</code> usage string.</li>
+    </ol>
+    <div class="note"><p><b>Seamless-loop consideration:</b> mode:"kids" requires frame-0==last-frame (brand §5). The reading track <b>relaxes</b> this like ads relax the no-CTA rule — a reading video is a one-shot lesson, and the "call-and-response" ending is the payoff, not a loop. <b>Decide per video</b> (declare <code>loop:false</code> in beats to skip the loop QA check). If you do loop, the call-and-response pause can settle back to the hook's frame-0 pose. Don't force it.</p></div>
+  </section>
+
+  <!-- ============ 6. PILOT ============ -->
+  <section id="pilot">
+    <div class="sec-eyebrow">§6 · Pilot</div>
+    <h2><span class="he tcolor">קָמָץ</span> first — <code>read-1-kamatz</code></h2>
+    <p>Why קמץ first: it's first in every sourced sequence (highest frequency, easiest to pronounce — §1), and its pair patach is the same /a/ sound, so the pilot can teach קמץ and name-drop patach.</p>
+
+    <div class="tbl"><table>
+      <caption>beat-by-beat · ≈34s · register 5–7 · בּוּ hosts</caption>
+      <thead><tr><th>beat</th><th class="num">t (s)</th><th>on screen</th><th>VO (edge-tts clips)</th><th>highlight</th></tr></thead>
+      <tbody>
+        <tr><td>hook</td><td class="num">0–2</td><td>בּוּ + huge <span class="he">בָּ</span> tile, frame 0 composed</td><td>"<span class="he">בּוּ בּוּ! הַיּוֹם לוֹמְדִים קָמָץ!</span>" (whole-word)</td><td>whole-word</td></tr>
+        <tr><td>teach-isolated</td><td class="num">2–8</td><td>GraphemeTile <span class="he">בָּ</span> huge, stable sign color</td><td>per-unit clip "<span class="he">בָּ</span>" (slowed) → <code>units[]</code></td><td><b>grapheme pop in sync</b></td></tr>
+        <tr><td>teach-cv</td><td class="num">8–16</td><td>SyllableTiles <span class="he">בָּ מָּ קָּ</span> (one at a time)</td><td>3 per-unit clips, each trimmed</td><td>each צירוף pops as spoken</td></tr>
+        <tr><td>blend</td><td class="num">16–26</td><td>tiles slide together → <span class="he">בָּבָּא</span>, highlight sweeps</td><td>per-syllable clips stitched back-to-back (continuous)</td><td>sweep across syllables</td></tr>
+        <tr><td>read-word</td><td class="num">26–32</td><td>whole word <span class="he">בָּבָּא</span> + בּוּ celebrates</td><td>one continuous clip</td><td>whole-word pop (existing)</td></tr>
+        <tr><td>call-response</td><td class="num">32–34.5</td><td>"now you!" + engineered 2.5s pause (<span class="he">הִמְהוּם</span> trick)</td><td>"<span class="he">אַתֶּם!</span>" + pause</td><td>none (settle to frame 0 if looping)</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Acceptance criteria (all must pass)</h3>
+    <ol>
+      <li><code>validate_reading_beats</code> passes (mode/language/reading{}/progression/units audit).</li>
+      <li>Per-mark pixel QA gate <b>passes in Heebo/Rubik</b> (else SBL fallback is triggered and re-gated).</li>
+      <li>Frame-stepped QA shows the lit grapheme == the spoken unit for <b>every</b> <code>units[]</code> window; no highlight in silence; no double-lit.</li>
+      <li><b>Listening QA (§5):</b> a human confirms edge-tts pronounces each isolated pointed syllable correctly (esp. <span class="he">שׁוּרוּק</span> vs vav+dagesh, <span class="he">שְׁוָא נָע</span> — not in the pilot, but the pattern). Any mispronounced unit → escalate that unit to the Azure SSML path (§2 conditional, needs key + cost sign-off).</li>
+      <li><code>audio_gate.py</code> passes on the muxed file (non-silent, cues audible).</li>
+      <li>Registered duration ≈ last-speech-end + ~2.5s (no dead tail, no truncation).</li>
+      <li>Cost reported: edge-tts <span class="pill free">$0</span>; image gen only if בּוּ illustrations are added (state before spend).</li>
+    </ol>
+  </section>
+
+  <!-- ============ 7. PHASES ============ -->
+  <section id="phases">
+    <div class="sec-eyebrow">§7 · Phases + costs</div>
+    <h2>Rough ordering</h2>
+    <div class="note"><p><b>Costs:</b> <b>edge-tts = <span class="tag">$0</span></b> (free, no key). Paid spend is <b>only</b> gen_image for בּוּ illustrations (fal/Gemini, a few cents per still) <b>if</b> you want them, and <b>only if</b> QA bites: SBL Hebrew is free (SIL), but the <b>Azure SSML</b> voice path needs a key + has cost — state before spending (repo rule). No paid step is required for the pilot.</p></div>
+
+    <div class="phase">
+      <div class="ph">PHASE 0<span class="cost">foundations · $0</span></div>
+      <div>
+        <h4>Foundations — no pixels yet</h4>
+        <p>Build <code>tools/nikkud.py</code> + <code>tools/nikkud_data.py</code> (graphemes + syllabify + קמץ curriculum row); <code>validate_reading_beats</code> in contracts.py; <code>tools/gen_voice_reading.py</code> (per-unit synth + RMS trim, reusing gen_voice_edge). Unit-test the segmenter on the קמץ lexicon.</p>
+        <p class="gate"><b>Gate:</b> contracts validate a hand-written read-1 beats.json; energy trim returns sane [onset,end] on a probe clip.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph">PHASE 1<span class="cost">TSX kit · $0</span></div>
+      <div>
+        <h4>TSX reading kit</h4>
+        <p><code>remotion/src/lib/reading.tsx</code> (GraphemeTile/SyllableTile) + Captions <code>units</code> path in <code>shorts.tsx</code> + type extensions. Build a <b>standalone test comp</b> (<code>read-0-test</code>) that renders every קמץ mark on 2–3 letters at tile size → run the <b>per-mark pixel QA gate</b>.</p>
+        <p class="gate"><b>Gate:</b> marks legible, or trigger SBL fallback.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph">PHASE 2<span class="cost">pilot comp · $0*</span></div>
+      <div>
+        <h4>Pilot composition</h4>
+        <p>Author <code>reading-shorts/read-1-kamatz/</code> (curriculum.json, script.md, reading.json, beats.json); <code>Read1Kamatz.tsx</code>; register + gen; QA frames (highlight==sound, bidi, nikkud, frame-0).</p>
+        <p class="gate"><b>Gate:</b> the frame-stepped highlight check passes. <b>*</b>a few cents only if בּוּ stills added via <code>gen_image.py --ref character.jpg</code>.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph">PHASE 3<span class="cost">voice + finish · $0</span></div>
+      <div>
+        <h4>Voice + finish</h4>
+        <p>gen_voice_reading (fills <code>units[]</code>) → re-render → mux via ffw → <code>audio_gate.py</code> → <b>listening QA</b> → SFX (kids flavor) → music (kids-play-ukulele).</p>
+        <p class="gate"><b>Gate:</b> acceptance criteria §6 all green.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph">PHASE 4<span class="cost">series · $0/video</span></div>
+      <div>
+        <h4>Series scale-out</h4>
+        <p>Add patach → tzere-segol → chirik → cholam → shuruk/kubutz → shva → dagesh-kal rows to <code>nikkud_data.py</code> (one video each, same pipeline). Handle the glyph-identity traps deliberately (<span class="he">שׁוּרוּק</span>=vav+dagesh, cholam/shin) as their own teaching moments. Defer <span class="he">חֲטָף</span> + <span class="he">קמץ קטן</span>.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph">PHASE 5<span class="cost">conditional upgrades</span></div>
+      <div>
+        <h4>Conditional upgrades — only on QA failure</h4>
+        <ul>
+          <li><b>SBL Hebrew</b> vendored (if §4 gate failed in Phase 1) — <span class="pill free">free</span></li>
+          <li><b>Azure direct-SSML voice</b> (if §5 listening QA bites) — needs key + cost sign-off; same voices, IPA phoneme control, optional Pronunciation-Assessment QA lever <span class="pill cond">$$</span></li>
+          <li><b>phonikud-onnx</b> authoring cross-check — <span class="pill free">free</span>, offline, human-verified only</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UNVERIFIED ============ -->
+  <section id="unverified">
+    <div class="sec-eyebrow">UNVERIFIED — resolve before relying</div>
+    <h2>Open risks and their resolution path</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Item</th><th>Resolution before it blocks a phase</th></tr></thead>
+      <tbody>
+        <tr><td>edge-tts pronunciation of isolated pointed syllables</td><td><b>Phase 3 listening QA</b> — escalate to Azure SSML if it bites</td></tr>
+        <tr><td>Heebo/Rubik mark precision at tile size</td><td><b>Phase 1 per-mark pixel gate</b> — SBL fallback if it fails</td></tr>
+        <tr><td>Per-sign child mnemonics</td><td>keep <code>mnemonic: None</code>; to-source where Hebrew search works, or derive + Israeli-teacher review. <b>Do not fabricate.</b></td></tr>
+        <tr><td>Nakdan accuracy on child CVC/CV words</td><td>human-verify the closed lexicon; phonikud/dictabert cross-check at authoring time</td></tr>
+        <tr><td>Shva na/nach edge cases</td><td>lexicon flag in <code>nikkud_data.py</code>; <span class="he">שְׁוָא</span> is its own late video (Phase 4)</td></tr>
+        <tr><td>Official state textbook nikkud order</td><td>current order solid-but-secondhand (§1); confirm via Meyda/teacher if a school-aligned claim is made</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <footer>
+    <p>Compiled 2026-08-23 · grounded in <code>research/hebrew-reading/00-findings.md</code> (§1–§7) · underlying briefs <code>01-subword-timing.md</code>, <code>02-pointed-hebrew-typography.md</code>. Reference production: <code>shorts/short-18-bu-aleph</code>. Where agents disagreed (WhisperX reliability, nakdan existence, font safety) the adjudication is recorded in the findings doc. <span class="he">בּוּ בּוּ — אוֹהֵב אוֹתְךָ!</span></p>
+  </footer>
+
+</div>
+</body>
+</html>

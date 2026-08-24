@@ -1,0 +1,677 @@
+{
+  "id": "short-5-prob",
+  "title": "Monty Hall, Finally Intuitive",
+  "composition": "Short5Monty",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 43
+  },
+  "voiceStatus": "kokoro:af_bella",
+  "roles": {
+    "note": "Fixed deterministic walkthrough case so every scene is consistent.",
+    "pick": 1,
+    "car": 2,
+    "hostOpens": 3
+  },
+  "sim": {
+    "note": "REAL deterministic simulation (repo ethos: honest instrumented data, like short-3's real sorts). montyTrials(seed,n) in lib/prob.tsx: pick+car uniform in {0,1,2}; always-switch wins iff pick!=car. Same 100 games give SWITCH and STAY as complements.",
+    "rng": "mulberry32",
+    "seed": 15,
+    "n": 100,
+    "switchWins": 66,
+    "stayWins": 34,
+    "convergence": "10:70% 25:68% 50:66% 75:67% 100:66%"
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "Two doors left. One hides the car. This isn't fifty-fifty.",
+      "start": 0.3,
+      "end": 3.96,
+      "words": [
+        {
+          "w": "Two",
+          "start": 0.576,
+          "end": 0.714
+        },
+        {
+          "w": "doors",
+          "start": 0.714,
+          "end": 1.01
+        },
+        {
+          "w": "left.",
+          "start": 1.01,
+          "end": 1.573
+        },
+        {
+          "w": "One",
+          "start": 1.573,
+          "end": 1.76
+        },
+        {
+          "w": "hides",
+          "start": 1.76,
+          "end": 1.987
+        },
+        {
+          "w": "the",
+          "start": 1.987,
+          "end": 2.056
+        },
+        {
+          "w": "car.",
+          "start": 2.056,
+          "end": 2.51
+        },
+        {
+          "w": "This",
+          "start": 2.51,
+          "end": 2.657
+        },
+        {
+          "w": "isn't",
+          "start": 2.657,
+          "end": 2.845
+        },
+        {
+          "w": "fifty-fifty.",
+          "start": 2.845,
+          "end": 3.871
+        }
+      ]
+    },
+    {
+      "beat": "setup",
+      "text": "Rewind. Three doors — one car, two goats.",
+      "start": 4.0,
+      "end": 6.8,
+      "words": [
+        {
+          "w": "Rewind.",
+          "start": 4.327,
+          "end": 5.009
+        },
+        {
+          "w": "Three",
+          "start": 5.009,
+          "end": 5.192
+        },
+        {
+          "w": "doors",
+          "start": 5.192,
+          "end": 5.433
+        },
+        {
+          "w": "—",
+          "start": 5.433,
+          "end": 5.472
+        },
+        {
+          "w": "one",
+          "start": 5.472,
+          "end": 5.635
+        },
+        {
+          "w": "car,",
+          "start": 5.635,
+          "end": 5.865
+        },
+        {
+          "w": "two",
+          "start": 5.865,
+          "end": 6.019
+        },
+        {
+          "w": "goats.",
+          "start": 6.019,
+          "end": 6.712
+        }
+      ]
+    },
+    {
+      "beat": "setup",
+      "text": "You pick door one. One in three it's the car.",
+      "start": 6.7,
+      "end": 10.12,
+      "words": [
+        {
+          "w": "You",
+          "start": 7.075,
+          "end": 7.175
+        },
+        {
+          "w": "pick",
+          "start": 7.175,
+          "end": 7.425
+        },
+        {
+          "w": "door",
+          "start": 7.425,
+          "end": 7.65
+        },
+        {
+          "w": "one.",
+          "start": 7.65,
+          "end": 8.262
+        },
+        {
+          "w": "One",
+          "start": 8.262,
+          "end": 8.438
+        },
+        {
+          "w": "in",
+          "start": 8.438,
+          "end": 8.587
+        },
+        {
+          "w": "three",
+          "start": 8.587,
+          "end": 8.85
+        },
+        {
+          "w": "it's",
+          "start": 8.85,
+          "end": 9.037
+        },
+        {
+          "w": "the",
+          "start": 9.037,
+          "end": 9.125
+        },
+        {
+          "w": "car.",
+          "start": 9.125,
+          "end": 10.025
+        }
+      ]
+    },
+    {
+      "beat": "setup",
+      "text": "The host opens a goat — on purpose.",
+      "start": 10.6,
+      "end": 13.26,
+      "words": [
+        {
+          "w": "The",
+          "start": 10.946,
+          "end": 11.015
+        },
+        {
+          "w": "host",
+          "start": 11.015,
+          "end": 11.314
+        },
+        {
+          "w": "opens",
+          "start": 11.314,
+          "end": 11.602
+        },
+        {
+          "w": "a",
+          "start": 11.602,
+          "end": 11.66
+        },
+        {
+          "w": "goat",
+          "start": 11.66,
+          "end": 12.029
+        },
+        {
+          "w": "—",
+          "start": 12.029,
+          "end": 12.087
+        },
+        {
+          "w": "on",
+          "start": 12.087,
+          "end": 12.213
+        },
+        {
+          "w": "purpose.",
+          "start": 12.213,
+          "end": 13.158
+        }
+      ]
+    },
+    {
+      "beat": "quiz",
+      "text": "Stay, or switch to the last door? Pause.",
+      "start": 13.3,
+      "end": 16.56,
+      "words": [
+        {
+          "w": "Stay,",
+          "start": 13.682,
+          "end": 14.065
+        },
+        {
+          "w": "or",
+          "start": 14.065,
+          "end": 14.221
+        },
+        {
+          "w": "switch",
+          "start": 14.221,
+          "end": 14.471
+        },
+        {
+          "w": "to",
+          "start": 14.471,
+          "end": 14.554
+        },
+        {
+          "w": "the",
+          "start": 14.554,
+          "end": 14.638
+        },
+        {
+          "w": "last",
+          "start": 14.638,
+          "end": 14.925
+        },
+        {
+          "w": "door?",
+          "start": 14.925,
+          "end": 15.51
+        },
+        {
+          "w": "Pause.",
+          "start": 15.51,
+          "end": 16.454
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "Your first pick? Right one in three.",
+      "start": 16.6,
+      "end": 19.47,
+      "words": [
+        {
+          "w": "Your",
+          "start": 16.975,
+          "end": 17.1
+        },
+        {
+          "w": "first",
+          "start": 17.1,
+          "end": 17.375
+        },
+        {
+          "w": "pick?",
+          "start": 17.375,
+          "end": 17.95
+        },
+        {
+          "w": "Right",
+          "start": 17.95,
+          "end": 18.175
+        },
+        {
+          "w": "one",
+          "start": 18.175,
+          "end": 18.312
+        },
+        {
+          "w": "in",
+          "start": 18.312,
+          "end": 18.463
+        },
+        {
+          "w": "three.",
+          "start": 18.463,
+          "end": 19.375
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "So two-thirds of the time, it's elsewhere.",
+      "start": 19.7,
+      "end": 22.94,
+      "words": [
+        {
+          "w": "So",
+          "start": 20.1,
+          "end": 20.275
+        },
+        {
+          "w": "two-thirds",
+          "start": 20.275,
+          "end": 20.762
+        },
+        {
+          "w": "of",
+          "start": 20.762,
+          "end": 20.837
+        },
+        {
+          "w": "the",
+          "start": 20.837,
+          "end": 20.925
+        },
+        {
+          "w": "time,",
+          "start": 20.925,
+          "end": 21.55
+        },
+        {
+          "w": "it's",
+          "start": 21.55,
+          "end": 21.725
+        },
+        {
+          "w": "elsewhere.",
+          "start": 21.725,
+          "end": 22.85
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "The host clears away the wrong door.",
+      "start": 23.1,
+      "end": 25.82,
+      "words": [
+        {
+          "w": "The",
+          "start": 23.45,
+          "end": 23.525
+        },
+        {
+          "w": "host",
+          "start": 23.525,
+          "end": 23.912
+        },
+        {
+          "w": "clears",
+          "start": 23.912,
+          "end": 24.263
+        },
+        {
+          "w": "away",
+          "start": 24.263,
+          "end": 24.463
+        },
+        {
+          "w": "the",
+          "start": 24.463,
+          "end": 24.55
+        },
+        {
+          "w": "wrong",
+          "start": 24.55,
+          "end": 24.85
+        },
+        {
+          "w": "door.",
+          "start": 24.85,
+          "end": 25.725
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "That two-thirds now sits on one door.",
+      "start": 26.4,
+      "end": 29.17,
+      "words": [
+        {
+          "w": "That",
+          "start": 26.775,
+          "end": 26.925
+        },
+        {
+          "w": "two-thirds",
+          "start": 26.925,
+          "end": 27.45
+        },
+        {
+          "w": "now",
+          "start": 27.45,
+          "end": 27.662
+        },
+        {
+          "w": "sits",
+          "start": 27.662,
+          "end": 27.912
+        },
+        {
+          "w": "on",
+          "start": 27.912,
+          "end": 28.025
+        },
+        {
+          "w": "one",
+          "start": 28.025,
+          "end": 28.25
+        },
+        {
+          "w": "door.",
+          "start": 28.25,
+          "end": 29.075
+        }
+      ]
+    },
+    {
+      "beat": "reveal",
+      "text": "Switch — you double your odds.",
+      "start": 29.6,
+      "end": 31.86,
+      "words": [
+        {
+          "w": "Switch",
+          "start": 29.975,
+          "end": 30.327
+        },
+        {
+          "w": "—",
+          "start": 30.327,
+          "end": 30.397
+        },
+        {
+          "w": "you",
+          "start": 30.397,
+          "end": 30.538
+        },
+        {
+          "w": "double",
+          "start": 30.538,
+          "end": 30.783
+        },
+        {
+          "w": "your",
+          "start": 30.783,
+          "end": 30.9
+        },
+        {
+          "w": "odds.",
+          "start": 30.9,
+          "end": 31.756
+        }
+      ]
+    },
+    {
+      "beat": "proof",
+      "text": "Still doubt it? A hundred games, always switch.",
+      "start": 31.9,
+      "end": 35.17,
+      "words": [
+        {
+          "w": "Still",
+          "start": 32.246,
+          "end": 32.453
+        },
+        {
+          "w": "doubt",
+          "start": 32.453,
+          "end": 32.684
+        },
+        {
+          "w": "it?",
+          "start": 32.684,
+          "end": 33.145
+        },
+        {
+          "w": "A",
+          "start": 33.145,
+          "end": 33.214
+        },
+        {
+          "w": "hundred",
+          "start": 33.214,
+          "end": 33.49
+        },
+        {
+          "w": "games,",
+          "start": 33.49,
+          "end": 33.894
+        },
+        {
+          "w": "always",
+          "start": 33.894,
+          "end": 34.24
+        },
+        {
+          "w": "switch.",
+          "start": 34.24,
+          "end": 35.058
+        }
+      ]
+    },
+    {
+      "beat": "proof",
+      "text": "Switch wins about two out of three.",
+      "start": 35.2,
+      "end": 37.72,
+      "words": [
+        {
+          "w": "Switch",
+          "start": 35.6,
+          "end": 35.85
+        },
+        {
+          "w": "wins",
+          "start": 35.85,
+          "end": 36.112
+        },
+        {
+          "w": "about",
+          "start": 36.112,
+          "end": 36.363
+        },
+        {
+          "w": "two",
+          "start": 36.363,
+          "end": 36.563
+        },
+        {
+          "w": "out",
+          "start": 36.563,
+          "end": 36.688
+        },
+        {
+          "w": "of",
+          "start": 36.688,
+          "end": 36.775
+        },
+        {
+          "w": "three.",
+          "start": 36.775,
+          "end": 37.625
+        }
+      ]
+    },
+    {
+      "beat": "loop",
+      "text": "Two doors. Never fifty-fifty. Now you know.",
+      "start": 40.2,
+      "end": 42.82,
+      "words": [
+        {
+          "w": "Two",
+          "start": 40.469,
+          "end": 40.604
+        },
+        {
+          "w": "doors.",
+          "start": 40.604,
+          "end": 41.046
+        },
+        {
+          "w": "Never",
+          "start": 41.046,
+          "end": 41.2
+        },
+        {
+          "w": "fifty-fifty.",
+          "start": 41.2,
+          "end": 41.864
+        },
+        {
+          "w": "Now",
+          "start": 41.864,
+          "end": 42.046
+        },
+        {
+          "w": "you",
+          "start": 42.046,
+          "end": 42.123
+        },
+        {
+          "w": "know.",
+          "start": 42.123,
+          "end": 42.738
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "id": "hook",
+      "start": 0.0,
+      "end": 3.4,
+      "frames": "0-102",
+      "visual": "Two doors left: door 1 (YOUR PICK, closed) + door 2 (closed), door 3 already open on a goat. Title MONTY HALL / IT'S NOT 50-50. Punch-in settle."
+    },
+    {
+      "id": "setup",
+      "start": 3.4,
+      "end": 13.2,
+      "frames": "102-396",
+      "visual": "Rewind to 3 closed doors + legend '1 CAR · 2 GOATS'. Door 1 gets YOUR PICK + 1/3 chip. Door 3 swings open -> goat."
+    },
+    {
+      "id": "quiz",
+      "start": 13.2,
+      "end": 16.4,
+      "frames": "396-492",
+      "visual": "PauseCard 'STAY or SWITCH?' countdown over the two-doors state."
+    },
+    {
+      "id": "reveal",
+      "start": 16.4,
+      "end": 31.8,
+      "frames": "492-954",
+      "visual": "1/3 chip on door 1 -> brace '2/3' over doors 2+3 -> door 3 crossed out, brace retracts onto door 2 -> door 2 glows '2/3'. 1/3 vs 2/3 contrast + x2."
+    },
+    {
+      "id": "proof",
+      "start": 31.8,
+      "end": 40.0,
+      "frames": "954-1200",
+      "visual": "100-dot TallyGrid fills live (real montyTrials seed 15): teal = switch won, slate = stay won. Live counters settle SWITCH 66% / STAY 34%."
+    },
+    {
+      "id": "loop",
+      "start": 40.0,
+      "end": 43.0,
+      "frames": "1200-1290",
+      "visual": "Back to two-doors 'NOT 50/50' state, mode grow — rhymes with frame 0, dissolves into the intro. No CTA."
+    }
+  ]
+}

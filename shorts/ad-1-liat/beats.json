@@ -1,0 +1,189 @@
+{
+  "id": "ad-1-liat",
+  "title": "ליאת קוסמטיקה — סייל החודש",
+  "composition": "Ad1Liat",
+  "mode": "ad",
+  "language": "he",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 16
+  },
+  "voicePlan": "edge-tts:he-IL-HilaNeural (Hebrew, female, word-exact)",
+  "ad": {
+    "business": {
+      "name": "ליאת קוסמטיקה",
+      "vertical": "beauty",
+      "phone": "050-1234567",
+      "whatsapp": "050-1234567",
+      "city": "חיפה"
+    },
+    "offer": {
+      "headline": "מספיק לחפש קוסמטיקאית בחיפה.",
+      "price": 199,
+      "oldPrice": 290,
+      "discountPct": 31,
+      "urgency": "החודש בלבד"
+    },
+    "cta": {
+      "type": "whatsapp",
+      "text": "להזמנת תור בוואטסאפ",
+      "phoneDisplay": "050-123-4567"
+    },
+    "brand": {
+      "accent": "#A8342B",
+      "hookStyle": "pain-question"
+    },
+    "disclosure": {
+      "scope": "עד גמר המלאי או ללקוחות כמות מוגבלת",
+      "totalPrice": "המחיר כולל הכל, ללא עלויות נוספות"
+    }
+  },
+  "vo": [
+    {
+      "text": "מספיק לחפש קוסמטיקאית.",
+      "start": 0.0,
+      "end": 2.33,
+      "beat": "hook",
+      "words": [
+        {
+          "w": "מספיק",
+          "start": 0.115,
+          "end": 0.445
+        },
+        {
+          "w": "לחפש",
+          "start": 0.445,
+          "end": 0.83
+        },
+        {
+          "w": "קוסמטיקאית",
+          "start": 0.83,
+          "end": 1.63
+        }
+      ]
+    },
+    {
+      "text": "החודש: 199 שקל במקום 290.",
+      "start": 2.4,
+      "end": 6.93,
+      "beat": "offer",
+      "words": [
+        {
+          "w": "החודש",
+          "start": 2.509,
+          "end": 3.279
+        },
+        {
+          "w": "199",
+          "start": 3.515,
+          "end": 4.471
+        },
+        {
+          "w": "שקל",
+          "start": 4.471,
+          "end": 4.831
+        },
+        {
+          "w": "במקום",
+          "start": 4.831,
+          "end": 5.191
+        },
+        {
+          "w": "290",
+          "start": 5.191,
+          "end": 6.11
+        }
+      ]
+    },
+    {
+      "text": "אבחון עור אישי. תוצאות שרואים.",
+      "start": 7.0,
+      "end": 10.33,
+      "beat": "proof",
+      "words": [
+        {
+          "w": "אבחון",
+          "start": 7.101,
+          "end": 7.485
+        },
+        {
+          "w": "עור",
+          "start": 7.485,
+          "end": 7.671
+        },
+        {
+          "w": "אישי",
+          "start": 7.671,
+          "end": 8.035
+        },
+        {
+          "w": "תוצאות",
+          "start": 8.742,
+          "end": 9.116
+        },
+        {
+          "w": "שרואים",
+          "start": 9.116,
+          "end": 9.654
+        }
+      ]
+    },
+    {
+      "text": "הזמינו תור עכשיו בוואטסאפ.",
+      "start": 10.4,
+      "end": 13.35,
+      "beat": "cta",
+      "words": [
+        {
+          "w": "הזמינו",
+          "start": 10.517,
+          "end": 11.022
+        },
+        {
+          "w": "תור",
+          "start": 11.022,
+          "end": 11.261
+        },
+        {
+          "w": "עכשיו",
+          "start": 11.261,
+          "end": 11.647
+        },
+        {
+          "w": "בוואטסאפ",
+          "start": 11.647,
+          "end": 12.471
+        }
+      ]
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 2.4,
+      "visual": "pain-question hook, composed at frame 0"
+    },
+    {
+      "name": "offer",
+      "start_s": 2.4,
+      "end_s": 6.9,
+      "visual": "PriceBadge pops: 199 ₪ vs 290, 31%−"
+    },
+    {
+      "name": "proof",
+      "start_s": 6.9,
+      "end_s": 10.3,
+      "visual": "before/after narrative line"
+    },
+    {
+      "name": "cta",
+      "start_s": 10.3,
+      "end_s": 16.0,
+      "visual": "AdEndCard holds: WhatsApp button + phone"
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

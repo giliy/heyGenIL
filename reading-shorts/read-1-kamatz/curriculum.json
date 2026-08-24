@@ -1,0 +1,47 @@
+{
+  "nikkud_key": "kamatz",
+  "name_he": "קָמָץ",
+  "sign": "בָּ",
+  "sound": "a",
+  "targetLetters": [
+    "בּ",
+    "מ",
+    "ק",
+    "שׁ",
+    "א"
+  ],
+  "cv": [
+    "בָּ",
+    "מָּ",
+    "קָּ",
+    "שָׁ",
+    "אָ"
+  ],
+  "blendWords": [
+    {
+      "word": "אַבָּא",
+      "units": [
+        "אַ",
+        "בָּא"
+      ]
+    },
+    {
+      "word": "מָמָא",
+      "units": [
+        "מָ",
+        "מָא"
+      ]
+    },
+    {
+      "word": "בָּבָּא",
+      "units": [
+        "בָּ",
+        "בָּא"
+      ]
+    }
+  ],
+  "mnemonic": null,
+  "musicBed": "kids-play-ukulele",
+  "status": "vetted",
+  "note": "resolved from tools/nikkud_data.py get_nikkud(kamatz) — single source of truth. mnemonic deliberately null (findings §2/E)."
+}
