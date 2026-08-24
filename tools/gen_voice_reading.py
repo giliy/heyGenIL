@@ -404,7 +404,9 @@ def _rewrite_wrapper_duration(beats):
     import re as _re
     comp = beats.get("composition")
     proj_id = beats.get("id", "")
-    m = _re.match(r"^(read-\d+)(?:-.*)?$", proj_id)
+    # Match make_learn.write_wrapper's shots-group naming for every learn mode
+    # (read/learn/letter/number/wordclass) so the wrapper re-stamp lands on the right dir.
+    m = _re.match(r"^(read-\d+|learn-\d+|letter-\d+|number-\d+|wordclass-\d+)(?:-.*)?$", proj_id)
     group = m.group(1) if m else proj_id
     if not comp:
         return
