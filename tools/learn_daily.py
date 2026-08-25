@@ -53,15 +53,17 @@ def log(msg):
     print(f"[daily] {msg}", flush=True)
 
 
-def run(cmd, cwd=None, allow_fail=False):
-    """Run a subprocess; raise on non-zero (unless allow_fail). npm/node are .cmd shims on
-    Windows — invoke via shell so CreateProcess finds them."""
+def run(cmd, cwd=None, allow_fail=False, timeout=None):
+    """Run a subprocess; raise on non-zero (unless allow_fail) or on timeout. npm/node are
+    .cmd shims on Windows — invoke via shell so CreateProcess finds them. `timeout` (seconds)
+    guards against a stalled network call (e.g. edge-tts) hanging the whole daily run: a hung
+    step raises TimeoutExpired -> the item is marked failed, and the run moves on."""
     shell = False
     if isinstance(cmd, list) and cmd and cmd[0] in ("npm", "node", "npx") and os.name == "nt":
         shell = True
         cmd = subprocess.list2cmdline(cmd)
     log(f"$ {' '.join(cmd) if isinstance(cmd, list) else cmd}")
-    r = subprocess.run(cmd, cwd=cwd, shell=shell)
+    r = subprocess.run(cmd, cwd=cwd, shell=shell, timeout=timeout)
     if r.returncode != 0 and not allow_fail:
         raise RuntimeError(f"command failed ({r.returncode}): {cmd}")
     return r
@@ -241,10 +243,12 @@ def main():
             if args.dry_run:
                 print(f"  [D voice  ] gen_voice_reading.py --beats {beats_path} --reading {reading_path} --emit-ts {vo_ts}")
             else:
+                # edge-tts is a network service; cap it so a stall fails the item instead of
+                # hanging the run. These scripts are short (<60s of audio) — 5 min is generous.
                 run([os.path.join(ROOT, ".venv-voice312", "Scripts", "python.exe"),
                      os.path.join("tools", "gen_voice_reading.py"),
                      "--beats", beats_path, "--reading", reading_path,
-                     "--emit-ts", vo_ts])
+                     "--emit-ts", vo_ts], timeout=300)
 
             # E. gen again (re-stamp duration) ----------------------------------
             if args.dry_run:
@@ -276,8 +280,10 @@ def main():
             if args.dry_run:
                 print(f"  [G render ] cd remotion && node scripts/render-all.mjs {comp} --scale=1")
             else:
+                # A single short renders in a few minutes even at 1080x1920; cap at 15 min so a
+                # wedged bundler/chrome can't hang the daily run indefinitely.
                 run(["node", os.path.join("scripts", "render-all.mjs"), comp, "--scale=1"],
-                    cwd=os.path.join(ROOT, "remotion"))
+                    cwd=os.path.join(ROOT, "remotion"), timeout=900)
             silent = os.path.join(ROOT, "remotion", "out", f"{comp}.mp4")
 
             # H. mux + gate ------------------------------------------------------
