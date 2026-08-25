@@ -334,7 +334,11 @@ def main():
         total = (max(real_ends) if real_ends else 0.0) + 2.5
         inputs, parts = [], []
         for j, (path, start, _ln) in enumerate(placed):
-            src = path + ".wav" if os.path.exists(path + ".wav") else path
+            # Always mix from the .mp3. The "<mp3>.wav" sibling is a MONO 44.1k intermediate
+            # written by the RMS onset detector (_trim_window) purely for analysis — feeding it
+            # into the amix alongside the stereo mp3s deadlocks ffmpeg's channel-layout
+            # auto-negotiation (mix spins forever, near-zero CPU). The mp3s mix in <1s.
+            src = path
             inputs += ["-i", src]
             ms = int(round(start * 1000))
             parts.append(f"[{j}:a]adelay={ms}|{ms}[a{j}]")
