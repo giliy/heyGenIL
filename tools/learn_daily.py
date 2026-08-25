@@ -243,12 +243,23 @@ def main():
             if args.dry_run:
                 print(f"  [D voice  ] gen_voice_reading.py --beats {beats_path} --reading {reading_path} --emit-ts {vo_ts}")
             else:
-                # edge-tts is a network service; cap it so a stall fails the item instead of
-                # hanging the run. These scripts are short (<60s of audio) — 5 min is generous.
-                run([os.path.join(ROOT, ".venv-voice312", "Scripts", "python.exe"),
-                     os.path.join("tools", "gen_voice_reading.py"),
-                     "--beats", beats_path, "--reading", reading_path,
-                     "--emit-ts", vo_ts], timeout=300)
+                # edge-tts is a network service and has proven flaky (recurring stalls that hang
+                # or blow the timeout). Cap each attempt AND retry with a fresh connection: a stall
+                # fails fast, a retry usually lands on a healthy edge-tts session. 3 x 5min max.
+                vo_cmd = [os.path.join(ROOT, ".venv-voice312", "Scripts", "python.exe"),
+                          os.path.join("tools", "gen_voice_reading.py"),
+                          "--beats", beats_path, "--reading", reading_path,
+                          "--emit-ts", vo_ts]
+                vo_attempts = 3
+                for attempt in range(1, vo_attempts + 1):
+                    try:
+                        run(vo_cmd, timeout=300)
+                        break
+                    except RuntimeError as e:
+                        if "timed out" in str(e) and attempt < vo_attempts:
+                            print(f"    [voice] attempt {attempt} timed out — retrying with a fresh connection ({attempt+1}/{vo_attempts})")
+                            continue
+                        raise
 
             # E. gen again (re-stamp duration) ----------------------------------
             if args.dry_run:
