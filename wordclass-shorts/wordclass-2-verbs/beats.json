@@ -1,0 +1,166 @@
+{
+  "id": "wordclass-2-verbs",
+  "title": "בּוּ מְלַמֵּד פּוֹעַל",
+  "mode": "wordclass",
+  "language": "he",
+  "series": "bu-koala-wordclass",
+  "composition": "Wordclass2Verbs",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 29.944
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type wordclass) from script.md. Teaches פּוֹעַל (verbs, /a/) to ages 5-7. mode:wordclass, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "wordclass": {
+    "wordclass": "verbs",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "פּ"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "רָץ",
+      "אוֹכֵל",
+      "יָשֵׁן",
+      "שָׁר",
+      "קוֹפֵץ"
+    ],
+    "name_he": "פּוֹעַל",
+    "class": "verb",
+    "words": [
+      "רָץ",
+      "אוֹכֵל",
+      "יָשֵׁן",
+      "שָׁר",
+      "קוֹפֵץ"
+    ],
+    "wordClasses": [
+      "verb",
+      "verb",
+      "verb",
+      "verb",
+      "verb"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים פּוֹעַל!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים פּוֹעַל!",
+      "start": 0.0,
+      "end": 4.608
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "פּוֹעַל",
+      "tts": "פּוֹעַל",
+      "start": 6.367,
+      "end": 6.947,
+      "units": [
+        {
+          "g": "פּוֹעַל",
+          "start": 6.627,
+          "end": 6.947
+        }
+      ],
+      "sub": "כָּךְ נוֹתְנִים שֵׁם!"
+    },
+    {
+      "beat": "read-word",
+      "text": "רָץ",
+      "tts": "רָץ",
+      "start": 8.667,
+      "end": 10.707
+    },
+    {
+      "beat": "read-word",
+      "text": "אוֹכֵל",
+      "tts": "אוֹכֵל",
+      "start": 12.0,
+      "end": 13.944
+    },
+    {
+      "beat": "read-word",
+      "text": "יָשֵׁן",
+      "tts": "יָשֵׁן",
+      "start": 15.333,
+      "end": 17.373
+    },
+    {
+      "beat": "read-word",
+      "text": "שָׁר",
+      "tts": "שָׁר",
+      "start": 18.666,
+      "end": 20.658
+    },
+    {
+      "beat": "read-word",
+      "text": "קוֹפֵץ",
+      "tts": "קוֹפֵץ",
+      "start": 21.999,
+      "end": 24.159,
+      "sub": "יוֹפִי!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 25.332,
+      "end": 27.444,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "עַכְשָׁו אַתֶּם!"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 6.367
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 6.367,
+      "end_s": 8.667
+    },
+    {
+      "name": "read-word",
+      "start_s": 8.667,
+      "end_s": 12.0
+    },
+    {
+      "name": "read-word",
+      "start_s": 12.0,
+      "end_s": 15.333
+    },
+    {
+      "name": "read-word",
+      "start_s": 15.333,
+      "end_s": 18.666
+    },
+    {
+      "name": "read-word",
+      "start_s": 18.666,
+      "end_s": 21.999
+    },
+    {
+      "name": "read-word",
+      "start_s": 21.999,
+      "end_s": 25.332
+    },
+    {
+      "name": "call-response",
+      "start_s": 25.332,
+      "end_s": 29.944
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

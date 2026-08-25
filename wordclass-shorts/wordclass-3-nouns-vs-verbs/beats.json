@@ -1,0 +1,181 @@
+{
+  "id": "wordclass-3-nouns-vs-verbs",
+  "title": "בּוּ מְלַמֵּד שֵׁם עֶצֶם אוֹ פּוֹעַל",
+  "mode": "wordclass",
+  "language": "he",
+  "series": "bu-koala-wordclass",
+  "composition": "Wordclass3NounsVsVerbs",
+  "characterRef": "ai-shorts/bu-koala/character.jpg",
+  "musicBed": "kids-play-ukulele",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSec": 35.777
+  },
+  "loop": false,
+  "notes": "AUTO-DERIVED by tools/make_learn.py (--type wordclass) from script.md. Teaches שֵׁם עֶצֶם אוֹ פּוֹעַל (nouns-vs-verbs, /a/) to ages 5-7. mode:wordclass, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
+  "wordclass": {
+    "wordclass": "nouns-vs-verbs",
+    "sign": "בָּ",
+    "sound": "a",
+    "targetLetters": [
+      "ש"
+    ],
+    "progression": [
+      "isolated",
+      "word"
+    ],
+    "anchorWords": [
+      "בַּיִת",
+      "רָץ",
+      "כֶּלֶב",
+      "אוֹכֵל",
+      "סֵפֶר",
+      "יָשֵׁן"
+    ],
+    "name_he": "שֵׁם עֶצֶם אוֹ פּוֹעַל",
+    "class": "mixed",
+    "words": [
+      "בַּיִת",
+      "רָץ",
+      "כֶּלֶב",
+      "אוֹכֵל",
+      "סֵפֶר",
+      "יָשֵׁן"
+    ],
+    "wordClasses": [
+      "noun",
+      "mixed",
+      "noun",
+      "mixed",
+      "noun",
+      "mixed"
+    ]
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שֵׁם עֶצֶם אוֹ פּוֹעַל!",
+      "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שֵׁם עֶצֶם אוֹ פּוֹעַל!",
+      "start": 0.0,
+      "end": 5.424
+    },
+    {
+      "beat": "teach-isolated",
+      "text": "שֵׁם עֶצֶם אוֹ פּוֹעַל",
+      "tts": "שֵׁם עֶצֶם אוֹ פּוֹעַל",
+      "start": 8.867,
+      "end": 10.287,
+      "units": [
+        {
+          "g": "שֵׁם עֶצֶם אוֹ פּוֹעַל",
+          "start": 9.167,
+          "end": 10.287
+        }
+      ],
+      "sub": "כָּךְ נוֹתְנִים שֵׁם!"
+    },
+    {
+      "beat": "read-word",
+      "text": "בַּיִת",
+      "tts": "בַּיִת",
+      "start": 11.167,
+      "end": 13.255
+    },
+    {
+      "beat": "read-word",
+      "text": "רָץ",
+      "tts": "רָץ",
+      "start": 14.5,
+      "end": 16.54
+    },
+    {
+      "beat": "read-word",
+      "text": "כֶּלֶב",
+      "tts": "כֶּלֶב",
+      "start": 17.833,
+      "end": 19.849
+    },
+    {
+      "beat": "read-word",
+      "text": "אוֹכֵל",
+      "tts": "אוֹכֵל",
+      "start": 21.166,
+      "end": 23.11
+    },
+    {
+      "beat": "read-word",
+      "text": "סֵפֶר",
+      "tts": "סֵפֶר",
+      "start": 24.499,
+      "end": 26.611
+    },
+    {
+      "beat": "read-word",
+      "text": "יָשֵׁן",
+      "tts": "יָשֵׁן",
+      "start": 27.832,
+      "end": 29.872,
+      "sub": "יוֹפִי!"
+    },
+    {
+      "beat": "call-response",
+      "text": "אַתֶּם!",
+      "tts": "אַתֶּם!",
+      "start": 31.165,
+      "end": 33.277,
+      "pause": true,
+      "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
+      "sub": "שֵׁם עֶצֶם אוֹ פּוֹעַל?"
+    }
+  ],
+  "beats": [
+    {
+      "name": "hook",
+      "start_s": 0.0,
+      "end_s": 8.867
+    },
+    {
+      "name": "teach-isolated",
+      "start_s": 8.867,
+      "end_s": 11.167
+    },
+    {
+      "name": "read-word",
+      "start_s": 11.167,
+      "end_s": 14.5
+    },
+    {
+      "name": "read-word",
+      "start_s": 14.5,
+      "end_s": 17.833
+    },
+    {
+      "name": "read-word",
+      "start_s": 17.833,
+      "end_s": 21.166
+    },
+    {
+      "name": "read-word",
+      "start_s": 21.166,
+      "end_s": 24.499
+    },
+    {
+      "name": "read-word",
+      "start_s": 24.499,
+      "end_s": 27.832
+    },
+    {
+      "name": "read-word",
+      "start_s": 27.832,
+      "end_s": 31.165
+    },
+    {
+      "name": "call-response",
+      "start_s": 31.165,
+      "end_s": 35.777
+    }
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
+}

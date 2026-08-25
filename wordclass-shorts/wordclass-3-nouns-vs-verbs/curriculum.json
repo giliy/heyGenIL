@@ -1,0 +1,16 @@
+{
+  "order": 3,
+  "key": "nouns-vs-verbs",
+  "class": "mixed",
+  "name_he": "שֵׁם עֶצֶם אוֹ פּוֹעַל",
+  "words": [
+    "בַּיִת",
+    "רָץ",
+    "כֶּלֶב",
+    "אוֹכֵל",
+    "סֵפֶר",
+    "יָשֵׁן"
+  ],
+  "status": "draft",
+  "note": "the sort-game: see a word — noun or verb? (call-and-response pause)"
+}

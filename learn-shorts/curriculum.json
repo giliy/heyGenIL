@@ -210,6 +210,27 @@
       "type": "number",
       "key": "add-2-2",
       "status": "pass"
+    },
+    {
+      "order": 31,
+      "proj": "wordclass-shorts/wordclass-1-nouns",
+      "type": "wordclass",
+      "key": "nouns",
+      "status": "pass"
+    },
+    {
+      "order": 32,
+      "proj": "wordclass-shorts/wordclass-2-verbs",
+      "type": "wordclass",
+      "key": "verbs",
+      "status": "pass"
+    },
+    {
+      "order": 33,
+      "proj": "wordclass-shorts/wordclass-3-nouns-vs-verbs",
+      "type": "wordclass",
+      "key": "nouns-vs-verbs",
+      "status": "pass"
     }
   ]
 }

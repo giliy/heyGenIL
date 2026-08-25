@@ -11,7 +11,7 @@
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "durationSec": 33.198
+    "durationSec": 30.777
   },
   "loop": false,
   "notes": "AUTO-DERIVED by tools/make_learn.py (--type wordclass) from script.md. Teaches שֵׁם עֶצֶם (nouns, /a/) to ages 5-7. mode:wordclass, language:he. The pointed letter/syllable highlights in EXACT sync with the spoken unit. units[] are PLANNED windows; gen_voice_reading.py replaces them with REAL trimmed bounds. In-TSX koala tile (no AI stills, $0). Loop relaxed. No CTA.",
@@ -56,19 +56,19 @@
       "text": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שֵׁם עֶצֶם!",
       "tts": "בּוּ בּוּ! הַיּוֹם לוֹמְדִים שֵׁם עֶצֶם!",
       "start": 0.0,
-      "end": 6.2
+      "end": 4.872
     },
     {
       "beat": "teach-isolated",
       "text": "שֵׁם עֶצֶם",
       "tts": "שֵׁם עֶצֶם",
       "start": 7.2,
-      "end": 7.8,
+      "end": 8.32,
       "units": [
         {
           "g": "שֵׁם עֶצֶם",
-          "start": 7.5,
-          "end": 7.8
+          "start": 7.58,
+          "end": 8.32
         }
       ],
       "sub": "כָּךְ נוֹתְנִים שֵׁם!"
@@ -78,35 +78,35 @@
       "text": "בַּיִת",
       "tts": "בַּיִת",
       "start": 9.5,
-      "end": 11.533
+      "end": 11.588
     },
     {
       "beat": "read-word",
       "text": "כֶּלֶב",
       "tts": "כֶּלֶב",
       "start": 12.833,
-      "end": 14.866
+      "end": 14.849
     },
     {
       "beat": "read-word",
       "text": "חָתוּל",
       "tts": "חָתוּל",
       "start": 16.166,
-      "end": 18.199
+      "end": 18.23
     },
     {
       "beat": "read-word",
       "text": "סֵפֶר",
       "tts": "סֵפֶר",
       "start": 19.499,
-      "end": 21.532
+      "end": 21.611
     },
     {
       "beat": "read-word",
       "text": "פֶּרַח",
       "tts": "פֶּרַח",
       "start": 22.832,
-      "end": 24.865,
+      "end": 24.896,
       "sub": "יוֹפִי!"
     },
     {
@@ -114,7 +114,7 @@
       "text": "אַתֶּם!",
       "tts": "אַתֶּם!",
       "start": 26.165,
-      "end": 30.698,
+      "end": 28.277,
       "pause": true,
       "note": "call-and-response: 'you!' then an engineered ~2.5s silent pause so the child answers aloud. REAL silence, not a spoken filler word.",
       "sub": "עַכְשָׁו אַתֶּם!"
@@ -124,42 +124,43 @@
     {
       "name": "hook",
       "start_s": 0.0,
-      "end_s": 6.2
+      "end_s": 7.2
     },
     {
       "name": "teach-isolated",
       "start_s": 7.2,
-      "end_s": 7.8
+      "end_s": 9.5
     },
     {
       "name": "read-word",
       "start_s": 9.5,
-      "end_s": 11.533
+      "end_s": 12.833
     },
     {
       "name": "read-word",
       "start_s": 12.833,
-      "end_s": 14.866
+      "end_s": 16.166
     },
     {
       "name": "read-word",
       "start_s": 16.166,
-      "end_s": 18.199
+      "end_s": 19.499
     },
     {
       "name": "read-word",
       "start_s": 19.499,
-      "end_s": 21.532
+      "end_s": 22.832
     },
     {
       "name": "read-word",
       "start_s": 22.832,
-      "end_s": 24.865
+      "end_s": 26.165
     },
     {
       "name": "call-response",
       "start_s": 26.165,
-      "end_s": 33.198
+      "end_s": 30.777
     }
-  ]
+  ],
+  "voiceStatus": "edge-tts:he-IL-HilaNeural"
 }

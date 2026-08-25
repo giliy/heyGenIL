@@ -61,6 +61,11 @@ artifacts/
 .claude/conversations/
 .claude/plans/
 .claude/scratch/
+
+# learn-shorts factory working/scratch + staged hand-off (regenerable via learn_daily.py /
+# publish_stage.py; masters are large binaries, not source)
+tmp/
+publish/
 _timeline.txt
 upgrade-plan.md
 collage-upgrade-research.html

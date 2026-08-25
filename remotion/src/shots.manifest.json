@@ -561,7 +561,23 @@
  },
  {
   "id": "Wordclass1Nouns",
-  "durationInSeconds": 33.198,
+  "durationInSeconds": 30.777,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Wordclass2Verbs",
+  "durationInSeconds": 29.944,
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transparent": false
+ },
+ {
+  "id": "Wordclass3NounsVsVerbs",
+  "durationInSeconds": 35.777,
   "fps": 30,
   "width": 1080,
   "height": 1920,

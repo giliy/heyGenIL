@@ -1,0 +1,15 @@
+{
+  "order": 2,
+  "key": "verbs",
+  "class": "verb",
+  "name_he": "פּוֹעַל",
+  "words": [
+    "רָץ",
+    "אוֹכֵל",
+    "יָשֵׁן",
+    "שָׁר",
+    "קוֹפֵץ"
+  ],
+  "status": "draft",
+  "note": "a verb is an ACTION word (what someone does)"
+}

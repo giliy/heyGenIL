@@ -1,26 +1,12 @@
 {
-  "run": "2026-08-24",
+  "run": "2026-08-25",
   "results": [
     {
-      "dir": "number-shorts/number-add-1-1",
-      "type": "number",
-      "key": "add-1-1",
+      "dir": "wordclass-shorts/wordclass-1-nouns",
+      "type": "wordclass",
+      "key": "nouns",
       "ok": true,
-      "compId": "NumberAdd11"
-    },
-    {
-      "dir": "number-shorts/number-add-2-1",
-      "type": "number",
-      "key": "add-2-1",
-      "ok": true,
-      "compId": "NumberAdd21"
-    },
-    {
-      "dir": "number-shorts/number-add-2-2",
-      "type": "number",
-      "key": "add-2-2",
-      "ok": true,
-      "compId": "NumberAdd22"
+      "compId": "Wordclass1Nouns"
     }
   ]
 }

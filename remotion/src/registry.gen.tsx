@@ -71,6 +71,8 @@ import Shot67, { compositionConfig as cfg67 } from './shots/vox-2/Vox2DadDaughte
 import Shot68, { compositionConfig as cfg68 } from './shots/vox-3/Vox3DorSever';
 import Shot69, { compositionConfig as cfg69, defaultProps as dp69, calculateMetadata as cm69 } from './shots/vox-spec/VoxSpec';
 import Shot70, { compositionConfig as cfg70 } from './shots/wordclass-1/Wordclass1Nouns';
+import Shot71, { compositionConfig as cfg71 } from './shots/wordclass-2/Wordclass2Verbs';
+import Shot72, { compositionConfig as cfg72 } from './shots/wordclass-3/Wordclass3NounsVsVerbs';
 
 export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculateMetadata?: any }[] = [
   { Comp: Shot0 as React.FC, config: cfg0, defaultProps: dp0, calculateMetadata: cm0 },
@@ -144,4 +146,6 @@ export const shots: { Comp: React.FC; config: any; defaultProps?: any; calculate
   { Comp: Shot68 as React.FC, config: cfg68 },
   { Comp: Shot69 as React.FC, config: cfg69, defaultProps: dp69, calculateMetadata: cm69 },
   { Comp: Shot70 as React.FC, config: cfg70 },
+  { Comp: Shot71 as React.FC, config: cfg71 },
+  { Comp: Shot72 as React.FC, config: cfg72 },
 ];
