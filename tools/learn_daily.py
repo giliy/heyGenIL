@@ -63,10 +63,32 @@ def run(cmd, cwd=None, allow_fail=False, timeout=None):
         shell = True
         cmd = subprocess.list2cmdline(cmd)
     log(f"$ {' '.join(cmd) if isinstance(cmd, list) else cmd}")
-    r = subprocess.run(cmd, cwd=cwd, shell=shell, timeout=timeout)
-    if r.returncode != 0 and not allow_fail:
-        raise RuntimeError(f"command failed ({r.returncode}): {cmd}")
-    return r
+    if timeout is None:
+        r = subprocess.run(cmd, cwd=cwd, shell=shell)
+        if r.returncode != 0 and not allow_fail:
+            raise RuntimeError(f"command failed ({r.returncode}): {cmd}")
+        return r
+    # Timed path: Popen so that on timeout we can kill the WHOLE process tree. A bare
+    # subprocess.run(timeout=...) kills only the direct child — its ffprobe/ffmpeg grandchildren
+    # (edge-tts probes) survive as orphans, hold the mp3 open, and wedge the NEXT item's ffprobe
+    # in communicate() forever. That was the recurring wordclass hang. taskkill /T /F kills the tree.
+    proc = subprocess.Popen(cmd, cwd=cwd, shell=shell)
+    try:
+        proc.wait(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        if os.name == "nt":
+            subprocess.run(["taskkill", "/PID", str(proc.pid), "/T", "/F"],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        else:
+            try:
+                proc.kill()
+            except OSError:
+                pass
+        proc.wait()
+        raise RuntimeError(f"command timed out after {timeout}s (tree killed): {' '.join(cmd) if isinstance(cmd, list) else cmd}")
+    if proc.returncode != 0 and not allow_fail:
+        raise RuntimeError(f"command failed ({proc.returncode}): {cmd}")
+    return proc
 
 
 def load_queue():

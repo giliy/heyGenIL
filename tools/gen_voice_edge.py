@@ -70,7 +70,15 @@ MAX_ATEMPO = 1.3  # never speed a line up more than 30%
 
 
 def run(cmd):
-    r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    # Bound the ffprobe/ffmpeg call. An orphaned sibling (a prior attempt's ffmpeg killed at the
+    # parent but left running) can hold the target mp3 open, which makes THIS ffprobe block in
+    # communicate() forever — py-spy showed exactly that (subprocess.py:1196). A 60s cap turns an
+    # infinite wedge into a fast, retryable failure. probe/convert of a <1MB clip takes <1s.
+    try:
+        r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                           timeout=60)
+    except subprocess.TimeoutExpired:
+        sys.exit(f"ffprobe/ffmpeg timed out (60s) — a stale sibling likely holds the file open: {' '.join(cmd)}")
     if r.returncode != 0:
         sys.exit(f"command failed: {' '.join(cmd)}\n{r.stdout}")
     return r.stdout
