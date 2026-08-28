@@ -9,6 +9,8 @@ right skill is picked automatically from the request:
 | "make an ad / advertising short / commercial" (Hebrew SMB) | `/make-ad` | 100% TSX + `lib/ads.tsx` (CTA end card, PriceBadge, Logo) | `shorts/ad-N-<business>/` |
 | "make an AI video short", "blue-man video" | `/make-ai-short` | a fal video model (locked recurring character) | `ai-shorts/<series>/` |
 | "vox style / documentary / explainer short" | `/make-vox` | layered paper-collage (AI images + cutouts) | `vox-shorts/vox-N-<topic>/` |
+| "make a letter video" / "bu-koala teaches א–ת" | see `docs/letter-pilot-playbook.md` | `lib/letter-scene.tsx` + AI word stills (`--ref` bu-koala) | `letter-shorts/letter-N-<key>/` |
+| "publish / upload / post" (YouTube + Instagram) | `/publish-social` | — | `publish/manifest.json` |
 
 All four share the same backbone: a `beats.json` contract, ElevenLabs voice with word-exact
 captions (`gen_voice.py`), frame-by-frame QA at phone scale, library-first SFX (`/suggest-sfx`),
@@ -18,6 +20,13 @@ overrides the no-CTA-outro and seamless-loop rules — an ad's payoff IS the con
 the end card must hold. Ads are Hebrew/RTL by default (`language:"he"`), voice = edge-tts
 (`gen_voice_edge.py`, free, native word boundaries; ElevenLabs only on `eleven_multilingual_v3`,
 kokoro excluded). Hebrew language/market research lives in `research/hebrew-ads/`.
+
+**The letter series (א–ת) is its own pipeline**, documented in
+`docs/letter-pilot-playbook.md`: big YELLOW letter on WARM sand + the LOCKED bu-koala,
+voice edge-tts `he-IL-HilaNeural -2%/+36Hz`, 60 s, seamless loop, NO CTA. Per letter:
+vet `letter-shorts/letter-N-<key>/curriculum.json` (DRAFT nikkud) →
+`python tools/gen_letter_scenes.py letter-N-<key>` → `python tools/render_letter.py
+letter-N-<key>` → `publish/letter-N-<key>-FINAL.mp4`.
 
 ## Layout
 
@@ -33,7 +42,8 @@ ai-shorts/        generative shorts: + character.json (LOCKED reference), shot s
 vox-shorts/       collage shorts: + DESIGN.md (the visual language — read before any vox work)
 brand.md          the style contract every skill reads (palette, motion, safe areas, SFX taste)
 IDEAS.md          the TSX-shorts idea bank + niche ranking
-.claude/skills/   make-short, make-ai-short, make-vox, vidtsx-2d-generator, suggest-sfx
+.claude/skills/   make-short, make-ai-short, make-vox, vidtsx-2d-generator, suggest-sfx,
+                  publish-social
 ```
 
 ## Conventions (hard rules)
