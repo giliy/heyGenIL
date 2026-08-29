@@ -7,7 +7,28 @@
   "exampleWords": [
     "דֶּלֶת",
     "דָּג",
-    "דְּלִי"
+    "דְּבוֹרָה",
+    "דֹּב"
   ],
-  "status": "draft"
+  "words": [
+    {
+      "word": "דֶּלֶת",
+      "scenePrompt": "Bu the koala opening a friendly wooden door, peeking in. Flat kid-friendly vector illustration, soft rounded shapes, warm colors. Flat solid warm sand background, hex #f0dfc0, no texture, no gradient, no shadow on the background."
+    },
+    {
+      "word": "דָּג",
+      "scenePrompt": "Bu the koala watching a big orange goldfish swimming in a round bowl. Flat kid-friendly vector illustration, soft rounded shapes, warm colors. Flat solid warm sand background, hex #f0dfc0, no texture, no gradient, no shadow on the background."
+    },
+    {
+      "word": "דְּבוֹרָה",
+      "scenePrompt": "Bu the koala smiling at a cute round striped bee flying nearby. Flat kid-friendly vector illustration, soft rounded shapes, warm colors. Flat solid warm sand background, hex #f0dfc0, no texture, no gradient, no shadow on the background."
+    },
+    {
+      "word": "דֹּב",
+      "scenePrompt": "Bu the koala standing next to a big friendly brown bear, both smiling and waving. Flat kid-friendly vector illustration, soft rounded shapes, warm colors. Flat solid warm sand background, hex #f0dfc0, no texture, no gradient, no shadow on the background."
+    }
+  ],
+  "wordSelfIndex": null,
+  "status": "vetted",
+  "_note": "DRAFT: nikkud of exampleWords and name_he must be human-vetted before ship. scenePrompt is a fragment; gen_letter_scenes.py wraps it with the bu-koala identity formula + --ref character.jpg."
 }
